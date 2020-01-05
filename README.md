@@ -11,7 +11,7 @@ wget http://skills.projectalice.ch/AliceCore \
 ### Description
 AliceCore is the official skill that handles all core intents
 
-- Version: 1.0.27
+- Version: 1.0.28
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
