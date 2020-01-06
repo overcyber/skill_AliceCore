@@ -13402,7 +13402,7 @@
 		{
 			"name": "AnswerPercent",
 			"description": "User answers with a percentage",
-			"enableByDefault": false,
+			"enabledByDefault": false,
 			"utterances": [
 				"{40:=>Percent}",
 				"{10%:=>Percent}",
