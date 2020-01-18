@@ -556,8 +556,6 @@ class AliceCore(AliceSkill):
 				raise SkillStartDelayed(self.name)
 			self._addFirstUser()
 
-		return self.supportedIntents
-
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
 		self.endUserAuth()
