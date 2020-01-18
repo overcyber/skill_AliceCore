@@ -1,5 +1,7 @@
 # AliceCore
 
+[![Continous Integration](https://gitlab.com/project-alice-assistant/skills/skill_AliceCore/badges/master/pipeline.svg)](https://gitlab.com/project-alice-assistant/skills/skill_AliceCore/pipelines/latest)
+
 ### Download
 
 ##### > WGET method
