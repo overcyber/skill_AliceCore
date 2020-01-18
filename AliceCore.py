@@ -546,7 +546,7 @@ class AliceCore(AliceSkill):
 			self.ThreadManager.clearEvent('authUserWaitWakeword')
 
 
-	def onStart(self) -> dict:
+	def onStart(self):
 		super().onStart()
 		self.changeFeedbackSound(inDialog=False)
 
