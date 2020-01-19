@@ -5770,6 +5770,29 @@
 					"missingQuestion": ""
 				}
 			]
+		},
+		{
+			"name": "AnswerPercent",
+			"description": "L'utilisateur répond par un pourcentage",
+			"enabledByDefault": false,
+			"utterances": [
+				"{40:=>Percent}",
+				"{10:=>Percent}%",
+				"{vingt:=>Percent} pourcent s'il te plait",
+				"s'il te plait {5:=>Percent} pourcent",
+				"{60:=>Percent} pourcent",
+				"{septante cinq:=>Percent} pourcent s'il te plait",
+				"{soixante quinze:=>Percent} pourcent"
+			],
+			"slots": [
+				{
+					"name": "Percent",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
 		}
 	]
 }

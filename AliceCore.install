@@ -8,7 +8,7 @@
 		"maxbachmann"
 	],
 	"desc": "AliceCore is the official skill that handles all core intents",
-	"aliceMinVersion": "1.0.0-a5",
+	"aliceMinVersion": "1.0.0-a4",
 	"systemRequirements": [],
 	"pipRequirements": [],
 	"conditions": {

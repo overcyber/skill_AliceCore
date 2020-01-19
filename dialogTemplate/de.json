@@ -12057,6 +12057,28 @@
 					"missingQuestion": ""
 				}
 			]
+		},
+		{
+			"name": "AnswerPercent",
+			"description": "User answers with a percentage",
+			"enabledByDefault": false,
+			"utterances": [
+				"{40:=>Percent}",
+				"{10:=>Percent}%",
+				"{zwanzig:=>Percent} prozent please",
+				"bitte {5:=>Percent} prozent",
+				"{60:=>Percent} prozent",
+				"{fünf und siebzig:=>Percent} prozent bitte"
+			],
+			"slots": [
+				{
+					"name": "Percent",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
 		}
 	]
 }
