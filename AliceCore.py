@@ -679,11 +679,11 @@ class AliceCore(AliceSkill):
 		self.say(text=self.randomTalk('confirmBundleUpdate'))
 
 
-	def onSnipsAssistantFailedInstalling(self):
+	def onSnipsAssistantFailedInstalling(self, **kwargs):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def onSnipsAssistantDownloadFailed(self):
+	def onSnipsAssistantDownloadFailed(self, **kwargs):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
