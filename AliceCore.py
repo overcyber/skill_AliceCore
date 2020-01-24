@@ -675,7 +675,7 @@ class AliceCore(AliceSkill):
 			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
 
 
-	def onSnipsAssistantInstalled(self):
+	def onSnipsAssistantInstalled(self, **kwargs):
 		self.say(text=self.randomTalk('confirmBundleUpdate'))
 
 
