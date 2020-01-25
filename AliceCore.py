@@ -598,7 +598,7 @@ class AliceCore(AliceSkill):
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
 
-		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != 'userAuth':
+		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != f'{self.name}:userAuth':
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 			user = self.UserManager.getUser(session.user)
@@ -624,7 +624,7 @@ class AliceCore(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
-		elif session.currentState == 'userAuth':
+		elif session.currentState == f'{self.name}:userAuth':
 			AdminAuth.setLinkedSnipsSession(session)
 
 
