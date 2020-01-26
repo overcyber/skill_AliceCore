@@ -719,6 +719,7 @@ class AliceCore(AliceSkill):
 
 		self.logInfo(f'Checking on "{str(candidate)}" update channel')
 		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'stash'])
+		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'clean', '-df'])
 		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'checkout', str(candidate)])
 		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'pull'])
 
