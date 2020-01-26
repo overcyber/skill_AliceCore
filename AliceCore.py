@@ -1,6 +1,5 @@
 import subprocess
 
-import requests
 import tempfile
 import time
 from pathlib import Path
@@ -9,7 +8,6 @@ from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
-from core.base.model.Version import Version
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
@@ -693,38 +691,7 @@ class AliceCore(AliceSkill):
 
 	@IfSetting(settingName='aliceAutoUpdate', settingValue=True)
 	def onFullHour(self):
-		self.logInfo('Checking Project Alice updates')
-		req = requests.get(url='https://api.github.com/repos/project-alice-assistant/ProjectAlice/branches', auth=self.ConfigManager.getGithubAuth())
-		if req.status_code != 200:
-			self.logWarning('Failed checking for updates')
-			return
-
-		userUpdatePref = self.ConfigManager.getAliceConfigByName('aliceUpdateChannel')
-
-		if userUpdatePref == 'master':
-			candidate = 'master'
-		else:
-			candidate = Version.fromString(constants.VERSION)
-			for branch in req.json():
-				repoVersion = Version.fromString(branch['name'])
-				if not repoVersion.isVersionNumber:
-					continue
-
-				releaseType = repoVersion.releaseType
-				if userUpdatePref == 'rc' and releaseType in {'b', 'a'} or userUpdatePref == 'beta' and releaseType == 'a':
-					continue
-
-				if repoVersion > candidate:
-					candidate = repoVersion
-
-		self.logInfo(f'Checking on "{str(candidate)}" update channel')
-		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'stash'])
-		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'clean', '-df'])
-		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'checkout', str(candidate)])
-		self.Commons.runSystemCommand(['git', '-C', self.Commons.rootDir(), 'pull'])
-
-		# Remove install tickets
-		[file.unlink() for file in Path(self.Commons.rootDir(), "system/skillInstallTickets").glob('*') if file.is_file()]
+		self.ProjectAlice.updateProjectAlice()
 
 
 	def deviceGreetingIntent(self, session: DialogSession):
