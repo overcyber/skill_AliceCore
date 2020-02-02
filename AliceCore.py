@@ -10,7 +10,6 @@ from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
-from core.dialog.model.DialogState import DialogState
 from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import Online, IfSetting
@@ -62,29 +61,29 @@ class AliceCore(AliceSkill):
 		]
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
-			DialogState('confirmingReboot'): self.confirmSkillReboot,
-			DialogState('confirmingSkillReboot'): self.reboot,
-			DialogState('confirmingUsername'): self.checkUsername,
-			DialogState('confirmingWakewordCreation'): self.createWakeword,
-			DialogState('confirmingRecaptureAfterFailure'): self.tryFixAndRecapture,
-			DialogState('confirmingPinCode'): self.askCreateWakeword
+			'confirmingReboot': self.confirmSkillReboot,
+			'confirmingSkillReboot': self.reboot,
+			'confirmingUsername': self.checkUsername,
+			'confirmingWakewordCreation': self.createWakeword,
+			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
+			'confirmingPinCode': self.askCreateWakeword
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
-			DialogState('confirmingUsername'): self.checkUsername
+			'confirmingUsername': self.checkUsername
 		}
 
 		self._INTENT_ANSWER_NAME.dialogMapping = {
-			DialogState('addingUser'): self.confirmUsername
+			'addingUser': self.confirmUsername
 		}
 
 		self._INTENT_SPELL_WORD.dialogMapping = {
-			DialogState('addingUser'): self.confirmUsername
+			'addingUser': self.confirmUsername
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
-			DialogState('addingPinCode'): self.addUserPinCode,
-			DialogState('userAuth'): self.authUser
+			'addingPinCode': self.addUserPinCode,
+			'userAuth': self.authUser
 		}
 
 		self._threads = dict()
@@ -600,7 +599,7 @@ class AliceCore(AliceSkill):
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
 
-		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != DialogState('userAuth'):
+		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != 'userAuth':
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 			user = self.UserManager.getUser(session.user)
@@ -626,7 +625,7 @@ class AliceCore(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
-		elif session.currentState == DialogState('userAuth'):
+		elif session.currentState == 'userAuth':
 			AdminAuth.setLinkedSnipsSession(session)
 
 
