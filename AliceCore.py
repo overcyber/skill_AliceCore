@@ -62,29 +62,29 @@ class AliceCore(AliceSkill):
 		]
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
-			'confirmingReboot': self.confirmSkillReboot,
-			'confirmingSkillReboot': self.reboot,
-			'confirmingUsername': self.checkUsername,
-			'confirmingWakewordCreation': self.createWakeword,
-			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
-			'confirmingPinCode': self.askCreateWakeword
+			DialogState('confirmingReboot'): self.confirmSkillReboot,
+			DialogState('confirmingSkillReboot'): self.reboot,
+			DialogState('confirmingUsername'): self.checkUsername,
+			DialogState('confirmingWakewordCreation'): self.createWakeword,
+			DialogState('confirmingRecaptureAfterFailure'): self.tryFixAndRecapture,
+			DialogState('confirmingPinCode'): self.askCreateWakeword
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
-			'confirmingUsername': self.checkUsername
+			DialogState('confirmingUsername'): self.checkUsername
 		}
 
 		self._INTENT_ANSWER_NAME.dialogMapping = {
-			'addingUser': self.confirmUsername
+			DialogState('addingUser'): self.confirmUsername
 		}
 
 		self._INTENT_SPELL_WORD.dialogMapping = {
-			'addingUser': self.confirmUsername
+			DialogState('addingUser'): self.confirmUsername
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
-			'addingPinCode': self.addUserPinCode,
-			'userAuth': self.authUser
+			DialogState('addingPinCode'): self.addUserPinCode,
+			DialogState('userAuth'): self.authUser
 		}
 
 		self._threads = dict()
@@ -554,7 +554,7 @@ class AliceCore(AliceSkill):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self.logWarning('No user found in database')
+				self.log.warning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self._addFirstUser()
 
@@ -655,7 +655,7 @@ class AliceCore(AliceSkill):
 			elif onReboot == 'greetAndRebootSkills':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingSkills'), 'all'])
 			else:
-				self.logWarning('onReboot config has an unknown value')
+				self.log.warning('onReboot config has an unknown value')
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -698,13 +698,13 @@ class AliceCore(AliceSkill):
 		uid = session.payload.get('uid')
 		siteId = session.payload.get('siteId')
 		if not uid or not siteId:
-			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
+			self.log.warning('A device tried to connect but is missing informations in the payload, refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
 			return
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+			self.log.info(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
@@ -739,18 +739,18 @@ class AliceCore(AliceSkill):
 
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 		if update in {1, 5}:  # All or system
-			self.logInfo('Updating system')
+			self.log.info('Updating system')
 			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
 		if update in {1, 4}:  # All or skills
-			self.logInfo('Updating skills')
+			self.log.info('Updating skills')
 			self.SkillManager.checkForSkillUpdates()
 
 		if update in {1, 2}:  # All or Alice
-			self.logInfo('Updating Alice')
+			self.log.info('Updating Alice')
 
 		if update in {1, 3}:  # All or Assistant
-			self.logInfo('Updating assistant')
+			self.log.info('Updating assistant')
 
 			if not self.LanguageManager.activeSnipsProjectId:
 				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('noProjectIdSet'), session.siteId])
