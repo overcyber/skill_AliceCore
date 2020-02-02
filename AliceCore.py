@@ -554,7 +554,7 @@ class AliceCore(AliceSkill):
 
 		if not self.UserManager.users:
 			if not self.delayed:
-				self.log.warning('No user found in database')
+				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self._addFirstUser()
 
@@ -655,7 +655,7 @@ class AliceCore(AliceSkill):
 			elif onReboot == 'greetAndRebootSkills':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingSkills'), 'all'])
 			else:
-				self.log.warning('onReboot config has an unknown value')
+				self.logWarning('onReboot config has an unknown value')
 
 			self.ConfigManager.updateAliceConfiguration('onReboot', '')
 
@@ -698,13 +698,13 @@ class AliceCore(AliceSkill):
 		uid = session.payload.get('uid')
 		siteId = session.payload.get('siteId')
 		if not uid or not siteId:
-			self.log.warning('A device tried to connect but is missing informations in the payload, refused')
+			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
 			return
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.log.info(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
@@ -739,18 +739,18 @@ class AliceCore(AliceSkill):
 
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
 		if update in {1, 5}:  # All or system
-			self.log.info('Updating system')
+			self.logInfo('Updating system')
 			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
 		if update in {1, 4}:  # All or skills
-			self.log.info('Updating skills')
+			self.logInfo('Updating skills')
 			self.SkillManager.checkForSkillUpdates()
 
 		if update in {1, 2}:  # All or Alice
-			self.log.info('Updating Alice')
+			self.logInfo('Updating Alice')
 
 		if update in {1, 3}:  # All or Assistant
-			self.log.info('Updating assistant')
+			self.logInfo('Updating assistant')
 
 			if not self.LanguageManager.activeSnipsProjectId:
 				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('noProjectIdSet'), session.siteId])
