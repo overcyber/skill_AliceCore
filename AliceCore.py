@@ -10,6 +10,7 @@ from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
+from core.dialog.model.DialogState import DialogState
 from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import Online, IfSetting
@@ -599,7 +600,7 @@ class AliceCore(AliceSkill):
 	def onSessionStarted(self, session: DialogSession):
 		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
 
-		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != 'userAuth':
+		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != DialogState('userAuth'):
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 			user = self.UserManager.getUser(session.user)
@@ -625,7 +626,7 @@ class AliceCore(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
-		elif session.currentState == 'userAuth':
+		elif session.currentState == DialogState('userAuth'):
 			AdminAuth.setLinkedSnipsSession(session)
 
 
