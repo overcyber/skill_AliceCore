@@ -11714,10 +11714,10 @@
 			"enabledByDefault": true,
 			"utterances": [
 				"Füge einen neuen {tasmota:=>Hardware} {Schalter:=>EspType} im {Wohnzimmer:=>Room} hinzu",
-				"Füge eine {tasmota:=>Hardware} vom Typ {Schalter:=>EspType} in der {Küche:=>Raum} hinzu",
-				"Bitte füge einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Eingang:=>Raum} hinzu",
+				"Füge eine {tasmota:=>Hardware} vom Typ {Schalter:=>EspType} in der {Küche:=>Room} hinzu",
+				"Bitte füge einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Eingang:=>Room} hinzu",
 				"Ich möchte eine {tasmota:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
-				"Kannst du einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Schlafzimmer:=>Raum} hinzufügen?",
+				"Kannst du einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
 				"Füge ein {esp:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
 				"Ich füge ein neues {Schalter:=>EspType} Gerät hinzu",
 				"Könntest du eine neues {alice:=>Hardware} Gerät hinzufügen",
