@@ -20,7 +20,6 @@ from core.voice.WakewordManager import WakewordManagerState
 class AliceCore(AliceSkill):
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
-	_INTENT_GLOBAL_STOP = Intent('GlobalStop')
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
 	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
@@ -41,7 +40,6 @@ class AliceCore(AliceSkill):
 
 	def __init__(self):
 		self._INTENTS = [
-			(self._INTENT_GLOBAL_STOP, self.globalStopIntent),
 			(self._INTENT_MODULE_GREETING, self.deviceGreetingIntent),
 			self._INTENT_ANSWER_YES_OR_NO,
 			(self._INTENT_ANSWER_ROOM, self.addDeviceIntent),
@@ -751,13 +749,7 @@ class AliceCore(AliceSkill):
 
 		if update in {1, 3}:  # All or Assistant
 			self.logInfo('Updating assistant')
-
-			if not self.LanguageManager.activeSnipsProjectId:
-				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('noProjectIdSet'), session.siteId])
-			elif not self.SnipsConsoleManager.loginCredentialsAreConfigured():
-				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('bundleUpdateNoCredentials'), session.siteId])
-			else:
-				self.ThreadManager.doLater(interval=2, func=self.SamkillaManager.sync)
+			self.logWarning('Not implemented')
 
 
 	def globalStopIntent(self, session: DialogSession):
