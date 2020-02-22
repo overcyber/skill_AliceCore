@@ -11591,28 +11591,6 @@
 	],
 	"intents": [
 		{
-			"name": "GlobalStop",
-			"description": "Stop the current action",
-			"enabledByDefault": true,
-			"utterances": [
-				"lass mich in Ruhe",
-				"Verlasse mich",
-				"Verlassen",
-				"Abbrechen",
-				"Aufgeben",
-				"Stopp",
-				"Kein Gerede mehr",
-				"Hör auf damit",
-				"Alles anhalten",
-				"Halt die Klappe",
-				"Halt die verdammte Klappe",
-				"Halt den Mund",
-				"Halt die Schnauze",
-				"Hör auf zu reden"
-			],
-			"slots": []
-		},
-		{
 			"name": "UserRandomAnswer",
 			"description": "The user answer with something random",
 			"enabledByDefault": false,

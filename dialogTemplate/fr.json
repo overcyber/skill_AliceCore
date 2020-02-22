@@ -5295,35 +5295,6 @@
 	],
 	"intents": [
 		{
-			"name": "GlobalStop",
-			"description": "Quitter l'opération en cours",
-			"enabledByDefault": true,
-			"utterances": [
-				"ta gueule",
-				"ferme ta gueule",
-				"ferme ta bouche",
-				"laisse moi tranquille",
-				"arrête de parler",
-				"arrête de brailler",
-				"plus un mot",
-				"quitte",
-				"quitter",
-				"quitte tout",
-				"tout quitter",
-				"arrête",
-				"arrêter",
-				"arrête tout",
-				"arrêter tout",
-				"tout arrêter",
-				"annule",
-				"annuler",
-				"annule tout",
-				"tout annuler",
-				"stop"
-			],
-			"slots": []
-		},
-		{
 			"name": "UserRandomAnswer",
 			"description": "L'utilisateur répond par un mot aléatoire",
 			"enabledByDefault": false,
