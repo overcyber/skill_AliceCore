@@ -371,12 +371,13 @@ class AliceCore(AliceSkill):
 
 	def confirmUsername(self, session: DialogSession):
 		intent = session.intentName
+
 		if intent == self._INTENT_ANSWER_NAME:
-			username = str(session.slots['Name']).lower()
+			username = session.slots['Name'].lower()
 		else:
 			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 
-		if session.slotRawValue('Name') == constants.UNKNOWN_WORD:
+		if session.slotRawValue('Name') == constants.UNKNOWN_WORD or not username:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
