@@ -1,6 +1,7 @@
 {
 	"name": "AliceCore",
 	"version": "1.0.48",
+	"icon": "battle-net",
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
