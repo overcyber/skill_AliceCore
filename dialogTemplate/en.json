@@ -14481,7 +14481,7 @@
 			]
 		},
 		{
-			"name": "AnswerYesNo",
+			"name": "Alice/AnswerYesNo",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": true,
@@ -26828,7 +26828,7 @@
 					"name": "Answer",
 					"description": null,
 					"required": false,
-					"type": "AnswerYesNo",
+					"type": "Alice/AnswerYesNo",
 					"missingQuestion": ""
 				}
 			]
