@@ -247,7 +247,7 @@ class AliceCore(AliceSkill):
 			sessionId=session.sessionId,
 			text=self.randomTalk('howWasTheCaptureNow'),
 			intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-			slot='WakewordCaptureResult'
+			slot='Alice/WakewordCaptureResult'
 		)
 
 
@@ -303,7 +303,7 @@ class AliceCore(AliceSkill):
 			sessionId=session.sessionId,
 			text=self.randomTalk(text),
 			intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-			slot='WakewordCaptureResult',
+			slot='Alice/WakewordCaptureResult',
 			currentDialogState='confirmingCaptureResult'
 		)
 
@@ -352,7 +352,7 @@ class AliceCore(AliceSkill):
 				text=self.randomTalk('addUserWhatAccessLevel'),
 				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
 				currentDialogState='confirmingUsername',
-				slot='UserAccessLevel'
+				slot='Alice/UserAccessLevel'
 			)
 			return
 
