@@ -2,6 +2,7 @@
 	"name": "AliceCore",
 	"version": "1.0.53",
 	"icon": "fab fa-battle-net",
+	"category": "alice",
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
