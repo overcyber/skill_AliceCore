@@ -1,7 +1,7 @@
 {
 	"name": "AliceCore",
-	"version": "1.0.53",
-	"icon": "fab fa-battle-net",
+	"version": "1.0.54",
+	"icon": "fas fa-biohazard",
 	"category": "alice",
 	"author": "ProjectAlice",
 	"maintainers": [
