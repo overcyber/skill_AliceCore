@@ -311,19 +311,11 @@
 			"Tu ne pas mentionné de configuration, laquelle veux-tu?"
 		]
 	},
-	"noStartWithoutAdmin": {
+	"welcomeToProjectAlice": {
 		"default": [
-			"Ok, j'annule mais sans utilisateur je ne peux pas démarrer, je m'eclipse!"
+			"<s>Bienvenu sur Projet Alice!</s><s>On dirait que je viens d'être déployée ici, alors j'ai créé un utilisateur admin pour toi et lui ai attribué le pin que tu as configuré</s><s>J'aimerais vraiment te connaitre un peu plus!</s><s>Pour ça, ouvre ma page interface et sur la page d'administration, sous \"Utilitaires\" choisi \"Nouvel utilisateur\".</s><s>J'espère être à la hauteur de tes attentes!</s>"
 		]
 	},
-	"addAdminUser": {
-		"default": [
-			"Il semblerait qu'il n'y ai pas encore d'utilisateur défini. Faisons cela ensemble! Quel est ton nom?"
-		]
-	},
-	"addAdminPin": [
-		"<s>Il nous faut une couche de sécurité vu que tu es administrateur!</s><s>Pour cela il te faut définir un code à quatre chiffres.</s><s>Attention, tu dois t'en rapeller, Tu en auras besoin pour utiliser mon interface, ajouter des utilisateur ou accéder à des fonction privilégiées.</s><s>Ok, dis moi toi code.</s>"
-	],
 	"addUserPin": [
 		"<s>Ajoutons un code à quatre chiffre pour protéger ton compte.</s><s>Donne moi un code de ton choix, à quatre chiffres.</s><s>Tu devras t'en rapeller, il te permettra d'administrer ton compte!</s>"
 	],
@@ -362,6 +354,22 @@
 	"addUserWakeword": {
 		"default": [
 			"Ok {},Je t'ai ajouté! Si tu veux que je te reconnaisse par ta voix nous devons te créer un wake word personnel. Ce n'est pas obligatoire mais conseillé. Veux-tu le faire?"
+		]
+	},
+	"addWakewordWhatUser": {
+		"default": [
+			"Pour quel utilistateur veux-tu ajouter un wakeword?",
+			"C'est pour quel nom d'utilisateur?"
+		],
+		"short": [
+			"Pour quel utilisateur?"
+		]
+	},
+	"addWakewordUserNotExisting": {
+		"default": [
+			"Désolée, mais l'utilisateur {} N'existe pas. Essaie avec un autre nom.",
+			"Pardon, mais je n'ai pas trouvé l'utilisateur {}. Essaie avec un autre nom s'il te plait.",
+			"Je ne trouve pas d'utilisateur nommé {}. Donne moi un nom déjà existant si'il te plait."
 		]
 	},
 	"addWakewordDenied": {
@@ -422,6 +430,15 @@
 	"addUserAddWakewordDenied": [
 		"Ok, je comprend, mais n'oublie pas que je ne serai pas capable de savoir si {} est à la maison, dors ou me rappeller de chose à son sujet."
 	],
+	"explainInterfaceAuthWithKeyboard": {
+		"default": [
+			"Si tu veux accéder à cette patie, je dois t'authentifier.Tape <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> sur ton clavier",
+			"Pour accéder à cette partie de l'interface je dois t'authentifier. Tape <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> sur ton clavier"
+		],
+		"short": [
+			"Tape \"admin\" sur ton clavier."
+		]
+	},
 	"explainInterfaceAuth": {
 		"default": [
 			"Si tu veux accéder à cette patie, je dois t'authentifier. Appelle moi par mon nom s'il te plait!",

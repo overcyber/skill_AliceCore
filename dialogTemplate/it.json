@@ -9,8 +9,7 @@
 			"automaticallyExtensible": false,
 			"useSynonyms": false,
 			"values": [
-				
-								{
+				{
 					"value": "Abidjan"
 				},
 				{
@@ -16094,7 +16093,7 @@
 					"name": "RandomWord",
 					"description": "Parole casuali",
 					"required": false,
-					"type": "RandomWords",
+					"type": "Alice/RandomWords",
 					"missingQuestion": ""
 				}
 			]
@@ -16119,7 +16118,7 @@
 					"name": "ToLang",
 					"description": "Lingua alla quale passare",
 					"required": false,
-					"type": "Languages",
+					"type": "Alice/Languages",
 					"missingQuestion": ""
 				}
 			]
@@ -16149,7 +16148,6 @@
 				"smetti di ascoltarci {per 20 minuti:=>Duration}",
 				"puoi per favore smettere di ascoltare",
 				"puoi smettere di ascoltare",
-				"puoi per favore smettere di ascoltare",
 				"non ascoltarmi più {per 15 minuti:=>Duration}",
 				"puoi lasciarci soli {per 30 minuti:=>Duration}",
 				"ferma l'ascolto {per 10 minuti:=>Duration}",
@@ -16205,7 +16203,7 @@
 					"name": "Hardware",
 					"description": "Il tipo di hardware del dispositivo",
 					"required": false,
-					"type": "AliceHardwareTypes",
+					"type": "Alice/AliceHardwareTypes",
 					"missingQuestion": ""
 				},
 				{
@@ -16245,7 +16243,7 @@
 					"name": "WhatToUpdate",
 					"description": "Il componente da aggiornare",
 					"required": false,
-					"type": "ComponentToUpdate",
+					"type": "Alice/ComponentToUpdate",
 					"missingQuestion": ""
 				}
 			]
@@ -16261,7 +16259,6 @@
 				"{no grazie:=>Answer}",
 				"{no ti ringrazio:=>Answer}",
 				"{si per favore:=>Answer}",
-				"{certo:=>Answer}",
 				"{sisi:=>Answer}",
 				"{no:=>Answer}",
 				"{si:=>Answer}"
@@ -16283,7 +16280,6 @@
 			"utterances": [
 				"di tipo {sensore di presenza:=>EspType}",
 				"del tipo {infrarosso:=>EspType} please",
-				"{infrarosso:=>EspType}",
 				"{infrarosso:=>EspType}",
 				"{interruttore:=>EspType}"
 			],
@@ -16367,7 +16363,7 @@
 					"name": "Name",
 					"description": null,
 					"required": false,
-					"type": "Name",
+					"type": "Alice/Name",
 					"missingQuestion": ""
 				}
 			]
@@ -16416,7 +16412,7 @@
 					"name": "Letters",
 					"description": null,
 					"required": false,
-					"type": "Letters",
+					"type": "Alice/Letters",
 					"missingQuestion": ""
 				}
 			]
@@ -16437,7 +16433,7 @@
 					"name": "WakewordCaptureResult",
 					"description": null,
 					"required": false,
-					"type": "WakewordCaptureResult",
+					"type": "Alice/WakewordCaptureResult",
 					"missingQuestion": ""
 				}
 			]
@@ -16473,14 +16469,14 @@
 					"name": "UserAccessLevel",
 					"description": null,
 					"required": false,
-					"type": "UserAccessLevel",
+					"type": "Alice/UserAccessLevel",
 					"missingQuestion": ""
 				},
 				{
 					"name": "Name",
 					"description": null,
 					"required": false,
-					"type": "Name",
+					"type": "Alice/Name",
 					"missingQuestion": ""
 				}
 			]
@@ -16507,7 +16503,7 @@
 					"name": "UserAccessLevel",
 					"description": null,
 					"required": false,
-					"type": "UserAccessLevel",
+					"type": "Alice/UserAccessLevel",
 					"missingQuestion": ""
 				}
 			]

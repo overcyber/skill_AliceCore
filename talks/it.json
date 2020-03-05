@@ -316,19 +316,36 @@
 			"Quale configurazione preferisci?"
 		]
 	},
-	"noStartWithoutAdmin": {
+	"welcomeToProjectAlice": {
 		"default": [
-			"Ok, annullo, ma senza utente, non posso avviarmi, adesso mi spengo."
+			"<s>Welcome to Project Alice!</s><s>It looks like I was freshly deployed here, so I created an admin user for you and set its pin code as you configured</s><s>I'd love to know you more and learn to recognize you.</s><s>For that, open my interface page and go to the admin page, under \"Utilities\" choose \"Add a user\".</s><s>Enjoy my company, glad to be at your service!</s>"
 		]
 	},
-	"addAdminUser": {
+	"addWakewordWhatUser": {
 		"default": [
-			"Benvenuto al Progetto Alice! sembra che non ci sia nessun utente configurato, aggiungiamolo ora! Per favore, dimmi il tuo nome."
+			"Sure! For what user do you want to add a wakeword?",
+			"For what user do you want to add a wakeword?"
+		],
+		"short": [
+			"For what user?"
 		]
 	},
-	"addAdminPin": [
-		"<s>Abbiamo bisogno di un livello di sicurezza, visto che sei l'Amministratore!</s><s>Per questo, è necessario impostare un PIN di 4 cifre.</s><s>Ma attenzione, assicurati di non perderlo, ti servirà per usare la mia interfaccia, aggiungere nuovi utenti, o accedere a funzioni riservate.</s><s>Per favore, dimmi il tuo PIN di 4 cifre.</s>"
-	],
+	"addWakewordUserNotExisting": {
+		"default": [
+			"I'm sorry, but the user {} doesn't exist. Try to give me another username.",
+			"Sorry, I couldn't find the user {}. Try with another username please.",
+			"I can't find the user name {}. Give me an existing username please."
+		]
+	},
+	"explainInterfaceAuthWithKeyboard": {
+		"default": [
+			"If you want to access this part, I need to authenticate you. Please type <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> with your keyboard",
+			"To access this part of the interface I need to authenticate you. Please type <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> with your keyboard"
+		],
+		"short": [
+			"Please type \"admin\"."
+		]
+	},
 	"addUserPin": [
 		"<s>Impostiamo un PIN per proteggere l'account.</s><s>Per favore, dammi un codice di 4 cifre.</s><s>Assicurati di ricordarlo, ti servirà per accedere a funzioni riservate!</s>"
 	],

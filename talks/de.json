@@ -234,15 +234,27 @@
 		"Du hast keine Konfiguration angegeben, also sag mir, welche ich nutzen soll?",
 		"Welche Konfiguration suchst du?"
 	],
-	"noStartWithoutAdmin": [
-		"Ok, Abbrechen, aber ohne Benutzer kann ich nicht starten, fahre herunter."
-	],
-	"addAdminUser": [
-		"Willkommen beim Projekt Alice! Es scheint noch kein Benutzer definiert zu sein, lass uns das nachholen! Bitte, sag mir deinen Namen.."
-	],
-	"addAdminPin": [
-		"<s>Da du der Administrator bist benötigen wir mehr Sicherheit!</s><s>Bitte gib mir einen Pincode aus 4 Ziffern.</s><s>Merke ihn dir gut, du wirst ihn für mein Interface benötigen!</s>"
-	],
+	"welcomeToProjectAlice": {
+		"default": [
+			"<s>Willkommen im Project Alice!</s><s>Sieht so aus als wäre ich neu hier!</s><s> Ich habe deinen admin user angelegt und deine pin aus der Konfiguration übernommen.</s><s>Ich würde gerne mehr über dich lernen und wissen wie ich dich wieder erkennen kann.</s><s>Gehe dafür bitte in das Interface unter \"Admin\", \"Utilities\" und wähle \"Neuer Benutzer\".</s><s>Wir werden viel Spaß zusammen haben, und helfe dir wo ich kann!</s>"
+		]
+	},
+	"addWakewordWhatUser": {
+		"default": [
+			"Sicher! Für welchen User möchtest du ein Wakeword anlegen?",
+			"Für wen willst du das neue Wakeword erstellen?"
+		],
+		"short": [
+			"Für welchen User?"
+		]
+	},
+	"addWakewordUserNotExisting": {
+		"default": [
+			"Entschuldigung, der Benutzer {} existiert nicht. Versuche es mit einem anderen Benutzernamen.",
+			"Sorry, Ich konnte den User {} nicht finden. Bitte versuche es mit einem anderen.",
+			"Ich kenne {} nicht. Bitte nenne mir einen Benutzer den ich schon kenne."
+		]
+	},
 	"addUserPin": [
 		"<s>Lass uns einen Pin erstellen um deinen Zugang zu sichern.</s><s>Bitte sage mir 4 Ziffern als Code.</s><s>Merke ihn dir gut, du erhältst durch ihn Zugriff auf einige spezielle Funktionen!</s>"
 	],
@@ -334,6 +346,15 @@
 	"addUserAddWakewordDenied": [
 		"Ok, ich verstehe, aber denke daran, dass ich so nicht weiß ob {} zuhause ist, schläft, TV schaut und ich kann mir auch nichts über {} merken."
 	],
+	"explainInterfaceAuthWithKeyboard": {
+		"default": [
+			"Für diesen Bereich musst du dich authentifizieren. Bitte tippe <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> mit deiner Tastatur ein.",
+			"Ich muss dich für diesen Bereich authentifizieren. Bitte schreibe <break time=\"100ms\"/>\"admin\" <break time=\"100ms\"/> mit deiner Tastatur"
+		],
+		"short": [
+			"Bitte schreibe \"admin\"."
+		]
+	},
 	"explainInterfaceAuth": {
 		"default": [
 			"Für dieses Menü musst du dich authentifizieren. Bitte sag meinen Namen!",

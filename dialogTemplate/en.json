@@ -13698,22 +13698,43 @@
 			"name": "Alice/UserAccessLevel",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
-			"useSynonyms": false,
+			"useSynonyms": true,
 			"values": [
 				{
-					"value": "admin"
+					"value": "admin",
+					"synonyms": [
+						"administrator",
+						"master",
+						"guru",
+						"chief"
+					]
 				},
 				{
-					"value": "default"
+					"value": "default",
+					"synonyms": [
+						"normal"
+					]
 				},
 				{
-					"value": "kid"
+					"value": "kid",
+					"synonyms": [
+						"kiddo",
+						"brat"
+					]
 				},
 				{
-					"value": "worker"
+					"value": "worker",
+					"synonyms": [
+						"slave",
+						"paid person"
+					]
 				},
 				{
-					"value": "guest"
+					"value": "guest",
+					"synonyms": [
+						"visitor",
+						"visit"
+					]
 				}
 			]
 		},

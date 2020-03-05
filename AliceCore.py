@@ -65,7 +65,8 @@ class AliceCore(AliceSkill):
 			'confirmingUsername': self.checkUsername,
 			'confirmingWakewordCreation': self.createWakeword,
 			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
-			'confirmingPinCode': self.askCreateWakeword
+			'confirmingPinCode': self.askCreateWakeword,
+			'confirmingUsernameForNewWakeword' : self.usernameConfirmedForNewWakeword
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
@@ -73,11 +74,13 @@ class AliceCore(AliceSkill):
 		}
 
 		self._INTENT_ANSWER_NAME.dialogMapping = {
-			'addingUser': self.confirmUsername
+			'addingUser': self.confirmUsername,
+			'givingNameForNewWakeword': self.confirmNameForNewWakeword
 		}
 
 		self._INTENT_SPELL_WORD.dialogMapping = {
-			'addingUser': self.confirmUsername
+			'addingUser': self.confirmUsername,
+			'givingNameForNewWakeword': self.confirmNameForNewWakeword
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
@@ -123,13 +126,22 @@ class AliceCore(AliceSkill):
 		self.ThreadManager.getEvent('authUser').clear()
 
 
-	def addNewUser(self, session: DialogSession):
-		self.continueDialog(
-			sessionId=session.sessionId,
-			text=self.randomTalk('addUserWhatsTheName'),
-			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-			currentDialogState='addingUser'
-		)
+	def addNewUser(self, session: DialogSession = None):
+		if session:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('addUserWhatsTheName'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='addingUser',
+				probabilityThreshold=0.1
+			)
+		else:
+			self.ask(
+				text=self.randomTalk('addUserWhatsTheName'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='addingUser',
+				probabilityThreshold=0.1
+			)
 
 
 	def askCreateWakeword(self, session: DialogSession):
@@ -159,7 +171,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				currentDialogState='addingPinCode'
+				currentDialogState='addingPinCode',
+				probabilityThreshold = 0.1
 			)
 			return
 		
@@ -170,7 +183,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('addPinInvalid'),
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				currentDialogState='addingPinCode'
+				currentDialogState='addingPinCode',
+				probabilityThreshold=0.1
 			)
 		else:
 			self.continueDialog(
@@ -178,6 +192,7 @@ class AliceCore(AliceSkill):
 				text=self.randomTalk('addPinConfirm', replace=[digit for digit in pin]),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				currentDialogState='confirmingPinCode',
+				probabilityThreshold=0.1,
 				customData={
 					'pinCode': int(pin)
 				}
@@ -197,7 +212,8 @@ class AliceCore(AliceSkill):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('restartSample'),
-				intentFilter=[self._INTENT_WAKEWORD]
+				intentFilter=[self._INTENT_WAKEWORD],
+				probabilityThreshold=0.1
 			)
 
 			return
@@ -208,7 +224,8 @@ class AliceCore(AliceSkill):
 				self.continueDialog(
 					sessionId=session.sessionId,
 					text=self.randomTalk('sampleOk', replace=[3 - self.WakewordManager.getLastSampleNumber()]),
-					intentFilter=[self._INTENT_WAKEWORD]
+					intentFilter=[self._INTENT_WAKEWORD],
+					probabilityThreshold=0.1
 				)
 			else:
 				self.endSession(session.sessionId)
@@ -231,7 +248,8 @@ class AliceCore(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('wakewordCaptureTooNoisy'),
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					currentDialogState='confirmingRecaptureAfterFailure'
+					currentDialogState='confirmingRecaptureAfterFailure',
+					probabilityThreshold=0.1
 				)
 				return
 			time.sleep(0.5)
@@ -247,7 +265,8 @@ class AliceCore(AliceSkill):
 			sessionId=session.sessionId,
 			text=self.randomTalk('howWasTheCaptureNow'),
 			intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-			slot='Alice/WakewordCaptureResult'
+			slot='WakewordCaptureResult',
+			probabilityThreshold=0.1
 		)
 
 
@@ -274,7 +293,8 @@ class AliceCore(AliceSkill):
 					sessionId=session.sessionId,
 					text=self.randomTalk('wakewordCaptureTooNoisy'),
 					intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-					currentDialogState='confirmingRecaptureAfterFailure'
+					currentDialogState='confirmingRecaptureAfterFailure',
+					probabilityThreshold=0.1
 				)
 				return
 			time.sleep(0.5)
@@ -286,7 +306,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('wakewordCaptureFailed'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmingRecaptureAfterFailure'
+				currentDialogState='confirmingRecaptureAfterFailure',
+				probabilityThreshold=0.1
 			)
 			return
 		
@@ -303,20 +324,86 @@ class AliceCore(AliceSkill):
 			sessionId=session.sessionId,
 			text=self.randomTalk(text),
 			intentFilter=[self._INTENT_ANSWER_WAKEWORD_CUTTING],
-			slot='Alice/WakewordCaptureResult',
-			currentDialogState='confirmingCaptureResult'
+			slot='WakewordCaptureResult',
+			currentDialogState='confirmingCaptureResult',
+			probabilityThreshold=0.1
 		)
+
+
+	def addNewWakeword(self):
+		self.ask(
+			text=self.randomTalk(text='addWakewordWhatUser'),
+			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+			probabilityThreshold=0.1,
+			currentDialogState='givingNameForNewWakeword'
+		)
+
+
+	def confirmNameForNewWakeword(self, session: DialogSession):
+		intent = session.intentName
+
+		if intent == self._INTENT_ANSWER_NAME:
+			username = session.slots['Name'].lower()
+		else:
+			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
+
+		if session.slotRawValue('Name') == constants.UNKNOWN_WORD or not username:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='givingNameForNewWakeword',
+				probabilityThreshold=0.1
+			)
+			return
+
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text='confirmUsername', replace=[username]),
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			currentDialogState='confirmingUsernameForNewWakeword',
+			probabilityThreshold=0.1,
+			customData={
+				'username': username
+			}
+		)
+
+
+	def usernameConfirmedForNewWakeword(self, session: DialogSession):
+		if not self.Commons.isYes(session):
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('soWhatsTheName'),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='givingNameForNewWakeword',
+				probabilityThreshold=0.1
+			)
+			return
+
+		if session.customData['username'] not in self.UserManager.getAllUserNames(skipGuests=False):
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk(text='addWakewordUserNotExisting', replace=[session.customData['username']]),
+				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				currentDialogState='givingNameForNewWakeword',
+				probabilityThreshold=0.1
+			)
+			return
+
+		self.createWakeword(session)
 
 
 	def createWakeword(self, session: DialogSession):
 		if self.Commons.isYes(session):
+
 			self.WakewordManager.newWakeword(username=session.customData['username'])
 			self.ThreadManager.newEvent('AddingWakeword').set()
 
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('addWakewordAccepted'),
-				intentFilter=[self._INTENT_WAKEWORD]
+				intentFilter=[self._INTENT_WAKEWORD],
+				probabilityThreshold=0.1
 			)
 		else:
 			if self.delayed:
@@ -332,16 +419,18 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('soWhatsTheName'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='addingUser'
+				currentDialogState='addingUser',
+				probabilityThreshold=0.1
 			)
 			return
 		
 		if session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False):
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk(text='userAlreadyExist', replace=[session.slots['Name']]),
+				text=self.randomTalk(text='userAlreadyExist', replace=[session.customData['username']]),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='addingUser'
+				currentDialogState='addingUser',
+				probabilityThreshold=0.1
 			)
 			return
 
@@ -352,17 +441,17 @@ class AliceCore(AliceSkill):
 				text=self.randomTalk('addUserWhatAccessLevel'),
 				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
 				currentDialogState='confirmingUsername',
-				slot='Alice/UserAccessLevel'
+				slot='UserAccessLevel',
+				probabilityThreshold=0.1
 			)
 			return
 
-		text = 'addAdminPin' if accessLevel.lower() == AccessLevel.ADMIN.name.lower() else 'addUserPin'
-
 		self.continueDialog(
 			sessionId=session.sessionId,
-			text=self.randomTalk(text),
+			text=self.randomTalk('addUserPin'),
 			intentFilter=[self._INTENT_ANSWER_NUMBER],
 			currentDialogState='addingPinCode',
+			probabilityThreshold=0.1,
 			customData={
 				'accessLevel': accessLevel
 			}
@@ -382,7 +471,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='addingUser'
+				currentDialogState='addingUser',
+				probabilityThreshold=0.1
 			)
 			return
 
@@ -391,6 +481,7 @@ class AliceCore(AliceSkill):
 			text=self.randomTalk(text='confirmUsername', replace=[username]),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 			currentDialogState='confirmingUsername',
+			probabilityThreshold=0.1,
 			customData={
 				'username': username
 			}
@@ -422,7 +513,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatHardware'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				currentDialogState='specifyingHardware'
+				currentDialogState='specifyingHardware',
+				probabilityThreshold=0.1
 			)
 			return
 
@@ -431,7 +523,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatESP'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				currentDialogState='specifyingEspType'
+				currentDialogState='specifyingEspType',
+				probabilityThreshold = 0.1
 			)
 			return
 
@@ -440,7 +533,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('whichRoom'),
 				intentFilter=[self._INTENT_ANSWER_ROOM],
-				currentDialogState='specifyingRoom'
+				currentDialogState='specifyingRoom',
+				probabilityThreshold=0.1
 			)
 			return
 
@@ -482,7 +576,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('unknownHardware'),
 				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
-				currentDialogState='specifyingHardware'
+				currentDialogState='specifyingHardware',
+				probabilityThreshold=0.1
 			)
 
 
@@ -491,7 +586,8 @@ class AliceCore(AliceSkill):
 			sessionId=session.sessionId,
 			text=self.randomTalk('confirmReboot'),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			currentDialogState='confirmingReboot'
+			currentDialogState='confirmingReboot',
+			probabilityThreshold=0.1
 		)
 
 
@@ -501,7 +597,8 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('askRebootSkills'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmingSkillReboot'
+				currentDialogState='confirmingSkillReboot',
+				probabilityThreshold=0.1
 			)
 		else:
 			self.endDialog(session.sessionId, self.randomTalk('abortReboot'))
@@ -516,15 +613,14 @@ class AliceCore(AliceSkill):
 
 
 	def _addFirstUser(self):
-		self.ask(
-			text=self.randomTalk('addAdminUser'),
-			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-			canBeEnqueued=False,
-			currentDialogState='addingUser',
-			customData={
-				'UserAccessLevel': 'admin'
-			}
+		self.UserManager.addNewUser(name='admin', access='admin', state='home', pinCode=self.ConfigManager.getAliceConfigByName('adminPinCode'))
+		self.say(
+			text=self.randomTalk(text='welcomeToProjectAlice'),
 		)
+
+		if self.delayed:
+			self.delayed = False
+			self.ThreadManager.doLater(interval=1, func=self.onStart)
 
 
 	def greetAndAskPin(self, session: DialogSession):
@@ -533,6 +629,7 @@ class AliceCore(AliceSkill):
 				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
 				siteId=session.siteId,
 				intentFilter=[self._INTENT_ANSWER_NUMBER],
+				probabilityThreshold=0.1,
 				currentDialogState='userAuth',
 				customData={
 					'user': session.user.lower()
@@ -573,27 +670,16 @@ class AliceCore(AliceSkill):
 		if self.delayed:
 			self.delayed = False
 
-			if not self.ThreadManager.getEvent('AddingWakeword').isSet():
-				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
-				self.ThreadManager.doLater(interval=10, func=self.stop)
-			else:
+			if self.ThreadManager.getEvent('AddingWakeword').isSet():
 				self.ThreadManager.getEvent('AddingWakeword').clear()
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
+			elif len(self.UserManager.users) <= 1:
+				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
+				self.ThreadManager.doLater(interval=5, func=self.stop)
+
 		self.endUserAuth()
-
-
-	def onSessionTimeout(self, session: DialogSession):
-		if self.delayed:
-			if not self.UserManager.users:
-				self._addFirstUser()
-			else:
-				self.delayed = False
-
-
-	def onSessionError(self, session: DialogSession):
-		self.onSessionTimeout(session)
 
 
 	def onSessionStarted(self, session: DialogSession):
@@ -680,11 +766,11 @@ class AliceCore(AliceSkill):
 		self.say(text=self.randomTalk('confirmBundleUpdate'))
 
 
-	def onSnipsAssistantFailedInstalling(self, **kwargs):
+	def onSnipsAssistantFailedInstalling(self, **_kwargs):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
-	def onSnipsAssistantDownloadFailed(self, **kwargs):
+	def onSnipsAssistantDownloadFailed(self, **_kwargs):
 		self.say(text=self.randomTalk('bundleUpdateFailed'))
 
 
@@ -813,13 +899,20 @@ class AliceCore(AliceSkill):
 
 	def explainInterfaceAuth(self):
 		AdminAuth.setUser(None)
-		self.ThreadManager.clearEvent('authUser')
-		self.ThreadManager.newEvent('authUserWaitWakeword').set()
-		self.SnipsServicesManager.toggleFeedbackSound(state='off')
-		self.say(
-			text=self.randomTalk('explainInterfaceAuth'),
-			canBeEnqueued=False
-		)
+
+		if len(self.UserManager.getAllUserNames()) <= 1:
+			self.say(
+				text=self.randomTalk('explainInterfaceAuthWithKeyboard'),
+				canBeEnqueued=False
+			)
+		else:
+			self.ThreadManager.clearEvent('authUser')
+			self.ThreadManager.newEvent('authUserWaitWakeword').set()
+			self.SnipsServicesManager.toggleFeedbackSound(state='off')
+			self.say(
+				text=self.randomTalk('explainInterfaceAuth'),
+				canBeEnqueued=False
+			)
 
 
 	def authWithKeyboard(self):

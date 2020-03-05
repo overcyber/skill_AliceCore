@@ -2,6 +2,7 @@
 	"name": "alicecore",
 	"version": "0.0.5",
 	"icon": "fab fa-battle-net",
+	"category": "undefined",
 	"description": "Alice Core nodes",
 	"dependencies": {},
 	"author": "Psycho",
