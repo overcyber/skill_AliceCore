@@ -16217,7 +16217,7 @@
 					"name": "Room",
 					"description": "La stanza alla quale aggiungere il dispositivo",
 					"required": false,
-					"type": "Room",
+					"type": "Alice/Room",
 					"missingQuestion": ""
 				}
 			]
