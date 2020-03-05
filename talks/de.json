@@ -234,15 +234,6 @@
 		"Du hast keine Konfiguration angegeben, also sag mir, welche ich nutzen soll?",
 		"Welche Konfiguration suchst du?"
 	],
-	"noStartWithoutAdmin": [
-		"Ok, Abbrechen, aber ohne Benutzer kann ich nicht starten, fahre herunter."
-	],
-	"addAdminUser": [
-		"Willkommen beim Projekt Alice! Es scheint noch kein Benutzer definiert zu sein, lass uns das nachholen! Bitte, sag mir deinen Namen.."
-	],
-	"addAdminPin": [
-		"<s>Da du der Administrator bist benötigen wir mehr Sicherheit!</s><s>Bitte gib mir einen Pincode aus 4 Ziffern.</s><s>Merke ihn dir gut, du wirst ihn für mein Interface benötigen!</s>"
-	],
 	"addUserPin": [
 		"<s>Lass uns einen Pin erstellen um deinen Zugang zu sichern.</s><s>Bitte sage mir 4 Ziffern als Code.</s><s>Merke ihn dir gut, du erhältst durch ihn Zugriff auf einige spezielle Funktionen!</s>"
 	],
