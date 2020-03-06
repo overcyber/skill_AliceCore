@@ -852,10 +852,7 @@ class AliceCore(AliceSkill):
 	def onSayFinished(self, session: DialogSession):
 		if self.ThreadManager.getEvent('AddingWakeword').is_set() and self.WakewordManager.state == WakewordManagerState.IDLE:
 			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
-		elif self.ThreadManager.getEvent('TuningWakewordUp').is_set():
-			self.wakewordTuningFailedTimer = self.ThreadManager.newTimer(interval=5, func=self.wakewordTuningFailed, autoStart=True, kwargs={'username': session.customData['username']})
-			self.SnipsServicesManager.toggleFeedbackSound(state='off')
-		elif self.ThreadManager.getEvent('TuningWakewordDown').is_set():
+		elif self.ThreadManager.getEvent('TuningWakewordUp').is_set() or self.ThreadManager.getEvent('TuningWakewordDown').is_set():
 			self.wakewordTuningFailedTimer = self.ThreadManager.newTimer(interval=5, func=self.wakewordTuningFailed, autoStart=True, kwargs={'username': session.customData['username']})
 			self.SnipsServicesManager.toggleFeedbackSound(state='off')
 
