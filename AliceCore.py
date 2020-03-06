@@ -51,8 +51,8 @@ class AliceCore(AliceSkill):
 			(self._INTENT_ANSWER_HARDWARE_TYPE, self.addDeviceIntent),
 			(self._INTENT_ANSWER_ESP_TYPE, self.addDeviceIntent),
 			self._INTENT_ANSWER_NUMBER,
-			self._INTENT_ANSWER_NAME,
-			self._INTENT_SPELL_WORD,
+			(self._INTENT_ANSWER_NAME, self.confirmUsername),
+			(self._INTENT_SPELL_WORD, self.confirmUsername),
 			(self._INTENT_ANSWER_WAKEWORD_CUTTING, self.confirmWakewordTrimming),
 			(self._INTENT_WAKEWORD, self.confirmWakeword),
 			(self._INTENT_ADD_USER, self.addNewUser),
@@ -66,21 +66,12 @@ class AliceCore(AliceSkill):
 			'confirmingWakewordCreation': self.createWakeword,
 			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
 			'confirmingPinCode': self.askCreateWakeword,
-			'confirmingUsernameForNewWakeword' : self.usernameConfirmedForNewWakeword
+			'confirmingUsernameForNewWakeword' : self.checkUsername,
+			'confirmingUsernameForTuneWakeword' : self.checkUsername
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
 			'confirmingUsername': self.checkUsername
-		}
-
-		self._INTENT_ANSWER_NAME.dialogMapping = {
-			'addingUser': self.confirmUsername,
-			'givingNameForNewWakeword': self.confirmNameForNewWakeword
-		}
-
-		self._INTENT_SPELL_WORD.dialogMapping = {
-			'addingUser': self.confirmUsername,
-			'givingNameForNewWakeword': self.confirmNameForNewWakeword
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
@@ -339,7 +330,16 @@ class AliceCore(AliceSkill):
 		)
 
 
-	def confirmNameForNewWakeword(self, session: DialogSession):
+	def tuneWakeword(self):
+		self.ask(
+			text=self.randomTalk(text='tuneWakewordWhatUser'),
+			intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+			probabilityThreshold=0.1,
+			currentDialogState='givingNameForTuneWakeword'
+		)
+
+
+	def confirmUsername(self, session: DialogSession):
 		intent = session.intentName
 
 		if intent == self._INTENT_ANSWER_NAME:
@@ -352,65 +352,29 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='givingNameForNewWakeword',
+				currentDialogState=session.currentState,
 				probabilityThreshold=0.1
 			)
 			return
+
+		if session.currentState == 'addingUser':
+			state = 'confirmingUsername'
+		elif session.currentState == 'givingNameForNewWakeword':
+			state = 'confirmingUsernameForNewWakeword'
+		else:
+			state = 'confirmingUsernameForTuneWakeword'
+
 
 		self.continueDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk(text='confirmUsername', replace=[username]),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			currentDialogState='confirmingUsernameForNewWakeword',
+			currentDialogState=state,
 			probabilityThreshold=0.1,
 			customData={
 				'username': username
 			}
 		)
-
-
-	def usernameConfirmedForNewWakeword(self, session: DialogSession):
-		if not self.Commons.isYes(session):
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('soWhatsTheName'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='givingNameForNewWakeword',
-				probabilityThreshold=0.1
-			)
-			return
-
-		if session.customData['username'] not in self.UserManager.getAllUserNames(skipGuests=False):
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk(text='addWakewordUserNotExisting', replace=[session.customData['username']]),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='givingNameForNewWakeword',
-				probabilityThreshold=0.1
-			)
-			return
-
-		self.createWakeword(session)
-
-
-	def createWakeword(self, session: DialogSession):
-		if self.Commons.isYes(session):
-
-			self.WakewordManager.newWakeword(username=session.customData['username'])
-			self.ThreadManager.newEvent('AddingWakeword').set()
-
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('addWakewordAccepted'),
-				intentFilter=[self._INTENT_WAKEWORD],
-				probabilityThreshold=0.1
-			)
-		else:
-			if self.delayed:
-				self.delayed = False
-				self.ThreadManager.doLater(interval=2, func=self.onStart)
-
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('addWakewordDenied'))
 
 
 	def checkUsername(self, session: DialogSession):
@@ -423,17 +387,40 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-		
-		if session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False):
+
+		currentState = session.currentState
+		if (currentState == 'confirmingUsername' and session.customData['username'] in self.UserManager.getAllUserNames(skipGuests=False)) or \
+		   ((currentState == 'confirmingUsernameForNewWakeword' or currentState == 'confirmingUsernameForTuneWakeword') and session.customData['username'] not in self.UserManager.getAllUserNames(skipGuests=False)):
+
+			if currentState == 'confirmingUsername':
+				text = 'userAlreadyExist'
+				state = 'addingUser'
+
+			elif currentState == 'confirmingUsernameForNewWakeword':
+				text = 'addWakewordUserNotExisting'
+				state = 'givingNameForNewWakeword'
+			else:
+				text = 'addWakewordUserNotExisting',
+				state = 'givingNameForTuneWakeword'
+
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk(text='userAlreadyExist', replace=[session.customData['username']]),
+				text=self.randomTalk(text=text, replace=[session.customData['username']]),
 				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='addingUser',
+				currentDialogState=state,
 				probabilityThreshold=0.1
 			)
 			return
 
+		if currentState == 'confirmingUsername':
+			self.getAccessLevel(session)
+		elif currentState == 'confirmingUsernameForNewWakeword':
+			self.createWakeword(session)
+		else:
+			self.doWakewordTuning(session)
+
+
+	def getAccessLevel(self, session: DialogSession):
 		accessLevel = session.slotValue('UserAccessLevel', defaultValue=session.customData.get('UserAccessLevel'))
 		if not accessLevel:
 			self.continueDialog(
@@ -458,33 +445,32 @@ class AliceCore(AliceSkill):
 		)
 
 
-	def confirmUsername(self, session: DialogSession):
-		intent = session.intentName
+	def createWakeword(self, session: DialogSession):
+		if self.Commons.isYes(session):
+			self.WakewordManager.newWakeword(username=session.customData['username'])
+			self.ThreadManager.newEvent('AddingWakeword').set()
 
-		if intent == self._INTENT_ANSWER_NAME:
-			username = session.slots['Name'].lower()
-		else:
-			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
-
-		if session.slotRawValue('Name') == constants.UNKNOWN_WORD or not username:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
-				currentDialogState='addingUser',
+				text=self.randomTalk('addWakewordAccepted'),
+				intentFilter=[self._INTENT_WAKEWORD],
 				probabilityThreshold=0.1
 			)
-			return
+		else:
+			if self.delayed:
+				self.delayed = False
+				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('addWakewordDenied'))
+
+
+	def doWakewordTuning(self, session: DialogSession):
+		self.ThreadManager.newEvent('TuningWakeword').set()
 		self.continueDialog(
 			sessionId=session.sessionId,
-			text=self.randomTalk(text='confirmUsername', replace=[username]),
-			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-			currentDialogState='confirmingUsername',
-			probabilityThreshold=0.1,
-			customData={
-				'username': username
-			}
+			text=self.randomTalk('explainWakewordTuning'),
+			intentFilter=[self._INTENT_WAKEWORD],
+			probabilityThreshold=0.1
 		)
 
 
@@ -713,6 +699,10 @@ class AliceCore(AliceSkill):
 				)
 		elif session.currentState == DialogState('userAuth'):
 			AdminAuth.setLinkedSnipsSession(session)
+
+		elif self.ThreadManager.getEvent('TuningWakeword').isSet():
+			self.ThreadManager.clearEvent('TuningWakeword').clear()
+			self.endSession(sessionId=session.sessionId)
 
 
 	def onSessionEnded(self, session: DialogSession):

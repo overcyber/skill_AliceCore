@@ -366,6 +366,18 @@
 			"For what user?"
 		]
 	},
+	"tuneWakewordWhatUser": {
+		"default": [
+			"Sure! What user wakeword do you want to tune?",
+			"For what user do you want to tune the wakeword?"
+		],
+		"short": [
+			"For what user?"
+		]
+	},
+	"explainWakewordTuning": [
+		"Let's try this! I need you to call me by my name and I will try to capture that. If I don't hear you within 5 seconds I'll let you know and we'll try again! Ok, call me please!"
+	],
 	"addWakewordUserNotExisting": {
 		"default": [
 			"I'm sorry, but the user {} doesn't exist. Try to give me another username.",
