@@ -777,14 +777,18 @@ class AliceCore(AliceSkill):
 			AdminAuth.setLinkedSnipsSession(session)
 
 		elif self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
-			self.wakewordTuningFailedTimer.cancel()
+			if self.wakewordTuningFailedTimer:
+				self.wakewordTuningFailedTimer.cancel()
+
 			self.ThreadManager.clearEvent('TuningWakewordUpWakewordCaught')
 			self.endSession(sessionId=session.sessionId)
 			self.say(text=self.randomTalk(text='tuneWakewordUpWorked'))
 			self.SnipsServicesManager.toggleFeedbackSound(state='on')
 
 		elif self.ThreadManager.getEvent('TuningWakewordDownWakewordCaught').is_set():
-			self.wakewordTuningFailedTimer.cancel()
+			if self.wakewordTuningFailedTimer:
+				self.wakewordTuningFailedTimer.cancel()
+
 			self.ThreadManager.clearEvent('TuningWakewordDownWakewordCaught')
 			self.endSession(sessionId=session.sessionId)
 
