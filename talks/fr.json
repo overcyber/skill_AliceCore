@@ -25,13 +25,6 @@
 			"D'accord! Dans quelle pièce vas-tu installer cet appareil?"
 		]
 	},
-	"confirmGlobalStop": {
-		"default": [
-			"Ok",
-			"Ok, j'arrête",
-			"Compris"
-		]
-	},
 	"confirmIgnore": {
 		"default": [
 			"Ok, je l'ignore!"
@@ -365,6 +358,51 @@
 			"Pour quel utilisateur?"
 		]
 	},
+	"tuneWakewordWhatUser": {
+		"default": [
+			"Ok, pour quel utilisteur?",
+			"Ouai, et pour quel utilisateur?"
+		],
+		"short": [
+			"Quel utilisateur?"
+		]
+	},
+	"tuneWakewordNoWakeword": [
+		"Cet utilisateur n'a pas encore de wakeword, crées en un d'abord!",
+		"Désolée, mais cet utilisateur n'a pas de wakeword..."
+	],
+	"wakewordTuningWhatProblem":[
+		"D'accord! Quel est le problème? 1<break time=\"150ms\"/> Je ne réagis pas quand tu m'appelle, ou <break time=\"50ms\"/>2<break time=\"150ms\"/> je réagis quand je ne devrais pas."
+	],
+	"explainWakewordTuningUp": [
+		"Ok, on essaie de corriger ça! J'aimerais que tu m'appelles par mon nom et je vais essayer de capturer ça. Si je ne t'ai pas entendu après 5 secondes je te le ferai savoir et on réessayera! Vas-y, appelle-moi!"
+	],
+	"explainWakewordTuningDown": [
+		"Vraiment désolée! J'ai baissé le niveau de sensibilité, j'espère que ce sera mieux. Appelle-moi encore s'il te plait!",
+		"Je suis désolée de t'embeter. J'ai redescendu le niveau de sensibilité, on va voir si c'est mieux. Appelle-moi encore s'il te plait!",
+		"Oula, pardon... J'ai changé le niveau de sensibilité, peut-être que ce sera mieux maintenant. Appelle-moi encore s'il te plait!"
+	],
+	"tuneWakewordDidntCatch": [
+		"Je ne t'ai pas entendu, désolée! J'ai changé le niveau de sensibilité, appelle-moi encore s'il te plait!",
+		"Je n'ai rien entendu, je suis vraiment désolée. J'ai mis à jour le niveau de sensibilité, appelle-moi encore s'il te plait!",
+		"Non, désolée, rien entendu... J'ai boosté la sensibilité à nouveau. Appelle-moi encore s'il te plait!"
+	],
+	"tuneWakewordStop": [
+		"Bon, on arrête là, la sensibilité ne peut pas être plus haute que 0.8 ni plus basse que 0.2. Je pense que ton wakeword est de trop mauvaise qualité. Peut-être que tu pourrais essayer de le refaire?"
+	],
+	"tuneWakewordUpWorked": [
+		"Je t'ai entendu! ça à l'ai de mieux marcher maintenant? Je suis contente que le problème soit réglé!",
+		"Super, je t'ai entendu! ça fonctionnera mieux maintenant! Heureuse que le soucis soit corrigé!"
+	],
+	"tuneWakewordDownWorked": [
+		"Super, je n'ai pas entendu ce coup. Je remet comme juste avant et on est tout bon! Contente que ce soit réglé!",
+		"Tip top, je ne t'ai pas entendu! Je rechange la sensibilité comme avant et on a fini! Heureuse que le problème soit corrigé!"
+	],
+	"tuneWakewordDownFailed": [
+		"Je t'ai encore entendu, peut-être encore trop sensible... Appelle moi à nouveau!",
+		"Je l'ai de nouveau entendu... Appelle moi encore!",
+		"Non, encore trop sensible... Appelle moi à nouveau!"
+	],
 	"addWakewordUserNotExisting": {
 		"default": [
 			"Désolée, mais l'utilisateur {} N'existe pas. Essaie avec un autre nom.",

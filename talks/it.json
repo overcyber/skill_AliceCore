@@ -25,13 +25,6 @@
 			"Certo, in che stanza stai mettendo questo nuovo dispositivo?"
 		]
 	},
-	"confirmGlobalStop": {
-		"default": [
-			"Ok",
-			"Fatto",
-			"Ok, mi fermo"
-		]
-	},
 	"confirmIgnore": {
 		"default": [
 			"Ok, ignorerò questo dispositivo"
@@ -330,6 +323,51 @@
 			"Per quale utente?"
 		]
 	},
+		"tuneWakewordWhatUser": {
+		"default": [
+			"Sure! What user wakeword do you want to tune?",
+			"For what user do you want to tune the wakeword?"
+		],
+		"short": [
+			"For what user?"
+		]
+	},
+	"tuneWakewordNoWakeword": [
+		"This user has no wakeword defined yet, first create one!",
+		"Sorry but this user has no wakeword defined, create one first!"
+	],
+	"wakewordTuningWhatProblem":[
+		"Ok, what seems to be the problem? 1<break time=\"150ms\"/> I don't react when you call me or <break time=\"50ms\"/>2<break time=\"150ms\"/> I react too much when I shouldn't?"
+	],
+	"explainWakewordTuningUp": [
+		"Let's try this! I need you to call me by my name and I will try to capture that. If I don't hear you within 5 seconds I'll let you know and we'll try again! Ok, call me please!"
+	],
+	"explainWakewordTuningDown": [
+		"Sorry for that! I have set a lower sensitivity, hope it'll be better now! Try to call me please!",
+		"I'm so sorry for bothering you! I just set a lower sensitivity, hopefully it'll be better now! Try to call me please!",
+		"Ouch, sorry! I just lowered the sensitivity, I hope it'll be better now! Try to call me please!"
+	],
+	"tuneWakewordDidntCatch": [
+		"I did not catch your wakeword yet, so sorry! I changed the sensitivity again, try to call me again!",
+		"I did not hear you, I'm very sorry! I updated the sensitivity a little, try to call me again!",
+		"Nope, sorry, didn't catch your call. I beefed up the sensitivity again, try to call me again!"
+	],
+	"tuneWakewordStop": [
+		"We should stop now, the sensitivity cannot be higher than 0.8 or lower than 0.2. My best guess is that your wakeword is of bad quality. Maybe you could try to retrain it?"
+	],
+	"tuneWakewordUpWorked": [
+		"Hey, I got it! Seems to be working better now? Glad it seems fixed!",
+		"Yeah! I heard that wakeword! Happy it seems fixed now!"
+	],
+	"tuneWakewordDownWorked": [
+		"Ok, good, I didn't hear that one! Setting back to previous level and we are all good! Glad it seems fixed!",
+		"Good, I didn't hear you this time! Going back to the previous level and we are done! Happy it works better now!"
+	],
+	"tuneWakewordDownFailed": [
+		"Still heard you, maybe still too sensitive... Call me again!",
+		"Caught it again, must be still too high. Call me again!",
+		"Nope, still to sensitive, I heard you still. Call me again!"
+	],
 	"addWakewordUserNotExisting": {
 		"default": [
 			"Mi dispiace, ma l'utente {} non esiste. Prova a darmi un altro nome.",
