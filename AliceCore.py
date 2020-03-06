@@ -389,7 +389,7 @@ class AliceCore(AliceSkill):
 			errorText = 'addWakewordUserNotExisting'
 			state = 'givingNameForNewWakeword'
 		else:
-			errorText = 'addWakewordUserNotExisting',
+			errorText = 'addWakewordUserNotExisting'
 			state = 'givingNameForTuneWakeword'
 
 		if not self.Commons.isYes(session):
