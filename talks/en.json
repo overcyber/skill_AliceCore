@@ -402,7 +402,7 @@
 	"tuneWakewordDownFailed": [
 		"Still heard you, maybe still too sensitive... Call me again!",
 		"Caught it again, must be still too high. Call me again!",
-		"Nope, still to sensitive, I heard you still. Call me again!"
+		"Nope, still to sensitive, I still heard you. Call me again!"
 	],
 	"addWakewordUserNotExisting": {
 		"default": [
