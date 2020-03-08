@@ -53,8 +53,8 @@ class AliceCore(AliceSkill):
 			(self._INTENT_ANSWER_HARDWARE_TYPE, self.addDeviceIntent),
 			(self._INTENT_ANSWER_ESP_TYPE, self.addDeviceIntent),
 			self._INTENT_ANSWER_NUMBER,
-			(self._INTENT_ANSWER_NAME, self.confirmUsername),
-			(self._INTENT_SPELL_WORD, self.confirmUsername),
+			self._INTENT_ANSWER_NAME,
+			self._INTENT_SPELL_WORD,
 			(self._INTENT_ANSWER_WAKEWORD_CUTTING, self.confirmWakewordTrimming),
 			(self._INTENT_WAKEWORD, self.confirmWakeword),
 			(self._INTENT_ADD_USER, self.addNewUser),
@@ -80,6 +80,18 @@ class AliceCore(AliceSkill):
 			'addingPinCode': self.addUserPinCode,
 			'userAuth': self.authUser,
 			'answeringWakewordTuningType': self.doWakewordTuning
+		}
+
+		self._INTENT_ANSWER_NAME.dialogMapping = {
+			'addingUser': self.confirmUsername,
+			'givingNameForNewWakeword': self.confirmUsername,
+			'givingNameForTuneWakeword': self.confirmUsername
+		}
+
+		self._INTENT_SPELL_WORD.dialogMapping = {
+			'addingUser': self.confirmUsername,
+			'givingNameForNewWakeword': self.confirmUsername,
+			'givingNameForTuneWakeword': self.confirmUsername
 		}
 
 		self._threads = dict()
