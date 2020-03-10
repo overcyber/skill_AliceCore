@@ -16,12 +16,12 @@
 	},
 	"unregisterInstructions": {
 		"default": [
-			"Please unplug the device you want to unregister, wait for 5 seconds and plug it back"
+			"Please unplug the device you want to unregister, wait for 5 seconds and plug it back in"
 		]
 	},
 	"whichRoom": {
 		"default": [
-			"In which room is this device going to be placed?",
+			"Which room is this device going to be placed in?",
 			"Sure, in what room are you placing this new device?"
 		]
 	},
@@ -56,7 +56,7 @@
 	},
 	"noDestinationLanguage": {
 		"default": [
-			"I'm sorry, but I don't what language to switch to"
+			"I'm sorry, but I don't know what language to switch to"
 		]
 	},
 	"langNotSupported": {
@@ -133,7 +133,7 @@
 	"confirmRebooting": {
 		"default": [
 			"Ok, rebooting now!",
-			"Going down, see you soon again"
+			"Going down, see you again soon"
 		]
 	},
 	"confirmRebooted": {
@@ -199,8 +199,8 @@
 	"confirmRoomChange": {
 		"default": [
 			"Ok, I changed it",
-			"Sure, I moved",
-			"I updated my configuration"
+			"Sure, I moved it",
+			"I've updated my configuration"
 		]
 	},
 	"displayRoomNotSupported": {
@@ -225,7 +225,7 @@
 	},
 	"internetBack": {
 		"default": [
-			"I could connect back to internet, switching back to online ASR"
+			"I can connect back to the internet, switching back to online ASR"
 		]
 	},
 	"internetLost": {
@@ -300,7 +300,7 @@
 	},
 	"espFlashingDone": {
 		"default": [
-			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it."
+			"Ok, I have flashed your esp device with Tasmota, you can now unplug it and power it up."
 		]
 	},
 	"whatConfig": {
@@ -455,7 +455,7 @@
 	"addUserWhatsTheName": [
 		"I can do that! So, miss or mister new user, what's your name?",
 		"Sure thing! Ok, unknown person, tell me your name!",
-		"No problemo, gladly! What's you name miss or mister new user?"
+		"No problemo, gladly! What's your name miss or mister new user?"
 	],
 	"addUserWhatAccessLevel": [
 		"What access level do you want to grant? There's admin, default, kid, worker and guest",
@@ -468,7 +468,7 @@
 		"Am I correct? The name is {}"
 	],
 	"addUserConfirmed": [
-		"Ok, I have added {} as {}! If you want me to recognize this user based on his voice he needs to create a personal wake word. It is not obligatory but recommended. Do you want to do that?"
+		"Ok, I have added {} as {}! If you want me to recognize this user based on their voice they need to create a personal wake word. It is not obligatory but recommended. Do you want to do that?"
 	],
 	"addUserAddWakewordAccepted": [
 		"<s>Ok {}! I need three samples of you calling me by saying <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Remember to be in a calm environment for this to work, noise or parasites make this impossible</s><s>Let's do this, call me!</s>"
@@ -512,7 +512,7 @@
 		"Unfortunately {}, your access level is too low"
 	],
 	"authFailed": [
-		"Sorry, this is not correct, I can't let you go further",
+		"Sorry, this is not correct, I can't let you go any further",
 		"Nope, incorrect, try again"
 	],
 	"authOk": [
