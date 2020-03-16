@@ -4,6 +4,593 @@
 	"description": "Contiene gli intent che sono alla base del funzionamento base di Alice",
 	"slotTypes": [
 		{
+			"name": "Country",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+				{
+					"value": "Afghanistan"
+				},
+				{
+					"value": "Albania"
+				},
+				{
+					"value": "Algeria"
+				},
+				{
+					"value": "Andorra"
+				},
+				{
+					"value": "Angola"
+				},
+				{
+					"value": "Antigua e Barbuda"
+				},
+				{
+					"value": "Argentina"
+				},
+				{
+					"value": "Armenia"
+				},
+				{
+					"value": "Australia"
+				},
+				{
+					"value": "Austria"
+				},
+				{
+					"value": "Azerbaigian"
+				},
+				{
+					"value": "Bahamas"
+				},
+				{
+					"value": "Bahrein"
+				},
+				{
+					"value": "Bangladesh"
+				},
+				{
+					"value": "Barbados"
+				},
+				{
+					"value": "Bielorussia"
+				},
+				{
+					"value": "Belgio"
+				},
+				{
+					"value": "Belize"
+				},
+				{
+					"value": "Benin"
+				},
+				{
+					"value": "Bhutan"
+				},
+				{
+					"value": "Bolivia"
+				},
+				{
+					"value": "Bosnia ed Erzegovina"
+				},
+				{
+					"value": "Botswana"
+				},
+				{
+					"value": "Brasile"
+				},
+				{
+					"value": "Brunei"
+				},
+				{
+					"value": "Bulgaria"
+				},
+				{
+					"value": "Burkina Faso"
+				},
+				{
+					"value": "Burundi"
+				},
+				{
+					"value": "Cambogia"
+				},
+				{
+					"value": "Camerun"
+				},
+				{
+					"value": "Canada"
+				},
+				{
+					"value": "Capo Verde"
+				},
+				{
+					"value": "Repubblica Centrafricana"
+				},
+				{
+					"value": "Ciad"
+				},
+				{
+					"value": "Cile"
+				},
+				{
+					"value": "Cina"
+				},
+				{
+					"value": "Colombia"
+				},
+				{
+					"value": "Comore"
+				},
+				{
+					"value": "Costa Rica"
+				},
+				{
+					"value": "Costa d’Avorio"
+				},
+				{
+					"value": "Croazia"
+				},
+				{
+					"value": "Cuba"
+				},
+				{
+					"value": "Cipro"
+				},
+				{
+					"value": "Repubblica Ceca"
+				},
+				{
+					"value": "Repubblica Democratica del Congo"
+				},
+				{
+					"value": "Danimarca"
+				},
+				{
+					"value": "Gibuti"
+				},
+				{
+					"value": "Dominica"
+				},
+				{
+					"value": "Repubblica Dominicana"
+				},
+				{
+					"value": "Timor Est"
+				},
+				{
+					"value": "Ecuador"
+				},
+				{
+					"value": "Egitto"
+				},
+				{
+					"value": "El Salvador"
+				},
+				{
+					"value": "Guinea Equatoriale"
+				},
+				{
+					"value": "Eritrea"
+				},
+				{
+					"value": "Estonia"
+				},
+				{
+					"value": "Etiopia"
+				},
+				{
+					"value": "Figi"
+				},
+				{
+					"value": "Finlandia"
+				},
+				{
+					"value": "Francia"
+				},
+				{
+					"value": "Gabon"
+				},
+				{
+					"value": "Gambia"
+				},
+				{
+					"value": "Georgia"
+				},
+				{
+					"value": "Germania"
+				},
+				{
+					"value": "Ghana"
+				},
+				{
+					"value": "Grecia"
+				},
+				{
+					"value": "Grenada"
+				},
+				{
+					"value": "Guatemala"
+				},
+				{
+					"value": "Guinea"
+				},
+				{
+					"value": "Guinea-Bissau"
+				},
+				{
+					"value": "Guyana"
+				},
+				{
+					"value": "Haiti"
+				},
+				{
+					"value": "Honduras"
+				},
+				{
+					"value": "Ungheria"
+				},
+				{
+					"value": "Islanda"
+				},
+				{
+					"value": "India"
+				},
+				{
+					"value": "Indonesia"
+				},
+				{
+					"value": "Iran"
+				},
+				{
+					"value": "Iraq"
+				},
+				{
+					"value": "Irlanda"
+				},
+				{
+					"value": "Israele"
+				},
+				{
+					"value": "Italia"
+				},
+				{
+					"value": "Giamaica"
+				},
+				{
+					"value": "Giappone"
+				},
+				{
+					"value": "Giordania"
+				},
+				{
+					"value": "Kazakistan"
+				},
+				{
+					"value": "Kenya"
+				},
+				{
+					"value": "Kiribati"
+				},
+				{
+					"value": "Kuwait"
+				},
+				{
+					"value": "Kirghizistan"
+				},
+				{
+					"value": "Laos"
+				},
+				{
+					"value": "Lettonia"
+				},
+				{
+					"value": "Libano"
+				},
+				{
+					"value": "Lesotho"
+				},
+				{
+					"value": "Liberia"
+				},
+				{
+					"value": "Libia"
+				},
+				{
+					"value": "Liechtenstein"
+				},
+				{
+					"value": "Lituania"
+				},
+				{
+					"value": "Lussemburgo"
+				},
+				{
+					"value": "Madagascar"
+				},
+				{
+					"value": "Malawi"
+				},
+				{
+					"value": "Malesia"
+				},
+				{
+					"value": "Maldive"
+				},
+				{
+					"value": "Mali"
+				},
+				{
+					"value": "Malta"
+				},
+				{
+					"value": "Isole Marshall"
+				},
+				{
+					"value": "Mauritania"
+				},
+				{
+					"value": "Mauritius"
+				},
+				{
+					"value": "Messico"
+				},
+				{
+					"value": "Micronesia"
+				},
+				{
+					"value": "Moldavia"
+				},
+				{
+					"value": "Monaco"
+				},
+				{
+					"value": "Mongolia"
+				},
+				{
+					"value": "Montenegro"
+				},
+				{
+					"value": "Marocco"
+				},
+				{
+					"value": "Mozambico"
+				},
+				{
+					"value": "Birmania"
+				},
+				{
+					"value": "Namibia"
+				},
+				{
+					"value": "Nauru"
+				},
+				{
+					"value": "Nepal"
+				},
+				{
+					"value": "Paesi Bassi"
+				},
+				{
+					"value": "Nuova Zelanda"
+				},
+				{
+					"value": "Nicaragua"
+				},
+				{
+					"value": "Niger"
+				},
+				{
+					"value": "Nigeria"
+				},
+				{
+					"value": "Corea del Nord"
+				},
+				{
+					"value": "Norvegia"
+				},
+				{
+					"value": "Oman"
+				},
+				{
+					"value": "Pakistan"
+				},
+				{
+					"value": "Palau"
+				},
+				{
+					"value": "Panamá"
+				},
+				{
+					"value": "Papua Nuova Guinea"
+				},
+				{
+					"value": "Paraguay"
+				},
+				{
+					"value": "Perù"
+				},
+				{
+					"value": "Filippine"
+				},
+				{
+					"value": "Polonia"
+				},
+				{
+					"value": "Portogallo"
+				},
+				{
+					"value": "Qatar"
+				},
+				{
+					"value": "Repubblica del Congo"
+				},
+				{
+					"value": "Repubblica di Macedonia"
+				},
+				{
+					"value": "Romania"
+				},
+				{
+					"value": "Russia"
+				},
+				{
+					"value": "Ruanda"
+				},
+				{
+					"value": "Saint Kitts e Nevis"
+				},
+				{
+					"value": "Santa Lucia"
+				},
+				{
+					"value": "Saint Vincent e Grenadine"
+				},
+				{
+					"value": "Samoa"
+				},
+				{
+					"value": "San Marino"
+				},
+				{
+					"value": "São Tomé e Príncipe"
+				},
+				{
+					"value": "Arabia Saudita"
+				},
+				{
+					"value": "Senegal"
+				},
+				{
+					"value": "Serbia"
+				},
+				{
+					"value": "Seychelles"
+				},
+				{
+					"value": "Sierra Leone"
+				},
+				{
+					"value": "Singapore"
+				},
+				{
+					"value": "Slovacchia"
+				},
+				{
+					"value": "Slovenia"
+				},
+				{
+					"value": "Isole Salomone"
+				},
+				{
+					"value": "Somalia"
+				},
+				{
+					"value": "Sudafrica"
+				},
+				{
+					"value": "Corea del Sud"
+				},
+				{
+					"value": "Sudan del Sud"
+				},
+				{
+					"value": "Spagna"
+				},
+				{
+					"value": "Sri Lanka"
+				},
+				{
+					"value": "Sudan"
+				},
+				{
+					"value": "Suriname"
+				},
+				{
+					"value": "Swaziland"
+				},
+				{
+					"value": "Svezia"
+				},
+				{
+					"value": "Svizzera"
+				},
+				{
+					"value": "Siria"
+				},
+				{
+					"value": "Tagikistan"
+				},
+				{
+					"value": "Tanzania"
+				},
+				{
+					"value": "Thailandia"
+				},
+				{
+					"value": "Togo"
+				},
+				{
+					"value": "Tonga"
+				},
+				{
+					"value": "Trinidad e Tobago"
+				},
+				{
+					"value": "Tunisia"
+				},
+				{
+					"value": "Turchia"
+				},
+				{
+					"value": "Turkmenistan"
+				},
+				{
+					"value": "Tuvalu"
+				},
+				{
+					"value": "Uganda"
+				},
+				{
+					"value": "Ucraina"
+				},
+				{
+					"value": "Emirati Arabi Uniti"
+				},
+				{
+					"value": "Regno Unito"
+				},
+				{
+					"value": "Stati Uniti d’America"
+				},
+				{
+					"value": "Uruguay"
+				},
+				{
+					"value": "Uzbekistan"
+				},
+				{
+					"value": "Vanuatu"
+				},
+				{
+					"value": "Venezuela"
+				},
+				{
+					"value": "Vietnam"
+				},
+				{
+					"value": "Yemen"
+				},
+				{
+					"value": "Zambia"
+				},
+				{
+					"value": "Zimbabwe"
+				}
+			]
+		},
+		{
 			"name": "Alice/CityNames",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
@@ -5420,7 +6007,7 @@
 				},
 				{
 					"value": "Zurigo"
-				}				
+				}
 			]
 		},
 		{
@@ -5788,7 +6375,6 @@
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
 			"values": [
-				
 				{
 					"value": "angolo cottura"
 				},
@@ -6245,7 +6831,6 @@
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
 			"values": [
-				
 				{
 					"value": "Abramo"
 				},
@@ -7957,7 +8542,7 @@
 					"value": "Ruth"
 				},
 				{
-					"value": "Sabrina"	 
+					"value": "Sabrina"
 				},
 				{
 					"value": "Sally"
@@ -8095,7 +8680,7 @@
 					"value": "Susie"
 				},
 				{
-					"value": "Taddeo" 
+					"value": "Taddeo"
 				},
 				{
 					"value": "Tamara"
@@ -8276,7 +8861,7 @@
 				},
 				{
 					"value": "Zaccaria"
-				}				
+				}
 			]
 		},
 		{
