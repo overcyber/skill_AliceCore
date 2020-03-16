@@ -4,7 +4,7 @@
 	"description": "Contiene gli intent che sono alla base del funzionamento base di Alice",
 	"slotTypes": [
 		{
-			"name": "Country",
+			"name": "Alice/Country",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": false,

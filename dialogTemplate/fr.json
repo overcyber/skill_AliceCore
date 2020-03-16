@@ -4,7 +4,7 @@
 	"description": "Contient les discussions qui permettent de gérer l'administration globale d'Alice",
 	"slotTypes": [
 		{
-			"name": "Country",
+			"name": "Alice/Country",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": false,

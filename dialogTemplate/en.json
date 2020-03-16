@@ -4,7 +4,7 @@
 	"description": "Contains intents that manage root stuff of Project Alice",
 	"slotTypes": [
 		{
-			"name": "Country",
+			"name": "Alice/Country",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
 			"useSynonyms": false,
