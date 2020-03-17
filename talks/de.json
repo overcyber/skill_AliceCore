@@ -245,48 +245,48 @@
 	},
 		"tuneWakewordWhatUser": {
 		"default": [
-			"Sure! What user wakeword do you want to tune?",
-			"For what user do you want to tune the wakeword?"
+			"Sicher! Für wen willst du das Wakeword einstellen?",
+			"Für welchen Benutzer willst du das Wakeword feintunen?"
 		],
 		"short": [
-			"For what user?"
+			"Für welchen Benutzer?"
 		]
 	},
 	"tuneWakewordNoWakeword": [
-		"This user has no wakeword defined yet, first create one!",
-		"Sorry but this user has no wakeword defined, create one first!"
+		"Dieser Benutzer hat bisher kein wakeword, erstelle eines!",
+		"Entschuldige für diesen Benutzer gibt es noch kein Wakeword!"
 	],
 	"wakewordTuningWhatProblem":[
-		"Ok, what seems to be the problem? 1<break time=\"150ms\"/> I don't react when you call me or <break time=\"50ms\"/>2<break time=\"150ms\"/> I react too much when I shouldn't?"
+		"Ok, was ist das Problem? 1<break time=\"150ms\"/> Ich reagiere nicht wenn du mich rufst, oder <break time=\"50ms\"/>2<break time=\"150ms\"/> ich reagiere auch wenn du mich garnicht meinst?"
 	],
 	"explainWakewordTuningUp": [
-		"Let's try this! I need you to call me by my name and I will try to capture that. If I don't hear you within 5 seconds I'll let you know and we'll try again! Ok, call me please!"
+		"Lass es uns so probieren! Versuche mich beim Namen zu nennen und ich schaue ob ich dich höre. Wenn ich dich nicht in den nächsten 5 Sekunden höre, versuchen wir es mit anderen Werten! Los!"
 	],
 	"explainWakewordTuningDown": [
-		"Sorry for that! I have set a lower sensitivity, hope it'll be better now! Try to call me please!",
-		"I'm so sorry for bothering you! I just set a lower sensitivity, hopefully it'll be better now! Try to call me please!",
-		"Ouch, sorry! I just lowered the sensitivity, I hope it'll be better now! Try to call me please!"
+		"Ich höre dich immernoch! Ich habe die Sensitivät weiter reduziert! Bitte versuche es noch einmal!",
+		"Das langt wohl noch nicht! Ich habe die Sensitivität nochmal reduziert! Bitte rufe mich nochmal!",
+		"Okay, wir kommen dem ganzen schon näher! Bitte rufe mich nochmal!"
 	],
 	"tuneWakewordDidntCatch": [
-		"I did not catch your wakeword yet, so sorry! I changed the sensitivity again, try to call me again!",
-		"I did not hear you, I'm very sorry! I updated the sensitivity a little, try to call me again!",
-		"Nope, sorry, didn't catch your call. I beefed up the sensitivity again, try to call me again!"
+		"Ich habe dich nicht gehört! Ich erhöhe die Sensivität, bitte rufe mich nochmal!",
+		"Ich konnte dich nicht hören! Bitte rufe meinen Namen nochmal!",
+		"Nein.. Ich konnte dich immer noch nicht hören. Sensitivität erhöht. Bitte versuche es nochmal."
 	],
 	"tuneWakewordStop": [
-		"We should stop now, the sensitivity cannot be higher than 0.8 or lower than 0.2. My best guess is that your wakeword is of bad quality. Maybe you could try to retrain it?"
+		"Ich glaube das wird nichts. Die Sensitivität müsste zwischen 0.8 und 0.2 sein. Ich vermute dein Wakeword ist nicht gut, versuche doch ein neues anzulegen."
 	],
 	"tuneWakewordUpWorked": [
-		"Hey, I got it! Seems to be working better now? Glad it seems fixed!",
-		"Yeah! I heard that wakeword! Happy it seems fixed now!"
+		"Hey, ich habs! Das müsste jetzt besser sein.",
+		"Yeah! Ich habe dich gehört! Schön dass es jetzt scheinbar klappt!"
 	],
 	"tuneWakewordDownWorked": [
-		"Ok, good, I didn't hear that one! Setting back to previous level and we are all good! Glad it seems fixed!",
-		"Good, I didn't hear you this time! Going back to the previous level and we are done! Happy it works better now!"
+		"Ok, gut, das habe ich nicht mehr gehört! Ich nehme die letzte Einstellung und wir sollten es geschafft haben!",
+		"Gut, diesmal hab ich nichts gehört! Ich nehme die letzte funktionierende Einstellung und wir sind durch!"
 	],
 	"tuneWakewordDownFailed": [
-		"Still heard you, maybe still too sensitive... Call me again!",
-		"Caught it again, must be still too high. Call me again!",
-		"Nope, still to sensitive, I heard you still. Call me again!"
+		"Ich höre dich, vermutlich noch zu sensitiv... Rufe mich nochmal!",
+		"Das hab ich gehört. Sensitivität reduziert. Rufe mich bitte nochmal!",
+		"Nein, immer noch zu sensitiv. Ruf mich nochmal!"
 	],
 	"addWakewordUserNotExisting": {
 		"default": [
