@@ -6,7 +6,7 @@
 ### Description
 AliceCore is the official skill that handles all core intents
 
-- Version: 1.0.59
+- Version: 1.0.60
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann

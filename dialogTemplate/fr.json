@@ -4,601 +4,1399 @@
 	"description": "Contient les discussions qui permettent de gérer l'administration globale d'Alice",
 	"slotTypes": [
 		{
-			"name": "Alice/Country",
+			"name": "Alice/Countries",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
-			"useSynonyms": false,
+			"useSynonyms": true,
 			"values": [
 				{
-					"value": "Afrique du Sud"
+					"value": "EARTH",
+					"synonyms": [
+						"Monde",
+						"Planète",
+						"Terre",
+						"Planète terre"
+					]
 				},
 				{
-					"value": "Afghanistan"
+					"value": "AF",
+					"synonyms": [
+						"Afghanistan"
+					]
 				},
 				{
-					"value": "Albanie"
+					"value": "AL",
+					"synonyms": [
+						"Albanie"
+					]
 				},
 				{
-					"value": "Algérie"
+					"value": "DZ",
+					"synonyms": [
+						"Algérie"
+					]
 				},
 				{
-					"value": "Allemagne"
+					"value": "AS",
+					"synonyms": [
+						"Samoa américaines"
+					]
 				},
 				{
-					"value": "Andorre"
+					"value": "AD",
+					"synonyms": [
+						"Andorre"
+					]
 				},
 				{
-					"value": "Angola"
+					"value": "AO",
+					"synonyms": [
+						"Angola"
+					]
 				},
 				{
-					"value": "Antigua-et-Barbuda"
+					"value": "AI",
+					"synonyms": [
+						"Anguilla"
+					]
 				},
 				{
-					"value": "Arabie Saoudite"
+					"value": "AQ",
+					"synonyms": [
+						"Antarctique"
+					]
 				},
 				{
-					"value": "Argentine"
+					"value": "AG",
+					"synonyms": [
+						"Antigua-et-Barbuda"
+					]
 				},
 				{
-					"value": "Arménie"
+					"value": "AR",
+					"synonyms": [
+						"Argentine"
+					]
 				},
 				{
-					"value": "Australie"
+					"value": "AM",
+					"synonyms": [
+						"Arménie"
+					]
 				},
 				{
-					"value": "Autriche"
+					"value": "AW",
+					"synonyms": [
+						"Aruba"
+					]
 				},
 				{
-					"value": "Azerbaïdjan"
+					"value": "AU",
+					"synonyms": [
+						"Australie"
+					]
 				},
 				{
-					"value": "Bahamas"
+					"value": "AT",
+					"synonyms": [
+						"Autriche"
+					]
 				},
 				{
-					"value": "Bahreïn"
+					"value": "AZ",
+					"synonyms": [
+						"Azerbaïdjan"
+					]
 				},
 				{
-					"value": "Bangladesh"
+					"value": "BH",
+					"synonyms": [
+						"Bahreïn"
+					]
 				},
 				{
-					"value": "Barbade"
+					"value": "BD",
+					"synonyms": [
+						"Bangladesh"
+					]
 				},
 				{
-					"value": "Belgique"
+					"value": "BB",
+					"synonyms": [
+						"Barbade"
+					]
 				},
 				{
-					"value": "Belize"
+					"value": "BY",
+					"synonyms": [
+						"Biélorussie"
+					]
 				},
 				{
-					"value": "Bénin"
+					"value": "BE",
+					"synonyms": [
+						"Belgique"
+					]
 				},
 				{
-					"value": "Bhoutan"
+					"value": "BZ",
+					"synonyms": [
+						"Belize"
+					]
 				},
 				{
-					"value": "Biélorussie"
+					"value": "BJ",
+					"synonyms": [
+						"Bénin"
+					]
 				},
 				{
-					"value": "Birmanie"
+					"value": "BM",
+					"synonyms": [
+						"Bermudes"
+					]
 				},
 				{
-					"value": "Bolivie"
+					"value": "BT",
+					"synonyms": [
+						"Bhoutan"
+					]
 				},
 				{
-					"value": "Bosnie-Herzégovine"
+					"value": "BO",
+					"synonyms": [
+						"Bolivie"
+					]
 				},
 				{
-					"value": "Botswana"
+					"value": "BA",
+					"synonyms": [
+						"Bosnie-Herzégovine"
+					]
 				},
 				{
-					"value": "Brésil"
+					"value": "BW",
+					"synonyms": [
+						"Botswana"
+					]
 				},
 				{
-					"value": "Brunei"
+					"value": "BV",
+					"synonyms": [
+						"Île Bouvet"
+					]
 				},
 				{
-					"value": "Bulgarie"
+					"value": "BR",
+					"synonyms": [
+						"Brésil"
+					]
 				},
 				{
-					"value": "Burkina Faso"
+					"value": "IO",
+					"synonyms": [
+						"Territoire britannique de l'océan Indien"
+					]
 				},
 				{
-					"value": "Burundi"
+					"value": "VG",
+					"synonyms": [
+						"Îles Vierges britanniques"
+					]
 				},
 				{
-					"value": "Cambodge"
+					"value": "BN",
+					"synonyms": [
+						"Brunei"
+					]
 				},
 				{
-					"value": "Cameroun"
+					"value": "BG",
+					"synonyms": [
+						"Bulgarie"
+					]
 				},
 				{
-					"value": "Canada"
+					"value": "BF",
+					"synonyms": [
+						"Burkina Faso"
+					]
 				},
 				{
-					"value": "Cap-Vert"
+					"value": "BI",
+					"synonyms": [
+						"Burundi"
+					]
 				},
 				{
-					"value": "Chili"
+					"value": "CI",
+					"synonyms": [
+						"Côte d'Ivoire"
+					]
 				},
 				{
-					"value": "Chine"
+					"value": "KH",
+					"synonyms": [
+						"Cambodge"
+					]
 				},
 				{
-					"value": "Chypre"
+					"value": "CM",
+					"synonyms": [
+						"Cameroun"
+					]
 				},
 				{
-					"value": "Colombie"
+					"value": "CA",
+					"synonyms": [
+						"Canada"
+					]
 				},
 				{
-					"value": "Comores"
+					"value": "KY",
+					"synonyms": [
+						"Îles Caïmans"
+					]
 				},
 				{
-					"value": "Corée du Nord"
+					"value": "CF",
+					"synonyms": [
+						"République centrafricaine"
+					]
 				},
 				{
-					"value": "Corée du Sud"
+					"value": "TD",
+					"synonyms": [
+						"Tchad"
+					]
 				},
 				{
-					"value": "Costa Rica"
+					"value": "CL",
+					"synonyms": [
+						"Chili"
+					]
 				},
 				{
-					"value": "Côte d’Ivoire"
+					"value": "CN",
+					"synonyms": [
+						"Chine"
+					]
 				},
 				{
-					"value": "Croatie"
+					"value": "CX",
+					"synonyms": [
+						"Île Christmas"
+					]
 				},
 				{
-					"value": "Cuba"
+					"value": "CC",
+					"synonyms": [
+						"Îles Cocos"
+					]
 				},
 				{
-					"value": "Danemark"
+					"value": "CO",
+					"synonyms": [
+						"Colombie"
+					]
 				},
 				{
-					"value": "Djibouti"
+					"value": "KM",
+					"synonyms": [
+						"Comores"
+					]
 				},
 				{
-					"value": "Dominique"
+					"value": "CG",
+					"synonyms": [
+						"Congo"
+					]
 				},
 				{
-					"value": "Égypte"
+					"value": "CK",
+					"synonyms": [
+						"Îles Cook"
+					]
 				},
 				{
-					"value": "Émirats arabes unis"
+					"value": "CR",
+					"synonyms": [
+						"Costa Rica"
+					]
 				},
 				{
-					"value": "Équateur"
+					"value": "HR",
+					"synonyms": [
+						"Croatie"
+					]
 				},
 				{
-					"value": "Érythrée"
+					"value": "CU",
+					"synonyms": [
+						"Cuba"
+					]
 				},
 				{
-					"value": "Espagne"
+					"value": "CY",
+					"synonyms": [
+						"Chypre"
+					]
 				},
 				{
-					"value": "Eswatini"
+					"value": "CZ",
+					"synonyms": [
+						"République tchèque"
+					]
 				},
 				{
-					"value": "Estonie"
+					"value": "DK",
+					"synonyms": [
+						"Danemark"
+					]
 				},
 				{
-					"value": "États-Unis"
+					"value": "DJ",
+					"synonyms": [
+						"Djibouti"
+					]
 				},
 				{
-					"value": "Éthiopie"
+					"value": "DM",
+					"synonyms": [
+						"Dominique"
+					]
 				},
 				{
-					"value": "Fidji"
+					"value": "DO",
+					"synonyms": [
+						"République dominicaine"
+					]
 				},
 				{
-					"value": "Finlande"
+					"value": "TL",
+					"synonyms": [
+						"Timor oriental"
+					]
 				},
 				{
-					"value": "France"
+					"value": "EC",
+					"synonyms": [
+						"Équateur"
+					]
 				},
 				{
-					"value": "Gabon"
+					"value": "EG",
+					"synonyms": [
+						"Égypte"
+					]
 				},
 				{
-					"value": "Gambie"
+					"value": "SV",
+					"synonyms": [
+						"Salvador"
+					]
 				},
 				{
-					"value": "Géorgie"
+					"value": "GQ",
+					"synonyms": [
+						"Guinée-Équatoriale"
+					]
 				},
 				{
-					"value": "Ghana"
+					"value": "ER",
+					"synonyms": [
+						"Érythrée"
+					]
 				},
 				{
-					"value": "Grèce"
+					"value": "EE",
+					"synonyms": [
+						"Estonie"
+					]
 				},
 				{
-					"value": "Grenade"
+					"value": "ET",
+					"synonyms": [
+						"Éthiopie"
+					]
 				},
 				{
-					"value": "Guatemala"
+					"value": "FO",
+					"synonyms": [
+						"Îles Féroé"
+					]
 				},
 				{
-					"value": "Guinée"
+					"value": "FK",
+					"synonyms": [
+						"Îles Malouines"
+					]
 				},
 				{
-					"value": "Guinée équatoriale"
+					"value": "FJ",
+					"synonyms": [
+						"Fidji"
+					]
 				},
 				{
-					"value": "Guinée-Bissau"
+					"value": "FI",
+					"synonyms": [
+						"Finlande"
+					]
 				},
 				{
-					"value": "Guyana"
+					"value": "FR",
+					"synonyms": [
+						"France"
+					]
 				},
 				{
-					"value": "Haïti"
+					"value": "GF",
+					"synonyms": [
+						"Guayane"
+					]
 				},
 				{
-					"value": "Honduras"
+					"value": "PF",
+					"synonyms": [
+						"Polynésie française"
+					]
 				},
 				{
-					"value": "Hongrie"
+					"value": "TF",
+					"synonyms": [
+						"Terres australes et antarctiques françaises"
+					]
 				},
 				{
-					"value": "Îles Cook"
+					"value": "GA",
+					"synonyms": [
+						"Gabon"
+					]
 				},
 				{
-					"value": "Îles Marshall"
+					"value": "GE",
+					"synonyms": [
+						"Géorgie"
+					]
 				},
 				{
-					"value": "Inde"
+					"value": "DE",
+					"synonyms": [
+						"Allemagne"
+					]
 				},
 				{
-					"value": "Indonésie"
+					"value": "GH",
+					"synonyms": [
+						"Ghana"
+					]
 				},
 				{
-					"value": "Irak"
+					"value": "GI",
+					"synonyms": [
+						"Gibraltar"
+					]
 				},
 				{
-					"value": "Iran"
+					"value": "GR",
+					"synonyms": [
+						"Grèce"
+					]
 				},
 				{
-					"value": "Irlande"
+					"value": "GL",
+					"synonyms": [
+						"Groenland"
+					]
 				},
 				{
-					"value": "Islande"
+					"value": "GD",
+					"synonyms": [
+						"Grenade"
+					]
 				},
 				{
-					"value": "Israël"
+					"value": "GP",
+					"synonyms": [
+						"Guadeloupe"
+					]
 				},
 				{
-					"value": "Italie"
+					"value": "GU",
+					"synonyms": [
+						"Guam"
+					]
 				},
 				{
-					"value": "Jamaïque"
+					"value": "GT",
+					"synonyms": [
+						"Guatemala"
+					]
 				},
 				{
-					"value": "Japon"
+					"value": "GQ",
+					"synonyms": [
+						"Guinée-Équatoriale"
+					]
 				},
 				{
-					"value": "Jordanie"
+					"value": "GW",
+					"synonyms": [
+						"Guinée-Bissau"
+					]
 				},
 				{
-					"value": "Kazakhstan"
+					"value": "GY",
+					"synonyms": [
+						"Guyane"
+					]
 				},
 				{
-					"value": "Kenya"
+					"value": "HT",
+					"synonyms": [
+						"Haïti"
+					]
 				},
 				{
-					"value": "Kirghizistan"
+					"value": "HM",
+					"synonyms": [
+						"Îles Heard-et-MacDonald"
+					]
 				},
 				{
-					"value": "Kiribati"
+					"value": "HN",
+					"synonyms": [
+						"Honduras"
+					]
 				},
 				{
-					"value": "Koweït"
+					"value": "HK",
+					"synonyms": [
+						"Hong Kong"
+					]
 				},
 				{
-					"value": "Laos"
+					"value": "HU",
+					"synonyms": [
+						"Hongrie"
+					]
 				},
 				{
-					"value": "Lesotho"
+					"value": "IS",
+					"synonyms": [
+						"Islande"
+					]
 				},
 				{
-					"value": "Lettonie"
+					"value": "IO",
+					"synonyms": [
+						"Territoire britannique de l'océan Indien"
+					]
 				},
 				{
-					"value": "Liban"
+					"value": "ID",
+					"synonyms": [
+						"Indonésie"
+					]
 				},
 				{
-					"value": "Liberia"
+					"value": "IR",
+					"synonyms": [
+						"Iran"
+					]
 				},
 				{
-					"value": "Libye"
+					"value": "IQ",
+					"synonyms": [
+						"Irak"
+					]
 				},
 				{
-					"value": "Liechtenstein"
+					"value": "IE",
+					"synonyms": [
+						"Irlande"
+					]
 				},
 				{
-					"value": "Lituanie"
+					"value": "IL",
+					"synonyms": [
+						"Israël"
+					]
 				},
 				{
-					"value": "Luxembourg"
+					"value": "IT",
+					"synonyms": [
+						"Italie"
+					]
 				},
 				{
-					"value": "Macédoine"
+					"value": "JM",
+					"synonyms": [
+						"Jamaïque"
+					]
 				},
 				{
-					"value": "Madagascar"
+					"value": "JP",
+					"synonyms": [
+						"Japon"
+					]
 				},
 				{
-					"value": "Malaisie"
+					"value": "JO",
+					"synonyms": [
+						"Jordanie"
+					]
 				},
 				{
-					"value": "Malawi"
+					"value": "KZ",
+					"synonyms": [
+						"Kazakhstan"
+					]
 				},
 				{
-					"value": "Maldives"
+					"value": "KE",
+					"synonyms": [
+						"Kenya"
+					]
 				},
 				{
-					"value": "Mali"
+					"value": "KI",
+					"synonyms": [
+						"Kiribati"
+					]
 				},
 				{
-					"value": "Malte"
+					"value": "KW",
+					"synonyms": [
+						"Koweït"
+					]
 				},
 				{
-					"value": "Maroc"
+					"value": "KG",
+					"synonyms": [
+						"Kirghizistan"
+					]
 				},
 				{
-					"value": "Maurice"
+					"value": "LA",
+					"synonyms": [
+						"Laos"
+					]
 				},
 				{
-					"value": "Mauritanie"
+					"value": "LV",
+					"synonyms": [
+						"Lettonie"
+					]
 				},
 				{
-					"value": "Mexique"
+					"value": "LB",
+					"synonyms": [
+						"Liban"
+					]
 				},
 				{
-					"value": "Micronésie"
+					"value": "LS",
+					"synonyms": [
+						"Lesotho"
+					]
 				},
 				{
-					"value": "Moldavie"
+					"value": "LR",
+					"synonyms": [
+						"Liberia"
+					]
 				},
 				{
-					"value": "Monaco"
+					"value": "LY",
+					"synonyms": [
+						"Libye"
+					]
 				},
 				{
-					"value": "Mongolie"
+					"value": "LI",
+					"synonyms": [
+						"Liechtenstein"
+					]
 				},
 				{
-					"value": "Monténégro"
+					"value": "LT",
+					"synonyms": [
+						"Lituanie"
+					]
 				},
 				{
-					"value": "Mozambique"
+					"value": "LU",
+					"synonyms": [
+						"Luxembourg"
+					]
 				},
 				{
-					"value": "Namibie"
+					"value": "MO",
+					"synonyms": [
+						"Macao"
+					]
 				},
 				{
-					"value": "Nauru"
+					"value": "MG",
+					"synonyms": [
+						"Madagascar"
+					]
 				},
 				{
-					"value": "Népal"
+					"value": "MW",
+					"synonyms": [
+						"Malawi"
+					]
 				},
 				{
-					"value": "Nicaragua"
+					"value": "MY",
+					"synonyms": [
+						"Malaisie"
+					]
 				},
 				{
-					"value": "Niger"
+					"value": "MV",
+					"synonyms": [
+						"Maldives"
+					]
 				},
 				{
-					"value": "Nigeria"
+					"value": "ML",
+					"synonyms": [
+						"Mali"
+					]
 				},
 				{
-					"value": "Niue"
+					"value": "MT",
+					"synonyms": [
+						"Malte"
+					]
 				},
 				{
-					"value": "Norvège"
+					"value": "MH",
+					"synonyms": [
+						"Îles Marshall"
+					]
 				},
 				{
-					"value": "Nouvelle-Zélande"
+					"value": "MQ",
+					"synonyms": [
+						"Martinique"
+					]
 				},
 				{
-					"value": "Oman"
+					"value": "MR",
+					"synonyms": [
+						"Mauritanie"
+					]
 				},
 				{
-					"value": "Ouganda"
+					"value": "MU",
+					"synonyms": [
+						"Île Maurice"
+					]
 				},
 				{
-					"value": "Ouzbékistan"
+					"value": "YT",
+					"synonyms": [
+						"Mayotte"
+					]
 				},
 				{
-					"value": "Pakistan"
+					"value": "MX",
+					"synonyms": [
+						"Mexique"
+					]
 				},
 				{
-					"value": "Palaos"
+					"value": "FM",
+					"synonyms": [
+						"Micronésie"
+					]
 				},
 				{
-					"value": "Palestine"
+					"value": "MD",
+					"synonyms": [
+						"Moldavie"
+					]
 				},
 				{
-					"value": "Panama"
+					"value": "MC",
+					"synonyms": [
+						"Monaco"
+					]
 				},
 				{
-					"value": "Papouasie-Nouvelle-Guinée"
+					"value": "MN",
+					"synonyms": [
+						"Mongolie"
+					]
 				},
 				{
-					"value": "Paraguay"
+					"value": "MS",
+					"synonyms": [
+						"Montserrat"
+					]
 				},
 				{
-					"value": "Pays-Bas"
+					"value": "MA",
+					"synonyms": [
+						"Maroc"
+					]
 				},
 				{
-					"value": "Pérou"
+					"value": "MZ",
+					"synonyms": [
+						"Mozambique"
+					]
 				},
 				{
-					"value": "Philippines"
+					"value": "MM",
+					"synonyms": [
+						"Myanmar"
+					]
 				},
 				{
-					"value": "Pologne"
+					"value": "NA",
+					"synonyms": [
+						"Namibie"
+					]
 				},
 				{
-					"value": "Portugal"
+					"value": "NR",
+					"synonyms": [
+						"Nauru"
+					]
 				},
 				{
-					"value": "Qatar"
+					"value": "NP",
+					"synonyms": [
+						"Népal"
+					]
 				},
 				{
-					"value": "République centrafricaine"
+					"value": "NL",
+					"synonyms": [
+						"Pays-Bas"
+					]
 				},
 				{
-					"value": "République démocratique du Congo"
+					"value": "NC",
+					"synonyms": [
+						"Nouvelle-Calédonie"
+					]
 				},
 				{
-					"value": "République Dominicaine"
+					"value": "NZ",
+					"synonyms": [
+						"Nouvelle-Zélande"
+					]
 				},
 				{
-					"value": "République du Congo"
+					"value": "NI",
+					"synonyms": [
+						"Nicaragua"
+					]
 				},
 				{
-					"value": "République tchèque"
+					"value": "NE",
+					"synonyms": [
+						"Niger"
+					]
 				},
 				{
-					"value": "Roumanie"
+					"value": "NG",
+					"synonyms": [
+						"Nigéria"
+					]
 				},
 				{
-					"value": "Royaume-Uni"
+					"value": "NU",
+					"synonyms": [
+						"Niue"
+					]
 				},
 				{
-					"value": "Russie"
+					"value": "NF",
+					"synonyms": [
+						"Île de Norfolk"
+					]
 				},
 				{
-					"value": "Rwanda"
+					"value": "MP",
+					"synonyms": [
+						"Îles Mariannes du Nord"
+					]
 				},
 				{
-					"value": "Saint-Kitts-et-Nevis"
+					"value": "NO",
+					"synonyms": [
+						"Norvège"
+					]
 				},
 				{
-					"value": "Saint-Vincent-et-les-Grenadines"
+					"value": "OM",
+					"synonyms": [
+						"Oman"
+					]
 				},
 				{
-					"value": "Sainte-Lucie"
+					"value": "PK",
+					"synonyms": [
+						"Pakistan"
+					]
 				},
 				{
-					"value": "Saint-Marin"
+					"value": "PW",
+					"synonyms": [
+						"Palaos"
+					]
 				},
 				{
-					"value": "Salomon"
+					"value": "PA",
+					"synonyms": [
+						"Panama"
+					]
 				},
 				{
-					"value": "Salvador"
+					"value": "PG",
+					"synonyms": [
+						"Papouasie-Nouvelle-Guinée"
+					]
 				},
 				{
-					"value": "Samoa"
+					"value": "PY",
+					"synonyms": [
+						"Paraguay"
+					]
 				},
 				{
-					"value": "São Tomé-et-Principe"
+					"value": "PE",
+					"synonyms": [
+						"Pérou"
+					]
 				},
 				{
-					"value": "Sénégal"
+					"value": "PH",
+					"synonyms": [
+						"Philippines"
+					]
 				},
 				{
-					"value": "Serbie"
+					"value": "PN",
+					"synonyms": [
+						"Îles Pitcairn"
+					]
 				},
 				{
-					"value": "Seychelles"
+					"value": "PL",
+					"synonyms": [
+						"Pologne"
+					]
 				},
 				{
-					"value": "Sierra Leone"
+					"value": "PT",
+					"synonyms": [
+						"Portugal"
+					]
 				},
 				{
-					"value": "Singapour"
+					"value": "PR",
+					"synonyms": [
+						"Porto Rico"
+					]
 				},
 				{
-					"value": "Slovaquie"
+					"value": "QA",
+					"synonyms": [
+						"Qatar"
+					]
 				},
 				{
-					"value": "Slovénie"
+					"value": "RE",
+					"synonyms": [
+						"Réunion"
+					]
 				},
 				{
-					"value": "Somalie"
+					"value": "RO",
+					"synonyms": [
+						"Roumanie"
+					]
 				},
 				{
-					"value": "Soudan"
+					"value": "RU",
+					"synonyms": [
+						"Russie"
+					]
 				},
 				{
-					"value": "Soudan du Sud"
+					"value": "RW",
+					"synonyms": [
+						"Rwanda"
+					]
 				},
 				{
-					"value": "Sri Lanka"
+					"value": "ST",
+					"synonyms": [
+						"Sao Tomé-et-Principe"
+					]
 				},
 				{
-					"value": "Suède"
+					"value": "SH",
+					"synonyms": [
+						"Sainte-Hélène"
+					]
 				},
 				{
-					"value": "Suisse"
+					"value": "KN",
+					"synonyms": [
+						"Saint-Christophe-et-Niévès"
+					]
 				},
 				{
-					"value": "Suriname"
+					"value": "LC",
+					"synonyms": [
+						"Saint-Lucie"
+					]
 				},
 				{
-					"value": "Syrie"
+					"value": "PM",
+					"synonyms": [
+						"Saint-Pierre-et-Miquelon"
+					]
 				},
 				{
-					"value": "Tadjikistan"
+					"value": "VC",
+					"synonyms": [
+						"Saint-Vincent-et-les-Grenadines"
+					]
 				},
 				{
-					"value": "Tanzanie"
+					"value": "AS",
+					"synonyms": [
+						"Samoa américaines"
+					]
 				},
 				{
-					"value": "Tchad"
+					"value": "SM",
+					"synonyms": [
+						"Saint-Marin"
+					]
 				},
 				{
-					"value": "Thaïlande"
+					"value": "SA",
+					"synonyms": [
+						"Arabie Saoudite"
+					]
 				},
 				{
-					"value": "Timor oriental"
+					"value": "SN",
+					"synonyms": [
+						"Sénégal"
+					]
 				},
 				{
-					"value": "Togo"
+					"value": "SC",
+					"synonyms": [
+						"Seychelles"
+					]
 				},
 				{
-					"value": "Tonga"
+					"value": "SL",
+					"synonyms": [
+						"Sierra Leone"
+					]
 				},
 				{
-					"value": "Trinité-et-Tobago"
+					"value": "SG",
+					"synonyms": [
+						"Singapour"
+					]
 				},
 				{
-					"value": "Tunisie"
+					"value": "SK",
+					"synonyms": [
+						"Slovaquie"
+					]
 				},
 				{
-					"value": "Turkménistan"
+					"value": "SI",
+					"synonyms": [
+						"Slovénie"
+					]
 				},
 				{
-					"value": "Turquie"
+					"value": "SB",
+					"synonyms": [
+						"Îles Salomon"
+					]
 				},
 				{
-					"value": "Tuvalu"
+					"value": "SO",
+					"synonyms": [
+						"Somalie"
+					]
 				},
 				{
-					"value": "Ukraine"
+					"value": "ZA",
+					"synonyms": [
+						"Afrique du Sud"
+					]
 				},
 				{
-					"value": "Uruguay"
+					"value": "GS",
+					"synonyms": [
+						"Géorgie du Sud-et-les Îles Sandwich du Sud"
+					]
 				},
 				{
-					"value": "Vanuatu"
+					"value": "ES",
+					"synonyms": [
+						"Espagne"
+					]
 				},
 				{
-					"value": "Vatican"
+					"value": "LK",
+					"synonyms": [
+						"Sri Lanka"
+					]
 				},
 				{
-					"value": "Venezuela"
+					"value": "SS",
+					"synonyms": [
+						"Soudan du Sud"
+					]
 				},
 				{
-					"value": "Viêt Nam"
+					"value": "SR",
+					"synonyms": [
+						"Surinam"
+					]
 				},
 				{
-					"value": "Yémen"
+					"value": "SJ",
+					"synonyms": [
+						"Svalbard et Jan Mayen"
+					]
 				},
 				{
-					"value": "Zambie"
+					"value": "SZ",
+					"synonyms": [
+						"Swaziland"
+					]
 				},
 				{
-					"value": "Zimbabwe"
+					"value": "SE",
+					"synonyms": [
+						"Suède"
+					]
+				},
+				{
+					"value": "CH",
+					"synonyms": [
+						"Suisse"
+					]
+				},
+				{
+					"value": "SY",
+					"synonyms": [
+						"Syrie"
+					]
+				},
+				{
+					"value": "TW",
+					"synonyms": [
+						"Taïwan"
+					]
+				},
+				{
+					"value": "TJ",
+					"synonyms": [
+						"Tadjikistan"
+					]
+				},
+				{
+					"value": "TZ",
+					"synonyms": [
+						"Tanzanie"
+					]
+				},
+				{
+					"value": "TH",
+					"synonyms": [
+						"Thaïlande"
+					]
+				},
+				{
+					"value": "BS",
+					"synonyms": [
+						"Bahamas"
+					]
+				},
+				{
+					"value": "GM",
+					"synonyms": [
+						"Gambie"
+					]
+				},
+				{
+					"value": "TG",
+					"synonyms": [
+						"Togo"
+					]
+				},
+				{
+					"value": "TK",
+					"synonyms": [
+						"Tokelau"
+					]
+				},
+				{
+					"value": "TO",
+					"synonyms": [
+						"Tonga"
+					]
+				},
+				{
+					"value": "TT",
+					"synonyms": [
+						"Trinité et Tobago"
+					]
+				},
+				{
+					"value": "TN",
+					"synonyms": [
+						"Tunisie"
+					]
+				},
+				{
+					"value": "TR",
+					"synonyms": [
+						"Turquie"
+					]
+				},
+				{
+					"value": "TM",
+					"synonyms": [
+						"Turkménistan"
+					]
+				},
+				{
+					"value": "TC",
+					"synonyms": [
+						"Îles Turques-et-Caïques"
+					]
+				},
+				{
+					"value": "TV",
+					"synonyms": [
+						"Tuvalu"
+					]
+				},
+				{
+					"value": "UG",
+					"synonyms": [
+						"Uganda"
+					]
+				},
+				{
+					"value": "UA",
+					"synonyms": [
+						"Ukraine"
+					]
+				},
+				{
+					"value": "AE",
+					"synonyms": [
+						"Émirats arabes unis"
+					]
+				},
+				{
+					"value": "GB",
+					"synonyms": [
+						"Royaume-Uni"
+					]
+				},
+				{
+					"value": "UM",
+					"synonyms": [
+						"Îles mineures éloignées des États-Unis"
+					]
+				},
+				{
+					"value": "UM",
+					"synonyms": [
+						"Îles mineures éloignées des États-Unis"
+					]
+				},
+				{
+					"value": "UY",
+					"synonyms": [
+						"Uruguay"
+					]
+				},
+				{
+					"value": "UZ",
+					"synonyms": [
+						"Ouzbékistan"
+					]
+				},
+				{
+					"value": "VU",
+					"synonyms": [
+						"Vanuatu"
+					]
+				},
+				{
+					"value": "VA",
+					"synonyms": [
+						"voir Saint"
+					]
+				},
+				{
+					"value": "VE",
+					"synonyms": [
+						"Venezuela"
+					]
+				},
+				{
+					"value": "VN",
+					"synonyms": [
+						"Viêt Nam"
+					]
+				},
+				{
+					"value": "WF",
+					"synonyms": [
+						"Wallis-et-Futuna"
+					]
+				},
+				{
+					"value": "EH",
+					"synonyms": [
+						"Sahara Occidental"
+					]
+				},
+				{
+					"value": "YE",
+					"synonyms": [
+						"Yémen"
+					]
+				},
+				{
+					"value": "ZM",
+					"synonyms": [
+						"Zambie"
+					]
+				},
+				{
+					"value": "ZW",
+					"synonyms": [
+						"Zimbabwe"
+					]
 				}
 			]
 		},
