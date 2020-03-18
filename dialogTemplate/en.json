@@ -1320,9 +1320,14 @@
 					]
 				},
 				{
-					"value": "UM",
+					"value": "US",
 					"synonyms": [
-						"United States"
+						"United States",
+						"America",
+						"u.s.",
+						"USA",
+						"u.s.a.",
+						"the states"
 					]
 				},
 				{
