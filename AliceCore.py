@@ -636,6 +636,15 @@ class AliceCore(AliceSkill):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
 				return
 
+			for satellite in self.DeviceManager.getDevicesByRoom(room):
+				if satellite.deviceType.lower() == 'alicesatellite':
+					self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
+					return
+
+			if room == constants.DEFAULT_SITE_ID:
+				self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
+				return
+
 			if self.DeviceManager.startBroadcastingForNewDevice(self.Commons.cleanRoomNameToSiteId(room), session.siteId):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
@@ -895,6 +904,7 @@ class AliceCore(AliceSkill):
 			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} is refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
 
 
