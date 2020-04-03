@@ -1,10 +1,10 @@
 import subprocess
 import threading
+import time
+from pathlib import Path
 from typing import Optional
 
 import tempfile
-import time
-from pathlib import Path
 
 from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
@@ -15,7 +15,7 @@ from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import Online, IfSetting
+from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordManager import WakewordManagerState
 
 
@@ -904,7 +904,7 @@ class AliceCore(AliceSkill):
 			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} is refused')
+			self.logInfo(f'Device with uid {uid} refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
 
 
