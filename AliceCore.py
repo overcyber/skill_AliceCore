@@ -562,11 +562,12 @@ class AliceCore(AliceSkill):
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
-		aliceSkill = self.SkillManager.getSkillInstance('AliceSatellite')
-		if aliceSkill:
-			aliceSkill.notifyDevice('projectalice/devices/stopListen', siteId=session.siteId)
+		if session.siteId != constants.DEFAULT_SITE_ID:
+			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
+		else:
+			self.Commons.runRootSystemCommand(['systemctl', 'stop', 'snips-hotword'])
 
-		self.endDialog(sessionId=session.sessionId)
+		self.endDialog(sessionId=session.sessionId, text='ok')
 
 
 	def addDeviceIntent(self, session: DialogSession):
@@ -953,7 +954,11 @@ class AliceCore(AliceSkill):
 
 
 	def unmuteSite(self, siteId):
-		self.SkillManager.getSkillInstance('AliceSatellite').notifyDevice('projectalice/devices/startListen', siteId=siteId)
+		if siteId != constants.DEFAULT_SITE_ID:
+			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
+		else:
+			self.Commons.runRootSystemCommand(['systemctl', 'start', 'snips-hotword'])
+
 		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), siteId])
 
 
