@@ -1,7 +1,7 @@
 {
 	"newSkill": {
 		"default": [
-			"A new skill of type {} is trying to connect, do you want to add it to your devices?"
+			"A new device of type {} is trying to connect, do you want to add it to your devices?"
 		]
 	},
 	"confirmUnregister": {

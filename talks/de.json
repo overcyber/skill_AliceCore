@@ -1,6 +1,6 @@
 {
 	"newSkill": [
-		"Ein neues Modul des Typs {} versucht sich zu verbinden, möchtest du es zu deinen Geräten hinzufügen?"
+		"Ein neues Gerät des Typs {} versucht sich zu verbinden, möchtest du es zu deinen Geräten hinzufügen?"
 	],
 	"confirmUnregister": [
 		"Ich habe dieses Gerät abgemeldet."
