@@ -239,7 +239,7 @@ class AliceCore(AliceSkill):
 				self.ThreadManager.doLater(interval=1, func=self.WakewordManager.finalizeWakeword)
 
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				if self._delayed:
+				if self._delayed: # type: ignore
 					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
