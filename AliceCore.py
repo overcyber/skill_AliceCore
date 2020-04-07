@@ -182,7 +182,7 @@ class AliceCore(AliceSkill):
 				probabilityThreshold = 0.1
 			)
 			return
-		
+
 		pin = ''.join([str(int(x.value['value'])) for x in session.slotsAsObjects['Number']])
 
 		if len(pin) != 4:
@@ -239,7 +239,7 @@ class AliceCore(AliceSkill):
 				self.ThreadManager.doLater(interval=1, func=self.WakewordManager.finalizeWakeword)
 
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				if self.delayed: # type: ignore
+				if self.delayed:
 					self.delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -282,7 +282,7 @@ class AliceCore(AliceSkill):
 			self.WakewordManager.tryCaptureFix()
 			self.confirmWakewordTrimming(session=session)
 			return
-		
+
 		if self.delayed:
 			self.delayed = False
 			self.ThreadManager.getEvent('AddingWakeword').clear()
@@ -317,7 +317,7 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-		
+
 		self.playSound(
 			soundFilename=str(self.WakewordManager.getLastSampleNumber()),
 			location=Path(tempfile.gettempdir()),
@@ -937,18 +937,18 @@ class AliceCore(AliceSkill):
 		update = updateTypes.get(session.slotValue('WhatToUpdate', defaultValue='all'), 5)
 
 		self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmAssistantUpdate'))
-		if update in {1, 5}:  # All or system
+		if update in {1, 5}:
 			self.logInfo('Updating system')
 			self.ThreadManager.doLater(interval=2, func=self.systemUpdate)
 
-		if update in {1, 4}:  # All or skills
+		if update in {1, 4}:
 			self.logInfo('Updating skills')
 			self.SkillManager.checkForSkillUpdates()
 
-		if update in {1, 2}:  # All or Alice
+		if update in {1, 2}:
 			self.logInfo('Updating Alice')
 
-		if update in {1, 3}:  # All or Assistant
+		if update in {1, 3}:
 			self.logInfo('Updating assistant')
 			self.logWarning('Not implemented')
 
