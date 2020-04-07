@@ -244,7 +244,6 @@ class AliceCore(AliceSkill):
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
 				self.ThreadManager.doLater(interval=4, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.siteId])
-
 			return
 
 		i = 0  # Failsafe
