@@ -239,8 +239,8 @@ class AliceCore(AliceSkill):
 				self.ThreadManager.doLater(interval=1, func=self.WakewordManager.finalizeWakeword)
 
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				if self.delayed:
-					self.delayed = False
+				if self._delayed:
+					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
 				self.ThreadManager.doLater(interval=4, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.siteId])
@@ -283,8 +283,8 @@ class AliceCore(AliceSkill):
 			self.confirmWakewordTrimming(session=session)
 			return
 
-		if self.delayed:
-			self.delayed = False
+		if self._delayed:
+			self._delayed = False
 			self.ThreadManager.getEvent('AddingWakeword').clear()
 			self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -488,8 +488,8 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 		else:
-			if self.delayed:
-				self.delayed = False
+			if self._delayed:
+				self._delayed = False
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('addWakewordDenied'))
@@ -697,8 +697,8 @@ class AliceCore(AliceSkill):
 			text=self.randomTalk(text='welcomeToProjectAlice'),
 		)
 
-		if self.delayed:
-			self.delayed = False
+		if self._delayed:
+			self._delayed = False
 			self.ThreadManager.doLater(interval=1, func=self.onStart)
 
 
@@ -728,7 +728,7 @@ class AliceCore(AliceSkill):
 		self.changeFeedbackSound(inDialog=False)
 
 		if not self.UserManager.users:
-			if not self.delayed:
+			if not self._delayed:
 				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self.addFirstUser()
@@ -751,8 +751,8 @@ class AliceCore(AliceSkill):
 
 
 	def onUserCancel(self, session: DialogSession):
-		if self.delayed:
-			self.delayed = False
+		if self._delayed:
+			self._delayed = False
 
 			if self.ThreadManager.getEvent('AddingWakeword').isSet():
 				self.ThreadManager.getEvent('AddingWakeword').clear()
