@@ -26735,8 +26735,9 @@
 			"description": "Reboot Alice",
 			"enabledByDefault": true,
 			"utterances": [
-				"Bitte lade dich sich neu auf",
-				"Bitte lade dich selbst neu",
+				"Bitte starte das system neu",
+				"Starte deine Systeme neu",
+				"Starte alle Systeme neu",
 				"Neustart des Systems",
 				"Starte dein System neu",
 				"Bitte starte dein System neu",
