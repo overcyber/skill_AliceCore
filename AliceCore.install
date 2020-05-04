@@ -1,7 +1,7 @@
 {
 	"name": "AliceCore",
-	"version": "1.0.64",
-	"icon": "fas fa-biohazard",
+	"version": "1.0.65",
+	"icon": "fab fa-creative-commons-by",
 	"category": "alice",
 	"author": "ProjectAlice",
 	"maintainers": [

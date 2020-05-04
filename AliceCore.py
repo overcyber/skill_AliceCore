@@ -874,7 +874,7 @@ class AliceCore(AliceSkill):
 		self.UserManager.home()
 
 
-	def onSayFinished(self, session: DialogSession):
+	def onSayFinished(self, session: DialogSession, uid: str = None):
 		if self.ThreadManager.getEvent('AddingWakeword').is_set() and self.WakewordManager.state == WakewordManagerState.IDLE:
 			self.ThreadManager.doLater(interval=0.5, func=self.WakewordManager.addASample)
 		elif self.ThreadManager.getEvent('TuningWakewordUp').is_set() or self.ThreadManager.getEvent('TuningWakewordDown').is_set():
@@ -917,7 +917,7 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetLost(self):
-		if not self.ConfigManager.getAliceConfigByName('keepASROffline'):
+		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline'):
 			self.say(
 				text=self.randomTalk('internetLost'),
 				siteId=constants.ALL
