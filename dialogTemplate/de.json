@@ -1,7 +1,485 @@
 {
 	"skill": "AliceCore",
-	"icon": "settings",
 	"description": "Contains intents that manage root stuff of Project Alice",
+	"icon": "settings",
+	"intents": [
+		{
+			"name": "UserRandomAnswer",
+			"description": "The user answer with something random",
+			"enabledByDefault": false,
+			"utterances": [
+				"{Auto:=>RandomWord}",
+				"{Wald:=>RandomWord}",
+				"{Verfassung:=>RandomWord}",
+				"{Palast:=>RandomWord}",
+				"{Nacht:=>RandomWord}",
+				"{Falke:=>RandomWord}",
+				"{Tote Körper:=>RandomWord}",
+				"{Raumschiff:=>RandomWord}",
+				"{Riese:=>RandomWord}",
+				"{obama:=>RandomWord}"
+			],
+			"slots": [
+				{
+					"name": "RandomWord",
+					"description": "Random word given",
+					"required": false,
+					"type": "Alice/RandomWords",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "SwitchLanguage",
+			"description": "Switch Alice's language",
+			"enabledByDefault": true,
+			"utterances": [
+				"Könnten wir bitte auf {schwedisch:=>ToLang} sprechen",
+				"Bitte ändere deine Sprache zu {deutsch:=>ToLang}",
+				"Bitte wechsle zu {französisch:=>ToLang}",
+				"Lass uns {französisch:=>ToLang} sprechen",
+				"können wir {französisch:=>ToLang} miteinander sprechen",
+				"Können wir bitte {deutsch:=>ToLang} miteinander sprechen",
+				"Ich möchte {japanisch:=>ToLang} mit dir sprechen",
+				"Können wir bitte {französisch:=>ToLang} sprechen?",
+				"Wechsle bitte zu {russisch:=>ToLang}",
+				"Sprich ab jetzt auf {russisch:=>ToLang}",
+				"Sprich ab jetzt bitte {deutsch:=>ToLang}",
+				"Rede bitte auf {deutsch:=>ToLang} mit mir",
+				"Ändere deine Sprache auf {englisch:=>ToLang}"
+			],
+			"slots": [
+				{
+					"name": "ToLang",
+					"description": "Language to switch to",
+					"required": false,
+					"type": "Alice/Languages",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "RebootSystem",
+			"description": "Reboot Alice",
+			"enabledByDefault": true,
+			"utterances": [
+				"Bitte lade dich sich neu auf",
+				"Bitte lade dich selbst neu",
+				"Neustart des Systems",
+				"Starte dein System neu",
+				"Bitte starte dein System neu",
+				"Bitte reboote dein System",
+				"Führe einen Neustart aus",
+				"Bitte starte dich neu"
+			],
+			"slots": []
+		},
+		{
+			"name": "StopListening",
+			"description": "The user asks Alice to not react anymore for a given time",
+			"enabledByDefault": true,
+			"utterances": [
+				"Lass uns {für eine Stunde:=>Duration} in Frieden",
+				"Hör {20 Minuten lang:=>Duration} nicht auf uns",
+				"Kannst du bitte aufhören zuzuhören",
+				"Könntest du aufhören zuzuhören",
+				"Könntest du bitte aufhören zuzuhören",
+				"Sei {für eine Stunde:=>Duration} ruhig",
+				"Sei {für eine Stunde:=>Duration} still",
+				"Nerv mich {für eine Stunde:=>Duration} nicht",
+				"Ich brauche {für eine Stunde:=>Duration} meine ruhe",
+				"Hör {für 15 Minuten:=>Duration} auf uns zuzuhören",
+				"Kannst du uns {für 30 Minuten:=>Duration} in Frieden lassen",
+				"Hör {für 10 Minuten:=>Duration} auf zuzuhören",
+				"Hör nicht mehr zu",
+				"Hör auf, uns zuzuhören",
+				"Hör auf, mir zuzuhören",
+				"Halt mal {für eine Stunde:=>Duration} die Klappe"
+			],
+			"slots": [
+				{
+					"name": "Duration",
+					"description": "How long to ignore the requests",
+					"required": false,
+					"type": "snips/duration",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AddComponent",
+			"description": "The user asks to add a new device for Alice to manage",
+			"enabledByDefault": true,
+			"utterances": [
+				"Füge einen neuen {tasmota:=>Hardware} {Schalter:=>EspType} im {Wohnzimmer:=>Room} hinzu",
+				"Füge eine {tasmota:=>Hardware} vom Typ {Schalter:=>EspType} in der {Küche:=>Room} hinzu",
+				"Bitte füge einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Eingang:=>Room} hinzu",
+				"Ich möchte eine {tasmota:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
+				"Kannst du einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
+				"Füge ein {esp:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
+				"Ich füge ein neues {Schalter:=>EspType} Gerät hinzu",
+				"Könntest du eine neues {alice:=>Hardware} Gerät hinzufügen",
+				"Kannst du bitte ein {esp:=>Hardware} Gerät hinzufügen",
+				"Sei bereit für ein neues {esp:=>Hardware} Gerät",
+				"Kannst du bitte einen {Schalter:=>EspType} basierend auf {esp:=>Hardware} hinzufügen",
+				"Füge ein {esp:=>Hardware} Gerät vom Typ {Schalter:=>EspType} hinzu",
+				"Sei bereit für neue Hardware",
+				"Bitte hör auf neue Hardware",
+				"Bitte verbinde ein neues Gerät",
+				"Füge ein neues {esp:=>Hardware} Gerät vom Typ {pir:=>EspType} hinzu",
+				"Ich möchte einen neuen {satelliten:=>Hardware} registrieren",
+				"Hinzufügen einer neuen Komponente zu deinem System",
+				"Einen neuen {satelliten:=>Hardware} hinzufügen",
+				"Bitte auf neue Geräteverbindung achten",
+				"Kannst du bitte ein neues Gerät hinzufügen",
+				"Ich möchte ein neues Gerät hinzufügen, bitte",
+				"Ich füge einen neue {satelliten:=>Hardware} zu deinem Array hinzu",
+				"Lass uns ein Gerät zu deinem Netzwerk hinzufügen",
+				"Bitte auf neue Geräte achten",
+				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen"
+			],
+			"slots": [
+				{
+					"name": "Hardware",
+					"description": "The device hardware type",
+					"required": false,
+					"type": "Alice/AliceHardwareTypes",
+					"missingQuestion": ""
+				},
+				{
+					"name": "EspType",
+					"description": "The esp device type",
+					"required": false,
+					"type": "EspTypes",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Room",
+					"description": "The room to add the device to",
+					"required": false,
+					"type": "Alice/Room",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "DoAliceUpdate",
+			"description": "Ask Alice to update herself",
+			"enabledByDefault": true,
+			"utterances": [
+				"Aktualisiere bitte deine {assistent:=>WhatToUpdate} Dateien",
+				"Bitte aktualisiere deine {Dateien:=>WhatToUpdate}",
+				"Mach bitte ein {system:=>WhatToUpdate} Update",
+				"Bitte aktualisiere dein {system:=>WhatToUpdate}",
+				"Aktualisiere {dich selbst:=>WhatToUpdate}",
+				"Aktualisiere deine {Kerndateien:=>WhatToUpdate}",
+				"Aktualisiere die Assistent {Pakete:=>WhatToUpdate}",
+				"Bitte aktualisiere {dich selbst:=>WhatToUpdate}",
+				"Kannst du bitte ein {OS:=>WhatToUpdate} Update durchführen",
+				"Starte ein {snips assistent:=>WhatToUpdate} Update"
+			],
+			"slots": [
+				{
+					"name": "WhatToUpdate",
+					"description": "The component to update",
+					"required": false,
+					"type": "Alice/ComponentToUpdate",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerYesOrNo",
+			"description": "User answers yes or no",
+			"enabledByDefault": false,
+			"utterances": [
+				"{nein:=>Answer}",
+				"{nein danke dir:=>Answer}",
+				"{nein danke:=>Answer}",
+				"{nope:=>Answer}",
+				"{überhaupt nicht:=>Answer}",
+				"{ja:=>Answer}",
+				"{ja bitte:=>Answer}",
+				"{yep:=>Answer}",
+				"{natürlich:=>Answer}",
+				"{klar:=>Answer}"
+			],
+			"slots": [
+				{
+					"name": "Answer",
+					"description": null,
+					"required": false,
+					"type": "Alice/AnswerYesNo",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerEspType",
+			"description": "The user answers the type of ESP device he wants to add",
+			"enabledByDefault": false,
+			"utterances": [
+				"des Typs {präsenz sensor:=>EspType}",
+				"typ {passiver infrarot sensor:=>EspType} bitte",
+				"{pir sensor:=>EspType}",
+				"{pir:=>EspType}",
+				"{Schalter:=>EspType}"
+			],
+			"slots": [
+				{
+					"name": "EspType",
+					"description": "The kind of sensor",
+					"required": false,
+					"type": "EspTypes",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerHardwareType",
+			"description": "The user answers the hardware type to add",
+			"enabledByDefault": false,
+			"utterances": [
+				"{tasmota:=>Hardware} Gerät",
+				"ein {esp:=>Hardware} Gerät",
+				"einen {esp:=>Hardware}",
+				"Typ {alice:=>Hardware} bitte",
+				"{satellit:=>Hardware}"
+			],
+			"slots": [
+				{
+					"name": "Hardware",
+					"description": "The hardware type",
+					"required": false,
+					"type": "Alice/AliceHardwareTypes",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerRoom",
+			"description": "User answers with a room name",
+			"enabledByDefault": false,
+			"utterances": [
+				"in der {küche:=>Room}",
+				"in dem {Wohnzimmer:=>Room}",
+				"{Eingang:=>Room}",
+				"{Büro:=>Room}",
+				"{Keller:=>Room}",
+				"{Badezimmer:=>Room}",
+				"{Schlafzimmer:=>Room}",
+				"{Wohnzimmer:=>Room}",
+				"{Küche:=>Room}"
+			],
+			"slots": [
+				{
+					"name": "Room",
+					"description": null,
+					"required": true,
+					"type": "Alice/Room",
+					"missingQuestion": "What room?"
+				}
+			]
+		},
+		{
+			"name": "AnswerName",
+			"description": "",
+			"enabledByDefault": false,
+			"utterances": [
+				"{john:=>Name}",
+				"{jane:=>Name}",
+				"{doe:=>Name}",
+				"hi ich bin {Laurent:=>Name}",
+				"hey ich bin {Mike:=>Name}",
+				"hallo mein Name ist {Natalija:=>Name}",
+				"Ich bin {Sven:=>Name}",
+				"Du kannst mich {Arthur:=>Name} nennen",
+				"mein Name ist {Chris:=>Name}",
+				"{Kim:=>Name} ist mein Name",
+				"Ihr Name ist {Natalija:=>Name}",
+				"Sein Name ist {Frank:=>Name}",
+				"Er ist {Arthur:=>Name}",
+				"ich heiße {Arthur:=>Name}",
+				"Sie ist {Natalija:=>Name}"
+			],
+			"slots": [
+				{
+					"name": "Name",
+					"description": null,
+					"required": false,
+					"type": "Alice/Name",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerNumber",
+			"description": "",
+			"enabledByDefault": false,
+			"utterances": [
+				"{10:=>Number}",
+				"{5:=>Number}",
+				"{103:=>Number}",
+				"{784:=>Number}",
+				"{9567:=>Number}",
+				"{5:=>Number} {1:=>Number} {3:=>Number}",
+				"{50:=>Number} {342:=>Number} {9:=>Number}",
+				"{1:=>Number} {1:=>Number} {0:=>Number} {5:=>Number}",
+				"{102:=>Number} {895:=>Number} {0:=>Number} {75:=>Number}"
+			],
+			"slots": [
+				{
+					"name": "Number",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "SpellWord",
+			"description": "User spells a word",
+			"enabledByDefault": false,
+			"utterances": [
+				"{l:=>Letters} {a:=>Letters} {u:=>Letters} {r:=>Letters} {e:=>Letters} {n:=>Letters} {t:=>Letters}",
+				"{r:=>Letters} {o:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {d:=>Letters}",
+				"{p:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {e:=>Letters}",
+				"{b:=>Letters} {o:=>Letters} {a:=>Letters} {t:=>Letters}",
+				"{c:=>Letters} {i:=>Letters} {t:=>Letters} {y:=>Letters}",
+				"{c:=>Letters} {o:=>Letters} {n:=>Letters} {s:=>Letters} {t:=>Letters} {i:=>Letters} {t:=>Letters} {u:=>Letters} {t:=>Letters} {i:=>Letters} {o:=>Letters} {n:=>Letters}",
+				"{t:=>Letters} {r:=>Letters} {i:=>Letters} {c:=>Letters} {k:=>Letters}",
+				"{c:=>Letters} {o:=>Letters} {w:=>Letters}"
+			],
+			"slots": [
+				{
+					"name": "Letters",
+					"description": null,
+					"required": false,
+					"type": "Alice/Letters",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerWakewordCutting",
+			"description": "User tells Alice to trim the wakeword a bit more or less",
+			"enabledByDefault": false,
+			"utterances": [
+				"{mehr:=>WakewordCaptureResult}",
+				"Trimm ein wenig {mehr:=>WakewordCaptureResult}",
+				"Trimm etwas {mehr:=>WakewordCaptureResult}",
+				"Du kannst es {kürzer:=>WakewordCaptureResult} machen",
+				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} trimmen",
+				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} kürzen",
+				"Das ist {zu kurz:=>WakewordCaptureResult}",
+				"Mach es {länger:=>WakewordCaptureResult}",
+				"Es muss {länger:=>WakewordCaptureResult} sein",
+				"Kannst du bitte versuchen es {kürzer:=>WakewordCaptureResult} zu machen"
+			],
+			"slots": [
+				{
+					"name": "WakewordCaptureResult",
+					"description": null,
+					"required": false,
+					"type": "Alice/WakewordCaptureResult",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "CallWakeword",
+			"description": "User speaks the Hey Alice wakeword",
+			"enabledByDefault": false,
+			"utterances": [
+				"Hey Alice"
+			],
+			"slots": []
+		},
+		{
+			"name": "AddNewUser",
+			"description": "User adds a new user",
+			"enabledByDefault": true,
+			"utterances": [
+				"Kannst du bitte einen neuen Nutzer hinzufügen",
+				"Füge einen neuen Nutzer als {gast:=>UserAccessLevel} hinzu",
+				"Bitte füge einen neuen {admin:=>UserAccessLevel} hinzu",
+				"Ich muss einen neuen {admin:=>UserAccessLevel} hinzufügen",
+				"Könntest du einen neuen Nutzer zu deiner Datenbank hinzufügen",
+				"Hier ist jemand Neues, den ich dir gerne vorstellen möchte",
+				"Ich präsentiere dir {John:=>Name} unseren {Gast:=>UserAccessLevel}",
+				"Kannst du {Natalija:=>Name} als {admin:=>UserAccessLevel} hinzufügen",
+				"Triff unseren {Arbeiter:=>UserAccessLevel} {Richard:=>Name}",
+				"Ich möchte dass du {Roland:=>Name} kennenlernst",
+				"Ich habe jemanden, den du als neuen Benutzer hinzufügen kannst"
+			],
+			"slots": [
+				{
+					"name": "UserAccessLevel",
+					"description": null,
+					"required": false,
+					"type": "Alice/UserAccessLevel",
+					"missingQuestion": ""
+				},
+				{
+					"name": "Name",
+					"description": null,
+					"required": false,
+					"type": "Alice/Name",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerAccessLevel",
+			"description": "User answers with an access level",
+			"enabledByDefault": false,
+			"utterances": [
+				"{admin:=>UserAccessLevel}",
+				"{standard:=>UserAccessLevel}",
+				"{kind:=>UserAccessLevel}",
+				"{arbeiter:=>UserAccessLevel}",
+				"{gast:=>UserAccessLevel}",
+				"als {gast:=>UserAccessLevel}",
+				"als {default:=>UserAccessLevel} bitte",
+				"mit {gast:=>UserAccessLevel} berechtigungen",
+				"mit {arbeiter:=>UserAccessLevel} Zugriffslevel",
+				"{Kinder:=>UserAccessLevel} Zugriffslevel bitte",
+				"gib ihm {Arbeiter:=>UserAccessLevel} Berechtigungen bitte"
+			],
+			"slots": [
+				{
+					"name": "UserAccessLevel",
+					"description": null,
+					"required": false,
+					"type": "Alice/UserAccessLevel",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "AnswerPercent",
+			"description": "User answers with a percentage",
+			"enabledByDefault": false,
+			"utterances": [
+				"{40:=>Percent}",
+				"{10:=>Percent}%",
+				"{zwanzig:=>Percent} prozent please",
+				"bitte {5:=>Percent} prozent",
+				"{60:=>Percent} prozent",
+				"{fünf und siebzig:=>Percent} prozent bitte"
+			],
+			"slots": [
+				{
+					"name": "Percent",
+					"description": null,
+					"required": false,
+					"type": "snips/number",
+					"missingQuestion": ""
+				}
+			]
+		}
+	],
 	"slotTypes": [
 		{
 			"name": "Alice/Countries",
@@ -199,7 +677,8 @@
 				{
 					"value": "VG",
 					"synonyms": [
-						"Britische Jungferninseln"
+						"Britische Jungferninseln",
+						"Jungferninseln"
 					]
 				},
 				{
@@ -1147,7 +1626,9 @@
 				{
 					"value": "GS",
 					"synonyms": [
-						"Südgeorgien und die Südlichen Sandwichinseln"
+						"Südgeorgien und die Südlichen Sandwichinseln",
+						"Südgeorgien",
+						"Südliche Sandwichinseln"
 					]
 				},
 				{
@@ -1309,13 +1790,19 @@
 				{
 					"value": "AE",
 					"synonyms": [
-						"Vereinigte Arabische Emirate"
+						"Vereinigte Arabische Emirate",
+						"Vereinigte Emirate"
 					]
 				},
 				{
 					"value": "GB",
 					"synonyms": [
-						"Vereinigtes Königreich"
+						"Vereinigtes Königreich",
+						"Großbrittanien",
+						"England",
+						"Wales",
+						"Schottland",
+						"Nord Irland"
 					]
 				},
 				{
@@ -1400,31 +1887,16 @@
 			]
 		},
 		{
-			"name": "Alice/CityNames",
-			"matchingStrictness": null,
 			"automaticallyExtensible": false,
+			"matchingStrictness": null,
+			"name": "Alice/CityNames",
 			"useSynonyms": false,
 			"values": [
-				{
-					"value": "Aziziya"
-				},
-				{
-					"value": "100 Mile House"
-				},
-				{
-					"value": "6th of October City"
-				},
-				{
-					"value": "A Coruña"
-				},
 				{
 					"value": "Aachen"
 				},
 				{
 					"value": "Aalborg"
-				},
-				{
-					"value": "Aamby Valley City"
 				},
 				{
 					"value": "Aarau"
@@ -1634,9 +2106,6 @@
 					"value": "Aleppo"
 				},
 				{
-					"value": "Alès"
-				},
-				{
 					"value": "Alexandria"
 				},
 				{
@@ -1733,6 +2202,9 @@
 					"value": "Altstätten"
 				},
 				{
+					"value": "Alès"
+				},
+				{
 					"value": "Amaravati"
 				},
 				{
@@ -1812,6 +2284,9 @@
 				},
 				{
 					"value": "Andenne"
+				},
+				{
+					"value": "Anderlecht"
 				},
 				{
 					"value": "Anderson"
@@ -1922,6 +2397,9 @@
 					"value": "Aqaba"
 				},
 				{
+					"value": "Ar-Raqqah"
+				},
+				{
 					"value": "Arbon"
 				},
 				{
@@ -1988,9 +2466,6 @@
 					"value": "Arosa"
 				},
 				{
-					"value": "Ar-Raqqah"
-				},
-				{
 					"value": "Arras"
 				},
 				{
@@ -2010,6 +2485,9 @@
 				},
 				{
 					"value": "Asbury Park"
+				},
+				{
+					"value": "Aschaffenburg"
 				},
 				{
 					"value": "Ascona"
@@ -2135,6 +2613,9 @@
 					"value": "Audenarde"
 				},
 				{
+					"value": "Augsburg"
+				},
+				{
 					"value": "Augusta"
 				},
 				{
@@ -2172,9 +2653,6 @@
 				},
 				{
 					"value": "Avignon"
-				},
-				{
-					"value": "Ávila"
 				},
 				{
 					"value": "Awjila"
@@ -2324,10 +2802,10 @@
 					"value": "Banjul"
 				},
 				{
-					"value": "Banská Štiavnica"
+					"value": "Bansko"
 				},
 				{
-					"value": "Bansko"
+					"value": "Banská Štiavnica"
 				},
 				{
 					"value": "Banstead"
@@ -2513,9 +2991,6 @@
 					"value": "Bega"
 				},
 				{
-					"value": "Bègles"
-				},
-				{
 					"value": "Begusarai"
 				},
 				{
@@ -2630,10 +3105,10 @@
 					"value": "Bergen"
 				},
 				{
-					"value": "Bergenfield New Jersey"
+					"value": "Bergerac"
 				},
 				{
-					"value": "Bergerac"
+					"value": "Bergisch Gladbach"
 				},
 				{
 					"value": "Beringen"
@@ -2672,9 +3147,6 @@
 					"value": "Bethnal Green"
 				},
 				{
-					"value": "Béthune"
-				},
-				{
 					"value": "Betoota"
 				},
 				{
@@ -2691,9 +3163,6 @@
 				},
 				{
 					"value": "Bexhill-on-Sea"
-				},
-				{
-					"value": "Béziers"
 				},
 				{
 					"value": "Bezons"
@@ -2729,7 +3198,7 @@
 					"value": "Bideford"
 				},
 				{
-					"value": "Biel/Bienne"
+					"value": "Biel"
 				},
 				{
 					"value": "Bielefeld"
@@ -2774,9 +3243,6 @@
 					"value": "Binningen"
 				},
 				{
-					"value": "Birán"
-				},
-				{
 					"value": "Birdsville"
 				},
 				{
@@ -2790,6 +3256,9 @@
 				},
 				{
 					"value": "Birsfelden"
+				},
+				{
+					"value": "Birán"
 				},
 				{
 					"value": "Bisbee"
@@ -2807,13 +3276,13 @@
 					"value": "Bishop Auckland"
 				},
 				{
-					"value": "Bishopbriggs"
-				},
-				{
 					"value": "Bishop's Stortford"
 				},
 				{
 					"value": "Bishop's Waltham"
+				},
+				{
+					"value": "Bishopbriggs"
 				},
 				{
 					"value": "Bismarck"
@@ -2891,22 +3360,25 @@
 					"value": "Blythe"
 				},
 				{
+					"value": "Bo'ness"
+				},
+				{
+					"value": "Bo-Kaap"
+				},
+				{
 					"value": "Bobigny"
 				},
 				{
-					"value": "Bodmin"
+					"value": "Bochum"
 				},
 				{
-					"value": "Bognor Regis"
+					"value": "Bodmin"
 				},
 				{
 					"value": "Bois-Colombes"
 				},
 				{
 					"value": "Boise"
-				},
-				{
-					"value": "Bo-Kaap"
 				},
 				{
 					"value": "Boksburg"
@@ -2933,16 +3405,13 @@
 					"value": "Bolzano"
 				},
 				{
-					"value": "Bonavista Newfoundland and Labrador"
-				},
-				{
 					"value": "Bondi"
 				},
 				{
 					"value": "Bondy"
 				},
 				{
-					"value": "Bo'ness"
+					"value": "Bonn"
 				},
 				{
 					"value": "Bonnie Doon"
@@ -2972,6 +3441,9 @@
 					"value": "Bothell"
 				},
 				{
+					"value": "Bottrop"
+				},
+				{
 					"value": "Boudry"
 				},
 				{
@@ -2987,6 +3459,9 @@
 					"value": "Boulogne-sur-Mer"
 				},
 				{
+					"value": "Bourg-Saint-Pierre"
+				},
+				{
 					"value": "Bourg-en-Bresse"
 				},
 				{
@@ -2996,9 +3471,6 @@
 					"value": "Bourgoin-Jallieu"
 				},
 				{
-					"value": "Bourg-Saint-Pierre"
-				},
-				{
 					"value": "Bourke"
 				},
 				{
@@ -3006,9 +3478,6 @@
 				},
 				{
 					"value": "Bournemouth"
-				},
-				{
-					"value": "Bowling Green"
 				},
 				{
 					"value": "Bowmanville"
@@ -3062,7 +3531,7 @@
 					"value": "Braunau am Inn"
 				},
 				{
-					"value": "Brazzaville"
+					"value": "Braunschweig"
 				},
 				{
 					"value": "Brea"
@@ -3077,9 +3546,6 @@
 					"value": "Breda"
 				},
 				{
-					"value": "Brée"
-				},
-				{
 					"value": "Bregenz"
 				},
 				{
@@ -3087,6 +3553,9 @@
 				},
 				{
 					"value": "Bremen"
+				},
+				{
+					"value": "Bremerhaven"
 				},
 				{
 					"value": "Bremerton"
@@ -3102,9 +3571,6 @@
 				},
 				{
 					"value": "Brest"
-				},
-				{
-					"value": "Brétigny-sur-Orge"
 				},
 				{
 					"value": "Brevard"
@@ -3143,13 +3609,13 @@
 					"value": "Brierley Hill"
 				},
 				{
+					"value": "Brig-Glis"
+				},
+				{
 					"value": "Brigantine"
 				},
 				{
 					"value": "Brigg"
-				},
-				{
-					"value": "Brig-Glis"
 				},
 				{
 					"value": "Brighouse"
@@ -3254,6 +3720,12 @@
 					"value": "Bruxelles"
 				},
 				{
+					"value": "Brée"
+				},
+				{
+					"value": "Brétigny-sur-Orge"
+				},
+				{
 					"value": "Buchs"
 				},
 				{
@@ -3296,9 +3768,6 @@
 					"value": "Bukit Batok"
 				},
 				{
-					"value": "Bülach"
-				},
-				{
 					"value": "Bulawayo"
 				},
 				{
@@ -3315,9 +3784,6 @@
 				},
 				{
 					"value": "Burbank"
-				},
-				{
-					"value": "Büren a.A."
 				},
 				{
 					"value": "Burford"
@@ -3407,6 +3873,21 @@
 					"value": "Byzantium"
 				},
 				{
+					"value": "Bègles"
+				},
+				{
+					"value": "Béthune"
+				},
+				{
+					"value": "Béziers"
+				},
+				{
+					"value": "Bülach"
+				},
+				{
+					"value": "Büren a.A."
+				},
+				{
 					"value": "Cabo San Lucas"
 				},
 				{
@@ -3416,16 +3897,10 @@
 					"value": "Cabramurra"
 				},
 				{
-					"value": "Cáceres"
-				},
-				{
 					"value": "Cachan"
 				},
 				{
 					"value": "Cache Creek"
-				},
-				{
-					"value": "Cádiz"
 				},
 				{
 					"value": "Caen"
@@ -3545,9 +4020,6 @@
 					"value": "Cannon Beach"
 				},
 				{
-					"value": "Cañon City"
-				},
-				{
 					"value": "Canterbury"
 				},
 				{
@@ -3623,10 +4095,10 @@
 					"value": "Carpentras"
 				},
 				{
-					"value": "Carrickfergus"
+					"value": "Carrick-on-Shannon"
 				},
 				{
-					"value": "Carrick-on-Shannon"
+					"value": "Carrickfergus"
 				},
 				{
 					"value": "Carrollton"
@@ -3704,6 +4176,9 @@
 					"value": "Cayenne"
 				},
 				{
+					"value": "Cañon City"
+				},
+				{
 					"value": "Cedar City"
 				},
 				{
@@ -3735,9 +4210,6 @@
 				},
 				{
 					"value": "Chagrin Falls"
-				},
-				{
-					"value": "Châlons-en-Champagne"
 				},
 				{
 					"value": "Chalon-sur-Saône"
@@ -3806,28 +4278,10 @@
 					"value": "Chartres"
 				},
 				{
-					"value": "Châteauroux"
-				},
-				{
-					"value": "Châtelet"
-				},
-				{
-					"value": "Châtellerault"
-				},
-				{
-					"value": "Châtel-Saint-Denis"
-				},
-				{
-					"value": "Châtenay-Malabry"
-				},
-				{
 					"value": "Chatham"
 				},
 				{
 					"value": "Chatham-Kent"
-				},
-				{
-					"value": "Châtillon"
 				},
 				{
 					"value": "Chatou"
@@ -3860,7 +4314,7 @@
 					"value": "Chelyabinsk"
 				},
 				{
-					"value": "Chêne-Bougeries"
+					"value": "Chemnitz"
 				},
 				{
 					"value": "Cheongju"
@@ -3893,6 +4347,9 @@
 					"value": "Chevy Chase"
 				},
 				{
+					"value": "Chi?inau"
+				},
+				{
 					"value": "Chiasso"
 				},
 				{
@@ -3903,9 +4360,6 @@
 				},
 				{
 					"value": "Chico"
-				},
-				{
-					"value": "Chièvres"
 				},
 				{
 					"value": "Chigwell"
@@ -3953,7 +4407,7 @@
 					"value": "Chipping Ongar"
 				},
 				{
-					"value": "Chi?inau"
+					"value": "Chièvres"
 				},
 				{
 					"value": "Choisy-le-Roi"
@@ -3984,6 +4438,30 @@
 				},
 				{
 					"value": "Churchill"
+				},
+				{
+					"value": "Châlons-en-Champagne"
+				},
+				{
+					"value": "Châteauroux"
+				},
+				{
+					"value": "Châtel-Saint-Denis"
+				},
+				{
+					"value": "Châtelet"
+				},
+				{
+					"value": "Châtellerault"
+				},
+				{
+					"value": "Châtenay-Malabry"
+				},
+				{
+					"value": "Châtillon"
+				},
+				{
+					"value": "Chêne-Bougeries"
 				},
 				{
 					"value": "Cienfuegos"
@@ -4268,9 +4746,6 @@
 					"value": "Corby"
 				},
 				{
-					"value": "Córdoba"
-				},
-				{
 					"value": "Corinth"
 				},
 				{
@@ -4305,6 +4780,9 @@
 				},
 				{
 					"value": "Costa Mesa"
+				},
+				{
+					"value": "Cottbus"
 				},
 				{
 					"value": "Coudekerque-Branche"
@@ -4367,9 +4845,6 @@
 					"value": "Creston"
 				},
 				{
-					"value": "Créteil"
-				},
-				{
 					"value": "Crewe"
 				},
 				{
@@ -4407,6 +4882,9 @@
 				},
 				{
 					"value": "Crystal Beach Ontario"
+				},
+				{
+					"value": "Créteil"
 				},
 				{
 					"value": "Ctesiphon"
@@ -4467,6 +4945,15 @@
 				},
 				{
 					"value": "Czestochowa"
+				},
+				{
+					"value": "Cáceres"
+				},
+				{
+					"value": "Cádiz"
+				},
+				{
+					"value": "Córdoba"
 				},
 				{
 					"value": "Dabiq"
@@ -4530,6 +5017,9 @@
 				},
 				{
 					"value": "Darlington"
+				},
+				{
+					"value": "Darmstadt"
 				},
 				{
 					"value": "Dartford"
@@ -4604,9 +5094,6 @@
 					"value": "Decatur"
 				},
 				{
-					"value": "Décines-Charpieu"
-				},
-				{
 					"value": "Deep River"
 				},
 				{
@@ -4631,9 +5118,6 @@
 					"value": "Del Rio"
 				},
 				{
-					"value": "Delémont"
-				},
-				{
 					"value": "Delft"
 				},
 				{
@@ -4650,6 +5134,9 @@
 				},
 				{
 					"value": "Delta British Columbia"
+				},
+				{
+					"value": "Delémont"
 				},
 				{
 					"value": "Denain"
@@ -4856,6 +5343,9 @@
 					"value": "Drayton Valley"
 				},
 				{
+					"value": "Dresden"
+				},
+				{
 					"value": "Dreux"
 				},
 				{
@@ -4880,9 +5370,6 @@
 					"value": "Dubbo"
 				},
 				{
-					"value": "Dübendorf"
-				},
-				{
 					"value": "Dublin"
 				},
 				{
@@ -4898,6 +5385,9 @@
 					"value": "Dufftown"
 				},
 				{
+					"value": "Duisburg"
+				},
+				{
 					"value": "Dukinfield"
 				},
 				{
@@ -4908,9 +5398,6 @@
 				},
 				{
 					"value": "Dumfries"
-				},
-				{
-					"value": "Dún Laoghaire"
 				},
 				{
 					"value": "Dunbar"
@@ -4979,6 +5466,15 @@
 					"value": "Dushanbe"
 				},
 				{
+					"value": "Décines-Charpieu"
+				},
+				{
+					"value": "Dún Laoghaire"
+				},
+				{
+					"value": "Dübendorf"
+				},
+				{
 					"value": "Düsseldorf"
 				},
 				{
@@ -5040,12 +5536,6 @@
 				},
 				{
 					"value": "Eccles"
-				},
-				{
-					"value": "Échallens"
-				},
-				{
-					"value": "Échirolles"
 				},
 				{
 					"value": "Echternach"
@@ -5133,9 +5623,6 @@
 				},
 				{
 					"value": "El Segundo"
-				},
-				{
-					"value": "Élancourt"
 				},
 				{
 					"value": "Elche"
@@ -5240,15 +5727,6 @@
 					"value": "Enugu"
 				},
 				{
-					"value": "Épernay"
-				},
-				{
-					"value": "Épinal"
-				},
-				{
-					"value": "Épinay-sur-Seine"
-				},
-				{
 					"value": "Epping"
 				},
 				{
@@ -5271,6 +5749,9 @@
 				},
 				{
 					"value": "Erlach"
+				},
+				{
+					"value": "Erlangen"
 				},
 				{
 					"value": "Ermont"
@@ -5303,6 +5784,9 @@
 					"value": "Essaouira"
 				},
 				{
+					"value": "Essen"
+				},
+				{
 					"value": "Essex"
 				},
 				{
@@ -5316,9 +5800,6 @@
 				},
 				{
 					"value": "Esztergom"
-				},
-				{
-					"value": "Étampes"
 				},
 				{
 					"value": "Eton"
@@ -5343,12 +5824,6 @@
 				},
 				{
 					"value": "Evesham"
-				},
-				{
-					"value": "Évreux"
-				},
-				{
-					"value": "Évry"
 				},
 				{
 					"value": "Ewell"
@@ -5435,9 +5910,6 @@
 					"value": "Fatehpur Sikri"
 				},
 				{
-					"value": "Fátima"
-				},
-				{
 					"value": "Faversham"
 				},
 				{
@@ -5499,6 +5971,9 @@
 				},
 				{
 					"value": "Flemington"
+				},
+				{
+					"value": "Flensburg"
 				},
 				{
 					"value": "Fleurus"
@@ -5636,10 +6111,10 @@
 					"value": "Fort Worth"
 				},
 				{
-					"value": "Fortaleza"
+					"value": "Fort-de-France"
 				},
 				{
-					"value": "Fort-de-France"
+					"value": "Fortaleza"
 				},
 				{
 					"value": "Fosses-la-Ville"
@@ -5663,7 +6138,13 @@
 					"value": "Franconville"
 				},
 				{
-					"value": "Frankfort"
+					"value": "Frankfurt"
+				},
+				{
+					"value": "Frankfurt Oder"
+				},
+				{
+					"value": "Frankfurt am Main"
 				},
 				{
 					"value": "Franklin"
@@ -5696,10 +6177,10 @@
 					"value": "Freetown"
 				},
 				{
-					"value": "Freienbach"
+					"value": "Freiburg"
 				},
 				{
-					"value": "Fréjus"
+					"value": "Freienbach"
 				},
 				{
 					"value": "Fremont"
@@ -5748,6 +6229,12 @@
 				},
 				{
 					"value": "Furnes"
+				},
+				{
+					"value": "Fátima"
+				},
+				{
+					"value": "Fürth"
 				},
 				{
 					"value": "Gabrovo"
@@ -5870,7 +6357,13 @@
 					"value": "Gelnhausen"
 				},
 				{
+					"value": "Gelsenkirchen"
+				},
+				{
 					"value": "Gembloux"
+				},
+				{
+					"value": "Gemünden"
 				},
 				{
 					"value": "Genappe"
@@ -5909,10 +6402,10 @@
 					"value": "Gibsons British Columbia"
 				},
 				{
-					"value": "Giffnock"
+					"value": "Gif-sur-Yvette"
 				},
 				{
-					"value": "Gif-sur-Yvette"
+					"value": "Giffnock"
 				},
 				{
 					"value": "Gig Harbor"
@@ -5972,6 +6465,9 @@
 					"value": "Glastonbury"
 				},
 				{
+					"value": "Glattbach"
+				},
+				{
 					"value": "Glen Ellyn"
 				},
 				{
@@ -6008,13 +6504,13 @@
 					"value": "Godmanchester"
 				},
 				{
-					"value": "Góis Municipality"
-				},
-				{
 					"value": "Gold Coast"
 				},
 				{
 					"value": "Gold River"
+				},
+				{
+					"value": "Goldbach"
 				},
 				{
 					"value": "Golden"
@@ -6054,9 +6550,6 @@
 				},
 				{
 					"value": "Gossau"
-				},
-				{
-					"value": "Göttingen"
 				},
 				{
 					"value": "Gourock"
@@ -6113,10 +6606,10 @@
 					"value": "Grandson"
 				},
 				{
-					"value": "Grangemouth"
+					"value": "Grange-over-Sands"
 				},
 				{
-					"value": "Grange-over-Sands"
+					"value": "Grangemouth"
 				},
 				{
 					"value": "Grantham"
@@ -6227,10 +6720,10 @@
 					"value": "Grozny"
 				},
 				{
-					"value": "Grüningen"
+					"value": "Gruyères"
 				},
 				{
-					"value": "Gruyères"
+					"value": "Grüningen"
 				},
 				{
 					"value": "Guatapé"
@@ -6284,6 +6777,15 @@
 					"value": "Gympie"
 				},
 				{
+					"value": "Góis Municipality"
+				},
+				{
+					"value": "Göttingen"
+				},
+				{
+					"value": "Gütersloh"
+				},
+				{
 					"value": "Haarlem"
 				},
 				{
@@ -6294,6 +6796,9 @@
 				},
 				{
 					"value": "Hafnarfjörður"
+				},
+				{
+					"value": "Hagen"
 				},
 				{
 					"value": "Hagerstown"
@@ -6332,6 +6837,9 @@
 					"value": "Halle"
 				},
 				{
+					"value": "Halle"
+				},
+				{
 					"value": "Halls Creek"
 				},
 				{
@@ -6359,9 +6867,6 @@
 					"value": "Hamburg"
 				},
 				{
-					"value": "Hämeenlinna"
-				},
-				{
 					"value": "Hamilton"
 				},
 				{
@@ -6369,6 +6874,9 @@
 				},
 				{
 					"value": "Hamlin"
+				},
+				{
+					"value": "Hamm"
 				},
 				{
 					"value": "Hammond"
@@ -6381,6 +6889,9 @@
 				},
 				{
 					"value": "Hampstead"
+				},
+				{
+					"value": "Hanau"
 				},
 				{
 					"value": "Handforth"
@@ -6401,6 +6912,9 @@
 					"value": "Hanna"
 				},
 				{
+					"value": "Hannover"
+				},
+				{
 					"value": "Hannut"
 				},
 				{
@@ -6408,9 +6922,6 @@
 				},
 				{
 					"value": "Hanover Ontario"
-				},
-				{
-					"value": "Happy Valley-Goose Bay"
 				},
 				{
 					"value": "Harar"
@@ -6548,6 +7059,12 @@
 					"value": "Hedon"
 				},
 				{
+					"value": "Heidelberg"
+				},
+				{
+					"value": "Heilbronn"
+				},
+				{
 					"value": "Heilbronn"
 				},
 				{
@@ -6582,9 +7099,6 @@
 				},
 				{
 					"value": "Hendon"
-				},
-				{
-					"value": "Hénin-Beaumont"
 				},
 				{
 					"value": "Henley-in-Arden"
@@ -6638,13 +7152,13 @@
 					"value": "Hermosillo"
 				},
 				{
+					"value": "Herne"
+				},
+				{
 					"value": "Herne Bay"
 				},
 				{
 					"value": "Herne Hill"
-				},
-				{
-					"value": "Hérouville-Saint-Clair"
 				},
 				{
 					"value": "Herstal"
@@ -6698,6 +7212,9 @@
 					"value": "Highland Park"
 				},
 				{
+					"value": "Hildesheim"
+				},
+				{
 					"value": "Hillbrow"
 				},
 				{
@@ -6725,6 +7242,9 @@
 					"value": "Hitchin"
 				},
 				{
+					"value": "Ho-Ho-Kus"
+				},
+				{
 					"value": "Hobart"
 				},
 				{
@@ -6734,10 +7254,10 @@
 					"value": "Hoddesdon"
 				},
 				{
-					"value": "Hofuf"
+					"value": "Hof"
 				},
 				{
-					"value": "Ho-Ho-Kus"
+					"value": "Hofuf"
 				},
 				{
 					"value": "Holbeach"
@@ -6926,13 +7446,25 @@
 					"value": "Hyde Park"
 				},
 				{
-					"value": "Hyères"
-				},
-				{
 					"value": "Hythe"
 				},
 				{
 					"value": "Hyvinkää"
+				},
+				{
+					"value": "Hyères"
+				},
+				{
+					"value": "Hämeenlinna"
+				},
+				{
+					"value": "Hénin-Beaumont"
+				},
+				{
+					"value": "Hérouville-Saint-Clair"
+				},
+				{
+					"value": "Hösbach"
 				},
 				{
 					"value": "Ibadan"
@@ -6996,6 +7528,9 @@
 				},
 				{
 					"value": "Inglewood"
+				},
+				{
+					"value": "Ingolstadt"
 				},
 				{
 					"value": "Innisfail"
@@ -7154,6 +7689,9 @@
 					"value": "Jena"
 				},
 				{
+					"value": "Jena"
+				},
+				{
 					"value": "Jeonju"
 				},
 				{
@@ -7202,9 +7740,6 @@
 					"value": "Jonesboro"
 				},
 				{
-					"value": "Jönköping"
-				},
-				{
 					"value": "Joplin"
 				},
 				{
@@ -7227,6 +7762,9 @@
 				},
 				{
 					"value": "Jyväskylä"
+				},
+				{
+					"value": "Jönköping"
 				},
 				{
 					"value": "Kaesong"
@@ -7328,7 +7866,7 @@
 					"value": "Kaskaskia"
 				},
 				{
-					"value": "Kaštela"
+					"value": "Kassel"
 				},
 				{
 					"value": "Katherine"
@@ -7359,6 +7897,9 @@
 				},
 				{
 					"value": "Kazanlak"
+				},
+				{
+					"value": "Kaštela"
 				},
 				{
 					"value": "Kearney"
@@ -7637,6 +8178,9 @@
 					"value": "Kobe"
 				},
 				{
+					"value": "Koblenz"
+				},
+				{
 					"value": "Kochi"
 				},
 				{
@@ -7664,28 +8208,16 @@
 					"value": "Komárno"
 				},
 				{
-					"value": "Königsberg"
-				},
-				{
-					"value": "Köniz"
-				},
-				{
 					"value": "Konstanz"
-				},
-				{
-					"value": "Kópavogur"
 				},
 				{
 					"value": "Koper"
 				},
 				{
-					"value": "Korçë"
-				},
-				{
 					"value": "Kortrijk"
 				},
 				{
-					"value": "Košice"
+					"value": "Korçë"
 				},
 				{
 					"value": "Kotka"
@@ -7703,6 +8235,9 @@
 					"value": "Kozhikode"
 				},
 				{
+					"value": "Košice"
+				},
+				{
 					"value": "Kraków"
 				},
 				{
@@ -7713,6 +8248,9 @@
 				},
 				{
 					"value": "Krasnoyarsk"
+				},
+				{
+					"value": "Krefeld"
 				},
 				{
 					"value": "Kreuzlingen"
@@ -7760,9 +8298,6 @@
 					"value": "Kursk"
 				},
 				{
-					"value": "Küsnacht"
-				},
-				{
 					"value": "Kutaisi"
 				},
 				{
@@ -7770,6 +8305,21 @@
 				},
 				{
 					"value": "Kuwait City"
+				},
+				{
+					"value": "Kópavogur"
+				},
+				{
+					"value": "Köln"
+				},
+				{
+					"value": "Königsberg"
+				},
+				{
+					"value": "Köniz"
+				},
+				{
+					"value": "Küsnacht"
 				},
 				{
 					"value": "La Cañada Flintridge"
@@ -7826,10 +8376,10 @@
 					"value": "La Roche-en-Ardenne"
 				},
 				{
-					"value": "La Rochelle"
+					"value": "La Roche-sur-Yon"
 				},
 				{
-					"value": "La Roche-sur-Yon"
+					"value": "La Rochelle"
 				},
 				{
 					"value": "La Ronge"
@@ -7851,6 +8401,9 @@
 				},
 				{
 					"value": "La Valette-du-Var"
+				},
+				{
+					"value": "LaSalle"
 				},
 				{
 					"value": "Laayoune"
@@ -7997,9 +8550,6 @@
 					"value": "Las Vegas"
 				},
 				{
-					"value": "LaSalle"
-				},
-				{
 					"value": "Latakia"
 				},
 				{
@@ -8087,10 +8637,10 @@
 					"value": "Le Mans"
 				},
 				{
-					"value": "Le Mée-sur-Seine"
+					"value": "Le Moule"
 				},
 				{
-					"value": "Le Moule"
+					"value": "Le Mée-sur-Seine"
 				},
 				{
 					"value": "Le Perreux-sur-Marne"
@@ -8120,9 +8670,6 @@
 					"value": "Leatherhead"
 				},
 				{
-					"value": "Léau"
-				},
-				{
 					"value": "Leavenworth"
 				},
 				{
@@ -8135,10 +8682,10 @@
 					"value": "Ledbury"
 				},
 				{
-					"value": "Leeds"
+					"value": "Lee's Summit"
 				},
 				{
-					"value": "Lee's Summit"
+					"value": "Leeds"
 				},
 				{
 					"value": "Leeton"
@@ -8162,6 +8709,9 @@
 					"value": "Leighton Buzzard"
 				},
 				{
+					"value": "Leipzig"
+				},
+				{
 					"value": "Leiria"
 				},
 				{
@@ -8172,9 +8722,6 @@
 				},
 				{
 					"value": "Leominster"
-				},
-				{
-					"value": "León"
 				},
 				{
 					"value": "Lerwick"
@@ -8222,6 +8769,9 @@
 					"value": "Leven Fife"
 				},
 				{
+					"value": "Leverkusen"
+				},
+				{
 					"value": "Lewiston"
 				},
 				{
@@ -8234,7 +8784,7 @@
 					"value": "Lezhë"
 				},
 				{
-					"value": "L'Haÿ-les-Roses"
+					"value": "León"
 				},
 				{
 					"value": "Liberec"
@@ -8258,16 +8808,10 @@
 					"value": "Lichtensteig"
 				},
 				{
-					"value": "Liège"
-				},
-				{
 					"value": "Lierre"
 				},
 				{
 					"value": "Liestal"
-				},
-				{
-					"value": "Liévin"
 				},
 				{
 					"value": "Lightning Ridge"
@@ -8357,6 +8901,12 @@
 					"value": "Livry-Gargan"
 				},
 				{
+					"value": "Liège"
+				},
+				{
+					"value": "Liévin"
+				},
+				{
 					"value": "Llandeilo"
 				},
 				{
@@ -8378,6 +8928,9 @@
 					"value": "Lleida"
 				},
 				{
+					"value": "Lo-Reninge"
+				},
+				{
 					"value": "Locarno"
 				},
 				{
@@ -8393,10 +8946,10 @@
 					"value": "Lodi"
 				},
 				{
-					"value": "Lódz"
+					"value": "Logan"
 				},
 				{
-					"value": "Logan"
+					"value": "Lohr"
 				},
 				{
 					"value": "Lokeren"
@@ -8405,13 +8958,13 @@
 					"value": "Loma Linda"
 				},
 				{
-					"value": "Lomé"
-				},
-				{
 					"value": "Lommel"
 				},
 				{
 					"value": "Lompoc"
+				},
+				{
+					"value": "Lomé"
 				},
 				{
 					"value": "London"
@@ -8451,9 +9004,6 @@
 				},
 				{
 					"value": "Looz"
-				},
-				{
-					"value": "Lo-Reninge"
 				},
 				{
 					"value": "Loreto"
@@ -8531,6 +9081,12 @@
 					"value": "Ludlow"
 				},
 				{
+					"value": "Ludwigshafen"
+				},
+				{
+					"value": "Ludwigslust"
+				},
+				{
 					"value": "Lugano"
 				},
 				{
@@ -8556,9 +9112,6 @@
 				},
 				{
 					"value": "Lusaka"
-				},
-				{
-					"value": "Lutherstadt Wittenberg"
 				},
 				{
 					"value": "Luton"
@@ -8618,6 +9171,21 @@
 					"value": "Lytton"
 				},
 				{
+					"value": "Léau"
+				},
+				{
+					"value": "Lódz"
+				},
+				{
+					"value": "Lübeck"
+				},
+				{
+					"value": "Lüneburg"
+				},
+				{
+					"value": "Ma'rib"
+				},
+				{
 					"value": "Maaseik"
 				},
 				{
@@ -8634,9 +9202,6 @@
 				},
 				{
 					"value": "Macon"
-				},
-				{
-					"value": "Mâcon"
 				},
 				{
 					"value": "Madera"
@@ -8678,6 +9243,9 @@
 					"value": "Maienfeld"
 				},
 				{
+					"value": "Mainz"
+				},
+				{
 					"value": "Maisons-Alfort"
 				},
 				{
@@ -8699,9 +9267,6 @@
 					"value": "Malabo"
 				},
 				{
-					"value": "Málaga"
-				},
-				{
 					"value": "Malakoff"
 				},
 				{
@@ -8709,9 +9274,6 @@
 				},
 				{
 					"value": "Maldon"
-				},
-				{
-					"value": "Malé"
 				},
 				{
 					"value": "Maleny"
@@ -8739,6 +9301,9 @@
 				},
 				{
 					"value": "Malvern"
+				},
+				{
+					"value": "Malé"
 				},
 				{
 					"value": "Mammoth Hot Springs"
@@ -8783,7 +9348,7 @@
 					"value": "Mankato"
 				},
 				{
-					"value": "Männedorf"
+					"value": "Mannheim"
 				},
 				{
 					"value": "Manosque"
@@ -8832,9 +9397,6 @@
 				},
 				{
 					"value": "Margate"
-				},
-				{
-					"value": "Ma'rib"
 				},
 				{
 					"value": "Maribor"
@@ -9053,19 +9615,16 @@
 					"value": "Menton"
 				},
 				{
-					"value": "Merced"
+					"value": "Meppen"
 				},
 				{
-					"value": "Mérida"
+					"value": "Merced"
 				},
 				{
 					"value": "Meriden West Midlands"
 				},
 				{
 					"value": "Meridian"
-				},
-				{
-					"value": "Mérignac"
 				},
 				{
 					"value": "Merritt"
@@ -9260,10 +9819,10 @@
 					"value": "Moe"
 				},
 				{
-					"value": "Mogadishu"
+					"value": "Moers"
 				},
 				{
-					"value": "Möhlin"
+					"value": "Mogadishu"
 				},
 				{
 					"value": "Mold"
@@ -9273,9 +9832,6 @@
 				},
 				{
 					"value": "Moline"
-				},
-				{
-					"value": "Mölndal"
 				},
 				{
 					"value": "Mombasa"
@@ -9305,6 +9861,9 @@
 					"value": "Mons-en-Barœul"
 				},
 				{
+					"value": "Mont-de-Marsan"
+				},
+				{
 					"value": "Montaigu-Zichem"
 				},
 				{
@@ -9314,13 +9873,7 @@
 					"value": "Montbéliard"
 				},
 				{
-					"value": "Mont-de-Marsan"
-				},
-				{
 					"value": "Montego Bay"
-				},
-				{
-					"value": "Montélimar"
 				},
 				{
 					"value": "Monterey"
@@ -9372,6 +9925,9 @@
 				},
 				{
 					"value": "Montvale"
+				},
+				{
+					"value": "Montélimar"
 				},
 				{
 					"value": "Monza"
@@ -9524,9 +10080,6 @@
 					"value": "Moutier"
 				},
 				{
-					"value": "Mthatha"
-				},
-				{
 					"value": "Much Wenlock"
 				},
 				{
@@ -9545,12 +10098,6 @@
 					"value": "Mumbai"
 				},
 				{
-					"value": "Münchenbuchsee"
-				},
-				{
-					"value": "Münchenstein"
-				},
-				{
 					"value": "Muncie"
 				},
 				{
@@ -9558,15 +10105,6 @@
 				},
 				{
 					"value": "Mundra"
-				},
-				{
-					"value": "Munich"
-				},
-				{
-					"value": "Münsingen"
-				},
-				{
-					"value": "Murcia"
 				},
 				{
 					"value": "Muret"
@@ -9588,12 +10126,6 @@
 				},
 				{
 					"value": "Murten"
-				},
-				{
-					"value": "Murwillumbah"
-				},
-				{
-					"value": "Muscle Shoals"
 				},
 				{
 					"value": "Muskegon"
@@ -9623,13 +10155,52 @@
 					"value": "Mysore"
 				},
 				{
-					"value": "Mytholmroyd"
-				},
-				{
 					"value": "Mytilene"
 				},
 				{
-					"value": "Naalehu"
+					"value": "Málaga"
+				},
+				{
+					"value": "Mâcon"
+				},
+				{
+					"value": "Männedorf"
+				},
+				{
+					"value": "Mérida"
+				},
+				{
+					"value": "Mérignac"
+				},
+				{
+					"value": "Möhlin"
+				},
+				{
+					"value": "Mölndal"
+				},
+				{
+					"value": "Mömbris"
+				},
+				{
+					"value": "Mönchenglattbach"
+				},
+				{
+					"value": "Mühlheim"
+				},
+				{
+					"value": "München"
+				},
+				{
+					"value": "Münchenbuchsee"
+				},
+				{
+					"value": "Münchenstein"
+				},
+				{
+					"value": "Münsingen"
+				},
+				{
+					"value": "N'Djamena"
 				},
 				{
 					"value": "Naantali"
@@ -9758,13 +10329,10 @@
 					"value": "Navsari"
 				},
 				{
-					"value": "Nazaré"
-				},
-				{
 					"value": "Nazareth"
 				},
 				{
-					"value": "N'Djamena"
+					"value": "Nazaré"
 				},
 				{
 					"value": "Neasden"
@@ -9807,6 +10375,9 @@
 				},
 				{
 					"value": "Neunkirch"
+				},
+				{
+					"value": "Neuss"
 				},
 				{
 					"value": "Neustadt Ontario"
@@ -9968,9 +10539,6 @@
 					"value": "Nimbin"
 				},
 				{
-					"value": "Nîmes"
-				},
-				{
 					"value": "Nine Mile"
 				},
 				{
@@ -9983,9 +10551,6 @@
 					"value": "Nipton"
 				},
 				{
-					"value": "Niš"
-				},
-				{
 					"value": "Nishapur"
 				},
 				{
@@ -9993,6 +10558,9 @@
 				},
 				{
 					"value": "Nizhny Novgorod"
+				},
+				{
+					"value": "Niš"
 				},
 				{
 					"value": "Nogales"
@@ -10145,6 +10713,12 @@
 					"value": "Nyon"
 				},
 				{
+					"value": "Nîmes"
+				},
+				{
+					"value": "Nürnberg"
+				},
+				{
 					"value": "Oak Bay"
 				},
 				{
@@ -10163,6 +10737,9 @@
 					"value": "Oban"
 				},
 				{
+					"value": "Oberhausen"
+				},
+				{
 					"value": "Oberon"
 				},
 				{
@@ -10170,9 +10747,6 @@
 				},
 				{
 					"value": "Oberwil"
-				},
-				{
-					"value": "Óbidos"
 				},
 				{
 					"value": "Ocala"
@@ -10191,6 +10765,9 @@
 				},
 				{
 					"value": "Odessa"
+				},
+				{
+					"value": "Offenbach"
 				},
 				{
 					"value": "Oftringen"
@@ -10221,6 +10798,9 @@
 				},
 				{
 					"value": "Oldbury"
+				},
+				{
+					"value": "Oldenburg"
 				},
 				{
 					"value": "Oldham"
@@ -10298,16 +10878,13 @@
 					"value": "Orlando"
 				},
 				{
-					"value": "Orléans"
-				},
-				{
 					"value": "Orly"
 				},
 				{
-					"value": "Ormskirk"
+					"value": "Orléans"
 				},
 				{
-					"value": "Örnsköldsvik"
+					"value": "Ormskirk"
 				},
 				{
 					"value": "Oroville"
@@ -10332,6 +10909,9 @@
 				},
 				{
 					"value": "Oslo"
+				},
+				{
+					"value": "Osnabrück"
 				},
 				{
 					"value": "Osoyoos"
@@ -10652,9 +11232,6 @@
 					"value": "Peoria"
 				},
 				{
-					"value": "Périgueux"
-				},
-				{
 					"value": "Perm"
 				},
 				{
@@ -10677,9 +11254,6 @@
 				},
 				{
 					"value": "Perugia"
-				},
-				{
-					"value": "Péruwelz"
 				},
 				{
 					"value": "Pescara"
@@ -10739,6 +11313,9 @@
 					"value": "Petworth"
 				},
 				{
+					"value": "Pforzheim"
+				},
+				{
 					"value": "Pfäffikon"
 				},
 				{
@@ -10784,10 +11361,10 @@
 					"value": "Pierrefitte-sur-Seine"
 				},
 				{
-					"value": "Pieštany"
+					"value": "Pietermaritzburg"
 				},
 				{
-					"value": "Pietermaritzburg"
+					"value": "Pieštany"
 				},
 				{
 					"value": "Pigeon Forge"
@@ -11030,9 +11607,6 @@
 					"value": "Port Moresby"
 				},
 				{
-					"value": "Port of Spain"
-				},
-				{
 					"value": "Port Perry"
 				},
 				{
@@ -11058,6 +11632,9 @@
 				},
 				{
 					"value": "Port Vila"
+				},
+				{
+					"value": "Port of Spain"
 				},
 				{
 					"value": "Portchester"
@@ -11124,9 +11701,6 @@
 				},
 				{
 					"value": "Pratteln"
-				},
-				{
-					"value": "praz-fr, praz"
 				},
 				{
 					"value": "Prescot"
@@ -11222,10 +11796,10 @@
 					"value": "Punta Arenas"
 				},
 				{
-					"value": "Punta del Este"
+					"value": "Punta Gorda"
 				},
 				{
-					"value": "Punta Gorda"
+					"value": "Punta del Este"
 				},
 				{
 					"value": "Puri"
@@ -11250,6 +11824,12 @@
 				},
 				{
 					"value": "Pyongyang"
+				},
+				{
+					"value": "Périgueux"
+				},
+				{
+					"value": "Péruwelz"
 				},
 				{
 					"value": "Qamishli"
@@ -11396,6 +11976,9 @@
 					"value": "Razgrad"
 				},
 				{
+					"value": "Recklinghausen"
+				},
+				{
 					"value": "Red Lake"
 				},
 				{
@@ -11450,6 +12033,9 @@
 					"value": "Reinach"
 				},
 				{
+					"value": "Remscheid"
+				},
+				{
 					"value": "Renaix"
 				},
 				{
@@ -11475,6 +12061,9 @@
 				},
 				{
 					"value": "Retford"
+				},
+				{
+					"value": "Reutlingen"
 				},
 				{
 					"value": "Revelstoke"
@@ -11543,10 +12132,10 @@
 					"value": "Rimini"
 				},
 				{
-					"value": "Rio de Janeiro"
+					"value": "Rio Rancho"
 				},
 				{
-					"value": "Rio Rancho"
+					"value": "Rio de Janeiro"
 				},
 				{
 					"value": "Ripley"
@@ -11558,6 +12147,9 @@
 					"value": "Ripon"
 				},
 				{
+					"value": "Ris-Orangis"
+				},
+				{
 					"value": "Risch"
 				},
 				{
@@ -11565,9 +12157,6 @@
 				},
 				{
 					"value": "Rishon LeZion"
-				},
-				{
-					"value": "Ris-Orangis"
 				},
 				{
 					"value": "Riva San Vitale"
@@ -11636,6 +12225,9 @@
 					"value": "Rolle"
 				},
 				{
+					"value": "Rom"
+				},
+				{
 					"value": "Roma"
 				},
 				{
@@ -11645,10 +12237,10 @@
 					"value": "Romainville"
 				},
 				{
-					"value": "Romanshorn"
+					"value": "Romans-sur-Isère"
 				},
 				{
-					"value": "Romans-sur-Isère"
+					"value": "Romanshorn"
 				},
 				{
 					"value": "Rome"
@@ -11804,9 +12396,6 @@
 					"value": "Royston"
 				},
 				{
-					"value": "Rüdesheim am Rhein"
-				},
-				{
 					"value": "Rue"
 				},
 				{
@@ -11840,9 +12429,6 @@
 					"value": "Ruthin"
 				},
 				{
-					"value": "Rüti"
-				},
-				{
 					"value": "Ružomberok"
 				},
 				{
@@ -11853,6 +12439,12 @@
 				},
 				{
 					"value": "Rzeszów"
+				},
+				{
+					"value": "Rüdesheim am Rhein"
+				},
+				{
+					"value": "Rüti"
 				},
 				{
 					"value": "Saarbrücken"
@@ -11921,37 +12513,10 @@
 					"value": "Saint-Denis"
 				},
 				{
-					"value": "Saint-Dié-des-Vosges"
-				},
-				{
 					"value": "Saint-Dizier"
 				},
 				{
-					"value": "Sainte-Anne"
-				},
-				{
-					"value": "Sainte-Foy-lès-Lyon"
-				},
-				{
-					"value": "Sainte-Geneviève-des-Bois"
-				},
-				{
-					"value": "Sainte-Marie"
-				},
-				{
-					"value": "Sainte-Rose"
-				},
-				{
-					"value": "Saintes"
-				},
-				{
-					"value": "Sainte-Suzanne"
-				},
-				{
-					"value": "Saint-Étienne"
-				},
-				{
-					"value": "Saint-Étienne-du-Rouvray"
+					"value": "Saint-Dié-des-Vosges"
 				},
 				{
 					"value": "Saint-Genis-Laval"
@@ -12002,10 +12567,10 @@
 					"value": "Saint-Maurice"
 				},
 				{
-					"value": "Saint-Médard-en-Jalles"
+					"value": "Saint-Michel-sur-Orge"
 				},
 				{
-					"value": "Saint-Michel-sur-Orge"
+					"value": "Saint-Médard-en-Jalles"
 				},
 				{
 					"value": "Saint-Nazaire"
@@ -12048,6 +12613,33 @@
 				},
 				{
 					"value": "Saint-Vith"
+				},
+				{
+					"value": "Saint-Étienne"
+				},
+				{
+					"value": "Saint-Étienne-du-Rouvray"
+				},
+				{
+					"value": "Sainte-Anne"
+				},
+				{
+					"value": "Sainte-Foy-lès-Lyon"
+				},
+				{
+					"value": "Sainte-Geneviève-des-Bois"
+				},
+				{
+					"value": "Sainte-Marie"
+				},
+				{
+					"value": "Sainte-Rose"
+				},
+				{
+					"value": "Sainte-Suzanne"
+				},
+				{
+					"value": "Saintes"
 				},
 				{
 					"value": "Sakakah"
@@ -12108,6 +12700,9 @@
 				},
 				{
 					"value": "Salzburg"
+				},
+				{
+					"value": "Salzgitter"
 				},
 				{
 					"value": "Samara"
@@ -12272,12 +12867,6 @@
 					"value": "Santo Domingo"
 				},
 				{
-					"value": "São Paulo"
-				},
-				{
-					"value": "São Tomé"
-				},
-				{
 					"value": "Sarandë"
 				},
 				{
@@ -12362,6 +12951,9 @@
 					"value": "Schwerin"
 				},
 				{
+					"value": "Schwerin"
+				},
+				{
 					"value": "Schwyz"
 				},
 				{
@@ -12377,6 +12969,9 @@
 					"value": "Sea Point"
 				},
 				{
+					"value": "SeaTac"
+				},
+				{
 					"value": "Seaford"
 				},
 				{
@@ -12384,9 +12979,6 @@
 				},
 				{
 					"value": "Seal Beach"
-				},
-				{
-					"value": "SeaTac"
 				},
 				{
 					"value": "Seaton"
@@ -12449,9 +13041,6 @@
 					"value": "Seraing"
 				},
 				{
-					"value": "Sète"
-				},
-				{
 					"value": "Settle"
 				},
 				{
@@ -12468,9 +13057,6 @@
 				},
 				{
 					"value": "Sevran"
-				},
-				{
-					"value": "Sèvres"
 				},
 				{
 					"value": "Seward"
@@ -12533,9 +13119,6 @@
 					"value": "Sherman"
 				},
 				{
-					"value": "'s-Hertogenbosch"
-				},
-				{
 					"value": "Shildon"
 				},
 				{
@@ -12593,6 +13176,12 @@
 					"value": "Sidney"
 				},
 				{
+					"value": "Siegburg"
+				},
+				{
+					"value": "Siegen"
+				},
+				{
 					"value": "Siem Reap"
 				},
 				{
@@ -12638,10 +13227,10 @@
 					"value": "Sinjar"
 				},
 				{
-					"value": "Sintra"
+					"value": "Sint-Truiden"
 				},
 				{
-					"value": "Sint-Truiden"
+					"value": "Sintra"
 				},
 				{
 					"value": "Sion"
@@ -12684,9 +13273,6 @@
 				},
 				{
 					"value": "Skipton"
-				},
-				{
-					"value": "Škofja Loka"
 				},
 				{
 					"value": "Skopje"
@@ -12741,6 +13327,9 @@
 				},
 				{
 					"value": "Solihull"
+				},
+				{
+					"value": "Solingen"
 				},
 				{
 					"value": "Solothurn"
@@ -12938,9 +13527,6 @@
 					"value": "St. Stephen New Brunswick"
 				},
 				{
-					"value": "Stäfa"
-				},
-				{
 					"value": "Staines-upon-Thames"
 				},
 				{
@@ -13028,6 +13614,9 @@
 					"value": "Stockport"
 				},
 				{
+					"value": "Stockstadt"
+				},
+				{
 					"value": "Stockton"
 				},
 				{
@@ -13076,10 +13665,10 @@
 					"value": "Stourbridge"
 				},
 				{
-					"value": "Stowmarket"
+					"value": "Stow-on-the-Wold"
 				},
 				{
-					"value": "Stow-on-the-Wold"
+					"value": "Stowmarket"
 				},
 				{
 					"value": "Strabane"
@@ -13122,6 +13711,9 @@
 				},
 				{
 					"value": "Stuttgart"
+				},
+				{
+					"value": "Stäfa"
 				},
 				{
 					"value": "Sucy-en-Brie"
@@ -13256,7 +13848,22 @@
 					"value": "Székesfehérvár"
 				},
 				{
+					"value": "São Paulo"
+				},
+				{
+					"value": "São Tomé"
+				},
+				{
+					"value": "Sète"
+				},
+				{
+					"value": "Sèvres"
+				},
+				{
 					"value": "Ta' Qali"
+				},
+				{
+					"value": "Ta'if"
 				},
 				{
 					"value": "Tabriz"
@@ -13266,9 +13873,6 @@
 				},
 				{
 					"value": "Tadcaster"
-				},
-				{
-					"value": "Ta'if"
 				},
 				{
 					"value": "Taipei"
@@ -13481,9 +14085,6 @@
 					"value": "Thiruvananthapuram"
 				},
 				{
-					"value": "Thônex"
-				},
-				{
 					"value": "Thonon-les-Bains"
 				},
 				{
@@ -13521,6 +14122,9 @@
 				},
 				{
 					"value": "Thusis"
+				},
+				{
+					"value": "Thônex"
 				},
 				{
 					"value": "Tiberias"
@@ -13632,9 +14236,6 @@
 				},
 				{
 					"value": "Torrance"
-				},
-				{
-					"value": "Tórshavn"
 				},
 				{
 					"value": "Torun"
@@ -13835,6 +14436,9 @@
 					"value": "Tywyn"
 				},
 				{
+					"value": "Tórshavn"
+				},
+				{
 					"value": "Ubud"
 				},
 				{
@@ -13949,9 +14553,6 @@
 					"value": "Uttoxeter"
 				},
 				{
-					"value": "Uusikaupunki"
-				},
-				{
 					"value": "Uvalde"
 				},
 				{
@@ -13973,10 +14574,10 @@
 					"value": "Vadodara"
 				},
 				{
-					"value": "Valangin"
+					"value": "Val-de-Travers"
 				},
 				{
-					"value": "Val-de-Travers"
+					"value": "Valangin"
 				},
 				{
 					"value": "Valdez"
@@ -14007,9 +14608,6 @@
 				},
 				{
 					"value": "Valleyview"
-				},
-				{
-					"value": "Vällingby"
 				},
 				{
 					"value": "Valparaiso"
@@ -14072,13 +14670,7 @@
 					"value": "Veliky Novgorod"
 				},
 				{
-					"value": "Vélizy-Villacoublay"
-				},
-				{
 					"value": "Venice"
-				},
-				{
-					"value": "Vénissieux"
 				},
 				{
 					"value": "Ventnor"
@@ -14204,13 +14796,13 @@
 					"value": "Villeneuve"
 				},
 				{
+					"value": "Villeneuve-Saint-Georges"
+				},
+				{
 					"value": "Villeneuve-d'Ascq"
 				},
 				{
 					"value": "Villeneuve-la-Garenne"
-				},
-				{
-					"value": "Villeneuve-Saint-Georges"
 				},
 				{
 					"value": "Villeneuve-sur-Lot"
@@ -14237,9 +14829,6 @@
 					"value": "Vilvorde"
 				},
 				{
-					"value": "Viña del Mar"
-				},
-				{
 					"value": "Vincennes"
 				},
 				{
@@ -14261,13 +14850,13 @@
 					"value": "Visby"
 				},
 				{
-					"value": "Visé"
-				},
-				{
 					"value": "Visp"
 				},
 				{
 					"value": "Vista"
+				},
+				{
+					"value": "Visé"
 				},
 				{
 					"value": "Vitebsk"
@@ -14280,6 +14869,9 @@
 				},
 				{
 					"value": "Vitry-sur-Seine"
+				},
+				{
+					"value": "Viña del Mar"
 				},
 				{
 					"value": "Vladimir"
@@ -14306,9 +14898,6 @@
 					"value": "Voronezh"
 				},
 				{
-					"value": "Võru"
-				},
-				{
 					"value": "Vouliagmeni"
 				},
 				{
@@ -14321,6 +14910,18 @@
 					"value": "Vyborg"
 				},
 				{
+					"value": "Vällingby"
+				},
+				{
+					"value": "Vélizy-Villacoublay"
+				},
+				{
+					"value": "Vénissieux"
+				},
+				{
+					"value": "Võru"
+				},
+				{
 					"value": "Wabush"
 				},
 				{
@@ -14328,9 +14929,6 @@
 				},
 				{
 					"value": "Wadebridge"
-				},
-				{
-					"value": "Wädenswil"
 				},
 				{
 					"value": "Wagga Wagga"
@@ -14343,6 +14941,9 @@
 				},
 				{
 					"value": "Walcourt"
+				},
+				{
+					"value": "Waldaschaff"
 				},
 				{
 					"value": "Waldenburg"
@@ -14576,6 +15177,9 @@
 					"value": "Werdenberg"
 				},
 				{
+					"value": "Wertheim"
+				},
+				{
 					"value": "Wervik"
 				},
 				{
@@ -14628,6 +15232,9 @@
 				},
 				{
 					"value": "Westerham"
+				},
+				{
+					"value": "Westerngrund"
 				},
 				{
 					"value": "Westfield"
@@ -14745,6 +15352,9 @@
 				},
 				{
 					"value": "Wiedlisbach"
+				},
+				{
+					"value": "Wien"
 				},
 				{
 					"value": "Wigan"
@@ -14873,6 +15483,9 @@
 					"value": "Witney"
 				},
 				{
+					"value": "Wittenberg"
+				},
+				{
 					"value": "Wittenoom"
 				},
 				{
@@ -14889,6 +15502,9 @@
 				},
 				{
 					"value": "Wokingham"
+				},
+				{
+					"value": "Wolfsburg"
 				},
 				{
 					"value": "Wolfville"
@@ -14918,9 +15534,6 @@
 					"value": "Worcester"
 				},
 				{
-					"value": "Wörgl"
-				},
-				{
 					"value": "Workington"
 				},
 				{
@@ -14939,6 +15552,9 @@
 					"value": "Wroclaw"
 				},
 				{
+					"value": "Wuppertal"
+				},
+				{
 					"value": "Wye Kent"
 				},
 				{
@@ -14949,6 +15565,15 @@
 				},
 				{
 					"value": "Wyong"
+				},
+				{
+					"value": "Wädenswil"
+				},
+				{
+					"value": "Wörgl"
+				},
+				{
+					"value": "Würzburg"
 				},
 				{
 					"value": "Yakima"
@@ -15026,9 +15651,6 @@
 					"value": "Yreka"
 				},
 				{
-					"value": "Ystradgynlais"
-				},
-				{
 					"value": "Yuba City"
 				},
 				{
@@ -15080,13 +15702,61 @@
 					"value": "Zugdidi"
 				},
 				{
-					"value": "Zürich"
-				},
-				{
 					"value": "Zvolen"
 				},
 				{
+					"value": "Zwickau"
+				},
+				{
+					"value": "Zwickau"
+				},
+				{
 					"value": "Zwolle"
+				},
+				{
+					"value": "Zürich"
+				},
+				{
+					"value": "praz-fr, praz"
+				},
+				{
+					"value": "Ávila"
+				},
+				{
+					"value": "Échallens"
+				},
+				{
+					"value": "Échirolles"
+				},
+				{
+					"value": "Élancourt"
+				},
+				{
+					"value": "Épernay"
+				},
+				{
+					"value": "Épinal"
+				},
+				{
+					"value": "Épinay-sur-Seine"
+				},
+				{
+					"value": "Étampes"
+				},
+				{
+					"value": "Évreux"
+				},
+				{
+					"value": "Évry"
+				},
+				{
+					"value": "Óbidos"
+				},
+				{
+					"value": "Örnsköldsvik"
+				},
+				{
+					"value": "Škofja Loka"
 				}
 			]
 		},
@@ -18895,13 +19565,7 @@
 			"useSynonyms": false,
 			"values": [
 				{
-					"value": "aareschwimmen"
-				},
-				{
 					"value": "abbekommen"
-				},
-				{
-					"value": "abebooks"
 				},
 				{
 					"value": "abendveranstaltung"
@@ -18955,9 +19619,6 @@
 					"value": "abonniert"
 				},
 				{
-					"value": "abril"
-				},
-				{
 					"value": "abrupt"
 				},
 				{
@@ -19006,9 +19667,6 @@
 					"value": "achtzehnzehnjährige"
 				},
 				{
-					"value": "acosta"
-				},
-				{
 					"value": "adaptieren"
 				},
 				{
@@ -19019,6 +19677,9 @@
 				},
 				{
 					"value": "administrators"
+				},
+				{
+					"value": "admin"
 				},
 				{
 					"value": "adventskalender"
@@ -19057,9 +19718,6 @@
 					"value": "aktivsten"
 				},
 				{
-					"value": "akzentuierung"
-				},
-				{
 					"value": "akzeptiertbar"
 				},
 				{
@@ -19069,10 +19727,7 @@
 					"value": "alexander"
 				},
 				{
-					"value": "alitalia"
-				},
-				{
-					"value": "alkoholgrad"
+					"value": "alkohol"
 				},
 				{
 					"value": "allererste"
@@ -19088,9 +19743,6 @@
 				},
 				{
 					"value": "allzulanger"
-				},
-				{
-					"value": "almería"
 				},
 				{
 					"value": "alten"
@@ -19120,7 +19772,7 @@
 					"value": "analysieren"
 				},
 				{
-					"value": "ananasplantagen"
+					"value": "ananas"
 				},
 				{
 					"value": "anbringung"
@@ -19252,9 +19904,6 @@
 					"value": "anziehungskraft"
 				},
 				{
-					"value": "anzueignen"
-				},
-				{
 					"value": "anzuordnen"
 				},
 				{
@@ -19288,12 +19937,6 @@
 					"value": "arbeitszeit"
 				},
 				{
-					"value": "arccatalog"
-				},
-				{
-					"value": "arcmap"
-				},
-				{
 					"value": "ärger"
 				},
 				{
@@ -19321,10 +19964,7 @@
 					"value": "assoziiert"
 				},
 				{
-					"value": "asustor"
-				},
-				{
-					"value": "asylstreit"
+					"value": "asyl"
 				},
 				{
 					"value": "ätherischen"
@@ -19339,7 +19979,7 @@
 					"value": "attraktion"
 				},
 				{
-					"value": "audience"
+					"value": "audienz"
 				},
 				{
 					"value": "audiolösungen"
@@ -19558,12 +20198,6 @@
 					"value": "auxmoney"
 				},
 				{
-					"value": "avchd"
-				},
-				{
-					"value": "babauba"
-				},
-				{
 					"value": "babys"
 				},
 				{
@@ -19571,6 +20205,9 @@
 				},
 				{
 					"value": "badebomben"
+				},
+				{
+					"value": "badewanne"
 				},
 				{
 					"value": "bagua"
@@ -26672,477 +27309,6 @@
 				},
 				{
 					"value": "zylinder"
-				}
-			]
-		}
-	],
-	"intents": [
-		{
-			"name": "UserRandomAnswer",
-			"description": "The user answer with something random",
-			"enabledByDefault": false,
-			"utterances": [
-				"{Auto:=>RandomWord}",
-				"{Wald:=>RandomWord}",
-				"{Verfassung:=>RandomWord}",
-				"{Palast:=>RandomWord}",
-				"{Nacht:=>RandomWord}",
-				"{Falke:=>RandomWord}",
-				"{Tote Körper:=>RandomWord}",
-				"{Raumschiff:=>RandomWord}",
-				"{Riese:=>RandomWord}",
-				"{obama:=>RandomWord}"
-			],
-			"slots": [
-				{
-					"name": "RandomWord",
-					"description": "Random word given",
-					"required": false,
-					"type": "Alice/RandomWords",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "SwitchLanguage",
-			"description": "Switch Alice's language",
-			"enabledByDefault": true,
-			"utterances": [
-				"Könnten wir bitte auf {schwedisch:=>ToLang} sprechen",
-				"Bitte ändere deine Sprache zu {deutsch:=>ToLang}",
-				"Bitte wechsle zu {französisch:=>ToLang}",
-				"Lass uns {französisch:=>ToLang} sprechen",
-				"können wir {französisch:=>ToLang} miteinander sprechen",
-				"Können wir bitte {deutsch:=>ToLang} miteinander sprechen",
-				"Ich möchte {japanisch:=>ToLang} mit dir sprechen",
-				"Können wir bitte {französisch:=>ToLang} sprechen?",
-				"Wechsle bitte zu {russisch:=>ToLang}",
-				"Sprich ab jetzt auf {russisch:=>ToLang}",
-				"Sprich ab jetzt bitte {deutsch:=>ToLang}"
-			],
-			"slots": [
-				{
-					"name": "ToLang",
-					"description": "Language to switch to",
-					"required": false,
-					"type": "Alice/Languages",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "RebootSystem",
-			"description": "Reboot Alice",
-			"enabledByDefault": true,
-			"utterances": [
-				"Bitte starte das system neu",
-				"Starte deine Systeme neu",
-				"Starte alle Systeme neu",
-				"Neustart des Systems",
-				"Starte dein System neu",
-				"Bitte starte dein System neu",
-				"Bitte reboote dein System",
-				"Führe einen Neustart aus",
-				"Bitte starte dich neu"
-			],
-			"slots": []
-		},
-		{
-			"name": "StopListening",
-			"description": "The user asks Alice to not react anymore for a given time",
-			"enabledByDefault": true,
-			"utterances": [
-				"Lass uns {für eine Stunde:=>Duration} in Frieden",
-				"Hör {20 Minuten lang:=>Duration} nicht auf uns",
-				"Kannst du bitte aufhören zuzuhören",
-				"Könntest du aufhören zuzuhören",
-				"Könntest du bitte aufhören zuzuhören",
-				"Hör {für 15 Minuten:=>Duration} auf uns zuzuhören",
-				"Kannst du uns {für 30 Minuten:=>Duration} in Frieden lassen",
-				"Hör {für 10 Minuten:=>Duration} auf zuzuhören",
-				"Hör nicht mehr zu",
-				"Hör auf, uns zuzuhören",
-				"Hör auf, mir zuzuhören"
-			],
-			"slots": [
-				{
-					"name": "Duration",
-					"description": "How long to ignore the requests",
-					"required": false,
-					"type": "snips/duration",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AddComponent",
-			"description": "The user asks to add a new device for Alice to manage",
-			"enabledByDefault": true,
-			"utterances": [
-				"Füge einen neuen {tasmota:=>Hardware} {Schalter:=>EspType} im {Wohnzimmer:=>Room} hinzu",
-				"Füge eine {tasmota:=>Hardware} vom Typ {Schalter:=>EspType} in der {Küche:=>Room} hinzu",
-				"Bitte füge einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Eingang:=>Room} hinzu",
-				"Ich möchte eine {tasmota:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
-				"Kannst du einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
-				"Füge ein {esp:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
-				"Ich füge ein neues {Schalter:=>EspType} Gerät hinzu",
-				"Könntest du eine neues {alice:=>Hardware} Gerät hinzufügen",
-				"Kannst du bitte ein {esp:=>Hardware} Gerät hinzufügen",
-				"Sei bereit für ein neues {esp:=>Hardware} Gerät",
-				"Kannst du bitte einen {Schalter:=>EspType} basierend auf {esp:=>Hardware} hinzufügen",
-				"Füge ein {esp:=>Hardware} Gerät vom Typ {Schalter:=>EspType} hinzu",
-				"Sei bereit für neue Hardware",
-				"Bitte hör auf neue Hardware",
-				"Bitte verbinde ein neues Gerät",
-				"Füge ein neues {esp:=>Hardware} Gerät vom Typ {pir:=>EspType} hinzu",
-				"Ich möchte einen neuen {satelliten:=>Hardware} registrieren",
-				"Hinzufügen einer neuen Komponente zu deinem System",
-				"Einen neuen {satelliten:=>Hardware} hinzufügen",
-				"Bitte auf neue Geräteverbindung achten",
-				"Kannst du bitte ein neues Gerät hinzufügen",
-				"Ich möchte ein neues Gerät hinzufügen, bitte",
-				"Ich füge einen neue {satelliten:=>Hardware} zu deinem Array hinzu",
-				"Lass uns ein Gerät zu deinem Netzwerk hinzufügen",
-				"Bitte auf neue Geräte achten",
-				"Ich möchte ein Gerät zu deinem Netzwerk hinzufügen"
-			],
-			"slots": [
-				{
-					"name": "Hardware",
-					"description": "The device hardware type",
-					"required": false,
-					"type": "Alice/AliceHardwareTypes",
-					"missingQuestion": ""
-				},
-				{
-					"name": "EspType",
-					"description": "The esp device type",
-					"required": false,
-					"type": "EspTypes",
-					"missingQuestion": ""
-				},
-				{
-					"name": "Room",
-					"description": "The room to add the device to",
-					"required": false,
-					"type": "Alice/Room",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "DoAliceUpdate",
-			"description": "Ask Alice to update herself",
-			"enabledByDefault": true,
-			"utterances": [
-				"Aktualisiere bitte deine {assistent:=>WhatToUpdate} Dateien",
-				"Bitte aktualisiere deine {Dateien:=>WhatToUpdate}",
-				"Mach bitte ein {system:=>WhatToUpdate} Update",
-				"Bitte aktualisiere dein {system:=>WhatToUpdate}",
-				"Aktualisiere {dich selbst:=>WhatToUpdate}",
-				"Aktualisiere deine {Kerndateien:=>WhatToUpdate}",
-				"Aktualisiere die Assistent {Pakete:=>WhatToUpdate}",
-				"Bitte aktualisiere {dich selbst:=>WhatToUpdate}",
-				"Kannst du bitte ein {OS:=>WhatToUpdate} Update durchführen",
-				"Starte ein {snips assistent:=>WhatToUpdate} Update"
-			],
-			"slots": [
-				{
-					"name": "WhatToUpdate",
-					"description": "The component to update",
-					"required": false,
-					"type": "Alice/ComponentToUpdate",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerYesOrNo",
-			"description": "User answers yes or no",
-			"enabledByDefault": false,
-			"utterances": [
-				"{nein:=>Answer}",
-				"{nein danke dir:=>Answer}",
-				"{nein danke:=>Answer}",
-				"{nope:=>Answer}",
-				"{überhaupt nicht:=>Answer}",
-				"{ja:=>Answer}",
-				"{ja bitte:=>Answer}",
-				"{yep:=>Answer}",
-				"{natürlich:=>Answer}",
-				"{klar:=>Answer}"
-			],
-			"slots": [
-				{
-					"name": "Answer",
-					"description": null,
-					"required": false,
-					"type": "Alice/AnswerYesNo",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerEspType",
-			"description": "The user answers the type of ESP device he wants to add",
-			"enabledByDefault": false,
-			"utterances": [
-				"des Typs {präsenz sensor:=>EspType}",
-				"typ {passiver infrarot sensor:=>EspType} bitte",
-				"{pir sensor:=>EspType}",
-				"{pir:=>EspType}",
-				"{Schalter:=>EspType}"
-			],
-			"slots": [
-				{
-					"name": "EspType",
-					"description": "The kind of sensor",
-					"required": false,
-					"type": "EspTypes",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerHardwareType",
-			"description": "The user answers the hardware type to add",
-			"enabledByDefault": false,
-			"utterances": [
-				"{tasmota:=>Hardware} Gerät",
-				"ein {esp:=>Hardware} Gerät",
-				"einen {esp:=>Hardware}",
-				"Typ {alice:=>Hardware} bitte",
-				"{satellit:=>Hardware}"
-			],
-			"slots": [
-				{
-					"name": "Hardware",
-					"description": "The hardware type",
-					"required": false,
-					"type": "Alice/AliceHardwareTypes",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerRoom",
-			"description": "User answers with a room name",
-			"enabledByDefault": false,
-			"utterances": [
-				"in der {küche:=>Room}",
-				"in dem {Wohnzimmer:=>Room}",
-				"{Eingang:=>Room}",
-				"{Büro:=>Room}",
-				"{Keller:=>Room}",
-				"{Badezimmer:=>Room}",
-				"{Schlafzimmer:=>Room}",
-				"{Wohnzimmer:=>Room}",
-				"{Küche:=>Room}"
-			],
-			"slots": [
-				{
-					"name": "Room",
-					"description": null,
-					"required": true,
-					"type": "Alice/Room",
-					"missingQuestion": "What room?"
-				}
-			]
-		},
-		{
-			"name": "AnswerName",
-			"description": "",
-			"enabledByDefault": false,
-			"utterances": [
-				"{john:=>Name}",
-				"{jane:=>Name}",
-				"{doe:=>Name}",
-				"hi ich bin {Laurent:=>Name}",
-				"hey ich bin {Mike:=>Name}",
-				"hallo mein Name ist {Natalija:=>Name}",
-				"Ich bin {Sven:=>Name}",
-				"Du kannst mich {Arthur:=>Name} nennen",
-				"mein Name ist {Chris:=>Name}",
-				"{Kim:=>Name} ist mein Name",
-				"Ihr Name ist {Natalija:=>Name}",
-				"Sein Name ist {Frank:=>Name}",
-				"Er ist {Arthur:=>Name}",
-				"Sie ist {Natalija:=>Name}"
-			],
-			"slots": [
-				{
-					"name": "Name",
-					"description": null,
-					"required": false,
-					"type": "Alice/Name",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerNumber",
-			"description": "",
-			"enabledByDefault": false,
-			"utterances": [
-				"{10:=>Number}",
-				"{5:=>Number}",
-				"{103:=>Number}",
-				"{784:=>Number}",
-				"{9567:=>Number}",
-				"{5:=>Number} {1:=>Number} {3:=>Number}",
-				"{50:=>Number} {342:=>Number} {9:=>Number}",
-				"{1:=>Number} {1:=>Number} {0:=>Number} {5:=>Number}",
-				"{102:=>Number} {895:=>Number} {0:=>Number} {75:=>Number}"
-			],
-			"slots": [
-				{
-					"name": "Number",
-					"description": null,
-					"required": false,
-					"type": "snips/number",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "SpellWord",
-			"description": "User spells a word",
-			"enabledByDefault": false,
-			"utterances": [
-				"{l:=>Letters} {a:=>Letters} {u:=>Letters} {r:=>Letters} {e:=>Letters} {n:=>Letters} {t:=>Letters}",
-				"{r:=>Letters} {o:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {d:=>Letters}",
-				"{p:=>Letters} {l:=>Letters} {a:=>Letters} {n:=>Letters} {e:=>Letters}",
-				"{b:=>Letters} {o:=>Letters} {a:=>Letters} {t:=>Letters}",
-				"{c:=>Letters} {i:=>Letters} {t:=>Letters} {y:=>Letters}",
-				"{c:=>Letters} {o:=>Letters} {n:=>Letters} {s:=>Letters} {t:=>Letters} {i:=>Letters} {t:=>Letters} {u:=>Letters} {t:=>Letters} {i:=>Letters} {o:=>Letters} {n:=>Letters}",
-				"{t:=>Letters} {r:=>Letters} {i:=>Letters} {c:=>Letters} {k:=>Letters}",
-				"{c:=>Letters} {o:=>Letters} {w:=>Letters}"
-			],
-			"slots": [
-				{
-					"name": "Letters",
-					"description": null,
-					"required": false,
-					"type": "Alice/Letters",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerWakewordCutting",
-			"description": "User tells Alice to trim the wakeword a bit more or less",
-			"enabledByDefault": false,
-			"utterances": [
-				"{mehr:=>WakewordCaptureResult}",
-				"Trimm ein wenig {mehr:=>WakewordCaptureResult}",
-				"Trimm etwas {mehr:=>WakewordCaptureResult}",
-				"Du kannst es {kürzer:=>WakewordCaptureResult} machen",
-				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} trimmen",
-				"Kannst du ein wenig {mehr:=>WakewordCaptureResult} kürzen",
-				"Das ist {zu kurz:=>WakewordCaptureResult}",
-				"Mach es {länger:=>WakewordCaptureResult}",
-				"Es muss {länger:=>WakewordCaptureResult} sein",
-				"Kannst du bitte versuchen es {kürzer:=>WakewordCaptureResult} zu machen"
-			],
-			"slots": [
-				{
-					"name": "WakewordCaptureResult",
-					"description": null,
-					"required": false,
-					"type": "Alice/WakewordCaptureResult",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "CallWakeword",
-			"description": "User speaks the Hey Alice wakeword",
-			"enabledByDefault": false,
-			"utterances": [
-				"Hey Alice"
-			],
-			"slots": []
-		},
-		{
-			"name": "AddNewUser",
-			"description": "User adds a new user",
-			"enabledByDefault": true,
-			"utterances": [
-				"Kannst du bitte einen neuen Nutzer hinzufügen",
-				"Füge einen neuen Nutzer als {gast:=>UserAccessLevel} hinzu",
-				"Bitte füge einen neuen {admin:=>UserAccessLevel} hinzu",
-				"Ich muss einen neuen {admin:=>UserAccessLevel} hinzufügen",
-				"Könntest du einen neuen Nutzer zu deiner Datenbank hinzufügen",
-				"Hier ist jemand Neues, den ich dir gerne vorstellen möchte",
-				"Ich präsentiere dir {John:=>Name} unseren {Gast:=>UserAccessLevel}",
-				"Kannst du {Natalija:=>Name} als {admin:=>UserAccessLevel} hinzufügen",
-				"Triff unseren {Arbeiter:=>UserAccessLevel} {Richard:=>Name}",
-				"Ich möchte dass du {Roland:=>Name} kennenlernst",
-				"Ich habe jemanden, den du als neuen Benutzer hinzufügen kannst"
-			],
-			"slots": [
-				{
-					"name": "UserAccessLevel",
-					"description": null,
-					"required": false,
-					"type": "Alice/UserAccessLevel",
-					"missingQuestion": ""
-				},
-				{
-					"name": "Name",
-					"description": null,
-					"required": false,
-					"type": "Alice/Name",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerAccessLevel",
-			"description": "User answers with an access level",
-			"enabledByDefault": false,
-			"utterances": [
-				"{admin:=>UserAccessLevel}",
-				"{standard:=>UserAccessLevel}",
-				"{kind:=>UserAccessLevel}",
-				"{arbeiter:=>UserAccessLevel}",
-				"{gast:=>UserAccessLevel}",
-				"als {gast:=>UserAccessLevel}",
-				"als {default:=>UserAccessLevel} bitte",
-				"mit {gast:=>UserAccessLevel} berechtigungen",
-				"mit {arbeiter:=>UserAccessLevel} Zugriffslevel",
-				"{Kinder:=>UserAccessLevel} Zugriffslevel bitte",
-				"gib ihm {Arbeiter:=>UserAccessLevel} Berechtigungen bitte"
-			],
-			"slots": [
-				{
-					"name": "UserAccessLevel",
-					"description": null,
-					"required": false,
-					"type": "Alice/UserAccessLevel",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
-			"name": "AnswerPercent",
-			"description": "User answers with a percentage",
-			"enabledByDefault": false,
-			"utterances": [
-				"{40:=>Percent}",
-				"{10:=>Percent}%",
-				"{zwanzig:=>Percent} prozent please",
-				"bitte {5:=>Percent} prozent",
-				"{60:=>Percent} prozent",
-				"{fünf und siebzig:=>Percent} prozent bitte"
-			],
-			"slots": [
-				{
-					"name": "Percent",
-					"description": null,
-					"required": false,
-					"type": "snips/number",
-					"missingQuestion": ""
 				}
 			]
 		}
