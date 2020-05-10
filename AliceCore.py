@@ -561,7 +561,7 @@ class AliceCore(AliceSkill):
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
-		if session.siteId != constants.DEFAULT_SITE_ID:
+		if session.siteId != self.getAliceConfig('deviceName'):
 			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
 		else:
 			self.Commons.runRootSystemCommand(['systemctl', 'stop', 'snips-hotword'])
@@ -641,7 +641,7 @@ class AliceCore(AliceSkill):
 					self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
 					return
 
-			if room == constants.DEFAULT_SITE_ID:
+			if room == self.getAliceConfig('deviceName'):
 				self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
 				return
 
@@ -953,7 +953,7 @@ class AliceCore(AliceSkill):
 
 
 	def unmuteSite(self, siteId):
-		if siteId != constants.DEFAULT_SITE_ID:
+		if siteId != self.getAliceConfig('deviceName'):
 			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
 		else:
 			self.Commons.runRootSystemCommand(['systemctl', 'start', 'snips-hotword'])
