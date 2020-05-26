@@ -4,6 +4,38 @@
 	"description": "Contains intents that manage root stuff of Project Alice",
 	"slotTypes": [
 		{
+			"name": "Alice/PersonalPronoun",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+				{
+					"value": "i"
+				},
+				{
+					"value": "you"
+				},
+				{
+					"value": "he"
+				},
+				{
+					"value": "she"
+				},
+				{
+					"value": "it"
+				},
+				{
+					"value": "we"
+				},
+				{
+					"value": "you"
+				},
+				{
+					"value": "they"
+				}
+			]
+		},
+		{
 			"name": "Alice/Countries",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,

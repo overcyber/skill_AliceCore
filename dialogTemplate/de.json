@@ -482,6 +482,62 @@
 	],
 	"slotTypes": [
 		{
+			"name": "Alice/PersonalPronoun",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+				{
+					"value": "i",
+					"synonyms": [
+						"ich"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"du"
+					]
+				},
+				{
+					"value": "he",
+					"synonyms": [
+						"er"
+					]
+				},
+				{
+					"value": "she",
+					"synonyms": [
+						"sie"
+					]
+				},
+				{
+					"value": "it",
+					"synonyms": [
+						"es"
+					]
+				},
+				{
+					"value": "we",
+					"synonyms": [
+						"wir"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"ihr"
+					]
+				},
+				{
+					"value": "they",
+					"synonyms": [
+						"Sie"
+					]
+				}
+			]
+		},
+		{
 			"name": "Alice/Countries",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,

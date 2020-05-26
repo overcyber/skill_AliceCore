@@ -4,6 +4,64 @@
 	"description": "Contient les discussions qui permettent de gérer l'administration globale d'Alice",
 	"slotTypes": [
 		{
+			"name": "Alice/PersonalPronoun",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": true,
+			"values": [
+				{
+					"value": "i",
+					"synonyms": [
+						"je",
+						"j'"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"tu"
+					]
+				},
+				{
+					"value": "he",
+					"synonyms": [
+						"il"
+					]
+				},
+				{
+					"value": "she",
+					"synonyms": [
+						"elle"
+					]
+				},
+				{
+					"value": "it",
+					"synonyms": [
+						"il"
+					]
+				},
+				{
+					"value": "we",
+					"synonyms": [
+						"nous"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"vous"
+					]
+				},
+				{
+					"value": "they",
+					"synonyms": [
+						"ils",
+						"elles"
+					]
+				}
+			]
+		},
+		{
 			"name": "Alice/Countries",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,

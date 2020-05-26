@@ -4,6 +4,57 @@
 	"description": "Contiene gli intent che sono alla base del funzionamento base di Alice",
 	"slotTypes": [
 		{
+			"name": "Alice/PersonalPronoun",
+			"matchingStrictness": null,
+			"automaticallyExtensible": false,
+			"useSynonyms": false,
+			"values": [
+								{
+					"value": "i",
+					"synonyms": [
+						"io"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"tu"
+					]
+				},
+				{
+					"value": "he",
+					"synonyms": [
+						"lui"
+					]
+				},
+				{
+					"value": "she",
+					"synonyms": [
+						"lei"
+					]
+				},
+				{
+					"value": "we",
+					"synonyms": [
+						"noi"
+					]
+				},
+				{
+					"value": "you",
+					"synonyms": [
+						"voi"
+					]
+				},
+				{
+					"value": "they",
+					"synonyms": [
+						"loro",
+						"lora"
+					]
+				}
+			]
+		},
+		{
 			"name": "Alice/Countries",
 			"matchingStrictness": null,
 			"automaticallyExtensible": false,
