@@ -111,22 +111,22 @@
 			"description": "The user asks to add a new device for Alice to manage",
 			"enabledByDefault": true,
 			"utterances": [
-				"Füge einen neuen {tasmota:=>Hardware} {Schalter:=>EspType} im {Wohnzimmer:=>Room} hinzu",
-				"Füge eine {tasmota:=>Hardware} vom Typ {Schalter:=>EspType} in der {Küche:=>Room} hinzu",
-				"Bitte füge einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Eingang:=>Room} hinzu",
-				"Ich möchte eine {tasmota:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
-				"Kannst du einen {Schalter:=>EspType} {tasmota:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
-				"Füge ein {esp:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
-				"Ich füge ein neues {Schalter:=>EspType} Gerät hinzu",
+				"Füge einen neuen {Satelliten:=>Hardware} im {Wohnzimmer:=>Room} hinzu",
+				"Füge eine {satelliten:=>Hardware} in der {Küche:=>Room} hinzu",
+				"Bitte füge einen {satelliten:=>Hardware} im {Eingang:=>Room} hinzu",
+				"Ich möchte eine {alice:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
+				"Kannst du einen {alice satelliten:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
+				"Füge ein {alice:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
+				"Ich füge ein neues {alice:=>Hardware} Gerät hinzu",
 				"Könntest du eine neues {alice:=>Hardware} Gerät hinzufügen",
-				"Kannst du bitte ein {esp:=>Hardware} Gerät hinzufügen",
-				"Sei bereit für ein neues {esp:=>Hardware} Gerät",
-				"Kannst du bitte einen {Schalter:=>EspType} basierend auf {esp:=>Hardware} hinzufügen",
-				"Füge ein {esp:=>Hardware} Gerät vom Typ {Schalter:=>EspType} hinzu",
+				"Kannst du bitte ein {alice:=>Hardware} Gerät hinzufügen",
+				"Sei bereit für einen neuen {satelliten:=>Hardware}",
+				"Kannst du bitte einen {satelliten:=>Hardware} hinzufügen",
+				"Füge ein {alice:=>Hardware} Gerät hinzu",
 				"Sei bereit für neue Hardware",
 				"Bitte hör auf neue Hardware",
 				"Bitte verbinde ein neues Gerät",
-				"Füge ein neues {esp:=>Hardware} Gerät vom Typ {pir:=>EspType} hinzu",
+				"Füge einen neuen {alice:=>Hardware} hinzu",
 				"Ich möchte einen neuen {satelliten:=>Hardware} registrieren",
 				"Hinzufügen einer neuen Komponente zu deinem System",
 				"Einen neuen {satelliten:=>Hardware} hinzufügen",
@@ -144,13 +144,6 @@
 					"description": "The device hardware type",
 					"required": false,
 					"type": "Alice/AliceHardwareTypes",
-					"missingQuestion": ""
-				},
-				{
-					"name": "EspType",
-					"description": "The esp device type",
-					"required": false,
-					"type": "EspTypes",
 					"missingQuestion": ""
 				},
 				{
@@ -215,34 +208,12 @@
 			]
 		},
 		{
-			"name": "AnswerEspType",
-			"description": "The user answers the type of ESP device he wants to add",
-			"enabledByDefault": false,
-			"utterances": [
-				"des Typs {präsenz sensor:=>EspType}",
-				"typ {passiver infrarot sensor:=>EspType} bitte",
-				"{pir sensor:=>EspType}",
-				"{pir:=>EspType}",
-				"{Schalter:=>EspType}"
-			],
-			"slots": [
-				{
-					"name": "EspType",
-					"description": "The kind of sensor",
-					"required": false,
-					"type": "EspTypes",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
 			"name": "AnswerHardwareType",
 			"description": "The user answers the hardware type to add",
 			"enabledByDefault": false,
 			"utterances": [
-				"{tasmota:=>Hardware} Gerät",
-				"ein {esp:=>Hardware} Gerät",
-				"einen {esp:=>Hardware}",
+				"ein {Alice Satelliten:=>Hardware} Gerät",
+				"einen {Satelliten:=>Hardware}",
 				"Typ {alice:=>Hardware} bitte",
 				"{satellit:=>Hardware}"
 			],
@@ -16183,17 +16154,34 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "esp",
+					"value": "device_espSwitch",
 					"synonyms": [
-						"tasmota"
+						"tasmota schalter",
+						"esp schalter",
+						"tasmota knopf",
+						"esp knopf",
+						"tasmota taster",
+						"esp taster"
 					]
 				},
 				{
-					"value": "satellite",
+					"value": "device_espPIR",
+					"synonyms": [
+						"tasmota bewegungssensor",
+						"esp bewegungssensor",
+						"tasmota bewegungsmelder",
+						"esp bewegungsmelder",
+						"tasmota pir",
+						"esp pir"
+					]
+				},
+				{
+					"value": "device_AliceSatellite",
 					"synonyms": [
 						"alice",
 						"satellit",
-						"satelliten"
+						"satelliten",
+						"Alice Satellit"
 					]
 				},
 				{
@@ -16555,26 +16543,6 @@
 				},
 				{
 					"value": "überall"
-				}
-			]
-		},
-		{
-			"name": "EspTypes",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "Schalter",
-					"synonyms": []
-				},
-				{
-					"value": "pir",
-					"synonyms": [
-						"pir sensor",
-						"passiver infrarot sensor",
-						"präsenz sensor"
-					]
 				}
 			]
 		},

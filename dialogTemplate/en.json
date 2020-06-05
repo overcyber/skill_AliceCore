@@ -15490,15 +15490,35 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "esp",
+					"value": "device_espSwitch",
 					"synonyms": [
-						"tasmota"
+						"tasmota switch",
+						"esp switch",
+						"tasmota trigger",
+						"esp switch"
 					]
 				},
 				{
-					"value": "satellite",
+					"value": "device_espPIR",
 					"synonyms": [
-						"alice"
+						"tasmota movement sensor",
+						"esp movement sensor",
+						"tasmota pir",
+						"esp pir",
+						"tasmota pir sensor",
+						"esp pir sensor",
+						"tasmota passive infrared sensor",
+						"esp passive infrared sensor",
+						"tasmota presence sensor",
+						"esp presence sensor"
+					]
+				},
+				{
+					"value": "device_AliceSatellite",
+					"synonyms": [
+						"satellite",
+						"alice",
+						"alice satellite"
 					]
 				},
 				{
@@ -15911,26 +15931,6 @@
 				},
 				{
 					"value": "garden"
-				}
-			]
-		},
-		{
-			"name": "EspTypes",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "switch",
-					"synonyms": []
-				},
-				{
-					"value": "pir",
-					"synonyms": [
-						"pir sensor",
-						"passive infrared sensor",
-						"presence sensor"
-					]
 				}
 			]
 		},
@@ -28183,22 +28183,22 @@
 			"description": "The user asks to add a new device for Alice to manage",
 			"enabledByDefault": true,
 			"utterances": [
-				"add a new {tasmota:=>Hardware} {switch:=>EspType} in the {living room:=>Room}",
-				"add a {tasmota:=>Hardware} of type {switch:=>EspType} in the {kitchen:=>Room}",
-				"please add a {switch:=>EspType} {tasmota:=>Hardware} in the {entrance:=>Room}",
-				"i would like to add a {tasmota:=>Hardware} in the {bathroom:=>Room}",
-				"can you add a {switch:=>EspType} {tasmota:=>Hardware} in the {bedroom:=>Room}",
-				"add an {esp:=>Hardware} device in my {office:=>Room}",
-				"i'm adding a new {switch:=>EspType} device",
+				"add a new {alice:=>Hardware} in the {living room:=>Room}",
+				"add a {alice:=>Hardware} in the {kitchen:=>Room}",
+				"please add an {alice:=>Hardware} in the {entrance:=>Room}",
+				"i would like to add a {satellite:=>Hardware} in the {bathroom:=>Room}",
+				"can you add a {satellite:=>Hardware} in the {bedroom:=>Room}",
+				"add an {satellite:=>Hardware} device in my {office:=>Room}",
+				"i'm adding a new {alice:=>Hardware} device",
 				"could you add a new {alice:=>Hardware} device",
-				"can you add an {esp:=>Hardware} device please",
-				"be ready for a new {esp:=>Hardware} device",
-				"can you please add a {switch:=>EspType} based on {esp:=>Hardware}",
-				"add an {esp:=>Hardware} device of type {switch:=>EspType}",
+				"can you add an {alice:=>Hardware} device please",
+				"be ready for a new {alice:=>Hardware} device",
+				"can you please add a {satellite:=>Hardware}",
+				"add an {alice:=>Hardware} device",
 				"be ready for new hardware",
 				"listen for new hardware please",
 				"please connect a new device",
-				"add a new {esp:=>Hardware} device of type {pir:=>EspType}",
+				"add a new {alice:=>Hardware} device",
 				"i want to register a new {satellite:=>Hardware}",
 				"adding a new component to your system",
 				"adding a new {satellite:=>Hardware}",
@@ -28217,13 +28217,6 @@
 					"description": "The device hardware type",
 					"required": false,
 					"type": "Alice/AliceHardwareTypes",
-					"missingQuestion": ""
-				},
-				{
-					"name": "EspType",
-					"description": "The esp device type",
-					"required": false,
-					"type": "EspTypes",
 					"missingQuestion": ""
 				},
 				{
@@ -28288,33 +28281,12 @@
 			]
 		},
 		{
-			"name": "AnswerEspType",
-			"description": "The user answers the type of ESP device he wants to add",
-			"enabledByDefault": false,
-			"utterances": [
-				"of type {presence sensor:=>EspType}",
-				"type {passive infrared sensor:=>EspType} please",
-				"{pir sensor:=>EspType}",
-				"{pir:=>EspType}",
-				"{switch:=>EspType}"
-			],
-			"slots": [
-				{
-					"name": "EspType",
-					"description": "The kind of sensor",
-					"required": false,
-					"type": "EspTypes",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
 			"name": "AnswerHardwareType",
 			"description": "The user answers the hardware type to add",
 			"enabledByDefault": false,
 			"utterances": [
-				"{tasmota:=>Hardware} device",
-				"an {esp:=>Hardware} device",
+				"{satellite:=>Hardware} device",
+				"an {alice:=>Hardware} device",
 				"type {alice:=>Hardware} please",
 				"{satellite:=>Hardware}"
 			],

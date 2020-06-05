@@ -15496,17 +15496,57 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "esp",
+					"value": "device_espSwitch",
 					"synonyms": [
-						"tasmota",
-						"E S P",
-						"Eux aisse pé"
+						"tasmota souitche",
+						"tasmota interrupteur",
+						"E S P souitche",
+						"E S P interrupteur",
+						"ESP souitche",
+						"ESP interrupteur",
+						"Eux aisse pé souitche",
+						"Eux aisse pé interrupteur"
 					]
 				},
 				{
-					"value": "satellite",
+					"value": "esp",
 					"synonyms": [
-						"alice"
+						"tasmota détecteur de présence",
+						"tasmota détecteur infrarouge",
+						"tasmota détecteur de mouvement",
+						"tasmota apteur de mouvement",
+						"tasmota capteur infrarouge",
+						"tasmota capteur de présence",
+						"tasmota pir sensor",
+						"E S P détecteur de présence",
+						"E S P détecteur infrarouge",
+						"E S P détecteur de mouvement",
+						"E S P apteur de mouvement",
+						"E S P capteur infrarouge",
+						"E S P capteur de présence",
+						"E S P pir sensor",
+						"ESP détecteur de présence",
+						"ESP détecteur infrarouge",
+						"ESP détecteur de mouvement",
+						"ESP apteur de mouvement",
+						"ESP capteur infrarouge",
+						"ESP capteur de présence",
+						"ESP pir sensor",
+						"Eux aisse pé détecteur de présence",
+						"Eux aisse pé détecteur infrarouge",
+						"Eux aisse pé détecteur de mouvement",
+						"Eux aisse pé apteur de mouvement",
+						"Eux aisse pé capteur infrarouge",
+						"Eux aisse pé capteur de présence",
+						"Eux aisse pé pir sensor"
+					]
+				},
+				{
+					"value": "device_AliceSatellite",
+					"synonyms": [
+						"alice",
+						"satellite",
+						"alice satellite"
 					]
 				},
 				{
@@ -15910,33 +15950,6 @@
 				},
 				{
 					"value": "jardin"
-				}
-			]
-		},
-		{
-			"name": "EspTypes",
-			"matchingStrictness": null,
-			"automaticallyExtensible": false,
-			"useSynonyms": true,
-			"values": [
-				{
-					"value": "switch",
-					"synonyms": [
-						"souitche",
-						"interrupteur"
-					]
-				},
-				{
-					"value": "pir",
-					"synonyms": [
-						"détecteur de présence",
-						"détecteur infrarouge",
-						"détecteur de mouvement",
-						"capteur de mouvement",
-						"capteur infrarouge",
-						"capteur de présence",
-						"pir sensor"
-					]
 				}
 			]
 		},
@@ -20518,8 +20531,8 @@
 			"description": "L'utilisateur précise l'appareil à ajouter",
 			"enabledByDefault": false,
 			"utterances": [
-				"appareil {tasmota:=>Hardware}",
-				"appareil de type {esp:=>Hardware}",
+				"appareil {alice:=>Hardware}",
+				"appareil de type {alice:=>Hardware}",
 				"divaillce {alice:=>Hardware}",
 				"{satellite:=>Hardware}"
 			],
@@ -20562,44 +20575,24 @@
 			]
 		},
 		{
-			"name": "AnswerEspType",
-			"description": "L'utilisateur précise l'appareil de type ESP qu'il souhaite ajouter",
-			"enabledByDefault": false,
-			"utterances": [
-				"de type {détecteur de présence:=>EspType}",
-				"type {détecteur infrarouge:=>EspType} s'il te plaît",
-				"{pir sensor:=>EspType}",
-				"{capteur de mouvement:=>EspType}"
-			],
-			"slots": [
-				{
-					"name": "EspType",
-					"description": "Le type de capteur ESP",
-					"required": false,
-					"type": "EspTypes",
-					"missingQuestion": ""
-				}
-			]
-		},
-		{
 			"name": "AddComponent",
 			"description": "L'utilisateur demande à Alice de gérer un nouvel appareil",
 			"enabledByDefault": true,
 			"utterances": [
-				"ajouter un nouvel {interrupteur:=>EspType} {tasmota:=>Hardware} dans {la chambre:=>Room}",
-				"ajouter un nouvel {interrupteur:=>EspType} de type {tasmota:=>Hardware} dans {la cuisine:=>Room}",
-				"ajouter un {tasmota:=>Hardware} de type {switch:=>EspType} dans la {salle de bain:=>Room}",
-				"ajouter un {tasmota:=>Hardware} de type {switch:=>EspType} dans la {salle de bain:=>Room} s'il te plaît",
-				"j'aimerais ajouter un {tasmota:=>Hardware} dans la {salle de bain:=>Room}",
-				"peux-tu ajouter un {souitche:=>EspType} {tasmota:=>Hardware} dans la {chambre à coucher:=>Room}",
-				"ajoute un {esp:=>Hardware} dans mon {bureau:=>Room}",
+				"ajouter un nouvel {alice:=>Hardware} dans {la chambre:=>Room}",
+				"ajouter un nouvel {alice:=>Hardware} dans {la cuisine:=>Room}",
+				"ajouter un {alice:=>Hardware} dans la {salle de bain:=>Room}",
+				"ajouter un {alice:=>Hardware} dans la {salle de bain:=>Room} s'il te plaît",
+				"j'aimerais ajouter un {alice:=>Hardware} dans la {salle de bain:=>Room}",
+				"peux-tu ajouter un {alice:=>Hardware} dans la {chambre à coucher:=>Room}",
+				"ajoute un {alice:=>Hardware} dans mon {bureau:=>Room}",
 				"peux-tu ajouter un {alice:=>Hardware}",
-				"peux-tu ajouter un capteur {esp:=>Hardware}",
+				"peux-tu ajouter un capteur {alice:=>Hardware}",
 				"peux-tu ajouter un satellite {alice:=>Hardware}",
-				"peux-tu ajouter un appareil {esp:=>Hardware} s'il te plaît",
-				"prépare toi pour un nouvel {esp:=>Hardware}",
-				"prépare toi pour un nouvel appareil de type {esp:=>Hardware}",
-				"ajoute un {interrupteur:=>EspType} basé sur {esp:=>Hardware}",
+				"peux-tu ajouter un appareil {alice:=>Hardware} s'il te plaît",
+				"prépare toi pour un nouvel {alice:=>Hardware}",
+				"prépare toi pour un nouvel appareil de type {alice:=>Hardware}",
+				"ajoute un {alice:=>Hardware}",
 				"soit prêt pour un nouvel appareil",
 				"soit prêt à accueillir un nouvel appareil",
 				"prépare toi à accueillir un nouvel appareil",
@@ -20608,7 +20601,7 @@
 				"détecte un nouveau capteur",
 				"connecte un nouvel appareil",
 				"connecte un nouveau capteur",
-				"je veux enregistrer un nouveau {satellite:=>Hardware}",
+				"je veux enregistrer un nouveau {alice:=>Hardware}",
 				"ajoute un nouveau composant à ton système",
 				"ajoute un nouveau {satellite:=>Hardware}",
 				"écoute les nouveaux appareil à ajouter",
@@ -20616,7 +20609,7 @@
 				"peux-tu ajouter un nouvel appareil s'il te plaît",
 				"peux-tu ajouter un nouveau capteur s'il te plaît",
 				"peux-tu ajouter un nouveau capteur",
-				"j'ajoute un nouveau {satellite:=>Hardware} à ta collection",
+				"j'ajoute un nouveau {alice:=>Hardware} à ta collection",
 				"ajoutons un nouvel appareil au réseau",
 				"ajoute un {satellite:=>Hardware}"
 			],
@@ -20626,13 +20619,6 @@
 					"description": "Le type d'appareil à ajouter",
 					"required": false,
 					"type": "Alice/AliceHardwareTypes",
-					"missingQuestion": ""
-				},
-				{
-					"name": "EspType",
-					"description": "Le type d'appareil à ajouter issu de la catégorie esp",
-					"required": false,
-					"type": "EspTypes",
 					"missingQuestion": ""
 				},
 				{

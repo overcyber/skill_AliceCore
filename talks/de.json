@@ -65,15 +65,15 @@
 	],
 	"confirmAssistantUpdate": [
 		"Ok, wird gemacht! Beachte, dass es eine Weile dauern kann!",
-		"Sicher, ich werde meine Bundles aktualisieren. Dies wird einige Zeit dauern!"
+		"Sicher, ich werde meine Software aktualisieren. Dies wird einige Zeit dauern!"
 	],
 	"bundleUpdateNoCredentials": [
 		"Es tut mir Leid, aber ich kann nicht, da du mir die Anmeldedaten der Snips-Konsole nicht zur Verfügung gestellt hast."
 	],
 	"confirmBundleUpdate": {
 		"default": [
-			"Ok, ich habe gerade meine Bundles aktualisiert.",
-			"Meine Bundles sind jetzt aktualisiert"
+			"Ok, ich habe gerade meine Software aktualisiert.",
+			"Meine Software ist jetzt aktualisiert"
 		],
 		"short": [
 			"Fertig"
@@ -81,8 +81,8 @@
 	},
 	"bundleUpdateFailed": {
 		"default": [
-			"Sorry, ich konnte meine Bundles nicht aktualisieren.",
-			"Es tut mir leid, etwas ist schief gelaufen, als ich meine Bundles aktualisiert habe."
+			"Sorry, ich konnte meine Software nicht aktualisieren.",
+			"Es tut mir leid, etwas ist schief gelaufen, als ich meine Software aktualisiert habe."
 		],
 		"short": [
 			"Fehler"
@@ -198,32 +198,11 @@
 		"Welche Art von Gerät möchtest du hinzufügen?",
 		"Sicher, welche Art von Gerät?"
 	],
-	"whatESP": [
-		"Und welche Art von ESP-Gerät? Schalter, PIR, et cetera?"
-	],
-	"connectESPForFlashing": [
-		"Großartig, ich kann den gesamten Prozess übernehmen. Schließen Sie das ESP-Gerät im Blitzmodus direkt an einen meiner USB-Ports an."
-	],
-	"espFlashedUnplugReplug": [
-		"Der Flashprozess ist abgeschlossen! Ich werde nun das Gerät für dich konfigurieren. Bitte, zieh den Stecker und steck ihn wieder ein!"
-	],
-	"espFoundReadyForConf": [
-		"Gefunden, danke! Ich konfiguriere es jetzt!"
-	],
 	"usbDeviceFound": [
 		"Verstanden! Warte einen Moment, das wird eine Weile dauern!"
 	],
-	"noESPFound": [
-		"Ich konnte kein ESP-Gerät an meinen USB-Ports finden, ich breche die Geräteregistrierung ab. Falls du es doch verbunden hast, stelle sicher dass du ein USB-Kabel für Daten nutzt."
-	],
-	"espFailed": [
-		"Die Installation deines esp-Geräts ist leider fehlgeschlagen, das tut mir wirklich leid."
-	],
 	"unknownHardware": [
 		"Es tut mir leid, ich kenne diese Art von Hardware nicht."
-	],
-	"espFlashingDone": [
-		"Ok, ich habe dein esp-Gerät mit Tasmota geflasht, du kannst es jetzt ausstecken und einschalten."
 	],
 	"whatConfig": [
 		"Du hast keine Konfiguration angegeben, also sag mir, welche ich nutzen soll?",
@@ -431,6 +410,12 @@
 		"Identifizierung... erfolgreich!"
 	],
 	"noWifiConf": [
-		"Ich habe keine wlan Einstellungen gefunden. Bitte füge es ein und probier nochmals."
+		"Ich habe keine wlan Einstellungen gefunden. Bitte füge sie ein und probier nochmals."
+	],
+	"maxDeviceOfTypeReached": [
+		"Entschuldigung, das Limit für diesen Gerätetyp liegt bei {}"
+	],
+	"maxDevicePerLocationReached": [
+		"Das Limit für diesen Gerätetyp liegt pro Lokation bei {}"
 	]
 }
