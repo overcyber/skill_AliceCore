@@ -18,6 +18,8 @@ from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
 
+from core.device.model.DeviceException import maxDevicePerLocationReached, maxDeviceOfTypeReached, requiresWIFISettings
+
 
 class AliceCore(AliceSkill):
 
@@ -573,7 +575,6 @@ class AliceCore(AliceSkill):
 
 		deviceTypeName = session.slotValue('Hardware')
 		room = session.slotValue('Room')
-		location = self.LocationManager.getLocationWithName(name=room)
 
 		if not deviceTypeName:
 			self.continueDialog(
@@ -584,6 +585,7 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
+		self.logInfo(f'trying to add a so called "{deviceTypeName}"')
 
 		deviceType = self.DeviceManager.getDeviceTypeByName(name=deviceTypeName)
 		if not deviceType:
@@ -596,6 +598,9 @@ class AliceCore(AliceSkill):
 			)
 			return
 
+		self.logInfo(f'guess they ment {deviceType.id}, or {deviceType.name}')
+		self.logInfo(f'the room is "{room}", let me check...')
+
 		if not room:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -605,6 +610,20 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
+
+		location = self.LocationManager.getLocationWithName(name=room)
+
+		if not location:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whichRoom'),
+				intentFilter=[self._INTENT_ANSWER_ROOM],
+				currentDialogState='specifyingRoom',
+				probabilityThreshold=0.1
+			)
+			return
+
+		self.logInfo(f'adding it to location{location.id}')
 
 		# new {
 		try:

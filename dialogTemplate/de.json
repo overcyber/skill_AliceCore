@@ -16176,6 +16176,25 @@
 					]
 				},
 				{
+					"value": "device_espEnvSensor",
+					"synonyms": [
+						"tasmota Thermometer",
+						"esp Thermometer",
+						"tasmota Umgebungssensor",
+						"esp Umgebungssensor",
+						"tasmota mbe 280",
+						"esp mbe 280",
+						"tasmota dht 11",
+						"esp dht 11",
+						"tasmota dht 22",
+						"esp dht 22",
+						"tasmota dht",
+						"esp dht",
+						"tasmota mbe",
+						"esp mbe"
+					]
+				},
+				{
 					"value": "device_AliceSatellite",
 					"synonyms": [
 						"alice",
