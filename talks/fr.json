@@ -254,49 +254,14 @@
 			"Oui, mais quel genre d'appareil?"
 		]
 	},
-	"whatESP": {
-		"default": [
-			"Et quel genre d'ESP? Bouton, PIR, et cetera?"
-		]
-	},
-	"connectESPForFlashing": {
-		"default": [
-			"Super, je peux m'en occuper entièrement! Connecte l'appareil en mode flash directement dans un de mes ports USB"
-		]
-	},
-	"espFlashedUnplugReplug": {
-		"default": [
-			"Le flash s'est bien passé! Je vais maintenant configurer l'appareil pour toi. Débranche et rebranche le s'il te plait"
-		]
-	},
-	"espFoundReadyForConf": {
-		"default": [
-			"J'ai trouvé, merci! Je le configure!"
-		]
-	},
 	"usbDeviceFound": {
 		"default": [
 			"Je l'ai trouvé! Relaxe un moment, ça va prendre un peu de temps!"
 		]
 	},
-	"noESPFound": {
-		"default": [
-			"Je n'ai pas pu trouver d'appareil ESP sur mes ports USB, j'annule l'ajout d'appareil. Si tu l'as connecté, assure toi d'utiliser un cable usb de données."
-		]
-	},
-	"espFailed": {
-		"default": [
-			"Je n'ai pas pu installer ton ESP, je suis vraiment désolée"
-		]
-	},
 	"unknownHardware": {
 		"default": [
 			"Désolée, je ne connais pas ce type d'appareil"
-		]
-	},
-	"espFlashingDone": {
-		"default": [
-			"Ok, j'ai flashé ton appareil avec Tasmota. Tu peux le débrancher et le mettre en fonction"
 		]
 	},
 	"whatConfig": {
@@ -513,5 +478,11 @@
 	],
 	"noWifiConf": [
 		"Je ne trouve pas de configurations pour le wifi. Ajoute les et recommence."
+	],
+	"maxDeviceOfTypeReached": [
+		"Sorry, the total limit for this device type is {}"
+	],
+	"maxDevicePerLocationReached": [
+		"The limit for this device type per location is {}"
 	]
 }

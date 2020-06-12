@@ -18,6 +18,8 @@ from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
 
+from core.device.model.DeviceException import maxDevicePerLocationReached, maxDeviceOfTypeReached, requiresWIFISettings
+
 
 class AliceCore(AliceSkill):
 
@@ -570,14 +572,11 @@ class AliceCore(AliceSkill):
 
 
 	def addDeviceIntent(self, session: DialogSession):
-		if self.DeviceManager.isBusy():
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-			return
 
-		hardware = session.slotValue('Hardware')
-		espType = session.slotValue('EspType')
+		deviceTypeName = session.slotValue('Hardware')
 		room = session.slotValue('Room')
-		if not hardware:
+
+		if not deviceTypeName:
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('whatHardware'),
@@ -586,16 +585,21 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
+		self.logInfo(f'trying to add a so called "{deviceTypeName}"')
 
-		if hardware == 'esp' and not espType:
+		deviceType = self.DeviceManager.getDeviceTypeByName(name=deviceTypeName)
+		if not deviceType:
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('whatESP'),
-				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE, self._INTENT_ANSWER_ESP_TYPE],
-				currentDialogState='specifyingEspType',
-				probabilityThreshold = 0.1
+				text=self.randomTalk('unknownHardware'),
+				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
+				currentDialogState='specifyingHardware',
+				probabilityThreshold=0.1
 			)
 			return
+
+		self.logInfo(f'guess they ment {deviceType.id}, or {deviceType.name}')
+		self.logInfo(f'the room is "{room}", let me check...')
 
 		if not room:
 			self.continueDialog(
@@ -607,56 +611,40 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		if hardware == 'esp':
-			if not self.SkillManager.isSkillActive('Tasmota'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireTasmotaSkill'))
+		location = self.LocationManager.getLocationWithName(name=room)
 
-			elif not self.getAliceConfig('ssid'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
+		if not location:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whichRoom'),
+				intentFilter=[self._INTENT_ANSWER_ROOM],
+				currentDialogState='specifyingRoom',
+				probabilityThreshold=0.1
+			)
+			return
 
-			elif self.DeviceManager.isBusy():
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
+		self.logInfo(f'adding it to location{location.id}')
 
-			elif not self.DeviceManager.startTasmotaFlashingProcess(self.Commons.cleanRoomNameToSiteId(room), espType, session):
-				self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('espFailed'), session.siteId])
+		# new {
+		try:
+			device = self.DeviceManager.addNewDevice(deviceTypeID=deviceType.id, locationID=location.id)
 
-		elif hardware == 'zigbee':
-			if not self.SkillManager.isSkillActive('Zigbee2Mqtt'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('requireZigbeeSkill'))
-				return
-
-			if self.DeviceManager.isBusy():
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-				return
-
-			self.DeviceManager.addZigBeeDevice()
-
-		elif hardware == 'satellite':
-			if not self.getAliceConfig('ssid'):
-				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
-				return
-
-			for satellite in self.DeviceManager.getDevicesByRoom(room):
-				if satellite.deviceType.lower() == 'alicesatellite':
-					self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
-					return
-
-			if room == self.getAliceConfig('deviceName'):
-				self.endDialog(sessionId=session.sessionId, text=self.TalkManager.randomTalk('maxOneAlicePerRoom', skill='system'))
-				return
-
-			if self.DeviceManager.startBroadcastingForNewDevice(self.Commons.cleanRoomNameToSiteId(room), session.siteId):
+			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnSiteId=session.siteId, session=session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-		else:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('unknownHardware'),
-				intentFilter=[self._INTENT_ANSWER_HARDWARE_TYPE],
-				currentDialogState='specifyingHardware',
-				probabilityThreshold=0.1
-			)
+		except maxDevicePerLocationReached as e:
+			self.logError(f'Failed adding device: {e}')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDevicePerLocationReached', replace={e.maxAmount} ))
+		except maxDeviceOfTypeReached as e:
+			self.logError(f'Failed adding device: {e}')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDeviceOfTypeReached', replace={e.maxAmount}))
+		except requiresWIFISettings as e:
+			self.logError(f'Failed adding device: {e}')
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
+		except Exception as e:
+			self.logError(f'Failed adding device: {e}')
+		# new }
 
 
 	def confirmReboot(self, session: DialogSession):
