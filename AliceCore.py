@@ -611,7 +611,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		location = self.LocationManager.getLocationWithName(name=room)
+		location = self.LocationManager.getLocation(room=room)
 
 		if not location:
 			self.continueDialog(
