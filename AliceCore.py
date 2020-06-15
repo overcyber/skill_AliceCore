@@ -18,7 +18,7 @@ from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
 
-from core.device.model.DeviceException import maxDevicePerLocationReached, maxDeviceOfTypeReached, requiresWIFISettings
+from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
 
 
 class AliceCore(AliceSkill):
@@ -633,13 +633,13 @@ class AliceCore(AliceSkill):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
-		except maxDevicePerLocationReached as e:
+		except MaxDevicePerLocationReached as e:
 			self.logError(f'Failed adding device: {e}')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDevicePerLocationReached', replace={e.maxAmount} ))
-		except maxDeviceOfTypeReached as e:
+		except MaxDeviceOfTypeReached as e:
 			self.logError(f'Failed adding device: {e}')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDeviceOfTypeReached', replace={e.maxAmount}))
-		except requiresWIFISettings as e:
+		except RequiresWIFISettings as e:
 			self.logError(f'Failed adding device: {e}')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
 		except Exception as e:
