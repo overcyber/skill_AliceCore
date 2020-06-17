@@ -710,7 +710,6 @@ class AliceCore(AliceSkill):
 
 	def onStart(self):
 		super().onStart()
-		self.changeFeedbackSound(inDialog=False)
 
 		if not self.UserManager.users:
 			if not self._delayed:
@@ -752,7 +751,6 @@ class AliceCore(AliceSkill):
 
 
 	def onSessionStarted(self, session: DialogSession):
-		self.changeFeedbackSound(inDialog=True, siteId=session.siteId)
 
 		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != DialogState('userAuth'):
 			self.DialogManager.toggleFeedbackSound(state='on')
@@ -820,7 +818,6 @@ class AliceCore(AliceSkill):
 
 	def onSessionEnded(self, session: DialogSession):
 		if not self.ThreadManager.getEvent('AddingWakeword').isSet():
-			self.changeFeedbackSound(inDialog=False, siteId=session.siteId)
 			self.onSessionTimeout(session)
 
 
@@ -982,18 +979,6 @@ class AliceCore(AliceSkill):
 	def _confirmLangSwitch(self, siteId: str):
 		self.publish(topic='hermes/leds/onStop', payload={'siteId': siteId})
 		self.say(text=self.randomTalk('langSwitch'), siteId=siteId)
-
-
-	# noinspection PyUnusedLocal
-	def changeFeedbackSound(self, inDialog: bool, siteId: str = 'all'):
-		if not Path(self.Commons.rootDir(), 'assistant').exists():
-			return
-
-		# Unfortunately we can't yet get rid of the feedback sound because Alice hears herself finishing the sentence and capturing part of it
-		state = '_ask' if inDialog else ''
-
-		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/start_of_input{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/start_of_input.wav'])
-		subprocess.run(['sudo', 'ln', '-sfn', f'{self.Commons.rootDir()}/system/sounds/{self.LanguageManager.activeLanguage}/error{state}.wav', f'{self.Commons.rootDir()}/assistant/custom_dialogue/sound/error.wav'])
 
 
 	def explainInterfaceAuth(self):
