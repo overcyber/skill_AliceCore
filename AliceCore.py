@@ -625,7 +625,6 @@ class AliceCore(AliceSkill):
 
 		self.logInfo(f'adding it to location{location.id}')
 
-		# new {
 		try:
 			device = self.DeviceManager.addNewDevice(deviceTypeID=deviceType.id, locationID=location.id)
 
@@ -635,16 +634,15 @@ class AliceCore(AliceSkill):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
 		except MaxDevicePerLocationReached as e:
 			self.logError(f'Failed adding device: {e}')
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDevicePerLocationReached', replace={e.maxAmount} ))
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDevicePerLocationReached', replace=[e.maxAmount]))
 		except MaxDeviceOfTypeReached as e:
 			self.logError(f'Failed adding device: {e}')
-			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDeviceOfTypeReached', replace={e.maxAmount}))
+			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('maxDeviceOfTypeReached', replace=[e.maxAmount]))
 		except RequiresWIFISettings as e:
 			self.logError(f'Failed adding device: {e}')
 			self.endDialog(sessionId=session.sessionId, text=self.randomTalk('noWifiConf'))
 		except Exception as e:
 			self.logError(f'Failed adding device: {e}')
-		# new }
 
 
 	def confirmReboot(self, session: DialogSession):
