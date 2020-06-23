@@ -1,4 +1,14 @@
 {
+	"isThatWhatYouMeant": [
+        "<break time=\"500ms\"/>E' veramente quello che intendevi?",
+        "<break time=\"500ms\"/>Era quello che intendevi poco fa?",
+        "<break time=\"500ms\"/>E' quello che intendevi prima?"
+    ],
+    "okAddedUtterance": [
+        "Ok, grande, me lo ricorderò, lasciami un po di tempo per prepararmi.",
+        "Annotato, mi preparerò rapidamente. Dovrei tornare operativa fra poco.",
+        "Ok, non lo dimenticherò. Mi sto preparando, dovrei essere operativa a breve."
+    ],
 	"newSkill": {
 		"default": [
 			"Una nuova dispositivo di tipo {} sta tentando di connettersi, vuoi che l'aggiunga ai dispositivi?"

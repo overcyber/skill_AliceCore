@@ -71,7 +71,8 @@ class AliceCore(AliceSkill):
 			'confirmingUsernameForTuneWakeword': self.checkUsername,
 			'confirmingWakewordCreation': self.createWakeword,
 			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
-			'confirmingPinCode': self.askCreateWakeword
+			'confirmingPinCode': self.askCreateWakeword,
+			'confirmingWhatWasMeant': self.updateUtterance
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
@@ -99,6 +100,28 @@ class AliceCore(AliceSkill):
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
 		super().__init__(self._INTENTS)
+
+
+	def askUpdateUtterance(self, session: DialogSession):
+		self.continueDialog(
+			sessionId=session.sessionId,
+			text=self.TalkManager.randomTalk('isThatWhatYouMeant'),
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			currentDialogState='confirmingWhatWasMeant'
+		)
+
+
+	def updateUtterance(self, session: DialogSession):
+		if self.Commons.isYes(session):
+			session.notUnderstood = 0
+			self.DialogTemplateManager.addUtterance(session=session)
+
+			self.endDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('okAddedUtterance')
+			)
+		else:
+			self.endSession(sessionId=session.sessionId)
 
 
 	def authUser(self, session: DialogSession):
