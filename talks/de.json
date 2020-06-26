@@ -1,12 +1,12 @@
 {
 	"isThatWhatYouMeant": [
-		"<break time=\"500ms\"/>Is that actually what you meant before?",
-		"<break time=\"500ms\"/>Was this what you meant just before?"
+		"<break time=\"500ms\"/>Ist es das was du gemeint hast?",
+		"<break time=\"500ms\"/>Wolltest du mir das damit sagen?"
 	],
 	"okAddedUtterance": [
-		"Ok, cool, I'll keep that in mind, let me retrain for a while.",
-		"That's noted, I'll quickly retrain. Should be soon ok.",
-		"Ok, I won't forget it. Doing a little training and it should be good in a short while."
+		"Ok, cool, ich versuche mir es zu merken.. lass mir etwas Zeit das zu üben.",
+		"Klar. Ich brauch einen Moment, dann höre ich in Zukunft darauf!",
+		"Ok, das vergesse ich nicht so schnell wieder. Ein bisschen training, dann klappt das."
 	],
 	"newSkill": [
 		"Ein neues Gerät des Typs {} versucht sich zu verbinden, möchtest du es zu deinen Geräten hinzufügen?"
