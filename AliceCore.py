@@ -597,7 +597,7 @@ class AliceCore(AliceSkill):
 	def addDeviceIntent(self, session: DialogSession):
 
 		deviceTypeName = session.slotValue('Hardware')
-		room = session.slotValue('Room')
+		location = session.slotValue('Location')
 
 		if not deviceTypeName:
 			self.continueDialog(
@@ -608,7 +608,7 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-		self.logInfo(f'trying to add a so called "{deviceTypeName}"')
+		print(f'trying to add a so called "{deviceTypeName}"')
 
 		deviceType = self.DeviceManager.getDeviceTypeByName(name=deviceTypeName)
 		if not deviceType:
@@ -621,20 +621,8 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		self.logInfo(f'guess they ment {deviceType.id}, or {deviceType.name}')
-		self.logInfo(f'the room is "{room}", let me check...')
-
-		if not room:
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('whichRoom'),
-				intentFilter=[self._INTENT_ANSWER_ROOM],
-				currentDialogState='specifyingRoom',
-				probabilityThreshold=0.1
-			)
-			return
-
-		location = self.LocationManager.getLocation(room=room)
+		print(f'guess they ment {deviceType.id}, or {deviceType.name}')
+		print(f'the location is "{location}", let me check...')
 
 		if not location:
 			self.continueDialog(
@@ -646,7 +634,19 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		self.logInfo(f'adding it to location{location.id}')
+		location = self.LocationManager.getLocation(location=location)
+
+		if not location:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('whichRoom'),
+				intentFilter=[self._INTENT_ANSWER_ROOM],
+				currentDialogState='specifyingRoom',
+				probabilityThreshold=0.1
+			)
+			return
+
+		print(f'adding it to location {location.id}')
 
 		try:
 			device = self.DeviceManager.addNewDevice(deviceTypeID=deviceType.id, locationID=location.id)
@@ -907,7 +907,7 @@ class AliceCore(AliceSkill):
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in room {device.room} connected')
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in location {device.location} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')

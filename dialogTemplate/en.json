@@ -15528,7 +15528,7 @@
 			]
 		},
 		{
-			"name": "Alice/Room",
+			"name": "Alice/Location",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
@@ -28223,7 +28223,7 @@
 					"name": "Room",
 					"description": "The room to add the device to",
 					"required": false,
-					"type": "Alice/Room",
+					"type": "Alice/Location",
 					"missingQuestion": ""
 				}
 			]
@@ -28321,7 +28321,7 @@
 					"name": "Room",
 					"description": null,
 					"required": true,
-					"type": "Alice/Room",
+					"type": "Alice/Location",
 					"missingQuestion": "What room?"
 				}
 			]

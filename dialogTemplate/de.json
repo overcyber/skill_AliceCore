@@ -111,12 +111,12 @@
 			"description": "The user asks to add a new device for Alice to manage",
 			"enabledByDefault": true,
 			"utterances": [
-				"Füge einen neuen {Satelliten:=>Hardware} im {Wohnzimmer:=>Room} hinzu",
-				"Füge eine {satelliten:=>Hardware} in der {Küche:=>Room} hinzu",
-				"Bitte füge einen {satelliten:=>Hardware} im {Eingang:=>Room} hinzu",
-				"Ich möchte eine {alice:=>Hardware} im {Badezimmer:=>Room} hinzufügen",
-				"Kannst du einen {alice satelliten:=>Hardware} im {Schlafzimmer:=>Room} hinzufügen?",
-				"Füge ein {alice:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Room} hinzu",
+				"Füge einen neuen {Satelliten:=>Hardware} im {Wohnzimmer:=>Location} hinzu",
+				"Füge eine {satelliten:=>Hardware} in der {Küche:=>Location} hinzu",
+				"Bitte füge einen {satelliten:=>Hardware} im {Eingang:=>Location} hinzu",
+				"Ich möchte eine {alice:=>Hardware} im {Badezimmer:=>Location} hinzufügen",
+				"Kannst du einen {alice satelliten:=>Hardware} im {Schlafzimmer:=>Location} hinzufügen?",
+				"Füge ein {alice:=>Hardware} Gerät in meinem {Arbeitszimmer:=>Location} hinzu",
 				"Ich füge ein neues {alice:=>Hardware} Gerät hinzu",
 				"Könntest du eine neues {alice:=>Hardware} Gerät hinzufügen",
 				"Kannst du bitte ein {alice:=>Hardware} Gerät hinzufügen",
@@ -147,10 +147,10 @@
 					"missingQuestion": ""
 				},
 				{
-					"name": "Room",
-					"description": "The room to add the device to",
+					"name": "Location",
+					"description": "The Location to add the device to",
 					"required": false,
-					"type": "Alice/Room",
+					"type": "Alice/Location",
 					"missingQuestion": ""
 				}
 			]
@@ -228,27 +228,27 @@
 			]
 		},
 		{
-			"name": "AnswerRoom",
-			"description": "User answers with a room name",
+			"name": "AnswerLocation",
+			"description": "User answers with a Location name",
 			"enabledByDefault": false,
 			"utterances": [
-				"in der {küche:=>Room}",
-				"in dem {Wohnzimmer:=>Room}",
-				"{Eingang:=>Room}",
-				"{Büro:=>Room}",
-				"{Keller:=>Room}",
-				"{Badezimmer:=>Room}",
-				"{Schlafzimmer:=>Room}",
-				"{Wohnzimmer:=>Room}",
-				"{Küche:=>Room}"
+				"in der {küche:=>Location}",
+				"in dem {Wohnzimmer:=>Location}",
+				"{Eingang:=>Location}",
+				"{Büro:=>Location}",
+				"{Keller:=>Location}",
+				"{Badezimmer:=>Location}",
+				"{Schlafzimmer:=>Location}",
+				"{Wohnzimmer:=>Location}",
+				"{Küche:=>Location}"
 			],
 			"slots": [
 				{
-					"name": "Room",
+					"name": "Location",
 					"description": null,
 					"required": true,
-					"type": "Alice/Room",
-					"missingQuestion": "What room?"
+					"type": "Alice/Location",
+					"missingQuestion": "What Location?"
 				}
 			]
 		},
@@ -16210,7 +16210,7 @@
 			]
 		},
 		{
-			"name": "Alice/Room",
+			"name": "Alice/Location",
 			"matchingStrictness": null,
 			"automaticallyExtensible": true,
 			"useSynonyms": false,
