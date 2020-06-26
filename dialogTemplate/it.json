@@ -17614,12 +17614,12 @@
 			"description": "L'utente chiede di aggiungere un dispositivo da gestire",
 			"enabledByDefault": true,
 			"utterances": [
-				"aggiungi un nuovo {alice:=>Hardware} nel {soggiorno:=>Room}",
-				"aggiungi un {alice:=>Hardware} di tipo nella {cucina:=>Room}",
-				"per favore aggiungi un {alice:=>Hardware} nell' {ingresso:=>Room}",
-				"vorrei aggiungere un {alice:=>Hardware} in {bagno:=>Room}",
-				"puoi aggiungere un {alice:=>Hardware} in {camera da letto:=>Room}",
-				"aggiungi un dispositivo {alice:=>Hardware} nel mio {ufficio:=>Room}",
+				"aggiungi un nuovo {alice:=>Hardware} nel {soggiorno:=>Location}",
+				"aggiungi un {alice:=>Hardware} di tipo nella {cucina:=>Location}",
+				"per favore aggiungi un {alice:=>Hardware} nell' {ingresso:=>Location}",
+				"vorrei aggiungere un {alice:=>Hardware} in {bagno:=>Location}",
+				"puoi aggiungere un {alice:=>Hardware} in {camera da letto:=>Location}",
+				"aggiungi un dispositivo {alice:=>Hardware} nel mio {ufficio:=>Location}",
 				"sto aggiungendo un {alice:=>Hardware}",
 				"puoi aggiungere un dispositivo {alice:=>Hardware}",
 				"mi aggiungi un {alice:=>Hardware} per favore",
@@ -17651,7 +17651,7 @@
 					"missingQuestion": ""
 				},
 				{
-					"name": "Room",
+					"name": "Location",
 					"description": "La stanza alla quale aggiungere il dispositivo",
 					"required": false,
 					"type": "Alice/Location",
@@ -17731,24 +17731,24 @@
 			]
 		},
 		{
-			"name": "AnswerRoom",
+			"name": "AnswerLocation",
 			"description": "L'utente risponde con la stanza",
 			"enabledByDefault": false,
 			"utterances": [
-				"in {cucina:=>Room}",
-				"nel {salotto:=>Room}",
-				"{ingresso:=>Room}",
-				"nell'{ufficio:=>Room}",
-				"{cantina:=>Room}",
-				"sull'{attico:=>Room}",
-				"{bagno:=>Room}",
-				"nella {stanza da letto:=>Room}",
-				"{salotto:=>Room}",
-				"{cucina:=>Room}"
+				"in {cucina:=>Location}",
+				"nel {salotto:=>Location}",
+				"{ingresso:=>Location}",
+				"nell'{ufficio:=>Location}",
+				"{cantina:=>Location}",
+				"sull'{attico:=>Location}",
+				"{bagno:=>Location}",
+				"nella {stanza da letto:=>Location}",
+				"{salotto:=>Location}",
+				"{cucina:=>Location}"
 			],
 			"slots": [
 				{
-					"name": "Room",
+					"name": "Location",
 					"description": null,
 					"required": true,
 					"type": "Alice/Location",

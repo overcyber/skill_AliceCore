@@ -25,7 +25,7 @@ class AliceCore(AliceSkill):
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
-	_INTENT_ANSWER_ROOM = Intent('AnswerRoom', isProtected=True)
+	_INTENT_ANSWER_ROOM = Intent('AnswerLocation', isProtected=True)
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
 	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', isProtected=True, authLevel=AccessLevel.DEFAULT)
 	_INTENT_REBOOT = Intent('RebootSystem', authLevel=AccessLevel.DEFAULT)

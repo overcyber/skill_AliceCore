@@ -30,8 +30,8 @@
 	},
 	"whichRoom": {
 		"default": [
-			"Which room is this device going to be placed in?",
-			"Sure, in what room are you placing this new device?"
+			"Which room or location is this device going to be placed in?",
+			"Sure, in what room or location are you placing this new device?"
 		]
 	},
 	"confirmIgnore": {

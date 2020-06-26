@@ -28183,12 +28183,12 @@
 			"description": "The user asks to add a new device for Alice to manage",
 			"enabledByDefault": true,
 			"utterances": [
-				"add a new {alice:=>Hardware} in the {living room:=>Room}",
-				"add a {alice:=>Hardware} in the {kitchen:=>Room}",
-				"please add an {alice:=>Hardware} in the {entrance:=>Room}",
-				"i would like to add a {satellite:=>Hardware} in the {bathroom:=>Room}",
-				"can you add a {satellite:=>Hardware} in the {bedroom:=>Room}",
-				"add an {satellite:=>Hardware} device in my {office:=>Room}",
+				"add a new {alice:=>Hardware} in the {living room:=>Location}",
+				"add a {alice:=>Hardware} in the {kitchen:=>Location}",
+				"please add an {alice:=>Hardware} in the {entrance:=>Location}",
+				"i would like to add a {satellite:=>Hardware} in the {bathroom:=>Location}",
+				"can you add a {satellite:=>Hardware} in the {bedroom:=>Location}",
+				"add an {satellite:=>Hardware} device in my {office:=>Location}",
 				"i'm adding a new {alice:=>Hardware} device",
 				"could you add a new {alice:=>Hardware} device",
 				"can you add an {alice:=>Hardware} device please",
@@ -28220,8 +28220,8 @@
 					"missingQuestion": ""
 				},
 				{
-					"name": "Room",
-					"description": "The room to add the device to",
+					"name": "Location",
+					"description": "The Location to add the device to",
 					"required": false,
 					"type": "Alice/Location",
 					"missingQuestion": ""
@@ -28301,24 +28301,24 @@
 			]
 		},
 		{
-			"name": "AnswerRoom",
-			"description": "User answers with a room name",
+			"name": "AnswerLocation",
+			"description": "User answers with a location name",
 			"enabledByDefault": false,
 			"utterances": [
-				"in {kitchen:=>Room}",
-				"in the {living room:=>Room}",
-				"{entrance:=>Room}",
-				"{office:=>Room}",
-				"{basement:=>Room}",
-				"{attic:=>Room}",
-				"{bathroom:=>Room}",
-				"{bedroom:=>Room}",
-				"{living room:=>Room}",
-				"{kitchen:=>Room}"
+				"in {kitchen:=>Location}",
+				"in the {living room:=>Location}",
+				"{entrance:=>Location}",
+				"{office:=>Location}",
+				"{basement:=>Location}",
+				"{attic:=>Location}",
+				"{bathroom:=>Location}",
+				"{bedroom:=>Location}",
+				"{living room:=>Location}",
+				"{kitchen:=>Location}"
 			],
 			"slots": [
 				{
-					"name": "Room",
+					"name": "Location",
 					"description": null,
 					"required": true,
 					"type": "Alice/Location",
