@@ -649,7 +649,7 @@ class AliceCore(AliceSkill):
 		print(f'adding it to location {location.id}')
 
 		try:
-			device = self.DeviceManager.addNewDevice(deviceTypeID=deviceType.id, locationID=location.id)
+			device = self.DeviceManager.addNewDevice(deviceTypeId=deviceType.id, locationId=location.id)
 
 			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnSiteId=session.siteId, session=session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
