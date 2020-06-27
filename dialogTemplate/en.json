@@ -15490,7 +15490,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "device_espSwitch",
+					"value": "EspSwitch",
 					"synonyms": [
 						"tasmota switch",
 						"esp switch",
@@ -15499,7 +15499,7 @@
 					]
 				},
 				{
-					"value": "device_espPIR",
+					"value": "EspPir",
 					"synonyms": [
 						"tasmota movement sensor",
 						"esp movement sensor",
@@ -15514,7 +15514,7 @@
 					]
 				},
 				{
-					"value": "device_AliceSatellite",
+					"value": "AliceSatellite",
 					"synonyms": [
 						"satellite",
 						"alice",

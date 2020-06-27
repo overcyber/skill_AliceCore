@@ -16154,7 +16154,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "device_espSwitch",
+					"value": "EspSwitch",
 					"synonyms": [
 						"tasmota schalter",
 						"esp schalter",
@@ -16165,7 +16165,7 @@
 					]
 				},
 				{
-					"value": "device_espPIR",
+					"value": "EspPir",
 					"synonyms": [
 						"tasmota bewegungssensor",
 						"esp bewegungssensor",
@@ -16176,7 +16176,7 @@
 					]
 				},
 				{
-					"value": "device_espEnvSensor",
+					"value": "EspEnvSensor",
 					"synonyms": [
 						"tasmota Thermometer",
 						"esp Thermometer",
@@ -16195,7 +16195,7 @@
 					]
 				},
 				{
-					"value": "device_AliceSatellite",
+					"value": "AliceSatellite",
 					"synonyms": [
 						"alice",
 						"satellit",

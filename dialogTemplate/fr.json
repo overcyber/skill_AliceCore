@@ -15496,7 +15496,7 @@
 			"useSynonyms": true,
 			"values": [
 				{
-					"value": "device_espSwitch",
+					"value": "EspSwitch",
 					"synonyms": [
 						"tasmota souitche",
 						"tasmota interrupteur",
@@ -15509,7 +15509,7 @@
 					]
 				},
 				{
-					"value": "esp",
+					"value": "EspPir",
 					"synonyms": [
 						"tasmota détecteur de présence",
 						"tasmota détecteur infrarouge",
@@ -15542,7 +15542,7 @@
 					]
 				},
 				{
-					"value": "device_AliceSatellite",
+					"value": "AliceSatellite",
 					"synonyms": [
 						"alice",
 						"satellite",
