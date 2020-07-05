@@ -15494,6 +15494,8 @@
 					"synonyms": [
 						"tasmota switch",
 						"esp switch",
+						"tasmota light switch",
+						"esp light switch",
 						"tasmota trigger",
 						"esp switch"
 					]
@@ -15503,6 +15505,8 @@
 					"synonyms": [
 						"tasmota movement sensor",
 						"esp movement sensor",
+						"tasmota motion sensor",
+						"esp motion sensor",
 						"tasmota pir",
 						"esp pir",
 						"tasmota pir sensor",
@@ -15511,6 +15515,29 @@
 						"esp passive infrared sensor",
 						"tasmota presence sensor",
 						"esp presence sensor"
+					]
+				},
+				{
+					"value": "EspEnvSensor",
+					"synonyms": [
+						"tasmota temperatur sensor",
+						"esp temperatur sensor",
+						"tasmota thermometer",
+						"esp thermometer",
+						"tasmota environmental sensor",
+						"esp environmental sensor",
+						"tasmota environment sensor",
+						"esp environment sensor",
+						"tasmota mbe 280",
+						"esp mbe 280",
+						"tasmota dht 11",
+						"esp dht 11",
+						"tasmota dht 22",
+						"esp dht 22",
+						"tasmota dht",
+						"esp dht",
+						"tasmota mbe",
+						"esp mbe"
 					]
 				},
 				{
