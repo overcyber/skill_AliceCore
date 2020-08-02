@@ -40,6 +40,7 @@ class AliceCore(AliceSkill):
 	_INTENT_ADD_USER = Intent('AddNewUser', isProtected=True, authLevel=AccessLevel.ADMIN)
 	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel', isProtected=True)
 	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber', isProtected=True)
+	_DEVICE_TYPE_NAME = 'AliceCore'
 
 
 	def __init__(self):
@@ -589,7 +590,7 @@ class AliceCore(AliceSkill):
 		if session.siteId != self.getAliceConfig('deviceName'):
 			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
 		else:
-			self.Commons.runRootSystemCommand(['systemctl', 'stop', 'snips-hotword'])
+			self.WakewordManager.disableEngine()
 
 		self.endDialog(sessionId=session.sessionId, text='ok')
 
@@ -608,7 +609,6 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-		print(f'trying to add a so called "{deviceTypeName}"')
 
 		deviceType = self.DeviceManager.getDeviceTypeByName(name=deviceTypeName)
 		if not deviceType:
@@ -620,9 +620,6 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-
-		print(f'guess they ment {deviceType.id}, or {deviceType.name}')
-		print(f'the location is "{location}", let me check...')
 
 		if not location:
 			self.continueDialog(
@@ -645,8 +642,6 @@ class AliceCore(AliceSkill):
 				probabilityThreshold=0.1
 			)
 			return
-
-		print(f'adding it to location {location.id}')
 
 		try:
 			device = self.DeviceManager.addNewDevice(deviceTypeId=deviceType.id, locationId=location.id)
@@ -739,6 +734,15 @@ class AliceCore(AliceSkill):
 				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self.addFirstUser()
+
+		# create device
+		devTypeId = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
+		devList = self.DeviceManager.getDevicesByTypeID(deviceTypeID=devTypeId)
+		if devTypeId and len(devList) == 0:
+			# first run, create device
+			# get location from config
+			self.DeviceManager.addNewDevice(deviceTypeId=devTypeId, locationId=self.LocationManager.getLocation(location=self.ConfigManager.getAliceConfigByName('deviceName')).id)
+
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
@@ -962,7 +966,7 @@ class AliceCore(AliceSkill):
 		if siteId != self.getAliceConfig('deviceName'):
 			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
 		else:
-			self.Commons.runRootSystemCommand(['systemctl', 'start', 'snips-hotword'])
+			self.WakewordManager.enableEngine()
 
 		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), siteId])
 
