@@ -17704,7 +17704,7 @@
 				{
 					"name": "Answer",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "Alice/AnswerYesNo",
 					"missingQuestion": ""
 				}
@@ -17724,7 +17724,7 @@
 				{
 					"name": "Hardware",
 					"description": "Il tipo di hardware",
-					"required": false,
+					"required": true,
 					"type": "Alice/AliceHardwareTypes",
 					"missingQuestion": ""
 				}
@@ -17779,7 +17779,7 @@
 				{
 					"name": "Name",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "Alice/Name",
 					"missingQuestion": ""
 				}
@@ -17804,7 +17804,7 @@
 				{
 					"name": "Number",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "snips/number",
 					"missingQuestion": ""
 				}
@@ -17828,7 +17828,7 @@
 				{
 					"name": "Letters",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "Alice/Letters",
 					"missingQuestion": ""
 				}
@@ -17849,7 +17849,7 @@
 				{
 					"name": "WakewordCaptureResult",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "Alice/WakewordCaptureResult",
 					"missingQuestion": ""
 				}
@@ -17919,7 +17919,7 @@
 				{
 					"name": "UserAccessLevel",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "Alice/UserAccessLevel",
 					"missingQuestion": ""
 				}
@@ -17941,7 +17941,7 @@
 				{
 					"name": "Percent",
 					"description": null,
-					"required": false,
+					"required": true,
 					"type": "snips/number",
 					"missingQuestion": ""
 				}
