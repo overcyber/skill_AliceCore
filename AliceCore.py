@@ -738,6 +738,7 @@ class AliceCore(AliceSkill):
 		# create device
 		devType = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
 		if devType:
+			#todo call later, devType might not be known on initial start!
 			devList = self.DeviceManager.getDevicesByTypeID(deviceTypeID=devType.id)
 			if len(devList) == 0:
 				# first run, create device
