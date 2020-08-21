@@ -736,12 +736,12 @@ class AliceCore(AliceSkill):
 			self.addFirstUser()
 
 		# create device
-		devTypeId = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
-		devList = self.DeviceManager.getDevicesByTypeID(deviceTypeID=devTypeId)
-		if devTypeId and len(devList) == 0:
+		devType = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
+		devList = self.DeviceManager.getDevicesByTypeID(deviceTypeID=devType.id)
+		if devType and len(devList) == 0:
 			# first run, create device
 			# get location from config
-			self.DeviceManager.addNewDevice(deviceTypeId=devTypeId, locationId=self.LocationManager.getLocation(location=self.ConfigManager.getAliceConfigByName('deviceName')).id)
+			self.DeviceManager.addNewDevice(deviceTypeId=devType.id, locationId=self.LocationManager.getLocation(location=self.ConfigManager.getAliceConfigByName('deviceName')).id)
 
 
 
