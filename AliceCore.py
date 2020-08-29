@@ -736,14 +736,14 @@ class AliceCore(AliceSkill):
 			self.addFirstUser()
 
 		# create device
-		devType = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
-		if devType:
-			#todo call later, devType might not be known on initial start!
-			devList = self.DeviceManager.getDevicesByTypeID(deviceTypeID=devType.id)
-			if len(devList) == 0:
-				# first run, create device
-				# get location from config
-				self.DeviceManager.addNewDevice(deviceTypeId=devType.id, locationId=self.LocationManager.getLocation(location=self.ConfigManager.getAliceConfigByName('deviceName')).id)
+		devices = self.DeviceManager.getDevicesForSkill(skill=self.name)
+		if len(devices) == 0:
+			devType = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
+			if not devType:
+				raise Exception("Alice Core Device Type is missing!")
+			# first run, create device
+			# get location from config
+			self.DeviceManager.addNewDevice(deviceTypeId=devType.id, locationId=self.LocationManager.getLocation(location="The Hive"))
 
 
 
