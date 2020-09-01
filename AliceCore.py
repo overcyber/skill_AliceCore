@@ -736,15 +736,18 @@ class AliceCore(AliceSkill):
 			self.addFirstUser()
 
 		# create device
-		devices = self.DeviceManager.getDevicesForSkill(skill=self.name)
-		if len(devices) == 0:
-			devType = self.DeviceManager.getDeviceTypeByName(name=self._DEVICE_TYPE_NAME)
+		if False and self.DeviceManager.getMainDevice().id == 0:
+			devType = self._deviceTypes
+			self.logInfo(next(iter(self._deviceTypes)))
 			if not devType:
+				self.ThreadManager.doLater(interval=10, func=self.onStart)
 				raise Exception("Alice Core Device Type is missing!")
 			# first run, create device
 			# get location from config
-			self.DeviceManager.addNewDevice(deviceTypeId=devType.id, locationId=self.LocationManager.getLocation(location="The Hive"))
-
+			self.DeviceManager._bufferedMainDevice = self.DeviceManager.addNewDevice(deviceTypeId=next(iter(devType)),
+			                                                                         locationId=self.LocationManager.getLocation(location="The Hive").id,
+			                                                                         noChecks=True,
+			                                                                         skillName=self.name)
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
