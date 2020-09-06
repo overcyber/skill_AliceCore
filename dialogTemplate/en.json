@@ -15295,7 +15295,6 @@
 				{
 					"value": "assistant",
 					"synonyms": [
-						"snips assistant",
 						"bundles",
 						"comprehension"
 					]
@@ -28269,7 +28268,7 @@
 				"update the assistant {bundles:=>WhatToUpdate}",
 				"please update {yourself:=>WhatToUpdate}",
 				"can you do an {OS:=>WhatToUpdate} update please",
-				"start a {snips assistant:=>WhatToUpdate} update"
+				"start a {assistant:=>WhatToUpdate} update"
 			],
 			"slots": [
 				{

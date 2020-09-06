@@ -811,7 +811,7 @@ class AliceCore(AliceSkill):
 					text=self.randomTalk('userAuthAccessLevelTooLow')
 				)
 		elif session.currentState == DialogState('userAuth'):
-			AdminAuth.setLinkedSnipsSession(session)
+			AdminAuth.setLinkedSession(session)
 
 		elif self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
 			if self.wakewordTuningFailedTimer:
@@ -897,7 +897,7 @@ class AliceCore(AliceSkill):
 			self.DialogManager.toggleFeedbackSound(state='off')
 
 
-	def onSnipsAssistantInstalled(self, **kwargs):
+	def onAssistantInstalled(self, **kwargs):
 		self.say(text=self.randomTalk('confirmBundleUpdate'))
 
 

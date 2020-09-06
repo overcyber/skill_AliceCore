@@ -99,11 +99,6 @@
 		"Ok, je le fais! ça va prendre un peu de temps!",
 		"D'accord, je met à jours mes paquets! ça prendra un peu de temps!"
 	],
-	"bundleUpdateNoCredentials": {
-		"default": [
-			"Je ne peux pas, tu ne m'as pas donné tes informations de connexion à la console Snips"
-		]
-	},
 	"confirmBundleUpdate": {
 		"default": [
 			"Ok, j'ai bien mis à jour mes paquets",
@@ -232,7 +227,7 @@
 	},
 	"internetLost": {
 		"default": [
-			"J'ai perdu la connexion à internet. J'ai changé l'A S R sur snips"
+			"J'ai perdu la connexion à internet. J'ai changé pour un A S R hors ligne"
 		]
 	},
 	"listeningAgain": {
@@ -425,7 +420,7 @@
 		"Ouai! Donne moi son nom s'il te plaît!"
 	],
 	"addUserWhatAccessLevel": [
-		"Quel niveau d'accès veux-tu accorderr? Admin, défaut, enfant, employé ou visiteur?"
+		"Quel niveau d'accès veux-tu accorderr? Administrateur, défaut, enfant, employé, ou visiteur?"
 	],
 	"addUserConfirmUsername": [
 		"Ok, ai-je bien compris, le nom est {}?"

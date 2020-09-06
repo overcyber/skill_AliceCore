@@ -105,11 +105,6 @@
 			"Certo, aggiorno i miei pacchetti. Ci metterò un pò!"
 		]
 	},
-	"bundleUpdateNoCredentials": {
-		"default": [
-			"Mi dispiace, non posso: non mi hai fornito le credenziali della console Snips"
-		]
-	},
 	"confirmBundleUpdate": {
 		"default": [
 			"Ok, ho finito di aggiornare i pacchetti",
@@ -240,7 +235,7 @@
 	},
 	"internetLost": {
 		"default": [
-			"Non sono più connessa ad Internet, passo all'ASR di Snips"
+			"Non sono più connessa ad Internet, passo all'ASR offline"
 		]
 	},
 	"listeningAgain": {
@@ -447,9 +442,9 @@
 		"Con piacere! Qual'è il tuo nome, nuovo utente?"
 	],
 	"addUserWhatAccessLevel": [
-		"Che livello di credenziali vuoi avere? C'è admin, default, bimbo, worker e ospite",
-		"Che permessi devo garantire? puoi scegliere tra admin, default, bimbo, worker e ospite",
-		"Dimmi, che livello di accesso devo impostare? Admin? Default? bimbo, worker o ospite?"
+		"Che livello di credenziali vuoi avere? C'è administrator, default, bimbo, worker e ospite",
+		"Che permessi devo garantire? puoi scegliere tra administrator, default, bimbo, worker e ospite",
+		"Dimmi, che livello di accesso devo impostare? administrator? Default? bimbo, worker, o ospite?"
 	],
 	"addUserConfirmUsername": [
 		"Ok, ho capito correttamente, il nome è {}?",

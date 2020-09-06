@@ -76,9 +76,6 @@
 		"Ok, wird gemacht! Beachte, dass es eine Weile dauern kann!",
 		"Sicher, ich werde meine Software aktualisieren. Dies wird einige Zeit dauern!"
 	],
-	"bundleUpdateNoCredentials": [
-		"Es tut mir Leid, aber ich kann nicht, da du mir die Anmeldedaten der Snips-Konsole nicht zur Verfügung gestellt hast."
-	],
 	"confirmBundleUpdate": {
 		"default": [
 			"Ok, ich habe gerade meine Software aktualisiert.",
@@ -188,7 +185,7 @@
 		"Ich konnte mich wieder mit dem Internet verbinden und zurück zur Online ASR wechseln."
 	],
 	"internetLost": [
-		"Ich habe die Internetverbindung verloren und greife daher auf die Snips ASR zurück."
+		"Ich habe die Internetverbindung verloren und greife daher auf offline ASR zurück."
 	],
 	"listeningAgain": [
 		"Hey, ich lasse dich nur wissen, dass ich wieder zuhöre.",
@@ -356,9 +353,9 @@
 		"Kein Problem, bitte sag mir seinen Namen"
 	],
 	"addUserWhatAccessLevel": [
-		"Welche Berechtigungen möchtest du gewähren? Es gibt Admin, Standard, Kind, Arbeiter und Gast.",
-		"Welche Berechtigungen erteilst du? Du hast die Wahl zwischen Admin, Standard, Kind, Arbeiter und Gast.",
-		"Sag mir, welche Berechtigungen ich einstellen soll? Admin? Standard? Kind, Arbeiter oder Gast?"
+		"Welche Berechtigungen möchtest du gewähren? Es gibt Administrator, Standard, Kind, Arbeiter und Gast.",
+		"Welche Berechtigungen erteilst du? Du hast die Wahl zwischen Administrator, Standard, Kind, Arbeiter und Gast.",
+		"Sag mir, welche Berechtigungen ich einstellen soll? Administrator? Standard? Kind, Arbeiter, oder Gast?"
 	],
 	"addUserConfirmUsername": [
 		"Ok, wenn ich dich richtig verstanden habe, ist der Name {}?",
