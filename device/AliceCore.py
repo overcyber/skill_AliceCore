@@ -17,7 +17,7 @@ class AliceCore(DeviceType):
 	### to reimplement for any device type
 	### Find A new Device
 	def discover(self, device: Device, uid: str, replyOnSiteId: str = '', session: DialogSession = None) -> bool:
-		return device.pairingDone(uid=uid)
+		return device.pairingDone(uid=self.parentSkillInstance.ConfigManager.getAliceConfigByName('uuid'))
 
 
 	def getDeviceIcon(self, device: Device) -> str:

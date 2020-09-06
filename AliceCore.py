@@ -736,9 +736,9 @@ class AliceCore(AliceSkill):
 			self.addFirstUser()
 
 		# create device
-		if False and self.DeviceManager.getMainDevice().id == 0:
+		if self.DeviceManager.getMainDevice().id == 0:
+			#IF aliceCore ever gets a second device type, this will not work anymore!
 			devType = self._deviceTypes
-			self.logInfo(next(iter(self._deviceTypes)))
 			if not devType:
 				self.ThreadManager.doLater(interval=10, func=self.onStart)
 				raise Exception("Alice Core Device Type is missing!")
@@ -746,7 +746,7 @@ class AliceCore(AliceSkill):
 			# get location from config
 			self.DeviceManager._bufferedMainDevice = self.DeviceManager.addNewDevice(deviceTypeId=next(iter(devType)),
 			                                                                         locationId=self.LocationManager.getLocation(location="The Hive").id,
-			                                                                         noChecks=True,
+			                                                                         noChecks=True, #required: deviceType for checks not published yet!
 			                                                                         skillName=self.name)
 
 
