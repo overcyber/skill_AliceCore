@@ -104,11 +104,6 @@
 			"Sure, I'll update my bundles. This will take some time!"
 		]
 	},
-	"bundleUpdateNoCredentials": {
-		"default": [
-			"Sorry, I can't, you haven't provided me with the snips console credentials"
-		]
-	},
 	"confirmBundleUpdate": {
 		"default": [
 			"Ok, I just updated my bundles",
@@ -239,7 +234,7 @@
 	},
 	"internetLost": {
 		"default": [
-			"I lost internet connection and fell back to Snips ASR"
+			"I lost internet connection and fell back to an offline ASR"
 		]
 	},
 	"listeningAgain": {
@@ -432,9 +427,9 @@
 		"No problemo, gladly! What's your name miss or mister new user?"
 	],
 	"addUserWhatAccessLevel": [
-		"What access level do you want to grant? There's admin, default, kid, worker and guest",
-		"What permissions do you grant? You have the choice between admin, default, kid, worker and guest",
-		"Tell me what access level I should set? Admin? Default? Kid, worker or guest?"
+		"What access level do you want to grant? There's administrator, default, kid, worker and guest",
+		"What permissions do you grant? You have the choice between administrator, default, kid, worker and guest",
+		"Tell me what access level I should set? Administrator? Default? Kid, worker, or guest?"
 	],
 	"addUserConfirmUsername": [
 		"Ok, did I understand correctly, the name is {}?",

@@ -169,7 +169,7 @@
 				"Aktualisiere die Assistent {Pakete:=>WhatToUpdate}",
 				"Bitte aktualisiere {dich selbst:=>WhatToUpdate}",
 				"Kannst du bitte ein {OS:=>WhatToUpdate} Update durchführen",
-				"Starte ein {snips assistent:=>WhatToUpdate} Update"
+				"Starte ein {assistent:=>WhatToUpdate} Update"
 			],
 			"slots": [
 				{
@@ -15959,7 +15959,6 @@
 					"value": "assistant",
 					"synonyms": [
 						"Assistent",
-						"Snips Assistent",
 						"bundles",
 						"Pakete"
 					]
