@@ -748,6 +748,7 @@ class AliceCore(AliceSkill):
 			                                                                         locationId=self.LocationManager.getLocation(location="The Hive").id,
 			                                                                         noChecks=True, #required: deviceType for checks not published yet!
 			                                                                         skillName=self.name)
+			self.DeviceManager._bufferedMainDevice.changeName(newName='Alice')
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
