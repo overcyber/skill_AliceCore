@@ -11,7 +11,7 @@ class AliceCore(DeviceType):
 	_IMPLEMENTS_HERMES = True
 
 	def __init__(self, data: sqlite3.Row):
-		super().__init__(data, self.DEV_SETTINGS, self.LOC_SETTINGS, allowLocationLinks=False, perLocationLimit=1, totalDeviceLimit=1, heartbeatRate=0)
+		super().__init__(data, self.DEV_SETTINGS, self.LOC_SETTINGS, allowLocationLinks=False, perLocationLimit=1, totalDeviceLimit=1, heartbeatRate=0, internalOnly=True)
 
 
 	### to reimplement for any device type
