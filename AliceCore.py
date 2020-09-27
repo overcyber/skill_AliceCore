@@ -925,7 +925,7 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetConnected(self):
-		if not self.ConfigManager.getAliceConfigByName('keepASROffline'):
+		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR:
 			self.say(
 				text=self.randomTalk('internetBack'),
 				siteId=constants.ALL
@@ -933,7 +933,7 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetLost(self):
-		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline'):
+		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') and self.ASRManager.asr.isOnlineASR:
 			self.say(
 				text=self.randomTalk('internetLost'),
 				siteId=constants.ALL
