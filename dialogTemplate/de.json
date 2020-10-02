@@ -1,11 +1,8 @@
 {
 	"skill": "AliceCore",
-	"description": "Contains intents that manage root stuff of Project Alice",
-	"icon": "settings",
 	"intents": [
 		{
 			"name": "UserRandomAnswer",
-			"description": "The user answer with something random",
 			"enabledByDefault": false,
 			"utterances": [
 				"{Auto:=>RandomWord}",
@@ -22,7 +19,6 @@
 			"slots": [
 				{
 					"name": "RandomWord",
-					"description": "Random word given",
 					"required": false,
 					"type": "Alice/RandomWords",
 					"missingQuestion": ""
@@ -31,7 +27,6 @@
 		},
 		{
 			"name": "SwitchLanguage",
-			"description": "Switch Alice's language",
 			"enabledByDefault": true,
 			"utterances": [
 				"Könnten wir bitte auf {schwedisch:=>ToLang} sprechen",
@@ -51,7 +46,6 @@
 			"slots": [
 				{
 					"name": "ToLang",
-					"description": "Language to switch to",
 					"required": false,
 					"type": "Alice/Languages",
 					"missingQuestion": ""
@@ -60,7 +54,6 @@
 		},
 		{
 			"name": "RebootSystem",
-			"description": "Reboot Alice",
 			"enabledByDefault": true,
 			"utterances": [
 				"Bitte lade dich sich neu auf",
@@ -76,7 +69,6 @@
 		},
 		{
 			"name": "StopListening",
-			"description": "The user asks Alice to not react anymore for a given time",
 			"enabledByDefault": true,
 			"utterances": [
 				"Lass uns {für eine Stunde:=>Duration} in Frieden",
@@ -99,7 +91,6 @@
 			"slots": [
 				{
 					"name": "Duration",
-					"description": "How long to ignore the requests",
 					"required": false,
 					"type": "snips/duration",
 					"missingQuestion": ""
@@ -108,7 +99,6 @@
 		},
 		{
 			"name": "AddComponent",
-			"description": "The user asks to add a new device for Alice to manage",
 			"enabledByDefault": true,
 			"utterances": [
 				"Füge einen neuen {Satelliten:=>Hardware} im {Wohnzimmer:=>Location} hinzu",
@@ -141,14 +131,12 @@
 			"slots": [
 				{
 					"name": "Hardware",
-					"description": "The device hardware type",
 					"required": false,
 					"type": "Alice/AliceHardwareTypes",
 					"missingQuestion": ""
 				},
 				{
 					"name": "Location",
-					"description": "The Location to add the device to",
 					"required": false,
 					"type": "Alice/Location",
 					"missingQuestion": ""
@@ -157,7 +145,6 @@
 		},
 		{
 			"name": "DoAliceUpdate",
-			"description": "Ask Alice to update herself",
 			"enabledByDefault": true,
 			"utterances": [
 				"Aktualisiere bitte deine {assistent:=>WhatToUpdate} Dateien",
@@ -174,7 +161,6 @@
 			"slots": [
 				{
 					"name": "WhatToUpdate",
-					"description": "The component to update",
 					"required": false,
 					"type": "Alice/ComponentToUpdate",
 					"missingQuestion": ""
@@ -183,7 +169,6 @@
 		},
 		{
 			"name": "AnswerYesOrNo",
-			"description": "User answers yes or no",
 			"enabledByDefault": false,
 			"utterances": [
 				"{nein:=>Answer}",
@@ -209,7 +194,6 @@
 		},
 		{
 			"name": "AnswerHardwareType",
-			"description": "The user answers the hardware type to add",
 			"enabledByDefault": false,
 			"utterances": [
 				"ein {Alice Satelliten:=>Hardware} Gerät",
@@ -220,7 +204,6 @@
 			"slots": [
 				{
 					"name": "Hardware",
-					"description": "The hardware type",
 					"required": false,
 					"type": "Alice/AliceHardwareTypes",
 					"missingQuestion": ""
@@ -229,7 +212,6 @@
 		},
 		{
 			"name": "AnswerLocation",
-			"description": "User answers with a Location name",
 			"enabledByDefault": false,
 			"utterances": [
 				"in der {küche:=>Location}",
@@ -254,7 +236,6 @@
 		},
 		{
 			"name": "AnswerName",
-			"description": "",
 			"enabledByDefault": false,
 			"utterances": [
 				"{john:=>Name}",
@@ -285,7 +266,6 @@
 		},
 		{
 			"name": "AnswerNumber",
-			"description": "",
 			"enabledByDefault": false,
 			"utterances": [
 				"{10:=>Number}",
@@ -310,7 +290,6 @@
 		},
 		{
 			"name": "SpellWord",
-			"description": "User spells a word",
 			"enabledByDefault": false,
 			"utterances": [
 				"{l:=>Letters} {a:=>Letters} {u:=>Letters} {r:=>Letters} {e:=>Letters} {n:=>Letters} {t:=>Letters}",
@@ -334,7 +313,6 @@
 		},
 		{
 			"name": "AnswerWakewordCutting",
-			"description": "User tells Alice to trim the wakeword a bit more or less",
 			"enabledByDefault": false,
 			"utterances": [
 				"{mehr:=>WakewordCaptureResult}",
@@ -360,7 +338,6 @@
 		},
 		{
 			"name": "CallWakeword",
-			"description": "User speaks the Hey Alice wakeword",
 			"enabledByDefault": false,
 			"utterances": [
 				"Hey Alice"
@@ -369,7 +346,6 @@
 		},
 		{
 			"name": "AddNewUser",
-			"description": "User adds a new user",
 			"enabledByDefault": true,
 			"utterances": [
 				"Kannst du bitte einen neuen Nutzer hinzufügen",
@@ -403,7 +379,6 @@
 		},
 		{
 			"name": "AnswerAccessLevel",
-			"description": "User answers with an access level",
 			"enabledByDefault": false,
 			"utterances": [
 				"{admin:=>UserAccessLevel}",
@@ -430,7 +405,6 @@
 		},
 		{
 			"name": "AnswerPercent",
-			"description": "User answers with a percentage",
 			"enabledByDefault": false,
 			"utterances": [
 				"{40:=>Percent}",
