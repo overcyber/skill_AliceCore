@@ -18493,7 +18493,6 @@
 			"slots": [
 				{
 					"name": "Answer",
-					"description": null,
 					"required": true,
 					"type": "Alice/AnswerYesNo",
 					"missingQuestion": ""
@@ -18536,7 +18535,6 @@
 			"slots": [
 				{
 					"name": "Location",
-					"description": null,
 					"required": true,
 					"type": "Alice/Location",
 					"missingQuestion": "Quale stanza?"
@@ -18564,7 +18562,6 @@
 			"slots": [
 				{
 					"name": "Name",
-					"description": null,
 					"required": true,
 					"type": "Alice/Name",
 					"missingQuestion": ""
@@ -18588,7 +18585,6 @@
 			"slots": [
 				{
 					"name": "Number",
-					"description": null,
 					"required": true,
 					"type": "snips/number",
 					"missingQuestion": ""
@@ -18611,7 +18607,6 @@
 			"slots": [
 				{
 					"name": "Letters",
-					"description": null,
 					"required": true,
 					"type": "Alice/Letters",
 					"missingQuestion": ""
@@ -18631,7 +18626,6 @@
 			"slots": [
 				{
 					"name": "WakewordCaptureResult",
-					"description": null,
 					"required": true,
 					"type": "Alice/WakewordCaptureResult",
 					"missingQuestion": ""
@@ -18665,14 +18659,12 @@
 			"slots": [
 				{
 					"name": "UserAccessLevel",
-					"description": null,
 					"required": false,
 					"type": "Alice/UserAccessLevel",
 					"missingQuestion": ""
 				},
 				{
 					"name": "Name",
-					"description": null,
 					"required": false,
 					"type": "Alice/Name",
 					"missingQuestion": ""
@@ -18698,7 +18690,6 @@
 			"slots": [
 				{
 					"name": "UserAccessLevel",
-					"description": null,
 					"required": true,
 					"type": "Alice/UserAccessLevel",
 					"missingQuestion": ""
@@ -18719,7 +18710,6 @@
 			"slots": [
 				{
 					"name": "Percent",
-					"description": null,
 					"required": true,
 					"type": "snips/number",
 					"missingQuestion": ""
