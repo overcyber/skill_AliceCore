@@ -262,7 +262,7 @@
 	},
 	"unknownHardware": {
 		"default": [
-			"Désolée, je ne connais pas ce type d'appareil"
+			"Désolée, je ne connais pas ce type d'appareil. Quel type de matériel veux-tu ajouter?"
 		]
 	},
 	"whatConfig": {
