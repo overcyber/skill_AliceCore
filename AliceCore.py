@@ -24,22 +24,22 @@ from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDe
 class AliceCore(AliceSkill):
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
-	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
-	_INTENT_ANSWER_ROOM = Intent('AnswerLocation', isProtected=True)
+	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo')
+	_INTENT_ANSWER_ROOM = Intent('AnswerLocation')
 	_INTENT_SWITCH_LANGUAGE = Intent('SwitchLanguage')
-	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', isProtected=True, authLevel=AccessLevel.DEFAULT)
+	_INTENT_UPDATE_ALICE = Intent('DoAliceUpdate', authLevel=AccessLevel.DEFAULT)
 	_INTENT_REBOOT = Intent('RebootSystem', authLevel=AccessLevel.DEFAULT)
-	_INTENT_STOP_LISTEN = Intent('StopListening', isProtected=True)
+	_INTENT_STOP_LISTEN = Intent('StopListening')
 	_INTENT_ADD_DEVICE = Intent('AddComponent', authLevel=AccessLevel.ADMIN)
-	_INTENT_ANSWER_HARDWARE_TYPE = Intent('AnswerHardwareType', isProtected=True)
-	_INTENT_ANSWER_ESP_TYPE = Intent('AnswerEspType', isProtected=True)
-	_INTENT_ANSWER_NAME = Intent('AnswerName', isProtected=True)
-	_INTENT_SPELL_WORD = Intent('SpellWord', isProtected=True)
-	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting', isProtected=True)
-	_INTENT_WAKEWORD = Intent('CallWakeword', isProtected=True)
-	_INTENT_ADD_USER = Intent('AddNewUser', isProtected=True, authLevel=AccessLevel.ADMIN)
-	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel', isProtected=True)
-	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber', isProtected=True)
+	_INTENT_ANSWER_HARDWARE_TYPE = Intent('AnswerHardwareType')
+	_INTENT_ANSWER_ESP_TYPE = Intent('AnswerEspType')
+	_INTENT_ANSWER_NAME = Intent('AnswerName')
+	_INTENT_SPELL_WORD = Intent('SpellWord')
+	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting')
+	_INTENT_WAKEWORD = Intent('CallWakeword')
+	_INTENT_ADD_USER = Intent('AddNewUser', authLevel=AccessLevel.ADMIN)
+	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel')
+	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber')
 	_DEVICE_TYPE_NAME = 'AliceCore'
 
 
