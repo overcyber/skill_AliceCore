@@ -1,9 +1,12 @@
 {
 	"name": "AliceCore",
-	"version": "0.0.7",
+	"version": "1.0.0",
 	"category": "undefined",
 	"dependencies": {
-		"is-utf8": "^0.2.1"
+		"is-utf8": "^0.2.1",
+		"mqtt": "^4.2.1",
+		"url": "^0.11.0",
+		"https-proxy-agent": "^5.0.0"
 	},
 	"author": "Psycho",
 	"license": "GPLv3",
