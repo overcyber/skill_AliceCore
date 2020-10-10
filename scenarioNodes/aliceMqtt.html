@@ -4,37 +4,28 @@
 -->
 
 <script type="text/html" data-template-name="aliceMqtt">
-	<div class="form-row">
-		<ul style="min-width: 600px; margin-bottom: 20px;" id="node-config-aliceMqtt-tabs"></ul>
+	<div class="form-row node-input-broker">
+		<label for="node-config-input-broker"><i class="fa fa-globe"></i> Host</label>
+		<input type="text" id="node-config-input-broker" style="width: 40%;" placeholder="localhost">
 	</div>
-	<div id="node-config-aliceMqtt-tabs-content" style="min-height: 150px;">
-		<div id="aliceMqtt-tab-connection" style="display: none">
-			<div class="form-row node-input-broker">
-				<label for="node-config-input-broker"><i class="fa fa-globe"></i> Host</label>
-				<input type="text" id="node-config-input-broker" style="width: 40%;" placeholder="localhost">
-			</div>
-			<div class="form-row">
-				<label for="node-config-input-port"><i class="fa fa-globe"></i> Port</label>
-				<input type="text" id="node-config-input-port" style="width: 60px;" placeholder="1883">
-			</div>
-			<div class="form-row">
-				<input type="checkbox" id="node-config-input-usetls" style="display: inline-block; width: auto; vertical-align: top;">
-				<label for="node-config-input-usetls" style="width: auto">Use TLS</label>
-				<div id="node-config-row-tls" class="hide">
-					<label style="width: auto; margin-left: 20px; margin-right: 10px;" for="node-config-input-tls"><span>TLS configs</span></label><input style="width: 300px;" type="text" id="node-config-input-tls">
-				</div>
-			</div>
+	<div class="form-row">
+		<label for="node-config-input-port"><i class="fa fa-globe"></i> Port</label>
+		<input type="text" id="node-config-input-port" style="width: 60px;" placeholder="1883">
+	</div>
+	<div class="form-row">
+		<input type="checkbox" id="node-config-input-usetls" style="display: inline-block; width: auto; vertical-align: top;">
+		<label for="node-config-input-usetls" style="width: auto">Enable secure (SSL/TLS) connection</label>
+		<div id="node-config-row-tls" class="hide">
+			<label style="width: auto; margin-left: 20px; margin-right: 10px;" for="node-config-input-tls"><span>TLS Configuration</span></label><input style="width: 300px;" type="text" id="node-config-input-tls">
 		</div>
-		<div id="aliceMqtt-tab-security" style="display:none">
-			<div class="form-row">
-				<label for="node-config-input-user"><i class="fa fa-user"></i> User</label>
-				<input type="text" id="node-config-input-user">
-			</div>
-			<div class="form-row">
-				<label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
-				<input type="password" id="node-config-input-password">
-			</div>
-		</div>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-user"><i class="fa fa-user"></i> User</label>
+		<input type="text" id="node-config-input-user">
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-password"><i class="fa fa-lock"></i> Password</label>
+		<input type="password" id="node-config-input-password">
 	</div>
 </script>
 
@@ -71,26 +62,6 @@
 		},
 		label        : 'AliceMqtt',
 		oneditprepare: function () {
-			let tabs = RED.tabs.create({
-				id      : 'node-config-aliceMqtt-tabs',
-				onchange: function (tab) {
-					$('#node-config-aliceMqtt-tabs-content').children().hide();
-					$('#' + tab.id).show();
-				}
-			});
-			tabs.addTab({
-				id   : 'aliceMqtt-tab-connection',
-				label: this._('mqtt.tabs-label.connection')
-			});
-			tabs.addTab({
-				id   : 'aliceMqtt-tab-security',
-				label: this._('mqtt.tabs-label.security')
-			});
-
-			setTimeout(function () {
-				tabs.resize();
-			}, 0);
-
 			if (typeof this.usetls === 'undefined') {
 				this.usetls = false;
 				$('#node-config-input-usetls').prop('checked', false);
