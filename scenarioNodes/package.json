@@ -1,23 +1,17 @@
 {
-	"name": "alicecore",
-	"version": "0.0.6",
+	"name": "AliceCore",
+	"version": "0.0.7",
 	"category": "undefined",
 	"dependencies": {
-		"is-utf8": "^0.2.1",
-		"xtend": "^4.0.2",
-		"mqtt": "^4.2.1",
-		"https-proxy-agent": "^5.0.0"
+		"is-utf8": "^0.2.1"
 	},
 	"author": "Psycho",
 	"license": "GPLv3",
 	"node-red": {
 		"nodes": {
-			"mqttclient": "mqttClient.js",
-			"onFiveMinute": "onFiveMinute.js",
-			"sendMqtt": "sendMqtt.js"
+			"alicemqtt": "aliceMqtt.js",
+			"mqttclient": "onAliceEvent.js"
 		}
 	},
-	"devDependencies": {
-		"mqtt": "^4.2.1"
-	}
+	"devDependencies": {}
 }
