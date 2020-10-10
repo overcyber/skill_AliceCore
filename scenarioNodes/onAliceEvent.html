@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('onAliceEvent', {
-		category: 'events',
+		category: 'Project Alice',
 		color   : '#3FADB5',
 		defaults: {
 			broker: {
@@ -22,7 +22,7 @@
 		outputs : 1,
 		icon    : 'arrow-in.svg',
 		label   : function () {
-			return this.event || 'onAliceEvent';
+			return this.event || this.name;
 		}
 	})
 </script>
@@ -35,15 +35,15 @@
 
 <script type="text/html" data-template-name="onAliceEvent">
 	<div class="form-row">
-		<label for="node-input-broker"><i class="fa fa-bookmark"></i> Broker</label>
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="onAliceEvent.broker"></span></label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
-		<label for="node-input-event"><i class="fa fa-tasks"></i> Event</label>
-		<select id="node-input-event" style="width:125px !important">
+		<label for="node-input-event"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="onAliceEvent.event"></span></label>
+		<select id="node-input-event" style="width: 70%">
 			<optgroup label="Time">
 				<option value="onFullMinute">onFullMinute</option>
-				<option value="onFiveMinute">onFiveMinute</option>
+				<option value="onFiveMinute" selected>onFiveMinute</option>
 				<option value="onQuarterHour">onQuarterHour</option>
 				<option value="onFullHour">onFullHour</option>
 			</optgroup>
@@ -121,7 +121,7 @@
 		</select>
 	</div>
 	<div class="form-row">
-		<label for="node-input-datatype"><i class="fa fa-sign-out"></i> Format</label>
+		<label for="node-input-datatype"><i class="fa fa-sign-out fa-fw"></i> <span data-i18n="onAliceEvent.format"></span></label>
 		<select id="node-input-datatype" style="width:70%;">
 			<optgroup label="Usual">
 				<option value="auto">Auto</option>

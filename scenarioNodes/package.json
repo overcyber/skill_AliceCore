@@ -1,7 +1,7 @@
 {
-	"name": "AliceCore",
+	"name": "alicecore",
 	"version": "1.0.0",
-	"category": "undefined",
+	"category": "projectalice",
 	"dependencies": {
 		"is-utf8": "^0.2.1",
 		"mqtt": "^4.2.1",
@@ -12,8 +12,9 @@
 	"license": "GPLv3",
 	"node-red": {
 		"nodes": {
-			"alicemqtt": "aliceMqtt.js",
-			"mqttclient": "onAliceEvent.js"
+			"aliceMqtt": "aliceMqtt.js",
+			"onAliceEvent": "onAliceEvent.js",
+			"sendMsg": "sendMsg.js"
 		}
 	},
 	"devDependencies": {}

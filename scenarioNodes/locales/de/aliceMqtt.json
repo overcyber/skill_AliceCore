@@ -1,0 +1,7 @@
+{
+	"aliceMqtt": {
+		"host": "Server",
+		"port": "Port",
+		"useTLS": "Enable secure (SSL/TLS) connection"
+	}
+}
