@@ -14,7 +14,8 @@
 		"nodes": {
 			"aliceMqtt": "aliceMqtt.js",
 			"onAliceEvent": "onAliceEvent.js",
-			"sendMsg": "sendMsg.js"
+			"sendMsg": "sendMsg.js",
+			"say": "say.js"
 		}
 	},
 	"devDependencies": {}

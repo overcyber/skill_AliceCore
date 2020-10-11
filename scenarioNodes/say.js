@@ -3,11 +3,11 @@
  * It's been fitted to our needs of simplicity for everyday use and repackaged
  */
 
-module.exports = function(RED) {
-	function sendMsg(config) {
+module.exports = function (RED) {
+	function say(config) {
 		RED.nodes.createNode(this, config);
 
-		this.topic = config.topic.includes('/') ? `${config.topic}` : `projectalice/interface/${config.topic}`;
+		this.topic = 'hermes/dialogueManager/startSession';
 		this.broker = config.broker;
 		this.brokerInstance = RED.nodes.getNode(this.broker);
 		this.datatype = config.datatype || 'utf8';
@@ -17,55 +17,67 @@ module.exports = function(RED) {
 
 		if (this.brokerInstance) {
 			this.status({
-				fill: 'red',
+				fill : 'red',
 				shape: 'ring',
-				text: 'node-red:common.status.disconnected'
+				text : 'node-red:common.status.disconnected'
 			});
 
-			this.on('input', function(msg, send, done) {
+			this.on('input', function (msg, send, done) {
 				msg.qos = 0;
 				msg.retain = false;
 				msg.topic = node.topic;
 
+				msg.payload = {
+					'siteId'    : config.client,
+					'init'      : {
+						'type'                   : 'notification',
+						'text'                   : config.say,
+						'sendIntentNotRecognized': true,
+						'canBeEnqueued'          : true
+					},
+					'customData': {}
+				};
+
 				if (check.test(msg.topic)) {
-					node.warn(RED._('sendMsg.invalidTopic'))
+					node.warn(RED._('say.invalidTopic'));
 				} else {
 					node.brokerInstance.publish(msg, done);
 
 					node.status({
-						fill: 'yellow',
-						shape: 'dot'
-					})
+						fill : 'green',
+						shape: 'dot',
+						text : config.say
+					});
 
-					setTimeout(function() {
+					setTimeout(function () {
 						node.status({
-							fill: 'green',
+							fill : 'yellow',
 							shape: 'dot',
-							text: 'node-red:common.status.connected'
-						})
-					}, 1500);
+							text : 'onAliceEvent.waiting'
+						});
+					}, 3000);
 				}
 			});
 
 			if (this.brokerInstance.connected) {
 				this.status({
-					fill: 'green',
+					fill : 'yellow',
 					shape: 'dot',
-					text: 'node-red:common.status.connected'
-				})
+					text : 'onAliceEvent.waiting'
+				});
 			}
 			this.brokerInstance.register(this);
 
-			this.on('close', function(done) {
+			this.on('close', function (done) {
 				if (node.brokerInstance) {
 					node.brokerInstance.deregister(node, done);
 				}
 			});
 
 		} else {
-			this.error(RED._('sendMsg.missingConfig'));
+			this.error(RED._('say.missingConfig'));
 		}
 	}
 
-	RED.nodes.registerType('sendMsg', sendMsg);
-}
+	RED.nodes.registerType('say', say);
+};

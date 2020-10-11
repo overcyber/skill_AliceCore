@@ -1,7 +1,0 @@
-{
-	"onAliceEvent": {
-		"broker": "Broker",
-		"event": "Évènement",
-		"format": "Format"
-	}
-}

@@ -2,6 +2,7 @@
 	"onAliceEvent": {
 		"broker": "Broker",
 		"event": "Event",
-		"format": "Format"
+		"format": "Format",
+		"waiting": "waiting"
 	}
 }
