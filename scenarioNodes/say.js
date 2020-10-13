@@ -3,7 +3,7 @@
  * It's been fitted to our needs of simplicity for everyday use and repackaged
  */
 
-module.exports = function (RED) {
+module.exports = function (RED) { //NOSONAR
 	function say(config) {
 		RED.nodes.createNode(this, config);
 
