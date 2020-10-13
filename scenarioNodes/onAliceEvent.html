@@ -1,0 +1,137 @@
+<!--
+	This is almost a copy of the official Nore-red MQTT in node found on node-red repository.
+	It's been fitted to our needs of simplicity for everyday use and repackaged
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('onAliceEvent', {
+		category: 'Project Alice',
+		color   : '#3FADB5',
+		defaults: {
+			broker: {
+				type    : 'aliceMqtt',
+				required: true
+			},
+			event : {
+				value   : 'onFiveMinute',
+				required: true
+			}
+		},
+		inputs  : 0,
+		outputs : 1,
+		icon    : 'arrow-in.svg',
+		label   : function () {
+			return this.event || this.name;
+		}
+	})
+</script>
+
+<script type="text/html" data-help-name="onAliceEvent">
+	<p>
+		Alice sends events over MQTT for you to listen to and react to
+	</p>
+</script>
+
+<script type="text/html" data-template-name="onAliceEvent">
+	<div class="form-row">
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="onAliceEvent.broker"></span></label>
+		<input type="text" id="node-input-broker">
+	</div>
+	<div class="form-row">
+		<label for="node-input-event"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="onAliceEvent.event"></span></label>
+		<select id="node-input-event" style="width: 70%">
+			<optgroup label="Time">
+				<option value="onFullMinute">onFullMinute</option>
+				<option value="onFiveMinute" selected>onFiveMinute</option>
+				<option value="onQuarterHour">onQuarterHour</option>
+				<option value="onFullHour">onFullHour</option>
+			</optgroup>
+			<optgroup label="Skills">
+				<option value="onSkillStarted">onSkillStarted</option>
+				<option value="onSkillStopped">onSkillStopped</option>
+				<option value="onSkillUpdated">onSkillUpdated</option>
+				<option value="onSkillInstalled">onSkillInstalled</option>
+				<option value="onSkillInstallFailed">onSkillInstallFailed</option>
+				<option value="onSkillDeleted">onSkillDeleted</option>
+			</optgroup>
+			<optgroup label="System">
+				<option value="onBooted">onBooted</option>
+				<option value="onAudioFrame">onAudioFrame</option>
+				<option value="onInternetLost">onInternetLost</option>
+				<option value="onInternetConnected">onInternetConnected</option>
+				<option value="onNluTrained">onNluTrained</option>
+				<option value="onVadUp">onVadUp</option>
+				<option value="onVadDown">onVadDown</option>
+				<option value="onSysLog">onSysLog</option>
+				<option value="onConfigureIntent">onConfigureIntent</option>
+				<option value="onPlayBytes">onPlayBytes</option>
+				<option value="onPlayBytesFinished">onPlayBytesFinished</option>
+				<option value="onToggleFeedbackOn">onToggleFeedbackOn</option>
+				<option value="onToggleFeedbackOff">onToggleFeedbackOff</option>
+			</optgroup>
+			<optgroup label="Dialogue">
+				<option value="onHotwordToggleOn">onHotwordToggleOn</option>
+				<option value="onHotwordToggleOff">onHotwordToggleOff</option>
+				<option value="onMessage">onMessage</option>
+				<option value="onHotword">onHotword</option>
+				<option value="onWakeword">onWakeword</option>
+				<option value="onStartListening">onStartListening</option>
+				<option value="onStartSession">onStartSession</option>
+				<option value="onStopListening">onStopListening</option>
+				<option value="onAsrToggleOn">onAsrToggleOn</option>
+				<option value="onAsrToggleOff">onAsrToggleOff</option>
+				<option value="onCaptured">onCaptured</option>
+				<option value="onPartialTextCaptured">onPartialTextCaptured</option>
+				<option value="onNluQuery">onNluQuery</option>
+				<option value="onIntentParsed">onIntentParsed</option>
+				<option value="onUserCancel">onUserCancel</option>
+				<option value="onSay">onSay</option>
+				<option value="onSayFinished">onSayFinished</option>
+				<option value="onIntent">onIntent</option>
+				<option value="onIntentNotRecognized">onIntentNotRecognized</option>
+				<option value="onNluIntentNotRecognized">onNluIntentNotRecognized</option>
+				<option value="onNluError">onNluError</option>
+			</optgroup>
+			<optgroup label="Devices">
+				<option value="onDeviceAdded">onDeviceAdded</option>
+				<option value="onDeviceDiscovered">onDeviceDiscovered</option>
+				<option value="onDeviceRemoved">onDeviceRemoved</option>
+				<option value="onDeviceConnecting">onDeviceConnecting</option>
+				<option value="onDeviceDisconnecting">onDeviceDisconnecting</option>
+				<option value="onBroadcastingForNewDeviceStart">onBroadcastingForNewDeviceStart</option>
+				<option value="onBroadcastingForNewDeviceStop">onBroadcastingForNewDeviceStop</option>
+				<option value="onDeviceHeartbeat">onDeviceHeartbeat</option>
+			</optgroup>
+			<optgroup label="Sessions">
+				<option value="onSessionStarted">onSessionStarted</option>
+				<option value="onSessionQueued">onSessionQueued</option>
+				<option value="onContinueSession">onContinueSession</option>
+				<option value="onEndSession">onEndSession</option>
+				<option value="onSessionEnded">onSessionEnded</option>
+				<option value="onSessionTimeout">onSessionTimeout</option>
+				<option value="onSessionError">onSessionError</option>
+			</optgroup>
+			<optgroup label="Users">
+				<option value="onWakeup">onWakeup</option>
+				<option value="onSleep">onSleep</option>
+				<option value="onContextSensitiveDelete">onContextSensitiveDelete</option>
+				<option value="onContextSensitiveEdit">onContextSensitiveEdit</option>
+			</optgroup>
+		</select>
+	</div>
+	<div class="form-row">
+		<label for="node-input-datatype"><i class="fa fa-sign-out fa-fw"></i> <span data-i18n="onAliceEvent.format"></span></label>
+		<select id="node-input-datatype" style="width:70%;">
+			<optgroup label="Usual">
+				<option value="auto">Auto</option>
+				<option value="json">Json</option>
+			</optgroup>
+			<optgroup label="Advanced">
+				<option value="base64">base64</option>
+				<option value="buffer">buffer</option>
+				<option value="utf8">UTF8</option>
+			</optgroup>
+		</select>
+	</div>
+</script>

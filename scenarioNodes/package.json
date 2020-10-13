@@ -1,18 +1,22 @@
 {
 	"name": "alicecore",
-	"version": "0.0.5",
-	"category": "undefined",
-	"dependencies": {},
+	"version": "1.0.0",
+	"category": "projectalice",
+	"dependencies": {
+		"is-utf8": "^0.2.1",
+		"mqtt": "^4.2.1",
+		"url": "^0.11.0",
+		"https-proxy-agent": "^5.0.0"
+	},
 	"author": "Psycho",
 	"license": "GPLv3",
 	"node-red": {
 		"nodes": {
-			"onfullminute": "onFullMinute.js",
-			"onfiveminute": "onFiveMinute.js",
-			"mqttclient": "mqttClient.js"
+			"aliceMqtt": "aliceMqtt.js",
+			"onAliceEvent": "onAliceEvent.js",
+			"sendMsg": "sendMsg.js",
+			"say": "say.js"
 		}
 	},
-	"devDependencies": {
-		"mqtt": "^3.0.0"
-	}
+	"devDependencies": {}
 }

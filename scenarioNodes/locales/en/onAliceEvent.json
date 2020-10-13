@@ -1,0 +1,8 @@
+{
+	"onAliceEvent": {
+		"broker": "Broker",
+		"event": "Event",
+		"format": "Format",
+		"waiting": "waiting"
+	}
+}
