@@ -22,17 +22,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          pip install pytest
-          pip install coverage
-          pip install pytest-cov
-          pip install coveralls
-      - name: Tests
+          pip install projectalice-sk
+      - name: Validate skill
         run: |
-          pytest tests/ --cov=core/ --cov-report=xml
-      - name: Fix paths
-        run: |
-          sed -i 's/\/home\/runner\/work\/skill_AliceCore\/skill_AliceCore\//\/github\/workspace\//g' coverage.xml
+          projectalice-sk validate
+      - name: Mypi tests
+        uses: jpetrucciani/mypy-check@master
+        with:
+          path: '.'
       - name: Sonarcloud scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
