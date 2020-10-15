@@ -1,0 +1,9 @@
+{
+	"sendMsg": {
+		"invalidTopic": "Topic contains invalid characters",
+		"missingConfig": "Some configs are missing",
+		"send": "Send",
+		"broker": "Broker",
+		"topic": "Topic"
+	}
+}

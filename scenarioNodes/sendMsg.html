@@ -1,0 +1,47 @@
+<!--
+	This is almost a copy of the official Nore-red MQTT out node found on node-red repository.
+	It's been fitted to our needs of simplicity for everyday use and repackaged
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('sendMsg', {
+		category: 'Project Alice',
+		color   : '#3FADB5',
+		defaults: {
+			broker: {
+				type    : 'aliceMqtt',
+				required: true
+			},
+			topic : {
+				value   : '',
+				required: true
+			}
+		},
+		inputs  : 1,
+		outputs : 0,
+		icon    : 'bridge.svg',
+		label   : function () {
+			return this.topic || this.name;
+		}
+	})
+</script>
+
+<script type="text/html" data-help-name="sendMsg">
+	<p>
+		Sends a message to Alice. Takes a payload as input.
+	</p>
+</script>
+
+<script type="text/html" data-template-name="sendMsg">
+	<div class="form-row">
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="sendMsg.broker"></span></label>
+		<input type="text" id="node-input-broker">
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-topic"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendMsg.topic"></span></label>
+			<input type="text" id="node-input-topic">
+		</div>
+	</div>
+</script>

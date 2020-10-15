@@ -269,7 +269,7 @@
 	},
 	"unknownHardware": {
 		"default": [
-			"I'm sorry, I don't know this type of hardware"
+			"I'm sorry, I don't know this type of hardware. Can you tell me what type of hardware you want to add?"
 		]
 	},
 	"whatConfig": {
