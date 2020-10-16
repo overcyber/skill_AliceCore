@@ -2,4 +2,6 @@ from unittest import TestCase
 
 
 class TestAliceCore(TestCase):
-	pass
+
+	def test_on_start(self):
+		pass
