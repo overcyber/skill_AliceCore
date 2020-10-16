@@ -1,11 +1,11 @@
 {
 	"isThatWhatYouMeant": [
-		"<break time=\"500ms\"/>Is that actually what you meant before?",
-		"<break time=\"500ms\"/>Was this what you meant just before?"
+		"<break time=\"500ms\"/>Is that actually what you meant before when you said {0}?",
+		"<break time=\"500ms\"/>Was this what you meant just before when you said {0}?"
 	],
 	"okAddedUtterance": [
 		"Ok, cool, I'll keep that in mind, let me retrain for a while.",
-		"That's noted, I'll quickly retrain. Should be soon ok.",
+		"That's noted, I'll quickly retrain. Should be all ok soon.",
 		"Ok, I won't forget it. Doing a little training and it should be good in a short while."
 	],
 	"newSkill": {
