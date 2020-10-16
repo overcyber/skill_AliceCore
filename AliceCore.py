@@ -104,9 +104,10 @@ class AliceCore(AliceSkill):
 
 
 	def askUpdateUtterance(self, session: DialogSession):
+		previousText = session.previousInput
 		self.continueDialog(
 			sessionId=session.sessionId,
-			text=self.TalkManager.randomTalk('isThatWhatYouMeant'),
+			text=self.randomTalk('isThatWhatYouMeant', replace=[previousText]),
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 			currentDialogState='confirmingWhatWasMeant'
 		)
