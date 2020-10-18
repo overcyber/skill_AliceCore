@@ -14,3 +14,4 @@ AliceCore is the official skill that handles all core intents
   - fr
   - de
   - it
+  - pl
