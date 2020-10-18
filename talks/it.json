@@ -502,5 +502,23 @@
 	],
 	"maxDevicePerLocationReached": [
 		"The limit for this device type per location is {}"
-	]
+	],
+	"suggestSkillToDownload": [
+		"I could maybe answer if you allow me to download a skill for that! I found <lang xml:lang=\"en-US\">{}</lang>. Can I download?",
+		"I can probably answer if I can install a skill for that! I found <lang xml:lang=\"en-US\">{}</lang>. Am I allowed to install?"
+	],
+	"suggestSkillToDownloadMoreThanOne": [
+		"I could maybe answer if you allow me to download a skill for that! I found <lang xml:lang=\"en-US\">{}</lang> and <lang xml:lang=\"en-US\">{}</lang>. Can I download?",
+		"I can probably answer if I can install a skill for that! I found <lang xml:lang=\"en-US\">{}</lang> and <lang xml:lang=\"en-US\">{}</lang>. Am I allowed to install?"
+	],
+	"confirmeDownloadingSuggestedSkill": {
+		"default": [
+			"Ok, downloading, should soon be ready!",
+			"Sure, I'm installing the skill, will soon be ready to use!"
+		],
+		"short": [
+			"Ok!",
+			"Sure, right away!"
+		]
+	}
 }
