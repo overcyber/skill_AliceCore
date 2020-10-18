@@ -1,0 +1,500 @@
+{
+	"isThatWhatYouMeant": [
+		"<break time=\"500ms\"/>Czy o to ci chodziło mówiąc {0}?",
+		"<break time=\"500ms\"/>Czy to miałeś na myśli mówiąc {0}?"
+	],
+	"okAddedUtterance": [
+		"Świetnie, zapamiętam to.",
+		"OK, nauczę się tego, daj mi chwilę.",
+		"Ok, nie zapomnę tego."
+	],
+	"newSkill": {
+		"default": [
+			"Nowe urządzenie typu {} próbuje nawiązać połączenie. Czy chcesz je zarejestrować?"
+		]
+	},
+	"confirmUnregister": {
+		"default": [
+			"Wyrejestrowałem to urządzenie"
+		]
+	},
+	"errorUnregister": {
+		"default": [
+			"Urządzenie nie było zarejestrowane w mojej sieci"
+		]
+	},
+	"unregisterInstructions": {
+		"default": [
+			"Odłącz urządzenie które chcesz wyrejestrować, poczekaj 5 sekund i podłącz je ponownie"
+		]
+	},
+	"whichRoom": {
+		"default": [
+			"W którym pomieszczeniu lub lokalizacji będzie znajdować się to urządzenie?",
+			"Jasne, w którym pomieszczeniu lub lokalizacji umieścisz to urządzenie?"
+		]
+	},
+	"confirmIgnore": {
+		"default": [
+			"OK, ignoruję to urządzenie"
+		]
+	},
+	"confirmAddition": {
+		"default": [
+			"OK, dodałem to urządzenie",
+			"Dodałem to urządzenie"
+		]
+	},
+	"busy": {
+		"default": [
+			"Przepraszam, jestem zajęty. Poczekaj chwilę",
+			"Poczekaj chwilę, jestem zajęty",
+			"Chwileczkę, jestem zajęty"
+		]
+	},
+	"langSwitch": {
+		"default": [
+			"OK, przełączam się na język {}!",
+			"Jasne, aktywuję język {}",
+			"Nie ma problemu, włączam język {}"
+		],
+		"short": [
+			"OK",
+			"Jasne"
+		]
+	},
+	"noDestinationLanguage": {
+		"default": [
+			"Przepraszam, nie wiem na jaki język przełączyć"
+		]
+	},
+	"langNotSupported": {
+		"default": [
+			"Przepraszam, język {} nie jest przeze mnie obsługiwany",
+			"Wybacz, język {} nie jest mi znany"
+		]
+	},
+	"langSwitchFailed": {
+		"default": [
+			"Przepraszam, nie udało mi się przełączyć języka",
+			"Wybacz, z jakiegoś powodu nie udało się ustawić tego języka"
+		]
+	},
+	"noActiveSkill": {
+		"default": [
+			"Przepraszam, nie mam umiejętności do obsługi tego polecenia"
+		],
+		"short": [
+			"Nie mam umiejętności"
+		]
+	},
+	"noProjectIdSet": {
+		"default": [
+			"Nie mogę. ID projektu nie jest ustawione w konfiguracji"
+		]
+	},
+	"noAssistantUpdateOffline": {
+		"default": [
+			"Przepraszam, nie mogę nic aktualizować w trybie offline"
+		]
+	},
+	"confirmAssistantUpdate": {
+		"default": [
+			"OK, zrobię to, ale to może trochę potrwać!",
+			"OK, włączam aktualizację, to może trochę potrwać!"
+		]
+	},
+	"confirmBundleUpdate": {
+		"default": [
+			"Ok, aktualizacja udana!",
+			"Właśnie zakończyłem aktualizację"
+		],
+		"short": [
+			"Gotowe"
+		]
+	},
+	"bundleUpdateFailed": {
+		"default": [
+			"Przepraszam, nie udało mi się wykonać aktualizacji",
+			"Przepraszam, podczas aktualizacji coś poszło nie tak"
+		],
+		"short": [
+			"Wystąpił błąd"
+		]
+	},
+	"confirmReboot": {
+		"default": [
+			"Czy na pewno chcesz mnie uruchomić ponownie?",
+			"Na pewno chcesz mnie zrestartować?"
+		]
+	},
+	"askRebootSkills": {
+		"default": [
+			"Chcesz też zrestartować moje zewnętrzne zdolności?",
+			"Uruchomić również ponownie moje zewnętrzne zdolności?"
+		]
+	},
+	"confirmRebooting": {
+		"default": [
+			"OK, restartuję się!",
+			"Do usłyszenia wkrótce!"
+		]
+	},
+	"confirmRebooted": {
+		"default": [
+			"Właśnie uruchomiłem się ponownie",
+			"Cześć, już jestem z powrotem!"
+		]
+	},
+	"confirmRebootingSkills": {
+		"default": [
+			"Uruchomiłem się, teraz restartuję moje zewnętrzne zdolności",
+			"Witaj ponownie. Restartuję moje zewnętrzne zdolności"
+		]
+	},
+	"abortReboot": {
+		"default": [
+			"OK, anuluję restart",
+			"OK, przerywam ponowne uruchamianie"
+		]
+	},
+	"takingOverSonos": {
+		"default": [
+			"OK, sekundę!",
+			"To będzie łatwe",
+			"Jasne, robi się!"
+		],
+		"short": [
+			"OK",
+			"Jasne"
+		]
+	},
+	"sorryNoSonoHere": {
+		"default": [
+			"Przepraszam, nie wykryto systemu Sonos",
+			"Nie mogę, brak obecności systemu Sonos",
+			"Nie znajduję systemu Sonos"
+		],
+		"short": [
+			"Nie mogę"
+		]
+	},
+	"retreatSonos": {
+		"default": [
+			"OK, uwalniam system Sonos",
+			"Sonos! Uwalniam cię!"
+		],
+		"short": [
+			"OK",
+			"Gotowe"
+		]
+	},
+	"confirmSonosAction": {
+		"default": [
+			"Zrobione",
+			"Teraz jestem tutaj",
+			"Wykonałem twoje polecenie"
+		],
+		"short": [
+			"OK"
+		]
+	},
+	"confirmRoomChange": {
+		"default": [
+			"OK, zmieniłem",
+			"Jasne, przeniesione",
+			"Zaktualizowałem moją konfigurację"
+		]
+	},
+	"displayRoomNotSupported": {
+		"default": [
+			"Przepraszam, wyświetlanie w innych pomieszczeniach nie jest obecnie obsługiwane",
+			"Wybacz, nie potrafię jeszcze tego zrobić"
+		]
+	},
+	"confirmDisplayingInfos": {
+		"default": [
+			"OK, wyświetlam!",
+			"OK, zrobione",
+			"Wyświetlam!"
+		]
+	},
+	"whatToDisplay": {
+		"default": [
+			"Co chcesz wyświetlić?",
+			"Co powinienem wyświetlić?",
+			"Powiedz co mam wyświetlić"
+		]
+	},
+	"internetBack": {
+		"default": [
+			"Mam już połączenie z internetem, przełączam moduł ASR w tryb online"
+		]
+	},
+	"internetLost": {
+		"default": [
+			"Straciłem połączenie z internetem, przełączam moduł ASR w tryb offline"
+		]
+	},
+	"listeningAgain": {
+		"default": [
+			"Hej, chcę tylko powiedzieć, że znów cię słucham",
+			"Znów cię słucham"
+		]
+	},
+	"confirmDeviceAddingMode": {
+		"default": [
+			"OK, czekam na kolejne urządzenie przez 5 minut. Możesz je teraz włączyć"
+		]
+	},
+	"requireTasmotaSkill": {
+		"default": [
+			"Przepraszam, ale najpierw trzeba włączyć zdolność Tasmota"
+		]
+	},
+	"requireZigbeeSkill": [
+		"Przepraszam, ale najpierw trzeba włączyć zdolność ZigBee"
+	],
+	"whatHardware": {
+		"default": [
+			"Jaki typ urządzenia chcesz dodać?",
+			"Jasne, jaki typ urządzenia?"
+		]
+	},
+	"usbDeviceFound": {
+		"default": [
+			"OK, cierpliwości, to może chwilę potrwać!"
+		]
+	},
+	"unknownHardware": {
+		"default": [
+			"Przepraszam, nie znam tego typu urządzenia. Możesz mi powiedzieć jakie urządzenie chcesz dodać?"
+		]
+	},
+	"whatConfig": {
+		"default": [
+			"Nie określono żadnej konfiguracji, której mam użyć?",
+			"Której konfiguracji chcesz użyć?"
+		]
+	},
+	"welcomeToProjectAlice": {
+		"default": [
+			"<s>Witaj w projekcie Alice!</s><s>Utworzyłem dla ciebie użytkownika admin z kodem PIN podanym w konfiguracji.</s><s>Chętnie poznam cię bliżej.</s><s>W tym celu otwórz mój interfejs webowy, przejdź do zakładki \"Narzędzia\" i wybierz polecenie \"Dodaj użytkownika\".</s><s>Cieszę się, że będę mógł ci służyć!</s>"
+		]
+	},
+	"addUserPin": [
+		"<s>Ustal czterocyfrowy kod PIN aby chronić twoje konto.</s><s>Zapamiętaj go dobrze!</s>"
+	],
+	"addPinInvalid": [
+		"Potrzebuję czterech cyfr, spróbuj ponownie.",
+		"Ten kod PIN nie jest poprawny. Kod musi się składać z czterech cyfr."
+	],
+	"addPinConfirm": [
+		"{} {} {} {}? Zgadza się?",
+		"{} {} {} {}? Dobrze zrozumiałem?"
+	],
+	"addWrongPin": [
+		"OK, mój błąd, przepraszam. Podaj PIN jeszcze raz.",
+		"Przepraszam, podaj kod PIN ponownie."
+	],
+	"confirmUsername": {
+		"default": [
+			"Czy dobrze zrozumiałem? Czy twoje imię to {}?",
+			"Twoje imię to {}, zgadza się?"
+		]
+	},
+	"soWhatsTheName": {
+		"default": [
+			"Przepraszam za pomyłkę, jak się zatem nazywasz? Możesz przeliterować swoje imię"
+		]
+	},
+	"userAlreadyExist": {
+		"default": [
+			"Wygląda na to, że użytkownik o imieniu {} już istnieje. Podaj inne imię",
+			"Przykro mi, ale użytkownik o imieniu {} już istnieje. Wybierz inne imię"
+		]
+	},
+	"addUserWakeword": {
+		"default": [
+			"OK {}, dodałem cię! Jeśli chcesz abym cię rozpoznawał musisz utworzyć indywidualne wyrażenie wywołujące. Nie jest to wymagane, ale zalecane. Czy chcesz je teraz utworzyć?"
+		]
+	},
+	"addWakewordWhatUser": {
+		"default": [
+			"Jasne! Dla którego użytkownika chcesz dodać wyrażenie wywołujące?",
+			"Któremu użytkownikowi chcesz dodać wyrażenie wywołujące?"
+		],
+		"short": [
+			"Dla którego użytkownika?",
+			"Wybierz użytkownika"
+		]
+	},
+	"tuneWakewordWhatUser": {
+		"default": [
+			"Jasne! Dla którego użytkownika chcesz poprawić wyrażenie wywołujące?",
+			"Któremu użytkownikowi chcesz poprawić wyrażenie wywołujące?"
+		],
+		"short": [
+			"Dla którego użytkownika?"
+		]
+	},
+	"tuneWakewordNoWakeword": [
+		"Ten użytkownik nie ma jeszcze wyrażenia wywołującego. Najpierw je utwórz!",
+		"Przepraszam, ale wskazany użytkownik nie ma jeszcze przypisanego wyrażenia wywołującego! Należy je najpierw utworzyć!"
+	],
+	"wakewordTuningWhatProblem": [
+		"W czym tkwi problem? 1<break time=\"150ms\"/> Nie reaguję kiedy mnie wzywasz czy <break time=\"50ms\"/>2<break time=\"150ms\"/> Reaguję kiedy nie powinienem?"
+	],
+	"explainWakewordTuningUp": [
+		"Wypróbujmy! Wezwij mnie po imieniu a ja spróbuję to zarejestrować. Jeśli nie usłyszę cię w przeciągu pięciu sekund dam ci znać i spróbujemy ponownie! OK, zaczynamy!"
+	],
+	"explainWakewordTuningDown": [
+		"Przepraszam za to! Ustawiłem mniejszy poziom czułości. Mam nadzieję, że teraz będzie lepiej! Wypróbuj!",
+		"Przepraszam! Zmniejszyłem poziom czułości i mam nadzieję, że będzie lepiej! Spróbuj!"
+	],
+	"tuneWakewordDidntCatch": [
+		"Przepraszam, jeszcze nie przechwyciłem twojego wyrażenia! Ponownie zmieniłem czujność, spróbuj ponownie!",
+		"Wybacz, nie usłyszałem cię! Zmieniłem poziom czułości, spróbuj ponownie!",
+		"Niestety, nie udało mi się nic zarejestrować. Poprawiłem poziom czułości, spróbuj jeszcze raz!"
+	],
+	"tuneWakewordStop": [
+		"Tutaj musimy się zatrzymać, czułość nie może być wyższa niż 0.8 i niższa niż 0.2. Zgaduję, że twoje wyrażenie wywołujące jest zarejestrowane w słabej jakości. Spróbuj zarejestrować je jeszcze raz"
+	],
+	"tuneWakewordUpWorked": [
+		"Hej, mam to! Teraz działa lepiej? Cieszę się!",
+		"Udało się! Słyszałem wyrażenie wywołujące! Fajnie że już działa!"
+	],
+	"tuneWakewordDownWorked": [
+		"OK, tym razem cię nie słyszałem! Przywracam poprzedni poziom czułości i gotowe! Cieszę się, że już działa!",
+		"Dobra, nie słyszałem cię! Ustawiam poprzedni poziom czułości! Super że udało się to naprawić!"
+	],
+	"tuneWakewordDownFailed": [
+		"Znów cię słyszałem, może poziom czułości jest za wysoki... Zawołaj mnie jeszcze raz!",
+		"Słyszałem cię, poziom czułości jest za wysoki. Zawołaj mnie ponownie!",
+		"Niestety, poziom czułości jest za wysoki, nadal cię słyszę. Zawołaj mnie!"
+	],
+	"addWakewordUserNotExisting": {
+		"default": [
+			"Przykro mi, ale użytkownik {} nie istnieje. Podaj inną nazwę użytkownika.",
+			"Niestety nie znalazłem użytkownika {}. Spróbuj z inną nazwą użytkownika.",
+			"Wybacz, ale nie ma użytkownika {}. Podaj nazwę istniejącego użytkownika."
+		]
+	},
+	"addWakewordDenied": {
+		"default": [
+			"OK, rozumiem, ale miej na uwadze, że nie będę w stanie określić czy jesteś w domu, czy śpisz albo grasz w grę"
+		]
+	},
+	"addWakewordAccepted": {
+		"default": [
+			"<s>OK! Potrzebuję trzech próbek dźwięku jak mówisz do mnie <break time=\"100ms\"/> \"Hej Alice\" <break time=\"150ms\"/></s><s>Pamiętaj, aby przebywać w cichym pomieszczeniu. Hałas lub szum utrudniają nagrywani</s><s>Śmiało, Zawołaj mnie teraz!</s>"
+		]
+	},
+	"wakewordCaptureFailed": [
+		"Coś poszło nie tak przy nagrywaniu wyrażenia wywołującego. Czy chcesz podjąć próbę naprawienia tego i spróbować ponownie?"
+	],
+	"howWasTheCapture": [
+		"Właśnie odtworzyłem okrojoną wersję twojego wyrażenia wywołującego. Czy było OK? Jeśli nie, mogę je przyciąć inaczej... Powiedz \"OK\", \"Więcej\", \"Mniej\" lub \"Restart\""
+	],
+	"howWasThisCapture": [
+		"Było OK? Powiedz \"OK\", \"Więcej\", \"Mniej\" lub \"Restart\""
+	],
+	"howWasTheCaptureNow": [
+		"A teraz? Powiedz \"OK\", \"Więcej\", \"Mniej\" lub \"Restart\""
+	],
+	"sampleOk": [
+		"<s>Świetnie, próbka {} gotowa!</s><s>Wywołaj mnie ponownie mówiąc <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s>",
+		"<s>Super, próbkę {} nagrana!</s><s>Powiedz ponownie <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s>",
+		"<s>Potrzebuję jeszcze próbki {}</s><s>Powiedz jeszcze raz <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s>"
+	],
+	"restartSample": [
+		"<s>OK, spróbujmy jeszcze raz.</s> <s>Wywołaj mnie mówiąc <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s>",
+		"<s>Jasne, spróbujmy ponownie.</s> <s>Powiedz do mnie <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s>"
+	],
+	"wakewordCaptureDone": [
+		"Udało ci się! Mam trzy próbki i teraz powinieneś być w stanie nazywać mnie moim imieniem, a ja powinienem być w stanie cię rozpoznać! Ciesz się moimi usługami!"
+	],
+	"wakewordCaptureTooNoisy": [
+		"Wydaje się, że jest za dużo hałasu lub mikrofon jest zbyt czuły. Nie udało mi się uchwycić wyrażenia wywołującego. Czy chcesz spróbować ponownie?",
+		"Wydaje mi się, że albo jest za dużo hałasu, albo czułość twojego mikrofonu są zbyt duża. Nie mogę nagrać wyrażenia wywołującego. Spróbujemy jeszcze raz?"
+	],
+	"cancellingWakewordCapture": [
+		"OK, zaostawmy to na razie. Możesz spróbować ponownie, gdy otoczenie będzie spokojniejsze. Na razie możesz mnie wywołać mówiąc <break time=\"100ms\"/> \"Hey Snips\", ale nie będę w stanie cię rozpoznać."
+	],
+	"addUserWhatsTheName": [
+		"Mogę to zrobić! Tak więc, nowy użytkowniku, jak się nazywasz?",
+		"Jasne nieznana osobo, powiedz mi swoje imię!",
+		"Żaden problem, chętnie! Jak się nazywasz nowy użytkowniku?"
+	],
+	"addUserWhatAccessLevel": [
+		"Jaki poziom dostępu chcesz przyznać? Jest administrator, domyślny, dziecko, pracownik czy gość",
+		"Jakie przyznajesz uprawnienia? Masz wybór między administratorem, domyślnym, dzieckiem, pracownikiem i gościem",
+		"Powiedz mi, jaki poziom dostępu mam ustawić? Administrator? Domyślny? Dziecko? Pracownik czy gość?"
+	],
+	"addUserConfirmUsername": [
+		"Ok, czy dobrze zrozumiałem, że nazywasz się {}?",
+		"Czy dobrze zrozumiałem? Twoje imię to {}",
+		"Dobrze rozumiem? Twoje imię to {}"
+	],
+	"addUserConfirmed": [
+		"OK, dodałem {} jako {}! Jeśli chcesz, żebym rozpoznał tego użytkownika na podstawie jego głosu, musi utworzyć osobiste wyrażenie wywołujące. Nie jest to obowiązkowe, ale zalecane. Chcesz to zrobić teraz?"
+	],
+	"addUserAddWakewordAccepted": [
+		"<s>OK {}! Potrzebuję trzech próbek, dźwięku jak mówisz do mnie <break time=\"100ms\"/> \"Hey Alice\" <break time=\"150ms\"/></s><s>Pamiętaj, aby przebywać w cichym pomieszczeniu, aby to zadziałało. Hałas lub szum uniemożliwiają nagranie</s><s>Śmiało, mów do mnie!</s>"
+	],
+	"addUserAddWakewordDenied": [
+		"OK, rozumiem. Pamiętaj, że nie będę w stanie określić, czy {} jest w domu, śpi, gra w gry lub pamięta rzeczy o {}."
+	],
+	"explainInterfaceAuthWithKeyboard": {
+		"default": [
+			"Jeśli chcesz uzyskać dostęp do tej części, muszę cię uwierzytelnić. Wpisz <break time = \"100ms\" /> \"admin\" <break time = \"100ms\" /> za pomocą klawiatury",
+			"Aby uzyskać dostęp do tej części interfejsu, muszę cię uwierzytelnić. Wpisz <break time = \"100ms\" /> \"admin\" <break time = \"100ms\" /> za pomocą klawiatury"
+		],
+		"short": [
+			"Wpisz \"admin\"."
+		]
+	},
+	"explainInterfaceAuth": {
+		"default": [
+			"Jeśli chcesz uzyskać dostęp do tej części, muszę cię uwierzytelnić. Mów mi po imieniu!",
+			"Aby uzyskać dostęp do tej części interfejsu, muszę cię uwierzytelnić. Proszę, mów mi po imieniu"
+		],
+		"short": [
+			"Mów do mnie po imieniu"
+		]
+	},
+	"greetAndNeedPinCode": {
+		"default": [
+			"Hej {}! Potrzebuję teraz Twojego kodu PIN. Możesz go teraz wypowiedzieć lub wprowadzić w interfejsie!",
+			"Cześć {}. Aby kontynuować, potrzebuję twojego osobistego kodu PIN. Możesz mi go powiedzieć lub wpisać w interfejsie."
+		],
+		"short": [
+			"Powiedz lub wprowadź kod PIN w interfejsie"
+		]
+	},
+	"userAuthUnknown": [
+		"Przepraszam, ale cię nie rozpoznałem",
+		"Przepraszam, ale nie wiem, kim jesteś"
+	],
+	"userAuthAccessLevelTooLow": [
+		"Przepraszam {}, ale Twój poziom dostępu jest za niski",
+		"Niestety {}, Twój poziom dostępu jest zbyt niski"
+	],
+	"authFailed": [
+		"Niestety, żle. Nie mogę pozwolić ci przejść dalej",
+		"Nie, niepoprawnie. Spróbuj ponownie"
+	],
+	"authOk": [
+		"OK, jesteś zweryfikowany, masz teraz dostęp",
+		"Super, zgadza się, masz teraz dostęp"
+	],
+	"noWifiConf": [
+		"Nie znalazłem twoich ustawień Wi-Fi, upewnij się, że masz je skonfigurowane i spróbuj ponownie."
+	],
+	"maxDeviceOfTypeReached": [
+		"Przepraszamy, całkowity limit dla tego typu urządzenia to {}"
+	],
+	"maxDevicePerLocationReached": [
+		"Limit dla tego typu urządzenia na lokalizację wynosi {}"
+	]
+}
