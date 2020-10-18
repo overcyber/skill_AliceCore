@@ -419,7 +419,7 @@
 		"Wydaje mi się, że albo jest za dużo hałasu, albo czułość twojego mikrofonu są zbyt duża. Nie mogę nagrać wyrażenia wywołującego. Spróbujemy jeszcze raz?"
 	],
 	"cancellingWakewordCapture": [
-		"OK, zaostawmy to na razie. Możesz spróbować ponownie, gdy otoczenie będzie spokojniejsze. Na razie możesz mnie wywołać mówiąc <break time=\"100ms\"/> \"Hey Snips\", ale nie będę w stanie cię rozpoznać."
+		"OK, zostawmy to na razie. Możesz spróbować ponownie, gdy otoczenie będzie spokojniejsze. Na razie możesz mnie wywołać mówiąc <break time=\"100ms\"/> \"Hey Snips\", ale nie będę w stanie cię rozpoznać."
 	],
 	"addUserWhatsTheName": [
 		"Mogę to zrobić! Tak więc, nowy użytkowniku, jak się nazywasz?",
@@ -481,7 +481,7 @@
 		"Niestety {}, Twój poziom dostępu jest zbyt niski"
 	],
 	"authFailed": [
-		"Niestety, żle. Nie mogę pozwolić ci przejść dalej",
+		"Niestety, źle. Nie mogę pozwolić ci przejść dalej",
 		"Nie, niepoprawnie. Spróbuj ponownie"
 	],
 	"authOk": [
