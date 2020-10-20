@@ -101,7 +101,7 @@
 				"Dodaj nowy sprzęt",
 				"Chcę dodać nowy sprzęt",
 				"Chciałbym dodać nowy sprzęt",
-				"Dodaj nową {satelitę:=>Hardware} ",
+				"Dodaj nową {satelitę:=>Hardware}",
 				"Chce zarejestrować nową {satelitkę:=>Hardware}",
 				"Chciałbym zarejestrować nową {satelitkę:=>Hardware}"
 			],
@@ -14694,7 +14694,7 @@
 					"value": "przewidywanie"
 				},
 				{
-					"value ": " antycypacja "
+					"value": " antycypacja"
 				},
 				{
 					"value": "antykomutatywność"
@@ -18744,7 +18744,7 @@
 					"value": "dochodzenie"
 				},
 				{
-					"value ": " badacz "
+					"value": " badacz"
 				},
 				{
 					"value": "inwestycja"
@@ -20799,7 +20799,7 @@
 					"value": "anulowanie projektu"
 				},
 				{
-					"value ": " uruchomienie projektu "
+					"value": " uruchomienie projektu"
 				},
 				{
 					"value": "widoczna"
@@ -24221,7 +24221,7 @@
 					]
 				},
 				{
-					"value": "238,32 ,77 ",
+					"value": "238,32 ,77",
 					"synonyms": [
 						"Red"
 					]
