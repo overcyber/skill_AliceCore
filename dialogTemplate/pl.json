@@ -5583,7 +5583,10 @@
 					"value": "sala operacyjna"
 				},
 				{
-					"value": "na zewnątrz"
+					"value": "na zewnątrz",
+					"synonyms": [
+						"zewnątrz"
+					]
 				},
 				{
 					"value": "spiżarnia",
@@ -24382,7 +24385,7 @@
 				{
 					"value": "146, 110, 174",
 					"synonyms": [
-						"Violet (Purple"
+						"Violet Purple"
 					]
 				},
 				{
