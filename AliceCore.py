@@ -73,7 +73,8 @@ class AliceCore(AliceSkill):
 			'confirmingWakewordCreation': self.createWakeword,
 			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
 			'confirmingPinCode': self.askCreateWakeword,
-			'confirmingWhatWasMeant': self.updateUtterance
+			'confirmingWhatWasMeant': self.updateUtterance,
+			'answeringDownloadSuggestedSkill': self.answerDownloadSuggestedSkill
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
@@ -101,6 +102,22 @@ class AliceCore(AliceSkill):
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
 		super().__init__(self._INTENTS)
+
+
+	def answerDownloadSuggestedSkill(self, session: DialogSession):
+		if not self.Commons.isYes(session):
+			self.endSession(sessionId=session.sessionId)
+			return
+
+		# TODO Support for chosing between multiple skills
+		skill = session.customData['skills'][0][0]
+		self.SkillManager.downloadInstallTicket(skillName=skill)
+
+		self.endDialog(
+			sessionId=session.sessionId,
+			text=self.randomTalk(text='confirmeDownloadingSuggestedSkill')
+		)
+
 
 
 	def askUpdateUtterance(self, session: DialogSession):
