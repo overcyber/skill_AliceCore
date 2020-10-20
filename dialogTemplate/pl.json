@@ -318,17 +318,20 @@
 			"name": "AddNewUser",
 			"enabledByDefault": true,
 			"utterances": [
-				"Kannst du bitte einen neuen Nutzer hinzufügen",
-				"Füge einen neuen Nutzer als {gast:=>UserAccessLevel} hinzu",
-				"Bitte füge einen neuen {admin:=>UserAccessLevel} hinzu",
-				"Ich muss einen neuen {admin:=>UserAccessLevel} hinzufügen",
-				"Könntest du einen neuen Nutzer zu deiner Datenbank hinzufügen",
-				"Hier ist jemand Neues, den ich dir gerne vorstellen möchte",
-				"Ich präsentiere dir {John:=>Name} unseren {Gast:=>UserAccessLevel}",
-				"Kannst du {Natalija:=>Name} als {admin:=>UserAccessLevel} hinzufügen",
-				"Triff unseren {Arbeiter:=>UserAccessLevel} {Richard:=>Name}",
-				"Ich möchte dass du {Roland:=>Name} kennenlernst",
-				"Ich habe jemanden, den du als neuen Benutzer hinzufügen kannst"
+				"Czy możesz dodać nowego użytkownika",
+				"Dodaj nowego użytkownika jako {gość:=>UserAccessLevel}",
+				"Utwórz nowego użytkownika w roli {admin:=>UserAccessLevel}",
+				"Chcę utworzyć nowego użytkownika w roli {admin:=>UserAccessLevel}",
+				"Jest tu ktoś nowy, dodaj go jako {gościa:=>UserAccessLevel}",
+				"Poznaj kogoś nowego, dodaj go jako {admina:=>UserAccessLevel}",
+				"Utwórz nowego {administratora:=>UserAccessLevel}",
+				"Poznaj osobę o imieniu {Jan:=>Name}, to nasz nowy {administrator:=>UserAccessLevel}",
+				"To jest {Natalia:=>Name}, zapamiętaj ją jako {administratora:=>UserAccessLevel}",
+				"To jest {Damian:=>Name}, zapamiętaj go jako {administratora:=>UserAccessLevel}",
+				"Zapamiętaj nowego {pracownika:=>UserAccessLevel} o imieniu {Ryszard:=>Name}",
+				"Zapamiętaj nowego {pracownika:=>UserAccessLevel} o imieniu {Jacek:=>Name}",
+				"Jest ze mną {Lech:=>Name}, nowy {pracownik:=>UserAccessLevel}",
+				"Poznaj nową osobę"
 			],
 			"slots": [
 				{
@@ -4813,38 +4816,57 @@
 				{
 					"value": "admin",
 					"synonyms": [
+						"admina",
+						"administracyjnej",
 						"administrator",
+						"administratora",
 						"szef",
-						"zarządca"
+						"szefa",
+						"dowodzącego",
+						"zarządca",
+						"zarządcy"
 					]
 				},
 				{
 					"value": "default",
 					"synonyms": [
+						"standardowe",
 						"standardowy",
-						"domyślny"
+						"standardowej",
+						"domyślny",
+						"domyślnej"
 					]
 				},
 				{
 					"value": "kid",
 					"synonyms": [
+						"dziecięcej",
 						"dziecko",
-						"maluch"
+						"dziecka",
+						"maluch",
+						"malucha"
 					]
 				},
 				{
 					"value": "worker",
 					"synonyms": [
 						"pracownik",
+						"pracownika",
+						"pracowniczej",
 						"wyrobek",
-						"robol"
+						"wyrobka",
+						"robol",
+						"robola"
 					]
 				},
 				{
 					"value": "guest",
 					"synonyms": [
 						"gość",
-						"tymczasowy"
+						"gościa",
+						"gościnnej",
+						"tymczasowy",
+						"tymczasowej"
 					]
 				}
 			]
