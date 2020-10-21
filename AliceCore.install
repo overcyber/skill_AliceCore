@@ -8,7 +8,8 @@
         "Psycho",
         "Jierka",
         "maxbachmann",
-        "philipp2310"
+        "philipp2310",
+		"ChrisB85"
     ],
     "desc": "AliceCore is the official skill that handles all core intents.",
     "aliceMinVersion": "1.0.0-b3",
