@@ -133,6 +133,7 @@ class AliceCore(AliceSkill):
 	def updateUtterance(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			session.notUnderstood = 0
+			print(f'session is {session}')
 			self.DialogTemplateManager.addUtterance(session=session)
 
 			self.endDialog(
