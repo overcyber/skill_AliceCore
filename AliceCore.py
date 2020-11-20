@@ -15,7 +15,7 @@ from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import IfSetting, Online
+from core.util.Decorators import IfSetting, Online, MqttHandler
 from core.voice.WakewordRecorder import WakewordRecorderState
 
 from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
@@ -1087,6 +1087,21 @@ class AliceCore(AliceSkill):
 				canBeEnqueued=False
 			)
 
-
 	def authWithKeyboard(self):
 		self.endUserAuth()
+
+	@MqttHandler('projectalice/nodered/sendMessage')
+	def noderRedAction(self, session: DialogSession):
+		playbackDevice = session.payload['siteId']
+		if not playbackDevice:
+			playbackDevice = session.siteId
+
+		self.MqttManager.publish(
+			topic=constants.TOPIC_TEXT_CAPTURED,
+			payload={
+				'sessionId': session.sessionId,
+				'text': session.payload["action"]["text"],
+				'siteId': playbackDevice,
+				'seconds': 1
+			}
+		)

@@ -1,0 +1,83 @@
+<!--
+	This is almost a copy of the official Nore-red MQTT out node found on node-red repository.
+	It's been fitted to our needs of simplicity for everyday use and repackaged
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('sendMessage', {
+		category: 'Project Alice',
+		color: '#3FADB5',
+		defaults: {
+			broker: {
+				type: 'aliceMqtt',
+				required: true
+			},
+			sendMessage: {
+				value: '',
+				required: true
+			},
+			client: {
+				value: ''
+			}
+		},
+		inputs: 1,
+		outputs: 0,
+		icon: 'bridge.svg',
+		label: function () {
+			return this.name;
+		}
+	})
+</script>
+
+<script type="text/html" data-help-name="sendMessage">
+	<p>
+		Triggers and intent from Within Alice
+	</p>
+	<h3>Inputs</h3>
+	<dl class="message-properties">
+		<dt>MQTT
+			<span class="property-type">Configured Settings</span>
+		</dt>
+		<dd> This is the MQTT client that will be used.</dd>
+		<dt>sendMessage
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the message you want Alice to sendMessage. Example: good night</dd>
+		<dt class="optional">Device UID <span class="property-type">string</span></dt>
+		<dd> The UID of the device you want to speak.</dd>
+	</dl>
+
+	<h3>Details</h3>
+	<p><b>MQTT Broker</b> - The MQTT broker should already be set by default. If you see AliceMqtt as the server
+		name then this is probably setup correctly and no further sendMessage is needed by you.</p>
+	<p><b>Message</b> - The message field requires the text you want Alice to trigger. It is compulsory field.</p>
+	<p><b>Device UID</b> - The Device ID is not a required field. It is the Unique ID of the device you want to have
+		sendMessage your message. Leaving this field blank will use the default Alice device </p>
+
+	<h3>References</h3>
+	<ul>
+		<li><a>ProjectAlice Doc</a> - Want to learn more about Alice ? Read the docs</li>
+	</ul>
+</script>
+
+<script type="text/html" data-template-name="sendMessage">
+	<div class="form-row">
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
+				data-i18n="sendMessage.broker">Broker</span></label>
+		<input type="text" id="node-input-broker">
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-sendMessage"><i class="fa fa-tasks fa-fw"></i> <span
+					data-i18n="sendMessage.sendMessage">Message</span></label>
+			<input type="text" id="node-input-sendMessage">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="sendMessage.client">Device UID</span></label>
+			<input type="text" id="node-input-client">
+		</div>
+	</div>
+</script>
