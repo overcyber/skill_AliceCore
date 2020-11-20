@@ -1,15 +1,16 @@
 {
-    "name": "AliceCore",
-    "version": "1.5.0",
-    "icon": "fab fa-creative-commons-by",
-    "category": "alice",
-    "author": "ProjectAlice",
-    "maintainers": [
-        "Psycho",
-        "Jierka",
-        "maxbachmann",
-        "philipp2310"
-    ],
+  "name": "AliceCore",
+  "version": "1.5.1",
+  "icon": "fab fa-creative-commons-by",
+  "category": "alice",
+  "author": "ProjectAlice",
+  "maintainers": [
+	"Psycho",
+	"Jierka",
+	"maxbachmann",
+	"philipp2310",
+	"lazza"
+  ],
     "desc": "AliceCore is the official skill that handles all core intents.",
     "aliceMinVersion": "1.0.0-b4",
     "systemRequirements": [],

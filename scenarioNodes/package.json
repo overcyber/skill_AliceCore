@@ -12,11 +12,12 @@
 	"license": "GPLv3",
 	"node-red": {
 		"nodes": {
-			"aliceMqtt": "aliceMqtt.js",
-			"onAliceEvent": "onAliceEvent.js",
-			"sendMsg": "sendMsg.js",
-			"say": "say.js"
-		}
+      "aliceMqtt": "aliceMqtt.js",
+      "onAliceEvent": "onAliceEvent.js",
+      "sendMsg": "sendMsg.js",
+      "say": "say.js",
+      "sendMessage": "sendMessage.js"
+    }
 	},
 	"devDependencies": {}
 }
