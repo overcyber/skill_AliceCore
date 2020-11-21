@@ -5,7 +5,7 @@
 
 
 <script type="text/javascript">
-	RED.nodes.registerType('sendMessage', {
+	RED.nodes.registerType('triggerAction', {
 		category: 'Project Alice',
 		color: '#3FADB5',
 		defaults: {
@@ -13,7 +13,7 @@
 				type: 'aliceMqtt',
 				required: true
 			},
-			sendMessage: {
+			triggerAction: {
 				value: '',
 				required: false
 			},
@@ -30,9 +30,9 @@
 	})
 </script>
 
-<script type="text/html" data-help-name="sendMessage">
+<script type="text/html" data-help-name="triggerAction">
 	<p>
-		Triggers and intent from Within Alice
+		Triggers an intent from Within Alice
 	</p>
 	<h3>Inputs</h3>
 	<dl class="message-properties">
@@ -40,7 +40,7 @@
 			<span class="property-type">Configured Settings</span>
 		</dt>
 		<dd> This is the MQTT client that will be used.</dd>
-		<dt>sendMessage
+		<dt>triggerAction
 			<span class="property-type">string</span>
 		</dt>
 		<dd> This is the message you want Alice to action. Example: good night</dd>
@@ -50,7 +50,7 @@
 
 	<h3>Details</h3>
 	<p><b>MQTT Broker</b> - The MQTT broker should already be set by default. If you see AliceMqtt as the server
-		name then this is probably setup correctly and no further sendMessage is needed by you.</p>
+		name then this is probably setup correctly and no further action is needed by you.</p>
 	<p><b>Message</b> - You have two options with the Message field</p>
 	<ol>
 		<li>Enter the message in this field that you want sent to Alice <b>EG:</b><code>what's the time</code>
@@ -69,22 +69,23 @@
 
 </script>
 
-<script type="text/html" data-template-name="sendMessage">
+<script type="text/html" data-template-name="triggerAction">
 	<div class="form-row">
 		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
-				data-i18n="sendMessage.broker">Broker</span></label>
+				data-i18n="triggerAction.broker">Broker</span></label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
 		<div class="form-row">
-			<label for="node-input-sendMessage"><i class="fa fa-tasks fa-fw"></i> <span
-					data-i18n="sendMessage.sendMessage">Message</span></label>
-			<input type="text" id="node-input-sendMessage">
+			<label for="node-input-triggerAction"><i class="fa fa-tasks fa-fw"></i> <span
+					data-i18n="triggerAction.triggerAction">Message</span></label>
+			<input type="text" id="node-input-triggerAction">
 		</div>
 	</div>
 	<div class="form-row">
 		<div class="form-row">
-			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="sendMessage.client">Device UID</span></label>
+			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span
+					data-i18n="triggerAction.client">Device UID</span></label>
 			<input type="text" id="node-input-client">
 		</div>
 	</div>

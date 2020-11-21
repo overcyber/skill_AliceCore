@@ -7,24 +7,27 @@
 <script type="text/javascript">
 	RED.nodes.registerType('say', {
 		category: 'Project Alice',
-		color   : '#3FADB5',
+		color: '#3FADB5',
 		defaults: {
 			broker: {
-				type    : 'aliceMqtt',
+				type: 'aliceMqtt',
 				required: true
 			},
-			say : {
-				value   : '',
-				required: true
+			say: {
+				value: '',
+				required: false
 			},
-			client : {
-				value   : ''
+			client: {
+				value: ''
+			},
+			newName: {
+				value: ''
 			}
 		},
-		inputs  : 1,
-		outputs : 0,
-		icon    : 'bridge.svg',
-		label   : function () {
+		inputs: 1,
+		outputs: 0,
+		icon: 'bridge.svg',
+		label: function () {
 			return this.name;
 		}
 	})
@@ -34,11 +37,34 @@
 	<p>
 		Makes Alice speak the given text
 	</p>
+	<h3>Inputs</h3>
+	<dl class="message-properties">
+		<dt>MQTT
+			<span class="property-type">Configured Settings</span>
+		</dt>
+		<dd> This is the MQTT client that will be used.</dd>
+		<dt>Say
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the message you want Alice to speak.
+			<ol>
+				<li><b>- Leaving this field blank</b> will allow you to send the <b>say node</b> a
+					<code>msg.payload</code> from another node
+				</li>
+				<li><b>- Text entered in this field</b> will overide any other incomming <code>msg.payload</code>
+				</li>
+			</ol>
+		</dd>
+		<dt class="optional">Client UID <span class="property-type">string</span></dt>
+		<dd> The UID of the device you want to speak. Can be left blank to use the default device</dd>
+	</dl>
+
 </script>
 
 <script type="text/html" data-template-name="say">
 	<div class="form-row">
-		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="say.broker"></span></label>
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
+				data-i18n="say.broker"></span>Broker</label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
@@ -49,7 +75,8 @@
 	</div>
 	<div class="form-row">
 		<div class="form-row">
-			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="say.client"></span></label>
+			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span
+					data-i18n="say.client"></span></label>
 			<input type="text" id="node-input-client">
 		</div>
 	</div>
