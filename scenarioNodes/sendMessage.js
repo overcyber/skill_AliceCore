@@ -14,6 +14,7 @@ module.exports = function (RED) { //NOSONAR
 
 		let node = this;
 		let check = /[+#]/;
+		let inputText = "";
 
 		if (this.brokerInstance) {
 			this.status({
@@ -23,6 +24,13 @@ module.exports = function (RED) { //NOSONAR
 			});
 
 			this.on('input', function (msg, send, done) {
+
+				if ((msg.payload.message) && (!config.sendMessage)) {
+					inputText = msg.payload.message
+				} else {
+					inputText = config.sendMessage
+				}
+
 				msg.qos = 0;
 				msg.retain = false;
 				msg.topic = node.topic;
@@ -30,10 +38,10 @@ module.exports = function (RED) { //NOSONAR
 				msg.payload = {
 					'siteId': config.client,
 					'action': {
-						'text': config.sendMessage
+						'text': inputText
 					}
 				};
-
+				node.send(msg)
 				if (check.test(msg.topic)) {
 					node.warn(RED._('sendMessage.invalidTopic'));
 				} else {

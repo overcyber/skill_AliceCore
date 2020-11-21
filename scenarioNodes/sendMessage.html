@@ -15,7 +15,7 @@
 			},
 			sendMessage: {
 				value: '',
-				required: true
+				required: false
 			},
 			client: {
 				value: ''
@@ -43,7 +43,7 @@
 		<dt>sendMessage
 			<span class="property-type">string</span>
 		</dt>
-		<dd> This is the message you want Alice to sendMessage. Example: good night</dd>
+		<dd> This is the message you want Alice to action. Example: good night</dd>
 		<dt class="optional">Device UID <span class="property-type">string</span></dt>
 		<dd> The UID of the device you want to speak.</dd>
 	</dl>
@@ -51,14 +51,22 @@
 	<h3>Details</h3>
 	<p><b>MQTT Broker</b> - The MQTT broker should already be set by default. If you see AliceMqtt as the server
 		name then this is probably setup correctly and no further sendMessage is needed by you.</p>
-	<p><b>Message</b> - The message field requires the text you want Alice to trigger. It is compulsory field.</p>
-	<p><b>Device UID</b> - The Device ID is not a required field. It is the Unique ID of the device you want to have
-		sendMessage your message. Leaving this field blank will use the default Alice device </p>
+	<p><b>Message</b> - You have two options with the Message field</p>
+	<ol>
+		<li>Enter the message in this field that you want sent to Alice <b>EG:</b><code>what's the time</code>
+			*NOTE* Having text in this field will override any incoming payload
+		</li>
+		<li>Inject the message using <code>msg.payload.message</code>. This will give you the extra benifit of
+			sending, for example, random messages. Or able to use the node once in a flow but recieve the message from
+			various sources
+		</li>
+		.
+	</ol>
 
-	<h3>References</h3>
-	<ul>
-		<li><a>ProjectAlice Doc</a> - Want to learn more about Alice ? Read the docs</li>
-	</ul>
+	<p><b>Device UID</b> - The Device ID is not a required field. It is the Unique ID of the device you want to have
+		action your message. Leaving this field blank will use the default Alice device </p>
+
+
 </script>
 
 <script type="text/html" data-template-name="sendMessage">
