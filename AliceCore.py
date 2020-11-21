@@ -981,15 +981,16 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetConnected(self):
-		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR:
+		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \
+				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetBack'),
 				siteId=constants.ALL
 			)
 
-
 	def onInternetLost(self):
-		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') and self.ASRManager.asr.isOnlineASR:
+		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') and self.ASRManager.asr.isOnlineASR \
+				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetLost'),
 				siteId=constants.ALL
@@ -1090,7 +1091,7 @@ class AliceCore(AliceSkill):
 	def authWithKeyboard(self):
 		self.endUserAuth()
 
-	@MqttHandler('projectalice/nodered/sendMessage')
+	@MqttHandler('projectalice/nodered/triggerAction')
 	def noderRedAction(self, session: DialogSession):
 		playbackDevice = session.payload['siteId']
 		if not playbackDevice:

@@ -16,7 +16,7 @@
       "onAliceEvent": "onAliceEvent.js",
       "sendMsg": "sendMsg.js",
       "say": "say.js",
-      "sendMessage": "sendMessage.js"
+      "triggerAction": "triggerAction.js"
     }
 	},
 	"devDependencies": {}

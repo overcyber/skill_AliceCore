@@ -4,10 +4,10 @@
  */
 
 module.exports = function (RED) { //NOSONAR
-	function sendMessage(config) {
+	function triggerAction(config) {
 		RED.nodes.createNode(this, config);
 
-		this.topic = 'projectalice/nodered/sendMessage';
+		this.topic = 'projectalice/nodered/triggerAction';
 		this.broker = config.broker;
 		this.brokerInstance = RED.nodes.getNode(this.broker);
 		this.datatype = config.datatype || 'utf8';
@@ -25,10 +25,10 @@ module.exports = function (RED) { //NOSONAR
 
 			this.on('input', function (msg, send, done) {
 
-				if ((msg.payload.message) && (!config.sendMessage)) {
+				if ((msg.payload.message) && (!config.triggerAction)) {
 					inputText = msg.payload.message
 				} else {
-					inputText = config.sendMessage
+					inputText = config.triggerAction
 				}
 
 				msg.qos = 0;
@@ -43,7 +43,7 @@ module.exports = function (RED) { //NOSONAR
 				};
 				node.send(msg)
 				if (check.test(msg.topic)) {
-					node.warn(RED._('sendMessage.invalidTopic'));
+					node.warn(RED._('triggerAction.invalidTopic'));
 				} else {
 					node.brokerInstance.publish(msg, done);
 					node.send(msg)
@@ -51,7 +51,7 @@ module.exports = function (RED) { //NOSONAR
 					node.status({
 						fill: 'green',
 						shape: 'dot',
-						text: config.sendMessage
+						text: config.triggerAction
 					});
 
 					setTimeout(function () {
@@ -80,9 +80,9 @@ module.exports = function (RED) { //NOSONAR
 			});
 
 		} else {
-			this.error(RED._('sendMessage.missingConfig'));
+			this.error(RED._('triggerAction.missingConfig'));
 		}
 	}
 
-	RED.nodes.registerType('sendMessage', sendMessage);
+	RED.nodes.registerType('triggerAction', triggerAction);
 };
