@@ -11,6 +11,7 @@ from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
+from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.interface.views.AdminAuth import AdminAuth
@@ -22,6 +23,18 @@ from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDe
 
 
 class AliceCore(AliceSkill):
+
+	DEVICES = {
+		'AliceCore': {
+			'deviceTypeName'    : 'AliceCore',
+			'perLocationLimit'  : 1,
+			'totalDeviceLimit'  : 1,
+			'allowLocationLinks': True,
+			'heartbeatRate'     : 2,
+			'deviceSettings'    : dict(),
+			'abilities'         : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
+		}
+	}
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo')
@@ -101,7 +114,7 @@ class AliceCore(AliceSkill):
 
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
-		super().__init__(self._INTENTS)
+		super().__init__(self._INTENTS, devices=self.DEVICES)
 
 
 	def answerDownloadSuggestedSkill(self, session: DialogSession):
@@ -606,7 +619,7 @@ class AliceCore(AliceSkill):
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
-		if session.siteId != self.getAliceConfig('deviceName'):
+		if session.siteId != self.getAliceConfig('deviceType'):
 			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
 		else:
 			self.WakewordManager.disableEngine()
@@ -753,21 +766,6 @@ class AliceCore(AliceSkill):
 				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self.addFirstUser()
-
-		# create device
-		if self.DeviceManager.getMainDevice().id == 0:
-			#IF aliceCore ever gets a second device type, this will not work anymore!
-			devType = self._deviceTypes
-			if not devType:
-				self.ThreadManager.doLater(interval=10, func=self.onStart)
-				raise Exception("Alice Core Device Type is missing!")
-			# first run, create device
-			# get location from config
-			self.DeviceManager._bufferedMainDevice = self.DeviceManager.addNewDevice(deviceTypeId=next(iter(devType)),
-			                                                                         locationId=self.LocationManager.getLocation(location="The Hive").id,
-			                                                                         noChecks=True, #required: deviceType for checks not published yet!
-			                                                                         skillName=self.name)
-			self.DeviceManager._bufferedMainDevice.changeName(newName='Alice')
 
 
 	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
@@ -928,19 +926,19 @@ class AliceCore(AliceSkill):
 
 	def deviceGreetingIntent(self, session: DialogSession):
 		uid = session.payload.get('uid')
-		siteId = session.payload.get('siteId')
+		siteId = session.payload.get('device')
 		if not uid or not siteId:
 			self.logWarning('A device tried to connect but is missing information in the payload, refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId})
 			return
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
 			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in location {device.location} connected')
-			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
+			self.publish(topic='projectalice/devices/connectionAccepted', payload={'device': siteId, 'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId, 'uid': uid})
 
 	def onInternetConnected(self):
 		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \
@@ -988,7 +986,7 @@ class AliceCore(AliceSkill):
 
 
 	def unmuteSite(self, siteId):
-		if siteId != self.getAliceConfig('deviceName'):
+		if siteId != self.getAliceConfig('deviceType'):
 			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
 		else:
 			self.WakewordManager.enableEngine()
@@ -1023,13 +1021,13 @@ class AliceCore(AliceSkill):
 
 
 	def langSwitch(self, newLang: str, siteId: str):
-		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
+		self.publish(topic='hermes/asr/textCaptured', payload={'device': siteId})
 		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
 
 
 	def _confirmLangSwitch(self, siteId: str):
-		self.publish(topic='hermes/leds/onStop', payload={'siteId': siteId})
+		self.publish(topic='hermes/leds/onStop', payload={'device': siteId})
 		self.say(text=self.randomTalk('langSwitch'), siteId=siteId)
 
 
