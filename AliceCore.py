@@ -14,7 +14,6 @@ from core.commons import constants
 from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
-from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
@@ -663,7 +662,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		location = self.LocationManager.getLocation(location=location)
+		location = self.LocationManager.getLocation(locId=location)
 
 		if not location:
 			self.continueDialog(
@@ -676,9 +675,15 @@ class AliceCore(AliceSkill):
 			return
 
 		try:
-			device = self.DeviceManager.addNewDevice(deviceTypeId=deviceType.id, locationId=location.id)
+			# TODO if more than one device with same name, ask from what skill
+			skillName = 'alicecore'
+			for deviceType in self.DeviceManager.deviceTypes.values():
+				if deviceType.skillName.lower() == deviceTypeName.lower():
+					skillName = deviceType.skillName
 
-			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnSiteId=session.siteId, session=session):
+			device = self.DeviceManager.addNewDevice(deviceType=deviceTypeName, skillName=skillName, locationId=location.id)
+
+			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnDevice=session.siteId, session=session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -737,27 +742,6 @@ class AliceCore(AliceSkill):
 			self.ThreadManager.doLater(interval=1, func=self.onStart)
 
 
-	def greetAndAskPin(self, session: DialogSession):
-		if not AdminAuth.getUser().isAuthenticated and self.ThreadManager.getEvent('authUser').isSet():
-			self.ask(
-				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
-				siteId=session.siteId,
-				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				probabilityThreshold=0.1,
-				currentDialogState='userAuth',
-				customData={
-					'user': session.user.lower()
-				}
-			)
-
-
-	def endUserAuth(self):
-		self.ThreadManager.clearEvent('authUser')
-		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
-			self.DialogManager.toggleFeedbackSound(state='on')
-			self.ThreadManager.clearEvent('authUserWaitWakeword')
-
-
 	def onStart(self):
 		super().onStart()
 
@@ -766,10 +750,6 @@ class AliceCore(AliceSkill):
 				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self.addFirstUser()
-
-
-	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
-		self.endUserAuth()
 
 
 	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
@@ -797,41 +777,9 @@ class AliceCore(AliceSkill):
 				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=5, func=self.stop)
 
-		self.endUserAuth()
-
 
 	def onSessionStarted(self, session: DialogSession):
-
-		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != DialogState('userAuth'):
-			self.DialogManager.toggleFeedbackSound(state='on')
-
-			user = self.UserManager.getUser(session.user)
-			if user == constants.UNKNOWN_USER:
-				self.endDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('userAuthUnknown')
-				)
-			elif self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
-				# End the session immediately because the ASR is listening to the previous wakeword call
-				self.endSession(sessionId=session.sessionId)
-
-				AdminAuth.setUser(user)
-
-				#Delay a greeting as the user might already by authenticated through cookies
-				self.ThreadManager.doLater(
-					interval=0.75,
-					func=self.greetAndAskPin,
-					args=[session]
-				)
-			else:
-				self.endDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('userAuthAccessLevelTooLow')
-				)
-		elif session.currentState == DialogState('userAuth'):
-			AdminAuth.setLinkedSession(session)
-
-		elif self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
+		if self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
 			if self.wakewordTuningFailedTimer:
 				self.wakewordTuningFailedTimer.cancel()
 
@@ -934,7 +882,7 @@ class AliceCore(AliceSkill):
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in location {device.location} connected')
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceTypeName} in location {device.parentLocation} connected')
 			self.publish(topic='projectalice/devices/connectionAccepted', payload={'device': siteId, 'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
@@ -1029,25 +977,3 @@ class AliceCore(AliceSkill):
 	def _confirmLangSwitch(self, siteId: str):
 		self.publish(topic='hermes/leds/onStop', payload={'device': siteId})
 		self.say(text=self.randomTalk('langSwitch'), siteId=siteId)
-
-
-	def explainInterfaceAuth(self):
-		AdminAuth.setUser(None)
-
-		if len(self.UserManager.getAllUserNames()) <= 1:
-			self.say(
-				text=self.randomTalk('explainInterfaceAuthWithKeyboard'),
-				canBeEnqueued=False
-			)
-		else:
-			self.ThreadManager.clearEvent('authUser')
-			self.ThreadManager.newEvent('authUserWaitWakeword').set()
-			self.DialogManager.toggleFeedbackSound(state='off')
-			self.say(
-				text=self.randomTalk('explainInterfaceAuth'),
-				canBeEnqueued=False
-			)
-
-
-	def authWithKeyboard(self):
-		self.endUserAuth()
