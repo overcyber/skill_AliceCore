@@ -11,9 +11,9 @@ from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
+from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
-from core.interface.views.AdminAuth import AdminAuth
 from core.user.model.AccessLevels import AccessLevel
 from core.util.Decorators import IfSetting, Online, MqttHandler
 from core.voice.WakewordRecorder import WakewordRecorderState
@@ -22,6 +22,18 @@ from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDe
 
 
 class AliceCore(AliceSkill):
+
+	DEVICES = {
+		'AliceCore': {
+			'deviceTypeName'    : 'AliceCore',
+			'perLocationLimit'  : 1,
+			'totalDeviceLimit'  : 1,
+			'allowLocationLinks': True,
+			'heartbeatRate'     : 2,
+			'deviceSettings'    : dict(),
+			'abilities'         : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
+		}
+	}
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo')
@@ -101,7 +113,7 @@ class AliceCore(AliceSkill):
 
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
-		super().__init__(self._INTENTS)
+		super().__init__(self._INTENTS, devices=self.DEVICES)
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):
@@ -644,7 +656,7 @@ class AliceCore(AliceSkill):
 		if duration:
 			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
 
-		if session.siteId != self.getAliceConfig('deviceName'):
+		if session.siteId != self.getAliceConfig('deviceType'):
 			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
 		else:
 			self.WakewordManager.disableEngine()
@@ -688,7 +700,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		location = self.LocationManager.getLocation(location=location)
+		location = self.LocationManager.getLocation(locId=location)
 
 		if not location:
 			self.continueDialog(
@@ -701,9 +713,15 @@ class AliceCore(AliceSkill):
 			return
 
 		try:
-			device = self.DeviceManager.addNewDevice(deviceTypeId=deviceType.id, locationId=location.id)
+			# TODO if more than one device with same name, ask from what skill
+			skillName = 'alicecore'
+			for deviceType in self.DeviceManager.deviceTypes.values():
+				if deviceType.skillName.lower() == deviceTypeName.lower():
+					skillName = deviceType.skillName
 
-			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnSiteId=session.siteId, session=session):
+			device = self.DeviceManager.addNewDevice(deviceType=deviceTypeName, skillName=skillName, locationId=location.id)
+
+			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnDevice=session.siteId, session=session):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -762,27 +780,6 @@ class AliceCore(AliceSkill):
 			self.ThreadManager.doLater(interval=1, func=self.onStart)
 
 
-	def greetAndAskPin(self, session: DialogSession):
-		if not AdminAuth.getUser().isAuthenticated and self.ThreadManager.getEvent('authUser').isSet():
-			self.ask(
-				text=self.randomTalk('greetAndNeedPinCode', replace=[session.user]),
-				siteId=session.siteId,
-				intentFilter=[self._INTENT_ANSWER_NUMBER],
-				probabilityThreshold=0.1,
-				currentDialogState='userAuth',
-				customData={
-					'user': session.user.lower()
-				}
-			)
-
-
-	def endUserAuth(self):
-		self.ThreadManager.clearEvent('authUser')
-		if self.ThreadManager.getEvent('authUserWaitWakeword').isSet():
-			self.DialogManager.toggleFeedbackSound(state='on')
-			self.ThreadManager.clearEvent('authUserWaitWakeword')
-
-
 	def onStart(self):
 		super().onStart()
 
@@ -791,25 +788,6 @@ class AliceCore(AliceSkill):
 				self.logWarning('No user found in database')
 				raise SkillStartDelayed(self.name)
 			self.addFirstUser()
-
-		# create device
-		if self.DeviceManager.getMainDevice().id == 0:
-			#IF aliceCore ever gets a second device type, this will not work anymore!
-			devType = self._deviceTypes
-			if not devType:
-				self.ThreadManager.doLater(interval=10, func=self.onStart)
-				raise Exception("Alice Core Device Type is missing!")
-			# first run, create device
-			# get location from config
-			self.DeviceManager._bufferedMainDevice = self.DeviceManager.addNewDevice(deviceTypeId=next(iter(devType)),
-			                                                                         locationId=self.LocationManager.getLocation(location="The Hive").id,
-			                                                                         noChecks=True, #required: deviceType for checks not published yet!
-			                                                                         skillName=self.name)
-			self.DeviceManager._bufferedMainDevice.changeName(newName='Alice')
-
-
-	def onHotword(self, siteId: str, user: str = constants.UNKNOWN_USER):
-		self.endUserAuth()
 
 
 	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
@@ -837,41 +815,9 @@ class AliceCore(AliceSkill):
 				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
 				self.ThreadManager.doLater(interval=5, func=self.stop)
 
-		self.endUserAuth()
-
 
 	def onSessionStarted(self, session: DialogSession):
-
-		if self.ThreadManager.getEvent('authUser').isSet() and session.currentState != DialogState('userAuth'):
-			self.DialogManager.toggleFeedbackSound(state='on')
-
-			user = self.UserManager.getUser(session.user)
-			if user == constants.UNKNOWN_USER:
-				self.endDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('userAuthUnknown')
-				)
-			elif self.UserManager.hasAccessLevel(session.user, AccessLevel.ADMIN):
-				# End the session immediately because the ASR is listening to the previous wakeword call
-				self.endSession(sessionId=session.sessionId)
-
-				AdminAuth.setUser(user)
-
-				#Delay a greeting as the user might already by authenticated through cookies
-				self.ThreadManager.doLater(
-					interval=0.75,
-					func=self.greetAndAskPin,
-					args=[session]
-				)
-			else:
-				self.endDialog(
-					sessionId=session.sessionId,
-					text=self.randomTalk('userAuthAccessLevelTooLow')
-				)
-		elif session.currentState == DialogState('userAuth'):
-			AdminAuth.setLinkedSession(session)
-
-		elif self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
+		if self.ThreadManager.getEvent('TuningWakewordUpWakewordCaught').is_set():
 			if self.wakewordTuningFailedTimer:
 				self.wakewordTuningFailedTimer.cancel()
 
@@ -966,19 +912,19 @@ class AliceCore(AliceSkill):
 
 	def deviceGreetingIntent(self, session: DialogSession):
 		uid = session.payload.get('uid')
-		siteId = session.payload.get('siteId')
+		siteId = session.payload.get('device')
 		if not uid or not siteId:
 			self.logWarning('A device tried to connect but is missing information in the payload, refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId})
 			return
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceType} in location {device.location} connected')
-			self.publish(topic='projectalice/devices/connectionAccepted', payload={'siteId': siteId, 'uid': uid})
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceTypeName} in location {device.parentLocation} connected')
+			self.publish(topic='projectalice/devices/connectionAccepted', payload={'device': siteId, 'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
+			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId, 'uid': uid})
 
 	def onInternetConnected(self):
 		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \
@@ -1026,7 +972,7 @@ class AliceCore(AliceSkill):
 
 
 	def unmuteSite(self, siteId):
-		if siteId != self.getAliceConfig('deviceName'):
+		if siteId != self.getAliceConfig('deviceType'):
 			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
 		else:
 			self.WakewordManager.enableEngine()
@@ -1061,48 +1007,11 @@ class AliceCore(AliceSkill):
 
 
 	def langSwitch(self, newLang: str, siteId: str):
-		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': siteId})
+		self.publish(topic='hermes/asr/textCaptured', payload={'device': siteId})
 		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
 
 
 	def _confirmLangSwitch(self, siteId: str):
-		self.publish(topic='hermes/leds/onStop', payload={'siteId': siteId})
+		self.publish(topic='hermes/leds/onStop', payload={'device': siteId})
 		self.say(text=self.randomTalk('langSwitch'), siteId=siteId)
-
-
-	def explainInterfaceAuth(self):
-		AdminAuth.setUser(None)
-
-		if len(self.UserManager.getAllUserNames()) <= 1:
-			self.say(
-				text=self.randomTalk('explainInterfaceAuthWithKeyboard'),
-				canBeEnqueued=False
-			)
-		else:
-			self.ThreadManager.clearEvent('authUser')
-			self.ThreadManager.newEvent('authUserWaitWakeword').set()
-			self.DialogManager.toggleFeedbackSound(state='off')
-			self.say(
-				text=self.randomTalk('explainInterfaceAuth'),
-				canBeEnqueued=False
-			)
-
-	def authWithKeyboard(self):
-		self.endUserAuth()
-
-	@MqttHandler('projectalice/nodered/triggerAction')
-	def noderRedAction(self, session: DialogSession):
-		playbackDevice = session.payload['siteId']
-		if not playbackDevice:
-			playbackDevice = session.siteId
-
-		self.MqttManager.publish(
-			topic=constants.TOPIC_TEXT_CAPTURED,
-			payload={
-				'sessionId': session.sessionId,
-				'text': session.payload["action"]["text"],
-				'siteId': playbackDevice,
-				'seconds': 1
-			}
-		)
