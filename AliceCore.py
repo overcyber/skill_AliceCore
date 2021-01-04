@@ -15,7 +15,7 @@ from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import IfSetting, Online
+from core.util.Decorators import IfSetting, Online, MqttHandler
 from core.voice.WakewordRecorder import WakewordRecorderState
 
 from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
@@ -114,6 +114,44 @@ class AliceCore(AliceSkill):
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
 		super().__init__(self._INTENTS, devices=self.DEVICES)
+
+
+	def onNluIntentNotRecognized(self, session: DialogSession):
+		if not self.getAliceConfig('suggestSkillsToInstall'):
+			return
+
+		suggestions = self.SkillStoreManager.findSkillSuggestion(session)
+		if not suggestions:
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
+				intentFilter=session.intentFilter
+			)
+			return
+
+		self.endSession(sessionId=session.sessionId)
+
+		suggestions = list(suggestions)
+		if len(suggestions) == 1:
+			text = self.randomTalk(text='suggestSkillToDownload', replace=[suggestions[0][1]])
+		else:
+			if len(suggestions) == 2:
+				text = self.randomTalk(text='suggestSkillToDownloadMoreThanOne', replace=[suggestions[0][1], suggestions[1][1]])
+			else:
+				last = suggestions.pop(-1)
+				firsts = ', '.join(suggestions)
+				text = self.randomTalk(text='suggestSkillToDownloadMoreThanOne', replace=[firsts, last])
+
+		self.ask(
+			text=text,
+			siteId=session.siteId,
+			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+			currentDialogState='answeringDownloadSuggestedSkill',
+			customData={
+				'skills': list(suggestions)
+			},
+			probabilityThreshold=0.1
+		)
 
 
 	def answerDownloadSuggestedSkill(self, session: DialogSession):
