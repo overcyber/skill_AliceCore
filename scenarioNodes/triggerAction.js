@@ -4,17 +4,17 @@
  */
 
 module.exports = function (RED) { //NOSONAR
-	function say(config) {
+	function triggerAction(config) {
 		RED.nodes.createNode(this, config);
 
-		this.topic = 'hermes/dialogueManager/startSession';
+		this.topic = 'projectalice/nodered/triggerAction';
 		this.broker = config.broker;
 		this.brokerInstance = RED.nodes.getNode(this.broker);
 		this.datatype = config.datatype || 'utf8';
 
 		let node = this;
 		let check = /[+#]/;
-		let sayMessage = ""
+		let inputText = "";
 
 		if (this.brokerInstance) {
 			this.status({
@@ -24,12 +24,11 @@ module.exports = function (RED) { //NOSONAR
 			});
 
 			this.on('input', function (msg, send, done) {
-				if ((!config.say) && (msg.payload)) {
-					sayMessage = msg.payload;
-				} else if ((!config.say) && (!msg.payload)) {
-					sayMessage = 'Ooops... You didn\'t send me anything to say';
+
+				if ((msg.payload.message) && (!config.triggerAction)) {
+					inputText = msg.payload.message
 				} else {
-					sayMessage = config.say;
+					inputText = config.triggerAction
 				}
 
 				msg.qos = 0;
@@ -38,31 +37,28 @@ module.exports = function (RED) { //NOSONAR
 
 				msg.payload = {
 					'siteId': config.client,
-					'init': {
-						'type': 'notification',
-						'text': sayMessage,
-						'sendIntentNotRecognized': true,
-						'canBeEnqueued': true
-					},
-					'customData': {}
+					'action': {
+						'text': inputText
+					}
 				};
-				//node.send(msg)
+				node.send(msg)
 				if (check.test(msg.topic)) {
-					node.warn(RED._('say.invalidTopic'));
+					node.warn(RED._('triggerAction.invalidTopic'));
 				} else {
 					node.brokerInstance.publish(msg, done);
+					node.send(msg)
 
 					node.status({
 						fill: 'green',
 						shape: 'dot',
-						text: config.say
+						text: config.triggerAction
 					});
 
 					setTimeout(function () {
 						node.status({
-							fill : 'yellow',
+							fill: 'yellow',
 							shape: 'dot',
-							text : 'onAliceEvent.waiting'
+							text: 'onAliceEvent.waiting'
 						});
 					}, 3000);
 				}
@@ -70,13 +66,12 @@ module.exports = function (RED) { //NOSONAR
 
 			if (this.brokerInstance.connected) {
 				this.status({
-					fill : 'yellow',
+					fill: 'yellow',
 					shape: 'dot',
-					text : 'onAliceEvent.waiting'
+					text: 'onAliceEvent.waiting'
 				});
 			}
 			this.brokerInstance.register(this);
-
 
 			this.on('close', function (done) {
 				if (node.brokerInstance) {
@@ -85,9 +80,9 @@ module.exports = function (RED) { //NOSONAR
 			});
 
 		} else {
-			this.error(RED._('say.missingConfig'));
+			this.error(RED._('triggerAction.missingConfig'));
 		}
 	}
 
-	RED.nodes.registerType('say', say);
+	RED.nodes.registerType('triggerAction', triggerAction);
 };
