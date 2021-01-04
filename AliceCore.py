@@ -171,6 +171,7 @@ class AliceCore(AliceSkill):
 	def updateUtterance(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			session.notUnderstood = 0
+
 			self.DialogTemplateManager.addUtterance(session=session)
 
 			self.endDialog(
@@ -967,7 +968,7 @@ class AliceCore(AliceSkill):
 		uid = session.payload.get('uid')
 		siteId = session.payload.get('siteId')
 		if not uid or not siteId:
-			self.logWarning('A device tried to connect but is missing informations in the payload, refused')
+			self.logWarning('A device tried to connect but is missing information in the payload, refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId})
 			return
 
@@ -978,7 +979,6 @@ class AliceCore(AliceSkill):
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
 			self.publish(topic='projectalice/devices/connectionRefused', payload={'siteId': siteId, 'uid': uid})
-
 
 	def onInternetConnected(self):
 		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \

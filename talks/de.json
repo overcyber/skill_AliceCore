@@ -182,10 +182,10 @@
 		"Was soll ich anzeigen?"
 	],
 	"internetBack": [
-		"Ich konnte mich wieder mit dem Internet verbinden und zurück zur Online ASR wechseln."
+		"Ich konnte mich wieder mit dem Internet verbinden und zurück zur Online Spracherkennung wechseln."
 	],
 	"internetLost": [
-		"Ich habe die Internetverbindung verloren und greife daher auf offline ASR zurück."
+		"Ich habe die Internetverbindung verloren und greife daher auf offline Spracherkennung zurück."
 	],
 	"listeningAgain": [
 		"Hey, ich lasse dich nur wissen, dass ich wieder zuhöre.",

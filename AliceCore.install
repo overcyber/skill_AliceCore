@@ -9,7 +9,8 @@
 	"Jierka",
 	"maxbachmann",
 	"philipp2310",
-	"lazza"
+	"ChrisB85",
+  "lazza"
   ],
     "desc": "AliceCore is the official skill that handles all core intents.",
     "aliceMinVersion": "1.0.0-b4",
@@ -20,7 +21,8 @@
             "en",
             "fr",
             "de",
-            "it"
+            "it",
+            "pl"
         ]
     }
 }
