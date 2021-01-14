@@ -920,7 +920,7 @@ class AliceCore(AliceSkill):
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
-			self.logInfo(f'Device with uid {device.uid} of type {device.deviceTypeName} in location {device.parentLocation} connected')
+			self.logInfo(f'Device with uid {device.uid} of type {device.deviceTypeName} in location {self.LocationManager.getLocationName(locId=device.parentLocation)} connected')
 			self.publish(topic=constants.TOPIC_DEVICE_ACCEPTED, payload={'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
