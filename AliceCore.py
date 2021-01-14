@@ -15,7 +15,7 @@ from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import IfSetting, Online, MqttHandler
+from core.util.Decorators import IfSetting, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
 
 from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
@@ -25,13 +25,14 @@ class AliceCore(AliceSkill):
 
 	DEVICES = {
 		'AliceCore': {
-			'deviceTypeName'    : 'AliceCore',
-			'perLocationLimit'  : 1,
-			'totalDeviceLimit'  : 1,
-			'allowLocationLinks': True,
-			'heartbeatRate'     : 2,
-			'deviceSettings'    : dict(),
-			'abilities'         : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
+			'deviceTypeName'        : 'AliceCore',
+			'perLocationLimit'      : 1,
+			'totalDeviceLimit'      : 1,
+			'allowLocationLinks'    : True,
+			'allowHeartbeatOverride': False,
+			'heartbeatRate'         : 2,
+			'deviceSettings'        : dict(),
+			'abilities'             : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
 		}
 	}
 
@@ -679,7 +680,8 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		deviceType = self.DeviceManager.getDeviceTypeByName(name=deviceTypeName)
+		# TODO how to find out the skill name?
+		deviceType = self.DeviceManager.getDeviceType(skillName='alicesatellite', deviceType=deviceTypeName)
 		if not deviceType:
 			self.continueDialog(
 				sessionId=session.sessionId,
@@ -912,19 +914,18 @@ class AliceCore(AliceSkill):
 
 	def deviceGreetingIntent(self, session: DialogSession):
 		uid = session.payload.get('uid')
-		siteId = session.payload.get('device')
-		if not uid or not siteId:
+		if not uid:
 			self.logWarning('A device tried to connect but is missing information in the payload, refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId})
 			return
 
 		device = self.DeviceManager.deviceConnecting(uid=uid)
 		if device:
 			self.logInfo(f'Device with uid {device.uid} of type {device.deviceTypeName} in location {device.parentLocation} connected')
-			self.publish(topic='projectalice/devices/connectionAccepted', payload={'device': siteId, 'uid': uid})
+			self.publish(topic=constants.TOPIC_DEVICE_ACCEPTED, payload={'uid': uid})
 		else:
 			self.logInfo(f'Device with uid {uid} refused')
-			self.publish(topic='projectalice/devices/connectionRefused', payload={'device': siteId, 'uid': uid})
+			self.publish(topic=constants.TOPIC_DEVICE_REFUSED, payload={'uid': uid})
+
 
 	def onInternetConnected(self):
 		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \
@@ -933,6 +934,7 @@ class AliceCore(AliceSkill):
 				text=self.randomTalk('internetBack'),
 				siteId=constants.ALL
 			)
+
 
 	def onInternetLost(self):
 		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') and self.ASRManager.asr.isOnlineASR \
