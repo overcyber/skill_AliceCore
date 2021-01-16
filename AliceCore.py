@@ -11,7 +11,6 @@ from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
-from core.device.model.DeviceAbility import DeviceAbility
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.user.model.AccessLevels import AccessLevel
@@ -22,19 +21,6 @@ from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDe
 
 
 class AliceCore(AliceSkill):
-
-	DEVICES = {
-		'AliceCore': {
-			'deviceTypeName'        : 'AliceCore',
-			'perLocationLimit'      : 1,
-			'totalDeviceLimit'      : 1,
-			'allowLocationLinks'    : True,
-			'allowHeartbeatOverride': False,
-			'heartbeatRate'         : 2,
-			'deviceSettings'        : dict(),
-			'abilities'             : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
-		}
-	}
 
 	_INTENT_MODULE_GREETING = 'projectalice/devices/greeting'
 	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo')
@@ -114,7 +100,7 @@ class AliceCore(AliceSkill):
 
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
-		super().__init__(self._INTENTS, devices=self.DEVICES)
+		super().__init__(self._INTENTS)
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):

@@ -4,9 +4,24 @@ from typing import Dict, Union
 
 from core.commons import constants
 from core.device.model.Device import Device
+from core.device.model.DeviceAbility import DeviceAbility
 
 
 class AliceCore(Device):
+
+	@classmethod
+	def getDeviceTypeDefinition(cls) -> dict:
+		return {
+			'deviceTypeName'        : 'AliceCore',
+			'perLocationLimit'      : 1,
+			'totalDeviceLimit'      : 1,
+			'allowLocationLinks'    : True,
+			'allowHeartbeatOverride': False,
+			'heartbeatRate'         : 2,
+			'deviceSettings'        : dict(),
+			'abilities'             : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
+		}
+
 
 	def __init__(self, data: Union[sqlite3.Row, Dict]):
 		super().__init__(data)
