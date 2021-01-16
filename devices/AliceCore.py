@@ -27,7 +27,7 @@ class AliceCore(Device):
 
 
 	def getDeviceIcon(self) -> Path:
-		return Path(f'{self.Commons.rootDir()}/skills/{self.skillName}/device/img/{self.deviceTypeName}.png')
+		return Path(f'{self.Commons.rootDir()}/skills/{self.skillName}/devices/img/{self.deviceTypeName}.png')
 
 
 	def onUIClick(self):
