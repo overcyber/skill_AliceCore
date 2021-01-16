@@ -18,7 +18,6 @@ class AliceCore(Device):
 			'allowLocationLinks'    : True,
 			'allowHeartbeatOverride': False,
 			'heartbeatRate'         : 2,
-			'deviceSettings'        : dict(),
 			'abilities'             : [DeviceAbility.PLAY_SOUND, DeviceAbility.CAPTURE_SOUND, DeviceAbility.IS_CORE]
 		}
 
