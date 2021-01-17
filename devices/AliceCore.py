@@ -26,10 +26,6 @@ class AliceCore(Device):
 		super().__init__(data)
 
 
-	def getDeviceIcon(self) -> Path:
-		return Path(f'{self.Commons.rootDir()}/skills/{self.skillName}/devices/img/{self.deviceTypeName}.png')
-
-
 	def onUIClick(self):
 		if self.getParam('micMuted') and self.getParam('soundMuted'):
 			self.WakewordManager.enableEngine()
