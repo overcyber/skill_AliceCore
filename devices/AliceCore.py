@@ -1,5 +1,4 @@
 import sqlite3
-from pathlib import Path
 from typing import Dict, Union
 
 from core.commons import constants
@@ -26,7 +25,7 @@ class AliceCore(Device):
 		super().__init__(data)
 
 
-	def onUIClick(self):
+	def onUIClick(self) -> dict:
 		if self.getParam('micMuted') and self.getParam('soundMuted'):
 			self.WakewordManager.enableEngine()
 			self.MqttManager.mqttClient.subscribe(constants.TOPIC_AUDIO_FRAME.format(self.ConfigManager.getAliceConfigByName('uuid')))
@@ -38,3 +37,5 @@ class AliceCore(Device):
 		else:
 			self.WakewordManager.disableEngine()
 			self.updateParams('micMuted', True)
+
+		return super().onUIClick()
