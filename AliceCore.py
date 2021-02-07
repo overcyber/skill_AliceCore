@@ -131,7 +131,7 @@ class AliceCore(AliceSkill):
 
 		self.ask(
 			text=text,
-			siteId=session.siteId,
+			deviceUid=session.deviceUid,
 			intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 			currentDialogState='answeringDownloadSuggestedSkill',
 			customData={
@@ -325,7 +325,7 @@ class AliceCore(AliceSkill):
 					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
-				self.ThreadManager.doLater(interval=4, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.siteId])
+				self.ThreadManager.doLater(interval=4, func=self.say, args=[self.randomTalk('wakewordCaptureDone'), session.deviceUid])
 			return
 
 		i = 0  # Failsafe
@@ -346,7 +346,7 @@ class AliceCore(AliceSkill):
 			soundFilename=str(self.WakewordRecorder.getLastSampleNumber()),
 			location=Path(tempfile.gettempdir()),
 			sessionId='checking-wakeword',
-			siteId=session.siteId
+			deviceUid=session.deviceUid
 		)
 
 		self.continueDialog(
@@ -403,7 +403,7 @@ class AliceCore(AliceSkill):
 			soundFilename=str(self.WakewordRecorder.getLastSampleNumber()),
 			location=Path(tempfile.gettempdir()),
 			sessionId='checking-wakeword',
-			siteId=session.siteId
+			deviceUid=session.deviceUid
 		)
 
 		text = 'howWasTheCapture' if self.WakewordRecorder.getLastSampleNumber() == 1 else 'howWasThisCapture'
@@ -641,10 +641,10 @@ class AliceCore(AliceSkill):
 	def stopListenIntent(self, session: DialogSession):
 		duration = self.Commons.getDuration(session)
 		if duration:
-			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.siteId])
+			self.ThreadManager.doLater(interval=duration, func=self.unmuteSite, args=[session.deviceUid])
 
-		if session.siteId != self.getAliceConfig('deviceType'):
-			self.notifyDevice(constants.TOPIC_DND, siteId=session.siteId)
+		if session.deviceUid != self.DeviceManager.getMainDevice().uid:
+			self.notifyDevice(constants.TOPIC_DND, deviceUid=session.deviceUid)
 		else:
 			self.WakewordManager.disableEngine()
 
@@ -709,7 +709,7 @@ class AliceCore(AliceSkill):
 
 			device = self.DeviceManager.addNewDevice(deviceType=deviceTypeName, skillName=skillName, locationId=location.id)
 
-			if deviceType.discover(device=device, uid=self.DeviceManager.getFreeUID(), replyOnDevice=session.siteId, session=session):
+			if self.DeviceManager.startBroadcastingForNewDevice(device=device, replyOnDeviceUid=session.deviceUid):
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('confirmDeviceAddingMode'))
 			else:
 				self.endDialog(sessionId=session.sessionId, text=self.randomTalk('busy'))
@@ -778,7 +778,7 @@ class AliceCore(AliceSkill):
 			self.addFirstUser()
 
 
-	def onWakeword(self, siteId: str, user: str = constants.UNKNOWN_USER):
+	def onWakeword(self, deviceUid: str, user: str = constants.UNKNOWN_USER):
 		if self.ThreadManager.getEvent('authUserWaitWakeword').is_set():
 			self.DialogManager.toggleFeedbackSound(state='on')
 			self.ThreadManager.clearEvent('authUserWaitWakeword')
@@ -796,11 +796,11 @@ class AliceCore(AliceSkill):
 
 			if self.ThreadManager.getEvent('AddingWakeword').isSet():
 				self.ThreadManager.getEvent('AddingWakeword').clear()
-				self.say(text=self.randomTalk('cancellingWakewordCapture'), siteId=session.siteId)
+				self.say(text=self.randomTalk('cancellingWakewordCapture'), deviceUid=session.deviceUid)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
 
 			elif len(self.UserManager.users) <= 1:
-				self.say(text=self.randomTalk('noStartWithoutAdmin'), siteId=session.siteId)
+				self.say(text=self.randomTalk('noStartWithoutAdmin'), deviceUid=session.deviceUid)
 				self.ThreadManager.doLater(interval=5, func=self.stop)
 
 
@@ -918,7 +918,7 @@ class AliceCore(AliceSkill):
 				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetBack'),
-				siteId=constants.ALL
+				deviceUid=constants.ALL
 			)
 
 
@@ -927,7 +927,7 @@ class AliceCore(AliceSkill):
 				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetLost'),
-				siteId=constants.ALL
+				deviceUid=constants.ALL
 			)
 
 
@@ -959,13 +959,13 @@ class AliceCore(AliceSkill):
 			self.logWarning('Not implemented')
 
 
-	def unmuteSite(self, siteId):
-		if siteId != self.getAliceConfig('deviceType'):
-			self.notifyDevice(constants.TOPIC_STOP_DND, siteId=siteId)
+	def unmuteSite(self, deviceUid):
+		if deviceUid != self.DeviceManager.getMainDevice().uid:
+			self.notifyDevice(constants.TOPIC_STOP_DND, deviceUid=deviceUid)
 		else:
 			self.WakewordManager.enableEngine()
 
-		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), siteId])
+		self.ThreadManager.doLater(interval=1, func=self.say, args=[self.randomTalk('listeningAgain'), deviceUid])
 
 
 	@staticmethod
@@ -994,12 +994,12 @@ class AliceCore(AliceSkill):
 			thread.cancel()
 
 
-	def langSwitch(self, newLang: str, siteId: str):
-		self.publish(topic='hermes/asr/textCaptured', payload={'device': siteId})
+	def langSwitch(self, newLang: str, deviceUid: str):
+		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': deviceUid})
 		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
-		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[siteId])
+		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[deviceUid])
 
 
-	def _confirmLangSwitch(self, siteId: str):
-		self.publish(topic='hermes/leds/onStop', payload={'device': siteId})
-		self.say(text=self.randomTalk('langSwitch'), siteId=siteId)
+	def _confirmLangSwitch(self, deviceUid: str):
+		self.publish(topic='hermes/leds/onStop', payload={'device': deviceUid})
+		self.say(text=self.randomTalk('langSwitch'), deviceUid=deviceUid)
