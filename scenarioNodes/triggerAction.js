@@ -36,7 +36,7 @@ module.exports = function (RED) { //NOSONAR
 				msg.topic = node.topic;
 
 				msg.payload = {
-					'siteId': config.client,
+					'deviceUid': config.client,
 					'action': {
 						'text': inputText
 					}

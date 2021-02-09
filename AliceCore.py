@@ -14,7 +14,7 @@ from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import IfSetting, Online
+from core.util.Decorators import IfSetting, Online, MqttHandler
 from core.voice.WakewordRecorder import WakewordRecorderState
 
 from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
@@ -1003,3 +1003,22 @@ class AliceCore(AliceSkill):
 	def _confirmLangSwitch(self, deviceUid: str):
 		self.publish(topic='hermes/leds/onStop', payload={'device': deviceUid})
 		self.say(text=self.randomTalk('langSwitch'), deviceUid=deviceUid)
+
+
+	@MqttHandler('projectalice/nodered/triggerAction')
+	def noderRedAction(self, session: DialogSession):
+
+		playbackDevice = session.payload['deviceUid']
+		if not playbackDevice:
+			playbackDevice = session.deviceUid
+
+		self.MqttManager.publish(
+			topic=constants.TOPIC_TEXT_CAPTURED,
+			payload={
+				'sessionId': session.sessionId,
+				'text': session.payload["action"]["text"],
+				'deviceUid': playbackDevice,
+				'seconds': 1
+			}
+		)
+
