@@ -8,7 +8,7 @@
 		"OK, nauczę się tego, daj mi chwilę.",
 		"Ok, nie zapomnę tego."
 	],
-	"newSkill": {
+	"newDevice": {
 		"default": [
 			"Nowe urządzenie typu {} próbuje nawiązać połączenie. Czy chcesz je zarejestrować?"
 		]

@@ -8,7 +8,7 @@
 		"That's noted, I'll quickly retrain. Should be all ok soon.",
 		"Ok, I won't forget it. Doing a little training and it should be good in a short while."
 	],
-	"newSkill": {
+	"newDevice": {
 		"default": [
 			"A new device of type {} is trying to connect, do you want to add it to your devices?"
 		]

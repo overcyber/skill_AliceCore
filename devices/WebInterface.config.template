@@ -1,0 +1,22 @@
+{
+	"deviceConfigs": {
+		"canPlayAudio": {
+			"defaultValue": false,
+			"dataType"    : "boolean",
+			"isSensitive" : false,
+			"description" : "Switch this if this interface can play audio"
+		},
+		"canRecordAudio": {
+			"defaultValue": false,
+			"dataType"    : "boolean",
+			"isSensitive" : false,
+			"description" : "Switch this if this interface can record audio"
+		},
+		"hasKeyboard": {
+			"defaultValue": false,
+			"dataType"    : "boolean",
+			"isSensitive" : false,
+			"description" : "Switch this if this interface has a keyboard"
+		}
+	}
+}

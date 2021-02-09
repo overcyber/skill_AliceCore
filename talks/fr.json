@@ -5,7 +5,7 @@
     "okAddedUtterance": [
         "Ok, c'est noté, je ne l'oublierai pas. Laisse moi le temps de m'entrainer et ce sera bon."
     ],
-	"newSkill": {
+	"newDevice": {
 		"default": [
 			"Un nouvel appareil de type {} essaie de se connecter, est-ce que tu veux l'ajouter à mes appareils?"
 		]

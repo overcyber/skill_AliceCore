@@ -9,7 +9,7 @@
         "Annotato, mi preparerò rapidamente. Dovrei tornare operativa fra poco.",
         "Ok, non lo dimenticherò. Mi sto preparando, dovrei essere operativa a breve."
     ],
-	"newSkill": {
+	"newDevice": {
 		"default": [
 			"Una nuova dispositivo di tipo {} sta tentando di connettersi, vuoi che l'aggiunga ai dispositivi?"
 		]
