@@ -15,7 +15,7 @@ class WebInterface(Device):
 			'allowLocationLinks'    : False,
 			'allowHeartbeatOverride': False,
 			'heartbeatRate'         : 5,
-			'abilities'             : [DeviceAbility.DISPLAY, DeviceAbility.ALERT, DeviceAbility.PHYSICAL_USER_INPUT]
+			'abilities'             : [DeviceAbility.DISPLAY, DeviceAbility.ALERT, DeviceAbility.PHYSICAL_USER_INPUT, DeviceAbility.NOTIFY]
 		}
 
 	def onUIClick(self) -> dict:
