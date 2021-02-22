@@ -129,7 +129,7 @@
 			"Ci vorrà un pò per riavviare, sei sicuro?"
 		]
 	},
-	"askRebootSkills": {
+	"askRebootDevices": {
 		"default": [
 			"Vuoi che riavvii anche le skill esterne?",
 			"Devo anche riavviare le skill esterne?"
@@ -147,7 +147,7 @@
 			"Rieccomi! appena riavviata!"
 		]
 	},
-	"confirmRebootingSkills": {
+	"confirmRebootingDevices": {
 		"default": [
 			"Appena riavviata, adesso riavvio le skill esterne",
 			"Rieccomi! Ora riavvio anche le skill esterne, come mi hai chiesto"
@@ -157,75 +157,6 @@
 		"default": [
 			"Ok, annullo il riavvio",
 			"Ok, come non detto, annullo il reboot"
-		]
-	},
-	"takingOverSonos": {
-		"default": [
-			"Ok, giusto un attimo!",
-			"Sarà un gioco da ragazzi, controllare Sonos",
-			"Certo, adesso controllo Sonos!"
-		],
-		"short": [
-			"Ok",
-			"Certo"
-		]
-	},
-	"sorryNoSonoHere": {
-		"default": [
-			"Mi dispiace, non vedo Sonos, qui",
-			"Non posso, non c'è nessun Sonos qui",
-			"Non riesco a trovare nessun dispositivo Sonos"
-		],
-		"short": [
-			"Non posso"
-		]
-	},
-	"retreatSonos": {
-		"default": [
-			"Ok, lasciamo andare Sonos",
-			"Sonos! Sei libero!",
-			"Sonos! Non sei più sotto il mio controllo!"
-		],
-		"short": [
-			"Ok",
-			"Fatto"
-		]
-	},
-	"confirmSonosAction": {
-		"default": [
-			"Detto fatto",
-			"Eccomi qui",
-			"Fatto come volevi"
-		],
-		"short": [
-			"Ok"
-		]
-	},
-	"confirmRoomChange": {
-		"default": [
-			"Ok, cambiata",
-			"Certo, spostata",
-			"Ho aggiornato la mia configurazione"
-		]
-	},
-	"displayRoomNotSupported": {
-		"default": [
-			"Mi dispiace, ma la visualizzazione in altre stanze, non è ancora supportata",
-			"Sfortunatamente non posso farlo, per ora"
-		]
-	},
-	"confirmDisplayingInfos": {
-		"default": [
-			"Ok, mostrate!",
-			"Ok, fatto",
-			"Te le mostro, come richiesto!"
-		]
-	},
-	"whatToDisplay": {
-		"default": [
-			"Cosa vuoi che ti mostri?",
-			"Cosa dovrei mostrarti?",
-			"Cosa hai bisogno di vedere?"
 		]
 	},
 	"internetBack": {

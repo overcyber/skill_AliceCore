@@ -98,9 +98,9 @@
 		"Bist du sicher, dass du einen Neustart durchführen willst??",
 		"Der Neustart dauert eine Weile, bist du sicher?"
 	],
-	"askRebootSkills": [
-		"Möchtest du auch meine externen Skill neu starten?",
-		"Soll ich auch meine externen Skill neu starten?"
+	"askRebootDevices": [
+		"Möchtest du auch meine externen Geräte neu starten?",
+		"Soll ich auch meine externen Geräte neu starten?"
 	],
 	"confirmRebooting": [
 		"Ok, starte jetzt neu",
@@ -110,9 +110,9 @@
 		"Wie gefordert habe ich gerade neu gestartet",
 		"Hallo noch mal! Ich habe gerade neu gestartet.!"
 	],
-	"confirmRebootingSkills": [
-		"Ich habe gerade neu gestartet, ich führe jetzt einen Neustart aller externen Skill durch.",
-		"Hallo noch mal! Wie gefordert starte ich jetzt alle externen Skill neu"
+	"confirmRebootingDevices": [
+		"Ich habe gerade neu gestartet, ich führe jetzt einen Neustart aller externen Geräte durch.",
+		"Hallo noch mal! Wie gefordert starte ich jetzt alle externen Geräte neu"
 	],
 	"abortReboot": {
 		"default": [
@@ -120,67 +120,6 @@
 			"Ok, ich breche den Neustart ab."
 		]
 	},
-	"takingOverSonos": {
-		"default": [
-			"Ok, gib mir eine Sekunde!",
-			"Es wird einfach sein, Sonos zu übernehmen.",
-			"Klar, ich übernehme Sonos"
-		],
-		"short": [
-			"Ok",
-			"Klar"
-		]
-	},
-	"sorryNoSonoHere": {
-		"default": [
-			"Es tut mir Leid, aber es gibt hier kein Sonos-System .",
-			"Ich kann nicht, da es hier kein Sonos System gibt",
-			"Ich kann hier kein Sonos Gerät finden"
-		],
-		"short": [
-			"Ich kann nicht"
-		]
-	},
-	"retreatSonos": {
-		"default": [
-			"Ok, ich gebe Sonos frei",
-			"Sonos! Sei frei!",
-			"Sonos! ich befreie dich von meiner Kontrolle!"
-		],
-		"short": [
-			"Ok",
-			"Erledigt"
-		]
-	},
-	"confirmSonosAction": {
-		"default": [
-			"Ich habe getan, wonach du gefragt hast",
-			"Hier bin ich jetzt",
-			"Ich habe getan, was du wolltest."
-		],
-		"short": [
-			"Ok"
-		]
-	},
-	"confirmRoomChange": [
-		"Ok, ich habe den Raum geändert",
-		"Sicher, ich bin umgezogen.",
-		"Ich habe meine Konfiguration aktualisiert"
-	],
-	"displayRoomNotSupported": [
-		"Es tut mir Leid, aber die Anzeige in anderen Räumen wird noch nicht unterstützt.",
-		"Ich kann das leider noch nicht tun."
-	],
-	"confirmDisplayingInfos": [
-		"ok, angezeigt!",
-		"Ok, erledigt",
-		"Ich zeige wie gefordert an!"
-	],
-	"whatToDisplay": [
-		"Was willst du anzeigen?",
-		"Was ist es, dass ich anzeigen soll?",
-		"Was soll ich anzeigen?"
-	],
 	"internetBack": [
 		"Ich konnte mich wieder mit dem Internet verbinden und zurück zur Online Spracherkennung wechseln."
 	],

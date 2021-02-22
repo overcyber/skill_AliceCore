@@ -740,7 +740,7 @@ class AliceCore(AliceSkill):
 		if self.Commons.isYes(session):
 			self.continueDialog(
 				sessionId=session.sessionId,
-				text=self.randomTalk('askRebootSkills'),
+				text=self.randomTalk('askRebootDevices'),
 				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
 				currentDialogState='confirmingSkillReboot',
 				probabilityThreshold=0.1
@@ -862,7 +862,7 @@ class AliceCore(AliceSkill):
 			if onReboot == 'greet':
 				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebooted'), 'all'])
 			elif onReboot == 'greetAndRebootSkills':
-				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingSkills'), 'all'])
+				self.ThreadManager.doLater(interval=3, func=self.say, args=[self.randomTalk('confirmRebootingDevices'), 'all'])
 			else:
 				self.logWarning('onReboot config has an unknown value')
 

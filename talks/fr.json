@@ -123,10 +123,10 @@
 			"Redémarrer prend du temps, es-tu sûr?"
 		]
 	},
-	"askRebootSkills": {
+	"askRebootDevices": {
 		"default": [
-			"Veux tu aussi redémarrer mes skills?",
-			"Dois-je aussi redémarrer mes skills externes?"
+			"Veux tu aussi redémarrer mes appareils externes?",
+			"Dois-je aussi redémarrer mes appareils externes?"
 		]
 	},
 	"confirmRebooting": {
@@ -141,83 +141,15 @@
 			"Re-bonjour! Je viens de redémarrer"
 		]
 	},
-	"confirmRebootingSkills": {
+	"confirmRebootingDevices": {
 		"default": [
-			"Re! Je redémarre maintenant tous mes skills externes comme demandé"
+			"Re! Je redémarre maintenant tous mes appareils externes comme demandé"
 		]
 	},
 	"abortReboot": {
 		"default": [
 			"D'accord, annulation du rédemarrage",
 			"Ok, j'arrête le redémarrage"
-		]
-	},
-	"takingOverSonos": {
-		"default": [
-			"Ok, une seconde s'il te plait...",
-			"Facile, je le fait de suite!",
-			"Bonne idée, je prend possession de Sonos!"
-		],
-		"short": [
-			"Ok",
-			"Entendu"
-		]
-	},
-	"sorryNoSonoHere": {
-		"default": [
-			"Désolée mais il n'y a pas de Sonos ici",
-			"Je ne peux, je ne trouve pas de Sonos",
-			"Impossible de trouver un Sonos ici"
-		],
-		"short": [
-			"Je ne peux pas"
-		]
-	},
-	"retreatSonos": {
-		"default": [
-			"D'accord, je libère Sonos",
-			"Sonos, sois libre!",
-			"Sonos! Je te libère de mon emprise!"
-		],
-		"short": [
-			"Ok, c'est fait!",
-			"Ok"
-		]
-	},
-	"confirmSonosAction": {
-		"default": [
-			"J'ai fais comme demandé",
-			"Je suis là!",
-			"A vos ordres!"
-		],
-		"short": [
-			"Ok"
-		]
-	},
-	"confirmRoomChange": {
-		"default": [
-			"Ok, j'ai changé",
-			"Ok, j'ai bougé",
-			"J'ai mis à jours ma configuration"
-		]
-	},
-	"displayRoomNotSupported": {
-		"default": [
-			"Désolé mais l'affichage dans les autres pièces n'est pas encore supporté",
-			"Malheureusement, je suis incapable d'effectuer cette tâche"
-		]
-	},
-	"confirmDisplayingInfos": {
-		"default": [
-			"Ok, c'est affiché !",
-			"Ok, c'est fait",
-			"C'est affiché comme demandé !"
-		]
-	},
-	"whatToDisplay": {
-		"default": [
-			"Que voulez-vous que j'affiche ?",
-			"Que dois-je afficher ?"
 		]
 	},
 	"internetBack": {

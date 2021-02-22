@@ -128,7 +128,7 @@
 			"Na pewno chcesz mnie zrestartować?"
 		]
 	},
-	"askRebootSkills": {
+	"askRebootDevices": {
 		"default": [
 			"Chcesz też zrestartować moje zewnętrzne zdolności?",
 			"Uruchomić również ponownie moje zewnętrzne zdolności?"
@@ -146,7 +146,7 @@
 			"Cześć, już jestem z powrotem!"
 		]
 	},
-	"confirmRebootingSkills": {
+	"confirmRebootingDevices": {
 		"default": [
 			"Uruchomiłem się, teraz restartuję moje zewnętrzne zdolności",
 			"Witaj ponownie. Restartuję moje zewnętrzne zdolności"
@@ -156,74 +156,6 @@
 		"default": [
 			"OK, anuluję restart",
 			"OK, przerywam ponowne uruchamianie"
-		]
-	},
-	"takingOverSonos": {
-		"default": [
-			"OK, sekundę!",
-			"To będzie łatwe",
-			"Jasne, robi się!"
-		],
-		"short": [
-			"OK",
-			"Jasne"
-		]
-	},
-	"sorryNoSonoHere": {
-		"default": [
-			"Przepraszam, nie wykryto systemu Sonos",
-			"Nie mogę, brak obecności systemu Sonos",
-			"Nie znajduję systemu Sonos"
-		],
-		"short": [
-			"Nie mogę"
-		]
-	},
-	"retreatSonos": {
-		"default": [
-			"OK, uwalniam system Sonos",
-			"Sonos! Uwalniam cię!"
-		],
-		"short": [
-			"OK",
-			"Gotowe"
-		]
-	},
-	"confirmSonosAction": {
-		"default": [
-			"Zrobione",
-			"Teraz jestem tutaj",
-			"Wykonałem twoje polecenie"
-		],
-		"short": [
-			"OK"
-		]
-	},
-	"confirmRoomChange": {
-		"default": [
-			"OK, zmieniłem",
-			"Jasne, przeniesione",
-			"Zaktualizowałem moją konfigurację"
-		]
-	},
-	"displayRoomNotSupported": {
-		"default": [
-			"Przepraszam, wyświetlanie w innych pomieszczeniach nie jest obecnie obsługiwane",
-			"Wybacz, nie potrafię jeszcze tego zrobić"
-		]
-	},
-	"confirmDisplayingInfos": {
-		"default": [
-			"OK, wyświetlam!",
-			"OK, zrobione",
-			"Wyświetlam!"
-		]
-	},
-	"whatToDisplay": {
-		"default": [
-			"Co chcesz wyświetlić?",
-			"Co powinienem wyświetlić?",
-			"Powiedz co mam wyświetlić"
 		]
 	},
 	"internetBack": {

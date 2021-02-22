@@ -128,10 +128,10 @@
 			"Rebooting takes time, are you sure?"
 		]
 	},
-	"askRebootSkills": {
+	"askRebootDevices": {
 		"default": [
-			"Do you also want to reboot my external skills?",
-			"Shall I also reboot my external skills?"
+			"Do you also want to reboot my external devices?",
+			"Shall I also reboot my external devices?"
 		]
 	},
 	"confirmRebooting": {
@@ -146,85 +146,16 @@
 			"Hi again! I just rebooted!"
 		]
 	},
-	"confirmRebootingSkills": {
+	"confirmRebootingDevices": {
 		"default": [
-			"I just rebooted, I'm now rebooting all the external skills",
-			"Hi again! Rebooting all the external skills as asked"
+			"I just rebooted, I'm now rebooting all the external devices",
+			"Hi again! Rebooting all the external devices as asked"
 		]
 	},
 	"abortReboot": {
 		"default": [
 			"Ok, aborting reboot",
 			"Ok, I'm cancelling the reboot"
-		]
-	},
-	"takingOverSonos": {
-		"default": [
-			"Ok, just a second!",
-			"That's gonna be easy, taking over Sonos",
-			"Sure, taking over Sonos!"
-		],
-		"short": [
-			"Ok",
-			"Sure"
-		]
-	},
-	"sorryNoSonoHere": {
-		"default": [
-			"Sorry, no Sonos system here",
-			"I can't, there's no Sonos here",
-			"I can't find any Sonos device here"
-		],
-		"short": [
-			"I can't"
-		]
-	},
-	"retreatSonos": {
-		"default": [
-			"Ok, letting Sonos go",
-			"Sonos! Be free!",
-			"Sonos! I release you from my control!"
-		],
-		"short": [
-			"Ok",
-			"Done"
-		]
-	},
-	"confirmSonosAction": {
-		"default": [
-			"I did as asked",
-			"Here I am now",
-			"I did as you wanted"
-		],
-		"short": [
-			"Ok"
-		]
-	},
-	"confirmRoomChange": {
-		"default": [
-			"Ok, I changed it",
-			"Sure, I moved it",
-			"I've updated my configuration"
-		]
-	},
-	"displayRoomNotSupported": {
-		"default": [
-			"Sorry, but displaying on other rooms is not yet supported",
-			"I unfortunately can't do that yet"
-		]
-	},
-	"confirmDisplayingInfos": {
-		"default": [
-			"Ok, displayed!",
-			"Ok, done",
-			"Displaying as asked!"
-		]
-	},
-	"whatToDisplay": {
-		"default": [
-			"What do you want to display?",
-			"What is it I should display?",
-			"What should I display?"
 		]
 	},
 	"internetBack": {
