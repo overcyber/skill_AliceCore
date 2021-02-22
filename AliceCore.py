@@ -34,12 +34,11 @@ class AliceCore(AliceSkill):
 	_INTENT_ANSWER_ESP_TYPE = Intent('AnswerEspType')
 	_INTENT_ANSWER_NAME = Intent('AnswerName')
 	_INTENT_SPELL_WORD = Intent('SpellWord')
-	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting')
-	_INTENT_WAKEWORD = Intent('CallWakeword')
 	_INTENT_ADD_USER = Intent('AddNewUser', authLevel=AccessLevel.ADMIN)
 	_INTENT_ANSWER_ACCESSLEVEL = Intent('AnswerAccessLevel')
 	_INTENT_ANSWER_NUMBER = Intent('AnswerNumber')
-	_DEVICE_TYPE_NAME = 'AliceCore'
+	_INTENT_ANSWER_WAKEWORD_CUTTING = Intent('AnswerWakewordCutting')
+	_INTENT_WAKEWORD = Intent('CallWakeword')
 
 
 	def __init__(self):
@@ -57,23 +56,23 @@ class AliceCore(AliceSkill):
 			self._INTENT_ANSWER_NUMBER,
 			self._INTENT_ANSWER_NAME,
 			self._INTENT_SPELL_WORD,
-			(self._INTENT_ANSWER_WAKEWORD_CUTTING, self.confirmWakewordTrimming),
-			(self._INTENT_WAKEWORD, self.confirmWakeword),
 			(self._INTENT_ADD_USER, self.addNewUser),
-			self._INTENT_ANSWER_ACCESSLEVEL
+			self._INTENT_ANSWER_ACCESSLEVEL,
+			(self._INTENT_ANSWER_WAKEWORD_CUTTING, self.confirmWakewordTrimming),
+			(self._INTENT_WAKEWORD, self.confirmWakeword)
 		]
 
 		self._INTENT_ANSWER_YES_OR_NO.dialogMapping = {
 			'confirmingReboot': self.confirmSkillReboot,
 			'confirmingSkillReboot': self.reboot,
 			'confirmingUsername': self.checkUsername,
+			'confirmingWhatWasMeant': self.updateUtterance,
+			'answeringDownloadSuggestedSkill': self.answerDownloadSuggestedSkill,
 			'confirmingUsernameForNewWakeword' : self.checkUsername,
 			'confirmingUsernameForTuneWakeword': self.checkUsername,
-			'confirmingWakewordCreation': self.createWakeword,
-			'confirmingRecaptureAfterFailure': self.tryFixAndRecapture,
-			'confirmingPinCode': self.askCreateWakeword,
-			'confirmingWhatWasMeant': self.updateUtterance,
-			'answeringDownloadSuggestedSkill': self.answerDownloadSuggestedSkill
+			'confirmingWakewordCreation'       : self.createWakeword,
+			'confirmingRecaptureAfterFailure'  : self.tryFixAndRecapture,
+			'confirmingPinCode'                : self.askCreateWakeword,
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
@@ -373,6 +372,19 @@ class AliceCore(AliceSkill):
 
 
 	def confirmWakeword(self, session: DialogSession):
+		file = Path(self.AudioServer.LAST_USER_SPEECH.format(session.user, session.deviceUid))
+		if not file.exists():
+			self.continueDialog(
+				sessionId=session.sessionId,
+				text=self.randomTalk('wakewordCaptureFailed'),
+				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
+				currentDialogState='confirmingRecaptureAfterFailure',
+				probabilityThreshold=0.1
+			)
+			return
+
+		self.WakewordRecorder.addRawSample(file)
+
 		i = 0  # Failsafe...
 		while self.WakewordRecorder.state != WakewordRecorderState.CONFIRMING:
 			i += 1
@@ -387,21 +399,10 @@ class AliceCore(AliceSkill):
 				return
 			time.sleep(0.5)
 
-		filepath = Path(tempfile.gettempdir(), str(self.WakewordRecorder.getLastSampleNumber())).with_suffix('.wav')
-
-		if not filepath.exists():
-			self.continueDialog(
-				sessionId=session.sessionId,
-				text=self.randomTalk('wakewordCaptureFailed'),
-				intentFilter=[self._INTENT_ANSWER_YES_OR_NO],
-				currentDialogState='confirmingRecaptureAfterFailure',
-				probabilityThreshold=0.1
-			)
-			return
-
+		sample = self.WakewordRecorder.getRawSample()
 		self.playSound(
-			soundFilename=str(self.WakewordRecorder.getLastSampleNumber()),
-			location=Path(tempfile.gettempdir()),
+			soundFilename=sample.stem,
+			location=sample.parent,
 			sessionId='checking-wakeword',
 			deviceUid=session.deviceUid
 		)
@@ -560,8 +561,7 @@ class AliceCore(AliceSkill):
 	def createWakeword(self, session: DialogSession):
 		if self.Commons.isYes(session):
 			self.WakewordRecorder.newWakeword(username=session.customData['username'])
-			self.ThreadManager.newEvent('AddingWakeword').set()
-
+			self.WakewordRecorder.startCapture()
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('addWakewordAccepted'),
@@ -779,11 +779,7 @@ class AliceCore(AliceSkill):
 
 
 	def onWakeword(self, deviceUid: str, user: str = constants.UNKNOWN_USER):
-		if self.ThreadManager.getEvent('authUserWaitWakeword').is_set():
-			self.DialogManager.toggleFeedbackSound(state='on')
-			self.ThreadManager.clearEvent('authUserWaitWakeword')
-			self.ThreadManager.newEvent('authUser').set()
-		elif self.ThreadManager.getEvent('TuningWakewordUp').is_set():
+		if self.ThreadManager.getEvent('TuningWakewordUp').is_set():
 			self.ThreadManager.clearEvent('TuningWakewordUp')
 			self.ThreadManager.newEvent(name='TuningWakewordUpWakewordCaught').set()
 		elif self.ThreadManager.getEvent('TuningWakewordDown').is_set():
@@ -794,14 +790,9 @@ class AliceCore(AliceSkill):
 		if self._delayed:
 			self._delayed = False
 
-			if self.ThreadManager.getEvent('AddingWakeword').isSet():
-				self.ThreadManager.getEvent('AddingWakeword').clear()
+			if self.WakewordRecorder.state != WakewordRecorderState.IDLE:
 				self.say(text=self.randomTalk('cancellingWakewordCapture'), deviceUid=session.deviceUid)
 				self.ThreadManager.doLater(interval=2, func=self.onStart)
-
-			elif len(self.UserManager.users) <= 1:
-				self.say(text=self.randomTalk('noStartWithoutAdmin'), deviceUid=session.deviceUid)
-				self.ThreadManager.doLater(interval=5, func=self.stop)
 
 
 	def onSessionStarted(self, session: DialogSession):
