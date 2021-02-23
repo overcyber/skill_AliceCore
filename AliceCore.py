@@ -314,7 +314,7 @@ class AliceCore(AliceSkill):
 				self.WakewordRecorder.finalizeWakeword()
 				self.endSession(session.sessionId)
 
-				if self._delayed:
+				if self._delayed: # type: ignore
 					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
