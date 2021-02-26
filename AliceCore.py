@@ -322,12 +322,12 @@ class AliceCore(AliceSkill):
 			return
 
 		sample = self.WakewordRecorder.getTrimmedSample()
+		session.currentState = 'checking-wakeword'
 		self.playSound(
 			soundFilename=sample.stem,
 			location=sample.parent,
 			sessionId=session.sessionId,
-			deviceUid=session.deviceUid,
-			requestId='checking-wakeword'
+			deviceUid=session.deviceUid
 		)
 
 
@@ -359,20 +359,21 @@ class AliceCore(AliceSkill):
 
 		self.WakewordRecorder.addRawSample(file)
 		sample = self.WakewordRecorder.getTrimmedSample()
+		session.currentState = 'checking-wakeword'
 		self.playSound(
 			soundFilename=sample.stem,
 			location=sample.parent,
 			sessionId=session.sessionId,
-			deviceUid=session.deviceUid,
-			requestId='checking-wakeword'
+			deviceUid=session.deviceUid
 		)
 
 
-	def onPlayBytesFinished(self, requestId: str, deviceUid: str, sessionId: str = None):
+	def onPlayBytesFinished(self, deviceUid: str, sessionId: str = None):
 		if self.WakewordRecorder.state != WakewordRecorderState.CONFIRMING:
 			return
 
-		if requestId != 'checking-wakeword':
+		session = self.DialogManager.getSession(sessionId=sessionId)
+		if not session or not session.lastWasSoundPlayOnly or session.currentState != 'checking-wakeword':
 			return
 
 		text = 'howWasTheCapture' if self.WakewordRecorder.getLastSampleNumber() == 1 else 'howWasThisCapture'
