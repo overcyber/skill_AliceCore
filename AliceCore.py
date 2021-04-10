@@ -100,7 +100,7 @@ class AliceCore(AliceSkill):
 
 	def onSkillCoreConfigUpdate(self, skillName: str, config: str, value: Any):
 		if not self.ProjectAlice.isBooted:
-			pass
+			pass #Not implemented
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):
