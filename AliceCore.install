@@ -1,6 +1,6 @@
 {
   "name": "AliceCore",
-  "version": "1.5.12",
+  "version": "1.5.13",
   "icon": "fab fa-creative-commons-by",
   "category": "alice",
   "author": "ProjectAlice",
@@ -13,7 +13,7 @@
   	"lazza"
   ],
     "desc": "AliceCore is the official skill that handles all core intents.",
-    "aliceMinVersion": "1.0.0-b5",
+    "aliceMinVersion": "1.0.0-rc1",
     "systemRequirements": [],
     "pipRequirements": [],
     "conditions": {

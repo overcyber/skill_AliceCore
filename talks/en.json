@@ -1,4 +1,8 @@
 {
+	"skillUpdatingCoreConfigsWarning": [
+		"The skill {} wants to update a core configuration. Please check your interface to allow or dismiss the change.",
+		"Skill {} is trying to change a core configurations. For your safety, check your interface to allow or dismiss the change."
+	],
 	"isThatWhatYouMeant": [
 		"<break time=\"500ms\"/>Is that actually what you meant before when you said {0}?",
 		"<break time=\"500ms\"/>Was this what you meant just before when you said {0}?"

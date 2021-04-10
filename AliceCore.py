@@ -1,7 +1,7 @@
 import subprocess
 import threading
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 from core.ProjectAliceExceptions import SkillStartDelayed
 from core.base.SuperManager import SuperManager
@@ -96,6 +96,11 @@ class AliceCore(AliceSkill):
 		self._threads = dict()
 		self.wakewordTuningFailedTimer: Optional[threading.Timer] = None
 		super().__init__(self._INTENTS)
+
+
+	def onSkillCoreConfigUpdate(self, skillName: str, config: str, value: Any):
+		if not self.ProjectAlice.isBooted:
+			pass
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):
