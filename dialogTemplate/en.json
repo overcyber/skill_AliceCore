@@ -15544,10 +15544,6 @@
 						"alice",
 						"alice satellite"
 					]
-				},
-				{
-					"value": "zigbee",
-					"synonyms": []
 				}
 			]
 		},
