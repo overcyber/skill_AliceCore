@@ -100,7 +100,7 @@ class AliceCore(AliceSkill):
 
 	def onSkillCoreConfigUpdate(self, skillName: str, config: str, value: Any):
 		if not self.ProjectAlice.isBooted:
-			pass # Not implemented
+			pass  # Not implemented
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):
@@ -319,7 +319,7 @@ class AliceCore(AliceSkill):
 				self.WakewordRecorder.finalizeWakeword()
 				self.endSession(session.sessionId)
 
-				if self._delayed: # type: ignore
+				if self._delayed:  # type: ignore
 					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -666,7 +666,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		location = self.LocationManager.getLocation(locId=location)
+		location = self.LocationManager.getLocation(locationName=location)
 
 		if not location:
 			self.continueDialog(
