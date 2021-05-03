@@ -875,8 +875,9 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetConnected(self):
-		if not self.ConfigManager.getAliceConfigByName('keepASROffline') and self.ASRManager.asr.isOnlineASR \
-				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
+		if self.getAliceConfig('internetConnectionReporting') and not self.ConfigManager.getAliceConfigByName('keepASROffline') \
+				and self.ASRManager.asr.isOnlineASR and not self.UserManager.checkIfAllUser('goingBed') \
+				and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetBack'),
 				deviceUid=constants.ALL
@@ -884,8 +885,9 @@ class AliceCore(AliceSkill):
 
 
 	def onInternetLost(self):
-		if not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') and self.ASRManager.asr.isOnlineASR \
-				and not self.UserManager.checkIfAllUser('goingBed') and not self.UserManager.checkIfAllUser('sleeping'):
+		if self.getAliceConfig('internetConnectionReporting') and not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') \
+				and self.ASRManager.asr.isOnlineASR and not self.UserManager.checkIfAllUser('goingBed') \
+				and not self.UserManager.checkIfAllUser('sleeping'):
 			self.say(
 				text=self.randomTalk('internetLost'),
 				deviceUid=constants.ALL
