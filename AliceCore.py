@@ -100,7 +100,7 @@ class AliceCore(AliceSkill):
 
 	def onSkillCoreConfigUpdate(self, skillName: str, config: str, value: Any):
 		if not self.ProjectAlice.isBooted:
-			pass #Not implemented
+			pass  # Not implemented
 
 
 	def onNluIntentNotRecognized(self, session: DialogSession):
@@ -319,7 +319,7 @@ class AliceCore(AliceSkill):
 				self.WakewordRecorder.finalizeWakeword()
 				self.endSession(session.sessionId)
 
-				if self._delayed: # type: ignore
+				if self._delayed:  # type: ignore
 					self._delayed = False
 					self.ThreadManager.doLater(interval=2, func=self.onStart)
 
@@ -412,11 +412,15 @@ class AliceCore(AliceSkill):
 
 	def confirmUsername(self, session: DialogSession):
 		intent = session.intentName
-
+		username = ''
 		if intent == self._INTENT_ANSWER_NAME:
 			username = session.slots['Name'].lower()
 		else:
-			username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
+			if 'Letters' not in session.slotsAsObjects:
+				if 'name' in session.slots:
+					username = session.slots['Name'].lower().replace(' ', '')
+			else:
+				username = ''.join([slot.value['value'] for slot in session.slotsAsObjects['Letters']])
 
 		if session.slotRawValue('Name') == constants.UNKNOWN_WORD or not username:
 			self.continueDialog(
@@ -581,7 +585,6 @@ class AliceCore(AliceSkill):
 
 	# 5 seconds timer started in onSayFinished
 
-
 	def wakewordTuningFailed(self, username: str):
 		sensitivity = self.WakewordRecorder.getUserWakewordSensitivity(username)
 
@@ -663,7 +666,7 @@ class AliceCore(AliceSkill):
 			)
 			return
 
-		location = self.LocationManager.getLocation(locId=location)
+		location = self.LocationManager.getLocation(locationName=location)
 
 		if not location:
 			self.continueDialog(
@@ -805,8 +808,9 @@ class AliceCore(AliceSkill):
 					'username': session.user
 				}
 			)
-		# 5 seconds timer started in onSayFinished
 
+
+	# 5 seconds timer started in onSayFinished
 
 	def onSleep(self):
 		self.MqttManager.toggleFeedbackSounds('off')
