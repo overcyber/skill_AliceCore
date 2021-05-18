@@ -882,20 +882,14 @@ class AliceCore(AliceSkill):
 		if self.getAliceConfig('internetConnectionReporting') and not self.ConfigManager.getAliceConfigByName('keepASROffline') \
 				and self.ASRManager.asr.isOnlineASR and not self.UserManager.checkIfAllUser('goingBed') \
 				and not self.UserManager.checkIfAllUser('sleeping'):
-			self.say(
-				text=self.randomTalk('internetBack'),
-				deviceUid=constants.ALL
-			)
+			self.ThreadManager.doLater(interval=3000, func=self.say, kwargs={'text': self.randomTalk('internetBack'), 'deviceUid': constants.ALL})
 
 
 	def onInternetLost(self):
 		if self.getAliceConfig('internetConnectionReporting') and not self.ConfigManager.getAliceConfigByName('stayCompletlyOffline') \
 				and self.ASRManager.asr.isOnlineASR and not self.UserManager.checkIfAllUser('goingBed') \
 				and not self.UserManager.checkIfAllUser('sleeping'):
-			self.say(
-				text=self.randomTalk('internetLost'),
-				deviceUid=constants.ALL
-			)
+			self.ThreadManager.doLater(interval=3000, func=self.say, kwargs={'text': self.randomTalk('internetLost'), 'deviceUid': constants.ALL})
 
 
 	def onSessionEnded(self, session):
@@ -905,7 +899,7 @@ class AliceCore(AliceSkill):
 
 	@Online(text='noAssistantUpdateOffline')
 	def aliceUpdateIntent(self, session: DialogSession):
-		self.publish('hermes/leds/systemUpdate')
+		self.publish(constants.TOPIC_SYSTEM_UPDATE, payload={'sticky': True})
 		updateTypes = {
 			'all'      : 1,
 			'alice'    : 2,
