@@ -961,8 +961,8 @@ class AliceCore(AliceSkill):
 
 
 	def langSwitch(self, newLang: str, deviceUid: str):
-		self.publish(topic='hermes/asr/textCaptured', payload={'siteId': deviceUid})
-		subprocess.run([f'{self.Commons.rootDir()}/system/scripts/langSwitch.sh', newLang])
+		self.publish(topic=constants.TOPIC_SYSTEM_UPDATE, payload={'device': deviceUid})
+		self.AssistantManager.switchLanguage(targetLang=newLang)
 		self.ThreadManager.doLater(interval=3, func=self._confirmLangSwitch, args=[deviceUid])
 
 
@@ -982,7 +982,7 @@ class AliceCore(AliceSkill):
 			topic=constants.TOPIC_TEXT_CAPTURED,
 			payload={
 				'sessionId': session.sessionId,
-				'text'     : session.payload["action"]["text"],
+				'text'     : session.payload['action']['text'],
 				'deviceUid': playbackDevice,
 				'seconds'  : 1
 			}
