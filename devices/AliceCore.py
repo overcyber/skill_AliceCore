@@ -36,16 +36,16 @@ class AliceCore(Device):
 		if self.getParam('micMuted') and self.getParam('soundMuted'):
 			self.WakewordManager.enableEngine()
 			self.MqttManager.mqttClient.subscribe(constants.TOPIC_AUDIO_FRAME.format(self.ConfigManager.getAliceConfigByName('uuid')))
-			self.updateParams('micMuted', False)
-			self.updateParams('soundMuted', True)
+			self.updateParam('micMuted', False)
+			self.updateParam('soundMuted', True)
 		elif self.getParam('micMuted'):
 			self.MqttManager.mqttClient.unsubscribe(constants.TOPIC_AUDIO_FRAME.format(self.ConfigManager.getAliceConfigByName('uuid')))
-			self.updateParams('soundMuted', True)
+			self.updateParam('soundMuted', True)
 		elif self.getParam('soundMuted'):
-			self.updateParams('soundMuted', False)
-			self.updateParams('micMuted', False)
+			self.updateParam('soundMuted', False)
+			self.updateParam('micMuted', False)
 		else:
 			self.WakewordManager.disableEngine()
-			self.updateParams('micMuted', True)
+			self.updateParam('micMuted', True)
 
 		return super().onUIClick()
