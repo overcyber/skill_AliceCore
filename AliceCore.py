@@ -103,6 +103,10 @@ class AliceCore(AliceSkill):
 			pass  # Not implemented
 
 
+	def onIntentNotRecognized(self, session: DialogSession):
+		self.onNluIntentNotRecognized(session=session)
+
+
 	def onNluIntentNotRecognized(self, session: DialogSession):
 		if not self.getAliceConfig('suggestSkillsToInstall'):
 			return
