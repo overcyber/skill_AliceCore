@@ -152,7 +152,7 @@ class AliceCore(AliceSkill):
 
 		# TODO Support for choosing between multiple skills
 		skill = session.customData['skills'][0][0]
-		self.SkillManager.installSkills(skills=skill, startSkills=True)
+		self.SkillManager.installSkills(skills=skill, startSkill=True)
 
 		self.endDialog(
 			sessionId=session.sessionId,
