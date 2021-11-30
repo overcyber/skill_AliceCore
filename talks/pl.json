@@ -438,7 +438,7 @@
 		"Mogę odpowiedzieć jeśli pozwolisz mi pobrać odpowiednią umiejętność. Znalazłem <lang xml:lang=\"en-US\">{}</lang> i <lang xml:lang=\"en-US\">{}</lang>. Czy mogę je pobrać",
 		"Mógłym odpowiedzieć, ale potrzebuję nowej umiejętności Znalazłem <lang xml:lang=\"en-US\">{}</lang> i <lang xml:lang=\"en-US\">{}</lang>. Zainstalować je?"
 	],
-	"confirmeDownloadingSuggestedSkill": {
+	"confirmDownloadingSuggestedSkill": {
 		"default": [
 			"OK, pobieram, wktórce powinno być gotowe!",
 			"Jasne, instaluję umiejętność, wkrótce powinna być dostępna!"

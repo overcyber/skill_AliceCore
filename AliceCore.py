@@ -150,13 +150,13 @@ class AliceCore(AliceSkill):
 			self.endSession(sessionId=session.sessionId)
 			return
 
-		# TODO Support for chosing between multiple skills
+		# TODO Support for choosing between multiple skills
 		skill = session.customData['skills'][0][0]
-		self.SkillManager.downloadInstallTicket(skillName=skill)
+		self.SkillManager.installSkills(skills=skill, startSkills=True)
 
 		self.endDialog(
 			sessionId=session.sessionId,
-			text=self.randomTalk(text='confirmeDownloadingSuggestedSkill')
+			text=self.randomTalk(text='confirmDownloadingSuggestedSkill')
 		)
 
 
