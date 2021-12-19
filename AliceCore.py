@@ -152,8 +152,8 @@ class AliceCore(AliceSkill):
 
 		# TODO Support for choosing between multiple skills
 		skill = session.customData['skills'][0][0]
-		self.SkillManager.installSkills(skills=skill, startSkill=True)
 
+		self.ThreadManager.doLater(interval=3, func=self.SkillManager.installSkills, kwargs={'skills': skill, 'startSkill': True})
 		self.endDialog(
 			sessionId=session.sessionId,
 			text=self.randomTalk(text='confirmDownloadingSuggestedSkill')
