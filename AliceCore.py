@@ -955,7 +955,7 @@ class AliceCore(AliceSkill):
 		subprocess.run(['git', 'stash'])
 		subprocess.run(['git', 'pull'])
 		subprocess.run(['git', 'stash', 'clear'])
-		SuperManager.getInstance().threadManager.doLater(interval=2, func=cls.restart)
+		SuperManager.getInstance().ThreadManager.doLater(interval=2, func=cls.restart)
 
 
 	def cancelUnregister(self):
