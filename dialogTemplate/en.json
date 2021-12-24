@@ -28964,13 +28964,14 @@
 			"name": "RebootSystem",
 			"enabledByDefault": true,
 			"utterances": [
+				"restart yourself",
 				"reload yourself please",
 				"please reload yourself",
 				"reboot your system",
 				"reboot your system please",
 				"restart your system please",
 				"restart your system",
-				"please restart you system",
+				"please restart your system",
 				"please reboot your system"
 			],
 			"slots": []
