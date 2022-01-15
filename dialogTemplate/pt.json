@@ -45890,7 +45890,6 @@
 				"adicione um novo dispositivo {alice:=>Hardware} ",
 				"eu quero registrar um novo {satélite:=>Hardware}",
 				"adicionar um novo componente ao seu sistema",
-				"adicione um novo {satélite:=>Hardware}",
 				"escute a nova conexão do dispositivo por favor",
 				"você pode adicionar um novo dispositivo por favor",
 				"eu desejo adicionar um novo dispositivo por favor",
@@ -45945,7 +45944,6 @@
 			"utterances": [
 				"{de jeito nenhum::=>Answer}",
 				"{certo:=>Answer}",
-				"{não:=>Answer}",
 				"{não obrigado a você:=>Answer}",
 				"{não, obrigado:=>Answer}",
 				"{sim por favor:=>Answer}",
