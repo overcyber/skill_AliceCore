@@ -8,13 +8,12 @@ from core.base.SuperManager import SuperManager
 from core.base.model.AliceSkill import AliceSkill
 from core.base.model.Intent import Intent
 from core.commons import constants
+from core.device.model.DeviceException import MaxDeviceOfTypeReached, MaxDevicePerLocationReached, RequiresWIFISettings
 from core.dialog.model.DialogSession import DialogSession
 from core.dialog.model.DialogState import DialogState
 from core.user.model.AccessLevels import AccessLevel
-from core.util.Decorators import IfSetting, Online, MqttHandler
+from core.util.Decorators import IfSetting, MqttHandler, Online
 from core.voice.WakewordRecorder import WakewordRecorderState
-
-from core.device.model.DeviceException import MaxDevicePerLocationReached, MaxDeviceOfTypeReached, RequiresWIFISettings
 
 
 class AliceCore(AliceSkill):
@@ -72,7 +71,7 @@ class AliceCore(AliceSkill):
 		}
 
 		self._INTENT_ANSWER_ACCESSLEVEL.dialogMapping = {
-			'confirmingUsername': self.checkUsername
+			'confirmingAccessLevel': self.getAccessLevel
 		}
 
 		self._INTENT_ANSWER_NUMBER.dialogMapping = {
@@ -223,16 +222,17 @@ class AliceCore(AliceSkill):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('addUserWhatsTheName'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				intentFilter=[self._INTENT_ANSWER_NAME],
+				slot='Name',
 				currentDialogState='addingUser',
-				probabilityThreshold=0.1
+				probabilityThreshold=0.01
 			)
 		else:
 			self.ask(
 				text=self.randomTalk('addUserWhatsTheName'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				intentFilter=[self._INTENT_ANSWER_NAME],
 				currentDialogState='addingUser',
-				probabilityThreshold=0.1
+				probabilityThreshold=0.01
 			)
 
 
@@ -430,9 +430,10 @@ class AliceCore(AliceSkill):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.TalkManager.randomTalk('notUnderstood', skill='system'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				intentFilter=[self._INTENT_ANSWER_NAME],
+				slot='Name',
 				currentDialogState=session.currentState,
-				probabilityThreshold=0.1
+				probabilityThreshold=0.01
 			)
 			return
 
@@ -471,9 +472,10 @@ class AliceCore(AliceSkill):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk('soWhatsTheName'),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				intentFilter=[self._INTENT_ANSWER_NAME],
+				slot='Name',
 				currentDialogState=state,
-				probabilityThreshold=0.1
+				probabilityThreshold=0.01
 			)
 			return
 
@@ -483,9 +485,10 @@ class AliceCore(AliceSkill):
 			self.continueDialog(
 				sessionId=session.sessionId,
 				text=self.randomTalk(text=errorText, replace=[session.customData['username']]),
-				intentFilter=[self._INTENT_ANSWER_NAME, self._INTENT_SPELL_WORD],
+				intentFilter=[self._INTENT_ANSWER_NAME],
+				slot='Name',
 				currentDialogState=state,
-				probabilityThreshold=0.1
+				probabilityThreshold=0.01
 			)
 			return
 
@@ -511,7 +514,7 @@ class AliceCore(AliceSkill):
 				sessionId=session.sessionId,
 				text=self.randomTalk('addUserWhatAccessLevel'),
 				intentFilter=[self._INTENT_ANSWER_ACCESSLEVEL],
-				currentDialogState='confirmingUsername',
+				currentDialogState='confirmingAccessLevel',
 				slot='UserAccessLevel',
 				probabilityThreshold=0.1
 			)
@@ -976,7 +979,7 @@ class AliceCore(AliceSkill):
 
 
 	@MqttHandler('projectalice/nodered/triggerAction')
-	def noderRedAction(self, session: DialogSession):
+	def nodeRedAction(self, session: DialogSession):
 
 		playbackDevice = session.payload['deviceUid']
 		if not playbackDevice:

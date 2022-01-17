@@ -241,7 +241,8 @@
 	},
 	"soWhatsTheName": {
 		"default": [
-			"Sorry for my mistake, what's the name then? You can also spell it"
+			"Sorry for my mistake, tell me your name again please. You can also spell it.",
+			"Oops, my fault, sorry. Please tell me your name again. You can also try to spell it."
 		]
 	},
 	"userAlreadyExist": {
