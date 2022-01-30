@@ -1,0 +1,45 @@
+<!--
+	This is almost a copy of the official Nore-red MQTT in node found on node-red repository.
+	It's been fitted to our needs of simplicity for everyday use and repackaged
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('onAliceCustomEvent', {
+		category: 'Project Alice',
+		color   : '#3FADB5',
+		defaults: {
+			broker: {
+				type    : 'aliceMqtt',
+				required: true
+			},
+			event : {
+				value   : 'onYourCustomEvent',
+				required: true
+			}
+		},
+		inputs  : 0,
+		outputs : 1,
+		icon    : 'arrow-in.svg',
+		label   : function () {
+			return this.event || this.name;
+		}
+	})
+</script>
+
+<script data-help-name="onAliceCustomEvent" type="text/html">
+	<p>
+		Alice sends events over MQTT for you to listen to and react to. You can easily create new events, such as goingBed per example.
+	</p>
+</script>
+
+<script data-template-name="onAliceCustomEvent" type="text/html">
+	<div class="form-row">
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="onAliceCustomEvent.broker"></span></label>
+		<input type="text" id="node-input-broker">
+	</div>
+	<div class="form-row">
+		<label for="node-input-custom-event"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="onAliceCustomEvent.event"></span></label>
+		<input id="node-input-custom-event" type="text" style="width: 70%"/>
+	</div>
+</script>

@@ -6,7 +6,7 @@
 module.exports = function(RED) {
 	let isUtf8 = require('is-utf8');
 
-	function onAliceEvent(config) {
+	function onAliceCustomEvent(config) {
 		RED.nodes.createNode(this, config);
 
 		this.topic = `projectalice/events/${config.event}`;
@@ -83,5 +83,5 @@ module.exports = function(RED) {
 		})
 	}
 
-	RED.nodes.registerType('onAliceEvent', onAliceEvent);
+	RED.nodes.registerType('onAliceCustomEvent', onAliceCustomEvent);
 }
