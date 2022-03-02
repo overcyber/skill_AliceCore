@@ -9,6 +9,9 @@
 		category: 'Project Alice',
 		color: '#3FADB5',
 		defaults: {
+			name: {
+				value: '',
+			},
 			broker: {
 				type: 'aliceMqtt',
 				required: true
@@ -32,7 +35,7 @@
 
 <script type="text/html" data-help-name="triggerAction">
 	<p>
-		Triggers an intent from Within Alice
+		Triggers an intent from within Alice
 	</p>
 	<h3>Inputs</h3>
 	<dl class="message-properties">
@@ -70,6 +73,10 @@
 </script>
 
 <script type="text/html" data-template-name="triggerAction">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
 	<div class="form-row">
 		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
 				data-i18n="triggerAction.broker">Broker</span></label>

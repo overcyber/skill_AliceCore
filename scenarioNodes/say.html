@@ -9,6 +9,9 @@
 		category: 'Project Alice',
 		color: '#3FADB5',
 		defaults: {
+			name: {
+				value: '',
+			},
 			broker: {
 				type: 'aliceMqtt',
 				required: true
@@ -23,9 +26,11 @@
 		},
 		inputs: 1,
 		outputs: 0,
-		icon: 'bridge.svg',
+		icon: 'font-awesome/fa-comment',
 		label: function () {
-			return this.name;
+			if(!this.name && !this.say)
+				return 'AliceSay'
+			return this.name || "\""+this.say+"\""
 		}
 	})
 </script>
@@ -60,13 +65,17 @@
 
 <script type="text/html" data-template-name="say">
 	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
 		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
 				data-i18n="say.broker"></span>Broker</label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
 		<div class="form-row">
-			<label for="node-input-say"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="say.say"></span></label>
+			<label for="node-input-say"><i class="fa fa-comment fa-fw"></i> <span data-i18n="say.say"></span></label>
 			<input type="text" id="node-input-say">
 		</div>
 	</div>
