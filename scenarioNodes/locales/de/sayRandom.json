@@ -1,0 +1,9 @@
+{
+	"sayRandom": {
+		"skill": "Skill",
+		"talk": "Talk",
+		"replaceOverwrite": "Replace Overwrite",
+		"broker": "Broker",
+		"client": "DeviceId"
+	}
+}

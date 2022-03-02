@@ -1,0 +1,108 @@
+<!--
+	This is almost a copy of the official Nore-red MQTT out node found on node-red repository.
+	It's been fitted to our needs of simplicity for everyday use and repackaged
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('sayRandom', {
+		category: 'Project Alice',
+		color: '#3FADB5',
+		defaults: {
+			name: {
+				value: '',
+			},
+			broker: {
+				type: 'aliceMqtt',
+				required: true
+			},
+			skill: {
+				value: '',
+				required: true
+			},
+			talk: {
+				value: '',
+				required: true
+			},
+			replaceOverwrite: {
+				value: '',
+				required: false
+			},
+			client: {
+				value: ''
+			}
+		},
+		inputs: 1,
+		outputs: 0,
+		icon: 'font-awesome/fa-commenting',
+		label: function () {
+			if(!this.name && !this.skill && !this.talk)
+				return 'AliceSayRandom'
+			return this.name || this.skill+"/"+this.talk
+		}
+	})
+</script>
+
+<script type="text/html" data-help-name="sayRandom">
+	<p>
+		Makes Alice speak a random text supplied by a skills talk file
+	</p>
+	<h3>Inputs</h3>
+	<dl class="message-properties">
+		<dt>MQTT
+			<span class="property-type">Configured Settings</span>
+		</dt>
+		<dd> This is the MQTT client that will be used.</dd>
+		<dt>Skill
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the skill Alice will look for the text to speak from.
+		</dd>
+		<dt>Talk
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the specific talk file entry Alice will choose a random variant from to speek.
+		</dd>
+
+		<dt class="optional">Client UID <span class="property-type">string</span></dt>
+		<dd> The UID of the device you want to speak. Can be left blank to use the default device</dd>
+	</dl>
+
+</script>
+
+<script type="text/html" data-template-name="sayRandom">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+	<div class="form-row">
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
+				data-i18n="sayRandom.broker"></span>Broker</label>
+		<input type="text" id="node-input-broker">
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.skill"></span></label>
+			<input type="text" id="node-input-skill">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-talk"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.talk"></span></label>
+			<input type="text" id="node-input-talk">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-replaceOverwrite"><i class="fa fa-scissors fa-fw"></i> <span data-i18n="sayRandom.replaceOverwrite"></span></label>
+			<input type="text" id="node-input-replaceOverwrite">
+		</div>
+	</div>
+	<div class="form-row">
+		<div class="form-row">
+			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span
+					data-i18n="sayRandom.client"></span></label>
+			<input type="text" id="node-input-client">
+		</div>
+	</div>
+</script>

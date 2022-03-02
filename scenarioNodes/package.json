@@ -17,6 +17,7 @@
       "onAliceCustomEvent": "onAliceCustomEvent.js",
       "sendMsg": "sendMsg.js",
       "say": "say.js",
+      "sayRandom": "sayRandom.js",
       "triggerAction": "triggerAction.js"
     }
 	},
