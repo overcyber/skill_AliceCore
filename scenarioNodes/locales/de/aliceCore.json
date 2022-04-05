@@ -1,0 +1,11 @@
+{
+  "aliceCore": {
+	"connection": "Alice Instance",
+	"intent": "Intent",
+	"skill": "Skill",
+	"talkTopic": "Talk topic",
+	"selectOne": "Select one",
+	"noTalkTopics": "no talk topics available",
+	"waiting": "Warte auf Eingabe"
+  }
+}

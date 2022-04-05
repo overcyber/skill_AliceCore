@@ -12,8 +12,8 @@
 			name: {
 				value: '',
 			},
-			broker: {
-				type: 'aliceMqtt',
+			connection: {
+				type: 'aliceConnection',
 				required: true
 			},
 			skill: {
@@ -28,7 +28,7 @@
 				value: '',
 				required: false
 			},
-			client: {
+			device: {
 				value: ''
 			}
 		},
@@ -38,8 +38,27 @@
 		label: function () {
 			if(!this.name && !this.skill && !this.talk)
 				return 'AliceSayRandom'
-			return this.name || this.skill+"/"+this.talk
-		}
+			if(this.name)
+				return this.name
+			let ret;
+			ret = this.skill+"/"+this.talk
+			if(this.replaceOverwrite)
+				ret = ret + "["+this.replaceOverwrite+"]"
+			return ret
+		},
+		oneditprepare: function () {
+            let node = this;
+            new ProjectAliceEditor(node).build();
+        },
+		oneditsave: function () {
+			let pae = new ProjectAliceEditor(node)
+			this.device_id = pae.getSelection('#node-input-device')
+			this.skill = pae.getSelection('#node-input-skill')
+			this.talk = pae.getSelection('#node-input-talk')
+
+            let $property = $('#node-input-state');
+            this.state = $property.val()!='0'?$property.val():null;
+        }
 	})
 </script>
 
@@ -49,10 +68,10 @@
 	</p>
 	<h3>Inputs</h3>
 	<dl class="message-properties">
-		<dt>MQTT
+		<dt>Connection
 			<span class="property-type">Configured Settings</span>
 		</dt>
-		<dd> This is the MQTT client that will be used.</dd>
+		<dd> This is the Alice instance that will be used for API and MQTT access.</dd>
 		<dt>Skill
 			<span class="property-type">string</span>
 		</dt>
@@ -61,48 +80,40 @@
 		<dt>Talk
 			<span class="property-type">string</span>
 		</dt>
-		<dd> This is the specific talk file entry Alice will choose a random variant from to speek.
+		<dd> This is the specific talk file entry Alice will choose a random variant from to speak.
 		</dd>
 
-		<dt class="optional">Client UID <span class="property-type">string</span></dt>
-		<dd> The UID of the device you want to speak. Can be left blank to use the default device</dd>
+		<dt class="optional">Device <span class="property-type">string</span></dt>
+		<dd> The device you want to speak from. Alice will translate it to the devices UID for communication.</dd>
 	</dl>
 
 </script>
+
+<link rel="stylesheet" href="resources/alicecore/css/multiple-select.css" type="text/css" />
 
 <script type="text/html" data-template-name="sayRandom">
 	<div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
+    <div class="form-row">
+        <label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i> <span data-i18n="sayRandom.connection"></span></label>
+        <input type="text" id="node-input-connection">
+    </div>
 	<div class="form-row">
-		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
-				data-i18n="sayRandom.broker"></span>Broker</label>
-		<input type="text" id="node-input-broker">
+		<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.skill"></span></label>
+		<select id="node-input-skill"></select>
 	</div>
 	<div class="form-row">
-		<div class="form-row">
-			<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.skill"></span></label>
-			<input type="text" id="node-input-skill">
-		</div>
+		<label for="node-input-talk"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.talk"></span></label>
+		<select id="node-input-talk"></select>
 	</div>
 	<div class="form-row">
-		<div class="form-row">
-			<label for="node-input-talk"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.talk"></span></label>
-			<input type="text" id="node-input-talk">
-		</div>
+		<label for="node-input-replaceOverwrite"><i class="fa fa-scissors fa-fw"></i> <span data-i18n="sayRandom.replaceOverwrite"></span></label>
+		<input type="text" id="node-input-replaceOverwrite">
 	</div>
 	<div class="form-row">
-		<div class="form-row">
-			<label for="node-input-replaceOverwrite"><i class="fa fa-scissors fa-fw"></i> <span data-i18n="sayRandom.replaceOverwrite"></span></label>
-			<input type="text" id="node-input-replaceOverwrite">
-		</div>
-	</div>
-	<div class="form-row">
-		<div class="form-row">
-			<label for="node-input-client"><i class="fa fa-map-marker fa-fw"></i> <span
-					data-i18n="sayRandom.client"></span></label>
-			<input type="text" id="node-input-client">
-		</div>
+		<label for="node-input-device"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="sayRandom.client"></span></label>
+		<select id="node-input-device"></select>
 	</div>
 </script>
