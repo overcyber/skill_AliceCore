@@ -44,6 +44,7 @@ module.exports = function(RED) {
             res.json([{},{}]);
         }
     });
+
 	RED.httpAdmin.get(NODE_PATH + 'getTalkTopics', async (req, res) => {
         var config = req.query;
         var controller = RED.nodes.getNode(config.controllerID);
@@ -78,14 +79,13 @@ module.exports = function(RED) {
             var node = this;
 			node.config = n;
 
-
 			this.users = {};
 
 			// API
 
 
 			// MQTT
-			node.mqtt = undefined;
+			node.mqtt = new AliceMqtt(node)
 			node.getApiToken().then( () =>
 				node.getMqttConfig() )
 
@@ -215,7 +215,7 @@ module.exports = function(RED) {
 						that.credentials.mqttPassword = res.data.config.mqttPassword
 						that.log(`statusCode: ${res.status} - MQTT settings collected`)
 						//that.log(JSON.stringify(res.data))
-						that.mqtt = new AliceMqtt(that)
+						that.mqtt.update(that)
 						that.mqtt.connect()
 				  })
 				  .catch(error => {
@@ -243,6 +243,11 @@ module.exports = function(RED) {
 			this.usews = n.usews;
 			this.verifyservercert = n.verifyservercert;
 
+			if (this.node.credentials) {
+				this.username = this.node.credentials.user;
+				this.password = this.node.credentials.password;
+			}
+
 			// Config node state
 			this.connected = false;
 			this.connecting = false;
@@ -250,11 +255,6 @@ module.exports = function(RED) {
 			this.options = {};
 			this.queue = [];
 			this.subscriptions = {};
-
-			if (this.node.credentials) {
-				this.username = this.node.credentials.user;
-				this.password = this.node.credentials.password;
-			}
 
 			// If the config node is missing certain options (it was probably deployed prior to an update to the node code),
 			// select/generate sensible options for the new fields
@@ -309,6 +309,20 @@ module.exports = function(RED) {
 					done();
 				}
 			});
+		}
+
+		update(node) {
+			this.node = node;
+			this.broker = node.mqttIp;
+			this.port = node.mqttPort;
+			this.usetls = node.usetls;
+			this.usews = node.usews;
+			this.verifyservercert = node.verifyservercert;
+
+			if (this.node.credentials) {
+				this.username = this.node.credentials.user;
+				this.password = this.node.credentials.password;
+			}
 		}
 
 
@@ -454,6 +468,8 @@ module.exports = function(RED) {
 		};
 
 		getBrokerUrl() {
+			if(!this.broker)
+				return this.broker
 
 			let prox, noprox;
 			if (process.env.http_proxy) {
