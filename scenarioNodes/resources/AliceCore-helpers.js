@@ -39,20 +39,20 @@ class ProjectAliceEditor {
     async build() {
         let that = this;
         // console.log('build : '+(this.refresh?'true':false))
-		if(that.getDeviceIdInput()) {
+		if(that.getDeviceIdInput().length) {
 			await that.buildDeviceIdInput().then(() => {
 			});
 		}
-		if(that.getSkillInput()) {
+		if(that.getSkillInput().length) {
 			await that.buildSkillInput().then(() => {
 			});
 			// without a specific skill the others here don't matter!
 			// in addition data is only loaded once with skill input
-			if(that.getIntentInput()) {
+			if(that.getIntentInput().length) {
 				await that.buildIntentInput().then(() => {
 				});
 			}
-			if(that.getTalkInput()) {
+			if(that.getTalkInput().length) {
 				await that.buildTalkInput().then(() => {
 				});
 			}
