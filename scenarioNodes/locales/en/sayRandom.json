@@ -1,0 +1,12 @@
+{
+	"sayRandom": {
+		"skill": "Skill",
+		"talk": "Talk",
+		"replaceOverwrite": "Replace Overwrite",
+		"client": "Device",
+	  	"connection": "Alice Instance",
+	  	"waiting": "Waiting for Input",
+	  	"invalidTopic": "Topic invalid",
+	  	"missingConfig": "Settings are missing"
+	}
+}
