@@ -22,7 +22,8 @@
       "onAliceCustomEvent": "onAliceCustomEvent.js",
       "sayRandom": "sayRandom.js",
       "aliceConnection": "aliceConnection.js",
-      "onAliceIntent": "onAliceIntent.js"
+      "onAliceIntent": "onAliceIntent.js",
+      "sendNotification": "sendNotification.js"
     }
 	},
 	"devDependencies": {}

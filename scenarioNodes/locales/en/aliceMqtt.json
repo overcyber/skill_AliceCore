@@ -2,6 +2,8 @@
 	"aliceMqtt": {
 		"host": "Host",
 		"port": "Port",
-		"useTLS": "Enable secure (SSL/TLS) connection"
+		"useTLS": "Enable secure (SSL/TLS) connection",
+	  "apiIp": "Alice API IP",
+	  "apiIpPort": "Alice API Port"
 	}
 }

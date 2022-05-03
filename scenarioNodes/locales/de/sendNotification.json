@@ -1,0 +1,9 @@
+{
+	"sendNotification": {
+		"client": "Device",
+	  	"connection": "Alice Instanz",
+	  	"message": "Nachricht",
+	  	"key": "Schlüssel",
+	  	"header": "Titel"
+	}
+}

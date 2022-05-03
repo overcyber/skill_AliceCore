@@ -1,0 +1,113 @@
+<!--
+	This will send a request over the API to alice to create a new notification
+		header = request.json["header"]
+		message = request.json["message"]
+		key = f'apinotif_{request.json["key"]}'
+		deviceUid = request.json["deviceUid"] or 'all'
+-->
+
+
+<script type="text/javascript">
+	RED.nodes.registerType('sendNotification', {
+		category: 'Project Alice',
+		color: '#3FADB5',
+		defaults: {
+			name: {
+				value: '',
+			},
+			connection: {
+				type: 'aliceConnection',
+				required: true
+			},
+			headerOverwrite:{
+				value: ''
+			},
+			messageOverwrite:{
+				value: ''
+			},
+			keyOverwrite:{
+				value: ''
+			},
+			device: {
+				value: ''
+			}
+		},
+		inputs: 1,
+		outputs: 0,
+		icon: 'font-awesome/fa-envelope',
+		label: function () {
+			if(!this.headerOverwrite && !this.name)
+				return 'Alice Send Notification'
+			if(this.name)
+				return this.name
+			return "Note: " + this.headerOverwrite
+		},
+		oneditprepare: function () {
+            let node = this;
+            new ProjectAliceEditor(node).build();
+        },
+		oneditsave: function () {
+			let pae = new ProjectAliceEditor(node)
+			this.device_id = pae.getSelection('#node-input-device')
+
+            let $property = $('#node-input-state');
+            this.state = $property.val()!='0'?$property.val():null;
+        }
+	})
+</script>
+
+<script type="text/html" data-help-name="sendNotification">
+	<p>
+		TODO
+	</p>
+	<h3>Inputs</h3>
+	<dl class="message-properties">
+		<dt>Connection
+			<span class="property-type">Configured Settings</span>
+		</dt>
+		<dd> This is the Alice instance that will be used for API and MQTT access.</dd>
+		<dt>Skill
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the skill Alice will look for the text to speak from.
+		</dd>
+		<dt>Talk
+			<span class="property-type">string</span>
+		</dt>
+		<dd> This is the specific talk file entry Alice will choose a random variant from to speak.
+		</dd>
+
+		<dt class="optional">Device <span class="property-type">string</span></dt>
+		<dd> The device you want to speak from. Alice will translate it to the devices UID for communication.</dd>
+	</dl>
+
+</script>
+
+<link rel="stylesheet" href="resources/alicecore/css/multiple-select.css" type="text/css" />
+
+<script type="text/html" data-template-name="sendNotification">
+	<div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i> <span data-i18n="sendNotification.connection"></span></label>
+        <input type="text" id="node-input-connection">
+    </div>
+	<div class="form-row">
+		<label for="node-input-headerOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.header"></span></label>
+		<input id="node-input-headerOverwrite"></input>
+	</div>
+	<div class="form-row">
+		<label for="node-input-messageOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.message"></span></label>
+		<input id="node-input-messageOverwrite"></input>
+	</div>
+	<div class="form-row">
+		<label for="node-input-keyOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.key"></span></label>
+		<input id="node-input-keyOverwrite"></input>
+	</div>
+	<div class="form-row">
+		<label for="node-input-device"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="sendNotification.client"></span></label>
+		<select id="node-input-device"></select>
+	</div>
+</script>
