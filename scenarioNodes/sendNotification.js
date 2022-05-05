@@ -21,34 +21,42 @@ module.exports = function (RED) { //NOSONAR
 			});
 
 			this.on('input', function (msg, send, done) {
+				node.status({
+					fill : 'yellow',
+					shape: 'dot',
+					text : 'sendNotification.waiting'
+				});
 				let url = `http://${node.connectionInstance.config.apiIp}:${node.connectionInstance.config.apiPort}/api/v1.0.1/utils/addNotification/`
-				node.log(`Sending notification ` + url)
 				let data = new URLSearchParams();
-				data.append('header', node.config.headerOverwrite)
-				data.append('message', node.config.messageOverwrite)
-				data.append('key', node.config.keyOverwrite)
-				data.append('device', 'all')
-				node.log("adding " + data.toString())
+				let header = node.config.headerOverwrite || msg.header;
+				let message = node.config.messageOverwrite || msg.message;
+				let key = node.config.keyOverwrite || msg.key;
+				let device = msg.device || 'all';
+				node.log(`Sending notification [${key}] ${header}`)
+				data.append('header', header)
+				data.append('message', message)
+				data.append('key', key)
+				data.append('device', device)
 				let response = axios({
 					method: 'PUT',
 					url: url,
 					data: data,
 					headers: {'Content-Type': 'application/x-www-form-urlencoded',
 							  'auth': node.connectionInstance.credentials.apiToken}
-				}).catch((err) => {node.error(err)}).then(response => { node.log(response.data)})
-				node.status({
-					fill: 'green',
-					shape: 'dot',
-					text: config.say
-				});
-
-				setTimeout(function () {
+				}).catch((err) => {
+					node.error(err)
 					node.status({
-						fill : 'yellow',
+						fill: 'red',
 						shape: 'dot',
-						text : 'sendNotification.waiting'
+						text: err
 					});
-				}, 3000);
+				}).then(response => {
+					node.status({
+						fill: 'green',
+						shape: 'dot',
+						text: 'node-red:common.status.connected'
+					});
+				})
 			});
 
 			if (this.connectionInstance) {

@@ -58,27 +58,55 @@
 
 <script type="text/html" data-help-name="sendNotification">
 	<p>
-		TODO
+		With this Node you can create or update a notification for Alice.
+		When the key is new, a new notification is created, when the key is already known, the message and title of the notification are updated.
+		You can supply the required fields as input to the node, or as configuration. If the configuration is filled, it will overwrite the input.
+
+		Note: For now the device field is ignored, as the use for local notifications is quite small.
 	</p>
-	<h3>Inputs</h3>
+	<h3>Config</h3>
 	<dl class="message-properties">
-		<dt>Connection
+		<dt class="optional">Connection
 			<span class="property-type">Configured Settings</span>
 		</dt>
 		<dd> This is the Alice instance that will be used for API and MQTT access.</dd>
-		<dt>Skill
+		<dt class="optional">Header overwrite
 			<span class="property-type">string</span>
 		</dt>
-		<dd> This is the skill Alice will look for the text to speak from.
+		<dd> The header line for the notification - overwrites msg.header
 		</dd>
-		<dt>Talk
+		<dt class="optional">Message overwrite
 			<span class="property-type">string</span>
 		</dt>
-		<dd> This is the specific talk file entry Alice will choose a random variant from to speak.
+		<dd> The message body of the notification - overwrites msg.message
 		</dd>
-
-		<dt class="optional">Device <span class="property-type">string</span></dt>
-		<dd> The device you want to speak from. Alice will translate it to the devices UID for communication.</dd>
+		<dt class="optional">Key overwrite
+			<span class="property-type">string</span>
+		</dt>
+		<dd> The unique key for that notification - overwrites msg.key
+		</dd>
+		<dt class="optional">device <span class="property-type">string</span></dt>
+		<dd> The device you want to send the notification to - for now, it is always send to all devices!</dd>
+	</dl>
+	<h3>Inputs</h3>
+	<dl class="message-properties">
+		<dt class="optional">header
+			<span class="property-type">string</span>
+		</dt>
+		<dd> The header line for the notification
+		</dd>
+		<dt class="optional">message
+			<span class="property-type">string</span>
+		</dt>
+		<dd> The message body of the notification
+		</dd>
+		<dt class="optional">key
+			<span class="property-type">string</span>
+		</dt>
+		<dd> The unique key for that notification
+		</dd>
+		<dt class="optional">device <span class="property-type">string</span></dt>
+		<dd> The device you want to send the notification to.</dd>
 	</dl>
 
 </script>

@@ -1,0 +1,10 @@
+{
+	"sendNotification": {
+		"client": "Device",
+	  	"connection": "Alice Instance",
+	  	"message": "Message",
+	  	"key": "Key",
+	  	"header": "Title",
+	  	"waiting": "Waiting for input"
+	}
+}

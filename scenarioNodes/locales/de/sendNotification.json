@@ -4,6 +4,7 @@
 	  	"connection": "Alice Instanz",
 	  	"message": "Nachricht",
 	  	"key": "Schlüssel",
-	  	"header": "Titel"
+	  	"header": "Titel",
+	  	"waiting": "Warte auf Nachricht"
 	}
 }
