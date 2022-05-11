@@ -189,10 +189,10 @@ class ProjectAliceEditor {
 			var names = {};
 			let html = '';
 
-			if(Object.keys(that.skills[that.skill]['intents']).length == 0){
+			if(!'intents' in that.skills[that.skill] || !that.skills[that.skill]['intents'] || Object.keys(that.skills[that.skill]['intents']).length == 0){
            		html = $('<optgroup/>', {label: that.skill});
 				html.appendTo(inp);
-                $('<option value="' + 0 + '" data-friendly_name="' + 0 + '"> ' + RED._("aliceCore/aliceCore:noTalkTopics") + ' </option>')
+                $('<option value="' + 0 + '" data-friendly_name="' + 0 + '"> ' + RED._("aliceCore/aliceCore:noIntents") + ' </option>')
                     .appendTo(html);
 				inp.multipleSelect('enable');
 				inp.multipleSelect('refresh');
@@ -202,7 +202,8 @@ class ProjectAliceEditor {
             html = $('<optgroup/>', {label: that.skill});
             html.appendTo(inp);
             $.each(that.skills[that.skill]['intents'], function(index, name) {
-                $('<option value="' + index + '" data-friendly_name="' + index + '">' + index + '</option>')
+				let outVal = 'hermes/intent/' + name;
+                $('<option value="' + outVal + '" data-friendly_name="' + outVal + '">' + outVal + '</option>')
                     .appendTo(html);
             });
         }
