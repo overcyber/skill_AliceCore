@@ -202,13 +202,13 @@ class ProjectAliceEditor {
             html = $('<optgroup/>', {label: that.skill});
             html.appendTo(inp);
             $.each(that.skills[that.skill]['intents'], function(index, name) {
-				let outVal = 'hermes/intent/' + name;
+				let outVal = 'hermes/intent/' + index;
                 $('<option value="' + outVal + '" data-friendly_name="' + outVal + '">' + outVal + '</option>')
                     .appendTo(html);
             });
         }
 
-        inp.multipleSelect('enable');
+        //inp.multipleSelect('enable');
         if (that.intent) { //} && $('#node-input-client').find("option[value='Kitchen']").length) {
             inp.val(that.intent);
 			that.intentSkill = that.skill
