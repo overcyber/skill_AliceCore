@@ -21,22 +21,22 @@ module.exports = function (RED) { //NOSONAR
 			this.on('input', function (msg, send, done) {
 				let replace = []
 				if(config.replaceOverwrite)
-					replace = config.replaceOverwrite
-				else
+					replace = config.replaceOverwrite.split(',')
+				else if(msg.payload.replace !== undefined)
 					replace = msg.payload['replace']
-
+				else
+					replace = []
 				msg.qos = 0;
 				msg.retain = false;
 				msg.topic = node.topic;
 
-				let replaceSplit = replace ? replace.split(',') : [];
 				msg.payload = {
 					'siteId': config.device,
 					'init': {
 						'type': 'notification',
 						'skill': config.skill,
 						'talk': config.talk,
-						'replace': replaceSplit,
+						'replace': replace,
 						'sendIntentNotRecognized': true,
 						'canBeEnqueued': true
 					},
