@@ -493,6 +493,7 @@ module.exports = function (RED) {
 			}
 
 			let url = ''
+			let noproxy = false
 			// if the broker may be ws:// or wss:// or even tcp://
 			if (this.broker.indexOf('://') > -1) {
 				url = this.broker

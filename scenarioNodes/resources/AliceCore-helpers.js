@@ -138,7 +138,6 @@ class ProjectAliceEditor {
 			inp.children().remove()
 			inp.multipleSelect('destroy').multipleSelect(params).multipleSelect('disable')
 
-			let names = {}
 			let html = ''
 
 			if (Object.keys(that.skills[that.skill]['talks']).length === 0) {
@@ -191,10 +190,9 @@ class ProjectAliceEditor {
 			inp.children().remove()
 			inp.multipleSelect('destroy').multipleSelect(params).multipleSelect('disable')
 
-			let names = {}
 			let html = ''
 
-			if (!'intents' in that.skills[that.skill] || !that.skills[that.skill]['intents'] || Object.keys(that.skills[that.skill]['intents']).length === 0) {
+			if (!('intents' in that.skills[that.skill]) || !that.skills[that.skill]['intents'] || Object.keys(that.skills[that.skill]['intents']).length === 0) {
 				html = $('<optgroup/>', {label: that.skill})
 				html.appendTo(inp)
 				$('<option value="' + 0 + '" data-friendly_name="' + 0 + '"> ' + RED._('aliceCore/aliceCore:noIntents') + ' </option>')
@@ -326,9 +324,7 @@ class ProjectAliceEditor {
 			that.devices = await response.json()
 			return that.devices
 		} else {
-			return await new Promise(function (resolve, _reject) {
-				resolve(that.devices)
-			})
+			return Promise.resolve(that.devices)
 		}
 	}
 

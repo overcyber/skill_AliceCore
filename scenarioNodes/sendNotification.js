@@ -11,8 +11,6 @@ module.exports = function (RED) { //NOSONAR
 		this.datatype = config.datatype || 'utf8'
 
 		let node = this
-		let check = /[+#]/
-		let sayMessage = ''
 
 		if (this.connectionInstance) {
 			this.status({
