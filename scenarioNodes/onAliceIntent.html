@@ -6,48 +6,48 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('onAliceIntent', {
-		category: 'Project Alice',
-		color   : '#3FADB5',
-		defaults: {
-			name: {
+		category:      'Project Alice',
+		color:         '#3FADB5',
+		defaults:      {
+			name:       {
 				value: ''
 			},
 			connection: {
-				type: 'aliceConnection',
+				type:     'aliceConnection',
 				required: true
 			},
-			skill: {
-				value: '',
+			skill:      {
+				value:    '',
 				required: true
 			},
-			intent: {
-				value: '',
+			intent:     {
+				value:    '',
 				required: true
 			}
 		},
-		inputs  : 0,
-		outputs : 1,
-		icon    : 'Alice.png',
-		label   : function () {
-			if(this.name)
+		inputs:        0,
+		outputs:       1,
+		icon:          'Alice.png',
+		label:         function () {
+			if (this.name)
 				return this.name
-			if(this.skill && this.intent)
-				return this.skill + ': ' + this.intent;
+			if (this.skill && this.intent)
+				return this.skill + ': ' + this.intent
 			return 'onAliceIntent'
 		},
 		oneditprepare: function () {
-            let node = this;
-            new ProjectAliceEditor(node).build();
-        },
-		oneditsave: function () {
+			let node = this
+			new ProjectAliceEditor(node).build()
+		},
+		oneditsave:    function () {
 			let pae = new ProjectAliceEditor(this)
 			this.device_id = pae.getSelection('#node-input-device')
 			this.skill = pae.getSelection('#node-input-skill')
 			this.intent = pae.getSelection('#node-input-intent')
 
-            let $property = $('#node-input-state');
-            this.state = $property.val()!='0'?$property.val():null;
-        }
+			let $property = $('#node-input-state')
+			this.state = $property.val() != '0' ? $property.val() : null
+		}
 	})
 </script>
 
@@ -59,19 +59,22 @@
 
 <script type="text/html" data-template-name="onAliceIntent">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
-		<label for="node-input-connection"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="aliceCore.connection"></span></label>
+		<label for="node-input-connection"><i class="fa fa-bookmark fa-fw"></i>
+			<span data-i18n="aliceCore.connection"></span></label>
 		<input type="text" id="node-input-connection">
 	</div>
 	<div class="form-row">
-		<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="aliceCore.skill"></span></label>
+		<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="aliceCore.skill"></span></label>
 		<select id="node-input-skill" style="width: 70%"></select>
 	</div>
 	<div class="form-row">
-		<label for="node-input-intent"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="aliceCore.intent"></span></label>
+		<label for="node-input-intent"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="aliceCore.intent"></span></label>
 		<select id="node-input-intent" style="width: 70%"></select>
 	</div>
 </script>

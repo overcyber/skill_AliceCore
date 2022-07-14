@@ -7,25 +7,25 @@
 <script type="text/javascript">
 	RED.nodes.registerType('sendMsg', {
 		category: 'Project Alice',
-		color   : '#3FADB5',
+		color:    '#3FADB5',
 		defaults: {
-			name: {
-				value: '',
+			name:   {
+				value: ''
 			},
 			broker: {
-				type    : 'aliceMqtt',
+				type:     'aliceMqtt',
 				required: true
 			},
-			topic : {
-				value   : '',
+			topic:  {
+				value:    '',
 				required: true
 			}
 		},
-		inputs  : 1,
-		outputs : 0,
-		icon    : 'bridge.svg',
-		label   : function () {
-			return this.name || this.topic ;
+		inputs:   1,
+		outputs:  0,
+		icon:     'bridge.svg',
+		label:    function () {
+			return this.name || this.topic
 		}
 	})
 </script>
@@ -38,16 +38,18 @@
 
 <script type="text/html" data-template-name="sendMsg">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
-		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="sendMsg.broker"></span></label>
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i>
+			<span data-i18n="sendMsg.broker"></span></label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
 		<div class="form-row">
-			<label for="node-input-topic"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendMsg.topic"></span></label>
+			<label for="node-input-topic"><i class="fa fa-tasks fa-fw"></i>
+				<span data-i18n="sendMsg.topic"></span></label>
 			<input type="text" id="node-input-topic">
 		</div>
 	</div>
