@@ -9,7 +9,8 @@
 		<input type="text" id="node-config-input-broker" style="width: 40%;" placeholder="localhost">
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-port"><i class="fa fa-globe fa-fw"></i> <span data-i18n="aliceMqtt.port"></span></label>
+		<label for="node-config-input-port"><i class="fa fa-globe fa-fw"></i>
+			<span data-i18n="aliceMqtt.port"></span></label>
 		<input type="text" id="node-config-input-port" style="width: 60px;" placeholder="1883">
 	</div>
 	<div class="form-row">
@@ -20,70 +21,72 @@
 		</div>
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-user"><i class="fa fa-user fa-fw"></i>  <span data-i18n="node-red:common.label.username"></span></label>
+		<label for="node-config-input-user"><i class="fa fa-user fa-fw"></i>
+			<span data-i18n="node-red:common.label.username"></span></label>
 		<input type="text" id="node-config-input-user">
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-password"><i class="fa fa-lock fa-fw"></i>  <span data-i18n="node-red:common.label.password"></span></label>
+		<label for="node-config-input-password"><i class="fa fa-lock fa-fw"></i>
+			<span data-i18n="node-red:common.label.password"></span></label>
 		<input type="password" id="node-config-input-password">
 	</div>
 </script>
 
 <script type="text/javascript">
 	RED.nodes.registerType('aliceMqtt', {
-		category     : 'config',
-		defaults     : {
-			broker          : {
-				value   : 'localhost',
+		category:      'config',
+		defaults:      {
+			broker:           {
+				value:    'localhost',
 				required: true
 			},
-			port            : {
-				value   : 1883,
+			port:             {
+				value:    1883,
 				required: false,
 				validate: RED.validators.number(true)
 			},
-			tls             : {
+			tls:              {
 				type: 'tls-config'
 			},
-			usetls          : {
+			usetls:           {
 				value: false
 			},
 			verifyservercert: {
 				value: false
 			}
 		},
-		credentials  : {
-			user    : {
+		credentials:   {
+			user:     {
 				type: 'text'
 			},
 			password: {
 				type: 'password'
 			}
 		},
-		label        : 'AliceMqtt',
+		label:         'AliceMqtt',
 		oneditprepare: function () {
 			if (typeof this.usetls === 'undefined') {
-				this.usetls = false;
-				$('#node-config-input-usetls').prop('checked', false);
+				this.usetls = false
+				$('#node-config-input-usetls').prop('checked', false)
 			}
 
 			function updateTLSOptions() {
 				if ($('#node-config-input-usetls').is(':checked')) {
-					$('#node-config-row-tls').show();
+					$('#node-config-row-tls').show()
 				} else {
-					$('#node-config-row-tls').hide();
+					$('#node-config-row-tls').hide()
 				}
 			}
 
-			updateTLSOptions();
+			updateTLSOptions()
 			$('#node-config-input-usetls').on('click', function () {
-				updateTLSOptions();
-			});
+				updateTLSOptions()
+			})
 		},
-		oneditsave   : function () {
+		oneditsave:    function () {
 			if (!$('#node-config-input-usetls').is(':checked')) {
-				$('#node-config-input-tls').val('');
+				$('#node-config-input-tls').val('')
 			}
 		}
-	});
+	})
 </script>

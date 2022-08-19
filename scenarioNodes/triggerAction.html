@@ -7,28 +7,28 @@
 <script type="text/javascript">
 	RED.nodes.registerType('triggerAction', {
 		category: 'Project Alice',
-		color: '#3FADB5',
+		color:    '#3FADB5',
 		defaults: {
-			name: {
-				value: '',
+			name:          {
+				value: ''
 			},
-			broker: {
-				type: 'aliceMqtt',
+			broker:        {
+				type:     'aliceMqtt',
 				required: true
 			},
 			triggerAction: {
-				value: '',
+				value:    '',
 				required: false
 			},
-			client: {
+			client:        {
 				value: ''
 			}
 		},
-		inputs: 1,
-		outputs: 0,
-		icon: 'bridge.svg',
-		label: function () {
-			return this.name;
+		inputs:   1,
+		outputs:  0,
+		icon:     'bridge.svg',
+		label:    function () {
+			return this.name
 		}
 	})
 </script>
@@ -52,31 +52,34 @@
 	</dl>
 
 	<h3>Details</h3>
-	<p><b>MQTT Broker</b> - The MQTT broker should already be set by default. If you see AliceMqtt as the server
-		name then this is probably setup correctly and no further action is needed by you.</p>
-	<p><b>Message</b> - You have two options with the Message field</p>
+	<p>
+		<b>MQTT Broker</b> - The MQTT broker should already be set by default. If you see AliceMqtt as the server name then this is probably setup correctly and no further action is needed by you.
+	</p>
+	<p>
+		<b>Message</b> - You have two options with the Message field
+	</p>
 	<ol>
-		<li>Enter the message in this field that you want sent to Alice <b>EG:</b><code>what's the time</code>
-			*NOTE* Having text in this field will override any incoming payload
+		<li>Enter the message in this field that you want sent to Alice
+			<b>EG:</b><code>what's the time</code>*NOTE* Having text in this field will override any incoming payload
 		</li>
-		<li>Inject the message using <code>msg.payload.message</code>. This will give you the extra benifit of
-			sending, for example, random messages. Or able to use the node once in a flow but recieve the message from
-			various sources
+		<li>Inject the message using
+			<code>msg.payload.message</code>. This will give you the extra benefit of sending, for example, random messages. Or able to use the node once in a flow but receive the message from various sources
 		</li>
 		.
 	</ol>
 
-	<p><b>Device UID</b> - The Device ID is not a required field. It is the Unique ID of the device you want to have
-		action your message. Leaving this field blank will use the default Alice device </p>
+	<p>
+		<b>Device UID</b> - The Device ID is not a required field. It is the Unique ID of the device you want to have action your message. Leaving this field blank will use the default Alice device
+	</p>
 
 
 </script>
 
 <script type="text/html" data-template-name="triggerAction">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
 		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span
 				data-i18n="triggerAction.broker">Broker</span></label>

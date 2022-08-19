@@ -7,25 +7,25 @@
 <script type="text/javascript">
 	RED.nodes.registerType('onAliceCustomEvent', {
 		category: 'Project Alice',
-		color   : '#3FADB5',
+		color:    '#3FADB5',
 		defaults: {
-			name: {
-				value: '',
+			name:   {
+				value: ''
 			},
 			broker: {
-				type    : 'aliceMqtt',
+				type:     'aliceMqtt',
 				required: true
 			},
-			event : {
-				value   : 'onYourCustomEvent',
+			event:  {
+				value:    'onYourCustomEvent',
 				required: true
 			}
 		},
-		inputs  : 0,
-		outputs : 1,
-		icon    : 'Alice.png',
-		label   : function () {
-			return this.name || this.event ;
+		inputs:   0,
+		outputs:  1,
+		icon:     'Alice.png',
+		label:    function () {
+			return this.name || this.event
 		}
 	})
 </script>
@@ -38,15 +38,17 @@
 
 <script data-template-name="onAliceCustomEvent" type="text/html">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
-		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i> <span data-i18n="onAliceCustomEvent.broker"></span></label>
+		<label for="node-input-broker"><i class="fa fa-bookmark fa-fw"></i>
+			<span data-i18n="onAliceCustomEvent.broker"></span></label>
 		<input type="text" id="node-input-broker">
 	</div>
 	<div class="form-row">
-		<label for="node-config-input-custom-event"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="onAliceCustomEvent.event"></span></label>
+		<label for="node-config-input-custom-event"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="onAliceCustomEvent.event"></span></label>
 		<input id="node-config-input-custom-event" type="text" style="width: 70%"/>
 	</div>
 </script>

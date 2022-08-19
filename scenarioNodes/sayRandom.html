@@ -6,59 +6,59 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('sayRandom', {
-		category: 'Project Alice',
-		color: '#3FADB5',
-		defaults: {
-			name: {
-				value: '',
+		category:      'Project Alice',
+		color:         '#3FADB5',
+		defaults:      {
+			name:             {
+				value: ''
 			},
-			connection: {
-				type: 'aliceConnection',
+			connection:       {
+				type:     'aliceConnection',
 				required: true
 			},
-			skill: {
-				value: '',
+			skill:            {
+				value:    '',
 				required: true
 			},
-			talk: {
-				value: '',
+			talk:             {
+				value:    '',
 				required: true
 			},
 			replaceOverwrite: {
-				value: '',
+				value:    '',
 				required: false
 			},
-			device: {
+			device:           {
 				value: ''
 			}
 		},
-		inputs: 1,
-		outputs: 0,
-		icon: 'font-awesome/fa-commenting',
-		label: function () {
-			if(!this.name && !this.skill && !this.talk)
+		inputs:        1,
+		outputs:       0,
+		icon:          'font-awesome/fa-commenting',
+		label:         function () {
+			if (!this.name && !this.skill && !this.talk)
 				return 'AliceSayRandom'
-			if(this.name)
+			if (this.name)
 				return this.name
-			let ret;
-			ret = this.skill+"/"+this.talk
-			if(this.replaceOverwrite)
-				ret = ret + "["+this.replaceOverwrite+"]"
+			let ret
+			ret = this.skill + '/' + this.talk
+			if (this.replaceOverwrite)
+				ret = ret + '[' + this.replaceOverwrite + ']'
 			return ret
 		},
 		oneditprepare: function () {
-            let node = this;
-            new ProjectAliceEditor(node).build();
-        },
-		oneditsave: function () {
+			let node = this
+			new ProjectAliceEditor(node).build()
+		},
+		oneditsave:    function () {
 			let pae = new ProjectAliceEditor(node)
 			this.device_id = pae.getSelection('#node-input-device')
 			this.skill = pae.getSelection('#node-input-skill')
 			this.talk = pae.getSelection('#node-input-talk')
 
-            let $property = $('#node-input-state');
-            this.state = $property.val()!='0'?$property.val():null;
-        }
+			let $property = $('#node-input-state')
+			this.state = $property.val() != '0' ? $property.val() : null
+		}
 	})
 </script>
 
@@ -89,19 +89,21 @@
 
 </script>
 
-<link rel="stylesheet" href="resources/alicecore/css/multiple-select.css" type="text/css" />
+<link href="resources/alicecore/css/multiple-select.css" rel="stylesheet" type="text/css"/>
 
 <script type="text/html" data-template-name="sayRandom">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i> <span data-i18n="sayRandom.connection"></span></label>
-        <input type="text" id="node-input-connection">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
-		<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sayRandom.skill"></span></label>
+		<label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i>
+			<span data-i18n="sayRandom.connection"></span></label>
+		<input type="text" id="node-input-connection">
+	</div>
+	<div class="form-row">
+		<label for="node-input-skill"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="sayRandom.skill"></span></label>
 		<select id="node-input-skill"></select>
 	</div>
 	<div class="form-row">
@@ -109,7 +111,8 @@
 		<select id="node-input-talk"></select>
 	</div>
 	<div class="form-row">
-		<label for="node-input-replaceOverwrite"><i class="fa fa-scissors fa-fw"></i> <span data-i18n="sayRandom.replaceOverwrite"></span></label>
+		<label for="node-input-replaceOverwrite"><i class="fa fa-scissors fa-fw"></i>
+			<span data-i18n="sayRandom.replaceOverwrite"></span></label>
 		<input type="text" id="node-input-replaceOverwrite">
 	</div>
 	<div class="form-row">

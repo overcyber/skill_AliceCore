@@ -5,23 +5,23 @@
 
 module.exports = function (RED) { //NOSONAR
 	function triggerAction(config) {
-		RED.nodes.createNode(this, config);
+		RED.nodes.createNode(this, config)
 
-		this.topic = 'projectalice/nodered/triggerAction';
-		this.broker = config.broker;
-		this.brokerInstance = RED.nodes.getNode(this.broker);
-		this.datatype = config.datatype || 'utf8';
+		this.topic = 'projectalice/nodered/triggerAction'
+		this.broker = config.broker
+		this.brokerInstance = RED.nodes.getNode(this.broker)
+		this.datatype = config.datatype || 'utf8'
 
-		let node = this;
-		let check = /[+#]/;
-		let inputText = "";
+		let node = this
+		let check = /[+#]/
+		let inputText = ''
 
 		if (this.brokerInstance) {
 			this.status({
-				fill: 'red',
+				fill:  'red',
 				shape: 'ring',
-				text: 'node-red:common.status.disconnected'
-			});
+				text:  'node-red:common.status.disconnected'
+			})
 
 			this.on('input', function (msg, send, done) {
 
@@ -31,58 +31,58 @@ module.exports = function (RED) { //NOSONAR
 					inputText = config.triggerAction
 				}
 
-				msg.qos = 0;
-				msg.retain = false;
-				msg.topic = node.topic;
+				msg.qos = 0
+				msg.retain = false
+				msg.topic = node.topic
 
 				msg.payload = {
 					'deviceUid': config.client,
-					'action': {
+					'action':    {
 						'text': inputText
 					}
-				};
+				}
 				node.send(msg)
 				if (check.test(msg.topic)) {
-					node.warn(RED._('triggerAction.invalidTopic'));
+					node.warn(RED._('triggerAction.invalidTopic'))
 				} else {
-					node.brokerInstance.publish(msg, done);
+					node.brokerInstance.publish(msg, done)
 					node.send(msg)
 
 					node.status({
-						fill: 'green',
+						fill:  'green',
 						shape: 'dot',
-						text: config.triggerAction
-					});
+						text:  config.triggerAction
+					})
 
 					setTimeout(function () {
 						node.status({
-							fill: 'yellow',
+							fill:  'yellow',
 							shape: 'dot',
-							text: 'onAliceEvent.waiting'
-						});
-					}, 3000);
+							text:  'onAliceEvent.waiting'
+						})
+					}, 3000)
 				}
-			});
+			})
 
 			if (this.brokerInstance.connected) {
 				this.status({
-					fill: 'yellow',
+					fill:  'yellow',
 					shape: 'dot',
-					text: 'onAliceEvent.waiting'
-				});
+					text:  'onAliceEvent.waiting'
+				})
 			}
-			this.brokerInstance.register(this);
+			this.brokerInstance.register(this)
 
 			this.on('close', function (done) {
 				if (node.brokerInstance) {
-					node.brokerInstance.deregister(node, done);
+					node.brokerInstance.deregister(node, done)
 				}
-			});
+			})
 
 		} else {
-			this.error(RED._('triggerAction.missingConfig'));
+			this.error(RED._('triggerAction.missingConfig'))
 		}
 	}
 
-	RED.nodes.registerType('triggerAction', triggerAction);
-};
+	RED.nodes.registerType('triggerAction', triggerAction)
+}

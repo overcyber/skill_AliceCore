@@ -9,50 +9,50 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('sendNotification', {
-		category: 'Project Alice',
-		color: '#3FADB5',
-		defaults: {
-			name: {
-				value: '',
+		category:      'Project Alice',
+		color:         '#3FADB5',
+		defaults:      {
+			name:             {
+				value: ''
 			},
-			connection: {
-				type: 'aliceConnection',
+			connection:       {
+				type:     'aliceConnection',
 				required: true
 			},
-			headerOverwrite:{
+			headerOverwrite:  {
 				value: ''
 			},
-			messageOverwrite:{
+			messageOverwrite: {
 				value: ''
 			},
-			keyOverwrite:{
+			keyOverwrite:     {
 				value: ''
 			},
-			device: {
+			device:           {
 				value: ''
 			}
 		},
-		inputs: 1,
-		outputs: 0,
-		icon: 'font-awesome/fa-envelope',
-		label: function () {
-			if(!this.headerOverwrite && !this.name)
+		inputs:        1,
+		outputs:       0,
+		icon:          'font-awesome/fa-envelope',
+		label:         function () {
+			if (!this.headerOverwrite && !this.name)
 				return 'Alice Send Notification'
-			if(this.name)
+			if (this.name)
 				return this.name
-			return "Note: " + this.headerOverwrite
+			return 'Note: ' + this.headerOverwrite
 		},
 		oneditprepare: function () {
-            let node = this;
-            new ProjectAliceEditor(node).build();
-        },
-		oneditsave: function () {
+			let node = this
+			new ProjectAliceEditor(node).build()
+		},
+		oneditsave:    function () {
 			let pae = new ProjectAliceEditor(node)
 			this.device_id = pae.getSelection('#node-input-device')
 
-            let $property = $('#node-input-state');
-            this.state = $property.val()!='0'?$property.val():null;
-        }
+			let $property = $('#node-input-state')
+			this.state = $property.val() != '0' ? $property.val() : null
+		}
 	})
 </script>
 
@@ -111,31 +111,36 @@
 
 </script>
 
-<link rel="stylesheet" href="resources/alicecore/css/multiple-select.css" type="text/css" />
+<link href="resources/alicecore/css/multiple-select.css" rel="stylesheet" type="text/css"/>
 
 <script type="text/html" data-template-name="sendNotification">
 	<div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i> <span data-i18n="sendNotification.connection"></span></label>
-        <input type="text" id="node-input-connection">
-    </div>
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
 	<div class="form-row">
-		<label for="node-input-headerOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.header"></span></label>
+		<label for="node-input-connection" class="l-width"><i class="fa fa-globe"></i>
+			<span data-i18n="sendNotification.connection"></span></label>
+		<input type="text" id="node-input-connection">
+	</div>
+	<div class="form-row">
+		<label for="node-input-headerOverwrite"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="sendNotification.header"></span></label>
 		<input id="node-input-headerOverwrite"></input>
 	</div>
 	<div class="form-row">
-		<label for="node-input-messageOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.message"></span></label>
+		<label for="node-input-messageOverwrite"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="sendNotification.message"></span></label>
 		<input id="node-input-messageOverwrite"></input>
 	</div>
 	<div class="form-row">
-		<label for="node-input-keyOverwrite"><i class="fa fa-tasks fa-fw"></i> <span data-i18n="sendNotification.key"></span></label>
+		<label for="node-input-keyOverwrite"><i class="fa fa-tasks fa-fw"></i>
+			<span data-i18n="sendNotification.key"></span></label>
 		<input id="node-input-keyOverwrite"></input>
 	</div>
 	<div class="form-row">
-		<label for="node-input-device"><i class="fa fa-map-marker fa-fw"></i> <span data-i18n="sendNotification.client"></span></label>
+		<label for="node-input-device"><i class="fa fa-map-marker fa-fw"></i>
+			<span data-i18n="sendNotification.client"></span></label>
 		<select id="node-input-device"></select>
 	</div>
 </script>
